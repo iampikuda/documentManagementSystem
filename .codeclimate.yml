@@ -1,0 +1,22 @@
+---
+engines:
+  csslint:
+    enabled: true
+    checks:
+      gradients:
+        enabled: false
+  duplication:
+    enabled: true
+    config:
+      languages:
+        - javascript
+  eslint:
+    enabled: true
+    channel: "eslint-3"
+  fixme:
+    enabled: true
+ratings:
+  paths:
+  - "**.js"
+exclude_paths:
+
