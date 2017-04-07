@@ -14,10 +14,7 @@ module.exports = {
       email: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
-        validate: {
-          isEmail: true
-        }
+        unique: true
       },
       lastName: {
         type: Sequelize.STRING,
@@ -30,9 +27,8 @@ module.exports = {
       roleId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        default: 2,
         references: {
-          model: 'Roles',
+          model: 'Role',
           key: 'id'
         },
         onUpdate: 'cascade',
