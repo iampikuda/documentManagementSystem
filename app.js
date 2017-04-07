@@ -2,6 +2,8 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 
+const port = parseInt(process.env.PORT, 10) || 8000;
+
 // Set up the express app
 const app = express();
 
@@ -17,5 +19,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get('*', (req, res) => res.status(200).send({
   message: 'Welcome to the beginning of nothingness.',
 }));
+app.listen(port, (req, res) => {
+  console.log(`Listening on port ${port}`);
+});
 
 module.exports = app;
