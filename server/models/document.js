@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const Documents = sequelize.define('Documents', {
+  const Document = sequelize.define('Document', {
     ownerId: {
       allowNull: false,
       type: DataTypes.INTEGER,
@@ -46,19 +46,19 @@ export default (sequelize, DataTypes) => {
         msg: 'access can only be public, private or role'
       }
     },
-    ownerRoleId: {
-      type: DataTypes.INTEGER,
-      allowNull: false
+    publishedDate: {
+      allowNull: false,
+      type: DataTypes.DATE
     }
   }, {
     classMethods: {
       associate: (models) => {
-        Documents.belongsTo(models.User, {
-          foreignKey: 'ownerId',
+        Document.belongsTo(models.User, {
+          foreignKey: { allowNull: true },
           onDelete: 'CASCADE',
         });
       },
     },
   });
-  return Documents;
+  return Document;
 };
