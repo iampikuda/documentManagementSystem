@@ -3,12 +3,6 @@ import bcrypt from 'bcrypt-nodejs';
 
 export default (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    id: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true
-    },
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -78,9 +72,14 @@ export default (sequelize, DataTypes) => {
     classMethods: {
       associate: (models) => {
         // associations can be defined here
-        User.belongsTo(models.Roles, { foreignKey: 'rolesId' });
-        User.hasMany(models.Documents, {
-          onDelete: 'CASCADE',
+        User.belongsTo(models.Role, {
+          foreignKey: {
+            name: 'roleId',
+            allowNull: false
+          }
+        });
+        User.hasMany(models.Document, {
+          // onDelete: 'CASCADE',
           foreignKey: 'userId'
         });
       }
