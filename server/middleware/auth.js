@@ -7,7 +7,7 @@ const Auth = {
   verifyToken(request, response, next) {
     const token = request.headers.authorization ||
       request.body.token || request.headers['x-access-token'];
-    if (!token) {  
+    if (!token) {
       return response.status(401)
       .send({ message: 'No token supplied' });
     }
