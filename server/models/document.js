@@ -39,26 +39,23 @@ export default (sequelize, DataTypes) => {
     },
     access: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
       default: 'public',
       validate: {
         isIn: [['public', 'private', 'role']],
         msg: 'access can only be public, private or role'
       }
-    },
-    publishedDate: {
-      allowNull: false,
-      type: DataTypes.DATE
     }
   }, {
     classMethods: {
       associate: (models) => {
-        Document.belongsTo(models.User, {
-          foreignKey: { allowNull: true },
-          onDelete: 'CASCADE',
-        });
+        // Document.belongsTo(models.User, {
+        //   foreignKey: { allowNull: true },
+        //   onDelete: 'CASCADE',
+        // });
       },
     },
+    freezeTableName: true
   });
   return Document;
 };

@@ -33,7 +33,7 @@ module.exports = {
 
   testDocument: {
     title: faker.company.catchPhrase(),
-    content: faker.lorem.paragraph()
+    content: faker.lorem.paragraph(),
   },
 
   testDocument2: {

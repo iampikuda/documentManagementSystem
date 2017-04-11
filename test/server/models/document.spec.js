@@ -17,7 +17,7 @@ describe('Document Model', () => {
       before((done) => {
         model.Role.create(params.adminRole)
         .then((createdRole) => {
-          userParams.RoleId = createdRole.id;  // user's RoleId
+          userParams.roleId = createdRole.id;  // user's roleId
           return model.User.create(userParams);
         })
         .then((createdUser) => {
