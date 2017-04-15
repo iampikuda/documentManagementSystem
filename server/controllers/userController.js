@@ -92,8 +92,8 @@ class UserController {
       .then((foundUser) => {
         if (!foundUser) {
           return response
-          .status(404)
-          .send({ message: `There is no user with id: ${Id}` });
+            .status(404)
+            .send({ message: `There is no user with id: ${Id}` });
         }
         if (request.body.roleId === '1') {
           if (request.decoded.roleId === 2) {
@@ -106,13 +106,12 @@ class UserController {
         }
 
         foundUser.destroy()
-          .then(() => {
-            return response.status(200)
-              .send({
-                User: foundUser,
-                Message: 'User succesfully deleted'
-              });
-          });
+          .then(() => response.status(200)
+            .send({
+              User: foundUser,
+              Message: 'User succesfully deleted'
+            })
+          );
       });
   }
 
@@ -150,6 +149,27 @@ class UserController {
           .catch(error => response.status(400).send({
             Error: error.message
           }));
+      });
+  }
+
+  /**
+   * Method getUser to get a single user
+   * @param {object} request - request object
+   * @param {object} response - response object
+   * @returns {Object} - response object
+   */
+  static getProfile(request, response) {
+    const Id = request.decoded.userId;
+    model.User.findById(Id)
+      .then((foundUser) => {
+        if (!foundUser) {
+          return response
+          .status(404)
+          .send({ message: 'You don\'t seem to exist' });
+        }
+
+        foundUser = UserController.formattedUser(foundUser);
+        return response.status(200).send(foundUser);
       });
   }
 
@@ -211,7 +231,7 @@ class UserController {
     model.User.findAndCountAll({
       limit,
       offset,
-      order: '"createdAt" DESC',
+      order: '"createdAt" ASC',
       where: {
         roleId: 2
       }
@@ -236,7 +256,7 @@ class UserController {
     model.User.findAndCountAll({
       limit,
       offset,
-      order: '"createdAt" DESC',
+      order: '"createdAt" ASC',
       where: {
         roleId: 1
       }
@@ -265,6 +285,7 @@ class UserController {
           }
           if (foundUser && foundUser.verifyPassword(request.body.password)) {
             const token = jwt.sign({
+              firstName: foundUser.firstName,
               userId: foundUser.id,
               roleId: foundUser.roleId
             }, secret, { expiresIn: '2 days' });

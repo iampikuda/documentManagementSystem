@@ -9,6 +9,7 @@ class roleController {
    * @return {Object} response Object
    */
   static createRole(request, response) {
+    model.Role.sync();
     model.Role.create(request.body)
       .then(newRole => response.status(201).send(newRole))
       .catch(error => response.status(400).send(error.errors)
@@ -27,7 +28,7 @@ class roleController {
     model.Role.findAndCountAll({
       limit,
       offset,
-      order: '"createdAt" DESC'
+      order: '"createdAt" ASC'
     })
       .then((roles) => {
         const data = limit && offset ? { totalCount: roles.count,
