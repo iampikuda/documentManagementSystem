@@ -50,7 +50,7 @@ export default (sequelize, DataTypes) => {
     roleId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      default: 2,
+      defaultValue: 2,
       validate: {
         isInt: {
           msg: 'roleId must be an integer'
@@ -80,7 +80,7 @@ export default (sequelize, DataTypes) => {
         });
         User.hasMany(models.Document, {
           // onDelete: 'CASCADE',
-          foreignKey: 'userId'
+          foreignKey: 'ownerId'
         });
       }
     },
