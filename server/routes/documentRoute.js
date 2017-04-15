@@ -1,21 +1,19 @@
 import express from 'express';
-import documentController from '../controllers/roleController';
+import documentController from '../controllers/documentController';
 import auth from '../middleware/auth';
 
 const document = express.Router();
 
-document.route('/document')
-  .all(auth.verifyToken)
-  .get(documentController.getDocuments)
-  .post(documentController.createDocument);
+document.route('/api/document')
+  .get(auth.verifyToken, documentController.getDocuments)
+  .post(auth.verifyToken, documentController.createDocument);
 
-document.route('/document/:id')
-  .all(auth.verifyToken)
-  .get(documentController.getDocument)
-  .put(documentController.updateDocument)
-  .delete(documentController.deleteDocument);
+document.route('/api/document/:id')
+  .get(auth.verifyToken, documentController.getDocument)
+  .put(auth.verifyToken, documentController.updateDocument)
+  .delete(auth.verifyToken, documentController.deleteDocument);
 
-document.route('/document/search')
+document.route('/api/document/search')
   .post(auth.verifyToken, documentController.searchDoc);
 
 module.exports = () => document;
