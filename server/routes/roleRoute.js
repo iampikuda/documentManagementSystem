@@ -4,7 +4,7 @@ import auth from '../middleware/auth';
 
 const role = express.Router();
 
-role.route('/')
+role.route('/api/role')
   .all(auth.verifyToken, auth.adminAccess)
   .get(roleController.getRoles)
   .post(roleController.createRole);

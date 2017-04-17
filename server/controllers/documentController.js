@@ -8,10 +8,32 @@ class documentController {
    * @return {Object} response Object
    */
   static createDocument(request, response) {
-    request.body.ownerId = request.decoded.UserId;
-    model.Document.create(request.body)
+    // request.body.access = request.body.access || 'role';
+    request.body.ownerId = request.decoded.userId;
+    model.Document.sync();
+    model.Document.findAll({
+      where: {
+        $and: {
+          ownerId: request.decoded.userId
+        },
+        $or: [
+          { content: request.body.content },
+          { title: request.body.title }
+        ]
+      }
+    })
+    .then((foundDocument) => {
+      if (foundDocument.length > 0) {
+        return response.status(409)
+        .send({
+          message: 'Note: Document with same title or content exists.' +
+          'Please modify'
+        });
+      }
+      model.Document.create(request.body)
       .then(newDocument => response.status(201).send(newDocument))
-      .catch(error => response.status(400).send(error.errors));
+      .catch(error => response.status(400).send({ message: error.message }));
+    });
   }
 
   /**
@@ -21,31 +43,81 @@ class documentController {
    * @return {Object} response Object
    */
   static getDocuments(request, response) {
+    const Id = request.decoded.userId;
+    const name = request.decoded.firstName;
     const limit = request.query.limit || '10';
     const offset = request.query.offset || '0';
+    const promise = [];
     if (request.query.limit < 0 || request.query.offset < 0) {
       return response.status(400)
         .send({ message: 'Only Positive integers are permitted.' });
     }
-    model.Document.findAndCountAll({
-      where: {
-        $or: [
-          { access: 'public' },
-          { OwnerId: request.decoded.UserId }
-        ]
-      },
-      limit: request.query.limit || null,
-      offset: request.query.offset || null,
-      order: '"createdAt" DESC'
-    })
-      .then((documents) => {
-        const metadata = limit && offset ? { totalCount: documents.count,
-          pages: Math.ceil(documents.count / limit),
-          currentPage: Math.floor(offset / limit) + 1,
-          pageSize: documents.rows.length } : null;
-        response.status(200).send({ documents: documents.rows, metadata });
+    if (request.decoded.roleId === 1) {
+      model.Document.findAndCountAll({
+        limit,
+        offset,
+        order: '"createdAt" ASC'
       })
-      .catch(error => response.status(400).send({ message: error.message }));
+        .then((foundDocuments) => {
+          const metadata = limit && offset ? {
+            totalCount: foundDocuments.count,
+            pages: Math.ceil(foundDocuments.count / limit),
+            currentPage: Math.floor(offset / limit) + 1,
+            pageSize: foundDocuments.rows.length
+          } : null;
+          return response.status(200).send({
+            documents: foundDocuments.rows, metadata
+          });
+        })
+        .catch(error => response.status(400).send({ message: error.message }));
+    } else {
+      model.Document.findAndCountAll({
+        // where: {
+        //   $or: [
+        //     { access: 'public' },
+        //     { ownerId: request.decoded.userId }
+        //   ]
+        // },
+        include: [{
+          model: model.User,
+          attributes: ['roleId']
+        }],
+        // limit,
+        // offset,
+        order: '"createdAt" ASC'
+      })
+        .then((foundDocuments) => {
+          if (foundDocuments.count === 0) {
+            return response
+              .status(404)
+              .send({
+                message: `User ${name} with id:${Id}` +
+                'has no documents he can view'
+              });
+          }
+          foundDocuments.rows.forEach((i) => {
+            if (i.access === 'public') {
+              promise.push(i);
+            } else if (i.ownerId === request.decoded.userId) {
+              promise.push(i);
+            } else if (i.access === 'role' && i.User.roleId ===
+            request.decoded.roleId) {
+              promise.push(i);
+            }
+          });
+          console.log('#######', promise.length);
+          
+          const metadata = limit && offset ? {
+            totalCount: promise.length,
+            pages: Math.ceil(promise.length / limit),
+            currentPage: Math.floor(offset / limit) + 1
+          } : null;
+          response.status(200).send({
+            documents: promise, metadata
+          });
+        })
+        .catch(error => response.status(400).send({ message: error.message }));
+    }
   }
 
   /**
@@ -55,25 +127,30 @@ class documentController {
    * @return {Object} response Object
    */
   static getDocument(request, response) {
-    model.Document.findById(request.params.id)
+    const Id = request.params.id;
+    model.Document.findById(Id)
       .then((foundDocument) => {
         if (!foundDocument) {
           return response.status(404)
             .send({
-              message: `No document found with id: ${request.params.id}`
+              message: `There are no document with id: ${Id}`
             });
+        }
+        if (request.decoded.roleId === 1) {
+          return response.status(200)
+            .send(foundDocument);
         }
         if (foundDocument.access === 'public') {
           return response.status(200)
             .send(foundDocument);
         }
         if ((foundDocument.access === 'private') &&
-          (foundDocument.OwnerId === request.decoded.UserId)) {
+          (foundDocument.ownerId === request.decoded.userId)) {
           return response.status(200)
             .send(foundDocument);
         }
         if (foundDocument.access === 'role') {
-          return model.User.findById(foundDocument.OwnerId)
+          return model.User.findById(foundDocument.ownerId)
             .then((documentOwner) => {
               if (documentOwner.roleId === request.decoded.roleId) {
                 return response.status(200)
@@ -91,12 +168,11 @@ class documentController {
           });
       })
       .catch(error => response.status(400).send({
-        message: 'get document error'
+        message: error.message
       }));
   }
 
   // /**
-  //  * 
   //  * @static
   //  * @param {Object} request - request Object
   //  * @param {Object} response - request Object
@@ -104,6 +180,7 @@ class documentController {
   //  * @memberOf documentController
   //  */
   // static getRoleDoc(request, response) {
+    // const Id = request.params.id;
   //   const limit = request.query.limit || '10';
   //   const offset = request.query.offset || '0';
   //   if (request.query.limit < 0 || request.query.offset < 0) {
@@ -114,14 +191,14 @@ class documentController {
   //     where: { access: request.query.access },
   //     limit,
   //     offset,
-  //     order: '"createdAt" DESC'
+  //     order: '"createdAt" ASC'
   //   })
   //   .then((foundDocument) => {
   //     if (!foundDocument) {
   //       return response.status(404)
   //         .send({
   //           message: `No document found for user with id:\
-  //           ${request.params.id}`
+  //           ${Id}`
   //         });
   //     }
   //     const metadata = limit && offset ? { totalCount: foundDocument.count,
@@ -155,12 +232,12 @@ class documentController {
       where: {
         $and: [{ $or: [
           { access: 'public' },
-          { ownerId: request.decoded.UserId }
+          { ownerId: request.decoded.userId }
         ] }],
       },
-      limit: request.query.limit,
-      offset: request.query.offset,
-      order: '"createdAt" DESC'
+      limit,
+      offset,
+      order: '"createdAt" ASC'
     };
 
     if (userQuery) {
@@ -208,16 +285,36 @@ class documentController {
       .then((foundDocument) => {
         if (!foundDocument) {
           return response.status(404)
-            .send({ message: `No document found with id: ${Id}` });
+            .send({ message: `There is no document with id: ${Id}` });
         }
-        if (foundDocument.ownerId !== request.decoded.UserId) {
+        if (foundDocument.ownerId !== request.decoded.userId) {
           return response.status(401).send({
             message: 'You cannot update this document'
           });
         }
-        return foundDocument
+        model.Document.findAll({
+          where: {
+            $and: {
+              ownerId: request.decoded.userId
+            },
+            $or: [
+              { content: request.body.content },
+              { title: request.body.title }
+            ]
+          }
+        })
+        .then((usedDocument) => {
+          if (usedDocument.length > 0) {
+            return response.status(409)
+              .send({
+                message: 'Note: Document with same title or content exists.' +
+                'Please modify'
+              });
+          }
+          return foundDocument
           .update(request.body)
           .then(() => response.status(200).send(foundDocument));
+        });
       })
       .catch(error => response.status(400).send({
         message: error.message
@@ -231,19 +328,23 @@ class documentController {
    * @return {Object} response Object
    */
   static deleteDocument(request, response) {
-    model.Document.findById(request.params.id)
+    const Id = request.params.id;
+    model.Document.findById(Id)
       .then((foundDocument) => {
         if (!foundDocument) {
           return response.status(404)
             .send(
-              { message: `No document found with id: ${request.params.id}` });
+              { message: `There is no document with id: ${Id}` });
         }
-        if (foundDocument.OwnerId === request.decoded.UserId) {
+        if (foundDocument.ownerId === request.decoded.userId ||
+        request.decoded.roleId === 1) {
           foundDocument.destroy()
-            .then(() => {
-              return response.status(200)
-                .send({ message: 'Document successfully deleted' });
-            });
+            .then(() => response.status(200)
+                .send({
+                  message: 'Document successfully deleted',
+                  Document: foundDocument
+                })
+            );
         } else {
           return response.status(403)
             .send({ message: 'You are not the Owner of this document.' });
