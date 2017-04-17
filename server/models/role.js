@@ -6,16 +6,20 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notEmpty: { msg: 'Title cannot be empty' },
-        isIn: [['admin', 'regular']]
       }
     }
   }, {
     classMethods: {
       associate: (models) => {
         // associations can be defined here
-        Role.hasMany(models.User);
+        Role.hasMany(models.User, {
+          foreignKey: {
+            name: 'roleId'
+          }
+        });
       }
-    }
+    },
+    freezeTableName: true
   });
   return Role;
 };

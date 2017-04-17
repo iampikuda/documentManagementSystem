@@ -8,7 +8,7 @@
 // const userParams = helper.testUser;
 // const roleParams = helper.testAdminRole;
 
-// const requiredFields = ['firstname', 'lastname', 'email', 'password', 'RoleId'];
+// const requiredFields = ['firstname', 'lastname', 'email', 'password', 'roleId'];
 // const uniqueFields = ['email'];
 
 
@@ -77,7 +77,7 @@
 //     beforeEach((done) => {
 //       models.Role.create(roleParams)
 //         .then((role) => {
-//           userParams.RoleId = role.id;
+//           userParams.roleId = role.id;
 //           user = models.User.build(userParams);
 //           done();
 //         });
@@ -102,7 +102,7 @@
 //         it(`requires ${field} field to be Unique`, () => {
 //           user.save()
 //             .then((firstUser) => {
-//               userParams.RoleId = firstUser.RoleId;
+//               userParams.roleId = firstUser.roleId;
 //               // attempt to create another user with same parameters
 //               return models.User.build(userParams).save();
 //             })

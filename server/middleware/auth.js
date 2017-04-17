@@ -21,7 +21,7 @@ const Auth = {
     });
   },
   adminAccess(request, response, next) {
-    model.Role.findById(request.decoded.RoleId)
+    model.Role.findById(request.decoded.roleId)
       .then((Role) => {
         if (Role.title.toLowerCase() === 'admin') {
           next();
