@@ -1,0 +1,211 @@
+$nav-color: #003366;
+$header-font: 'Sanchez', serif;
+$text-color: #FDFEFE;
+$text-color-two: #000;
+$box-shadow: 2px 2px 2px 2px rgba(0.4, 0.4, 0.4, 0.4);
+$center-align: center;
+$transparentNavColor: rgba(255,0,0,0.1);
+$transparentBodyColor: rgba(0,0,0,0.5);
+$primary-color: #4386FC;
+$logo-color: #FFD04A;
+$background-color: #F2F2F2;
+// $: 'Sanchez', serif;
+// $: 'Pacifico', cursive;
+// $: 'Tillana', cursive;
+
+.myContainer {
+  margin: 0 18px;
+}
+
+.mainContainer {
+  background-color: $transparentBodyColor;
+  color: $text-color;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.mainContainer .bg {
+  background-image: url("https://cloud.githubusercontent.com/assets/25608675/25169939/aec83538-24e0-11e7-84d5-8a26affcbd4e.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+.bodyInnards {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.bodyInnards i,
+#createDoc i,
+#createUser i
+{
+  font-size: 6rem;
+  color: $logo-color;
+  margin: 0;
+}
+.createDoc{
+  padding: 2px 9px 2px 2px;
+  width: 100%;
+  letter-spacing: normal;
+  background-color: $background-color;
+  border: 1px solid $text-color-two;
+  border-radius: 8px;
+  color: $text-color-two;
+  border-radius: 1px;
+}
+.searchBox {
+    right: 0;
+    width: 40%;
+    display: -webkit-inline-box;
+    position: absolute;
+    height: inherit;
+    padding: 0 20px;
+    border-radius: 8px;
+    background-color: $background-color;
+    border: 1px solid $text-color-two;
+    opacity: 0.9;
+    z-index: 11;
+    
+}
+.searchBox input {
+  border: 0px solid;
+  width: 100%;
+  color: $text-color-two;
+}
+.searchBox i {
+  padding-right: 10%;
+  color: $text-color-two;
+}
+.searchBox select {
+  display: block;
+  width: 100%;
+  height: 61px;
+  float: right;
+  color: $text-color-two;
+  background-color: $background-color;
+}
+.inline {
+  margin-right: 5px;
+}
+.dropdown{
+  border-left: 2px solid $text-color-two;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  padding-right: 3%;
+}
+.userTopNav {
+  z-index: 30;
+  background-color: $text-color;
+}
+.dropdown-content {
+  width: 50%;
+  color: $text-color-two;
+}
+.dropdown-content li {
+  text-align: left;
+}
+
+nav ul a {
+  color: $text-color;
+}
+nav a {
+  color: $text-color;
+}
+ nav {
+   font-family: $header-font;
+   background-color: $transparentNavColor;
+ }
+.side-nav {
+  padding-top: 60px;
+}
+.tabs {
+  -webkit-box-shadow: 0 8px 10px -6px black;
+	   -moz-box-shadow: 0 8px 10px -6px black;
+	        box-shadow: 0 8px 10px -6px black;
+          z-index: 9;
+}
+.tabRow {
+  background-color: $nav-color;
+  box-shadow: $box-shadow
+}
+.tabContent{
+  height: 100vh;
+  background-color: $background-color;
+  padding: .9rem !important;
+  color: $text-color-two;
+  opacity: 0.9;
+}
+.tabs .tab a {
+  color: $text-color-two;
+
+}
+.tabs .tab a:hover, .tabs .tab a.active {
+  color: $primary-color;
+}
+.tabs .indicator {
+background-color: $primary-color;
+}
+.dropdown-content li>a, .dropdown-content li>span {
+  left: 0%
+}
+
+@media only screen and (max-width: 992px) {
+  nav .brand-logo {
+    left: 47%;
+  }
+}
+.upperCase {
+text-transform: uppercase;
+}
+
+
+
+.loginForm {
+  margin: 2% 25%;
+  width: 50%;
+  height: 80%;
+  box-shadow: $box-shadow;
+  padding: 2% 3%;
+}
+.signupForm {
+  margin: auto;
+  width: 80%;
+  height: 80%;
+  box-shadow: $box-shadow;
+  padding: 2% 3%;
+}
+.center {
+  text-align: center;
+  color: #212121;
+}
+.auth-button {
+  margin: 2%;
+  width: 95%;
+  background-color: $nav-color;
+  color: $text-color;
+}
+.auth-button:hover {
+  background-color: $logo-color;
+}
+.auth-header a{
+  color: #212121;
+  font-family: $header-font;
+}
+.modal {
+  color: $text-color-two;
+  width: 80%;
+}
+.inline {
+  display: inline-block;
+}
+.input-field label:not(.label-icon).active {
+  -webkit-transform: translateY(-40%);
+  transform: translateY(-40%);
+}
