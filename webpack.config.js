@@ -23,7 +23,7 @@ module.exports = {
           presets: ['react']
         }
       },
-        {
+      {
         test: /\.(png|jpg|jpeg)$/,
         loaders: ['url']
       },

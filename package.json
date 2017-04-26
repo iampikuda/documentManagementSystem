@@ -15,7 +15,8 @@
     "seed:create:test": "cross-env NODE_ENV=test sequelize seed:create",
     "seed:create:dev": "cross-env NODE_ENV=development sequelize seed:create",
     "seed:dev:undo": "cross-env NODE_ENV=development sequelize db:seed:undo:all",
-    "seed:test:undo": "cross-env NODE_ENV=test sequelize db:seed:undo:all"
+    "seed:test:undo": "cross-env NODE_ENV=test sequelize db:seed:undo:all",
+    "postinstall": "./node_modules/.bin/webpack"
   },
   "repository": {
     "type": "git",
