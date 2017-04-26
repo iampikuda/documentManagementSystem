@@ -42,6 +42,7 @@ class UserController {
             model.User.create(request.body)
               .then((newUser) => {
                 const token = jwt.sign({
+                  firstName: newUser.firstName,
                   userId: newUser.id,
                   roleId: newUser.roleId
                 }, secret, { expiresIn: '2 days' });
@@ -65,6 +66,7 @@ class UserController {
         model.User.create(request.body)
           .then((newUser) => {
             const token = jwt.sign({
+              firstName: newUser.firstName,
               userId: newUser.id,
               roleId: newUser.roleId
             }, secret, { expiresIn: '2 days' });
@@ -164,8 +166,8 @@ class UserController {
       .then((foundUser) => {
         if (!foundUser) {
           return response
-          .status(404)
-          .send({ message: 'You don\'t seem to exist' });
+            .status(404)
+            .send({ message: 'You don\'t seem to exist' });
         }
 
         foundUser = UserController.formattedUser(foundUser);
@@ -185,8 +187,8 @@ class UserController {
       .then((foundUser) => {
         if (!foundUser) {
           return response
-          .status(404)
-          .send({ message: `There is no user with id: ${request.params.id}` });
+            .status(404)
+            .send({ message: `There is no user with id: ${request.params.id}` });
         }
 
         foundUser = UserController.formattedUser(foundUser);
@@ -208,15 +210,17 @@ class UserController {
       offset,
       order: '"createdAt" ASC'
     }).then((user) => {
-      const data = limit && offset ? { totalCount: user.count,
+      const data = limit && offset ? {
+        totalCount: user.count,
         pages: Math.ceil(user.count / limit),
         currentPage: Math.floor(offset / limit) + 1,
-        pageSize: user.rows.length } : null;
+        pageSize: user.rows.length
+      } : null;
       return response.status(200).send({ users: user.rows, data });
     })
-    .catch(error => response.status(400).send({
-      Error: error.message
-    }));
+      .catch(error => response.status(400).send({
+        Error: error.message
+      }));
   }
 
   /**
@@ -236,10 +240,12 @@ class UserController {
         roleId: 2
       }
     }).then((user) => {
-      const data = limit && offset ? { totalCount: user.count,
+      const data = limit && offset ? {
+        totalCount: user.count,
         pages: Math.ceil(user.count / limit),
         currentPage: Math.floor(offset / limit) + 1,
-        pageSize: user.rows.length } : null;
+        pageSize: user.rows.length
+      } : null;
       return response.status(200).send({ users: user.rows, data });
     });
   }
@@ -261,10 +267,12 @@ class UserController {
         roleId: 1
       }
     }).then((user) => {
-      const data = limit && offset ? { totalCount: user.count,
+      const data = limit && offset ? {
+        totalCount: user.count,
         pages: Math.ceil(user.count / limit),
         currentPage: Math.floor(offset / limit) + 1,
-        pageSize: user.rows.length } : null;
+        pageSize: user.rows.length
+      } : null;
       return response.status(200).send({ users: user.rows, data });
     });
   }
@@ -281,7 +289,7 @@ class UserController {
         .then((foundUser) => {
           if (!foundUser) {
             return response.status(404)
-            .send({ message: 'User not found' });
+              .send({ message: 'User not found' });
           }
           if (foundUser && foundUser.verifyPassword(request.body.password)) {
             const token = jwt.sign({
@@ -306,16 +314,16 @@ class UserController {
     }
   }
 
-//   /**
-//    * Method logout
-//    * @param {object} request - request object
-//    * @param {object} response - response object
-//    * @returns {object} - response object
-//    */
-//   static logout(request, response) {
-//     return response.status(200)
-//       .send({ message: 'Successful logout' });
-//   }
+  /**
+   * Method logout
+   * @param {object} request - request object
+   * @param {object} response - response object
+   * @returns {object} - response object
+   */
+  static logout(request, response) {
+    return response.status(200)
+      .send({ message: 'Successful logout' });
+  }
 
   // /**
   //  * Method to fetch all documents of a specific user
@@ -365,6 +373,71 @@ class UserController {
   //     }
   //   });
   // }
+  /**
+   * searchDoc - search documents
+   * @param {Object} request Request Object
+   * @param {Object} response Response Object
+   * @returns {Object} Response Object
+   */
+  static searchUser(request, response) {
+    const limit = request.query.limit || '10';
+    const offset = request.query.offset || '0';
+    if (request.query.limit < 0 || request.query.offset < 0) {
+      return response.status(400)
+        .send({ message: 'Only Positive integers are permitted.' });
+    }
+
+    const userQuery = request.query.query;
+    const role = Math.abs(request.query.role, 10);
+    const query = {
+      where: {
+        $or: [{
+          firstName: {
+            $iLike: `%${userQuery}%`
+          }
+        }, {
+          lastName: {
+            $iLike: `%${userQuery}%`
+          }
+        },
+        {
+          email: {
+            $iLike: `%${userQuery}%`
+          }
+        }]
+      },
+      limit,
+      offset,
+      order: '"createdAt" ASC'
+    };
+    if (role) {
+      query.where.$or.push({
+        roleId: role
+      });
+    }
+
+    model.User.findAndCountAll(query)
+      .then((users) => {
+        if (users.count === 0) {
+          return response
+            .status(404)
+            .send({
+              message: 'No documents match search parameter'
+            });
+        }
+        const metadata = query.limit && query.offset
+          ? {
+            totalCount: users.count,
+            pages: Math.ceil(users.count / query.limit),
+            currentPage: Math.floor(query.offset / query.limit) + 1,
+            pageSize: users.rows.length
+          } : null;
+        response.send({ users: users.rows, metadata });
+      })
+      .catch(error => response.status(400).send({
+        message: error.message
+      }));
+  }
 }
 
 export default UserController;

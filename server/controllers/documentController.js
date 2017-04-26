@@ -43,6 +43,7 @@ class documentController {
    * @return {Object} response Object
    */
   static getDocuments(request, response) {
+    console.log('--------__________--------');
     const Id = request.decoded.userId;
     const name = request.decoded.firstName;
     const limit = request.query.limit || '10';
@@ -72,22 +73,27 @@ class documentController {
         .catch(error => response.status(400).send({ message: error.message }));
     } else {
       model.Document.findAndCountAll({
-        // where: {
-        //   $or: [
-        //     { access: 'public' },
-        //     { ownerId: request.decoded.userId }
-        //   ]
-        // },
         include: [{
-          model: model.User,
-          attributes: ['roleId']
+          model: model.User
         }],
-        // limit,
-        // offset,
+        where: {
+          $or: [
+            { access: 'public' },
+            { ownerId: request.decoded.userId },
+            {
+              $and: [
+                { access: 'role' },
+                { '$User.roleId$': request.decoded.roleId }
+              ]
+            }
+          ]
+        },
+        limit,
+        offset,
         order: '"createdAt" ASC'
       })
-        .then((foundDocuments) => {
-          if (foundDocuments.count === 0) {
+        .then((foundDocument) => {
+          if (!foundDocument) {
             return response
               .status(404)
               .send({
@@ -95,27 +101,46 @@ class documentController {
                 'has no documents he can view'
               });
           }
-          foundDocuments.rows.forEach((i) => {
-            if (i.access === 'public') {
-              promise.push(i);
-            } else if (i.ownerId === request.decoded.userId) {
-              promise.push(i);
-            } else if (i.access === 'role' && i.User.roleId ===
-            request.decoded.roleId) {
-              promise.push(i);
-            }
-          });
-          console.log('#######', promise.length);
-          
           const metadata = limit && offset ? {
-            totalCount: promise.length,
-            pages: Math.ceil(promise.length / limit),
-            currentPage: Math.floor(offset / limit) + 1
+            totalCount: foundDocument.count,
+            pages: Math.ceil(foundDocument.count / limit),
+            currentPage: Math.floor(offset / limit) + 1,
+            pageSize: foundDocument.rows.length
           } : null;
-          response.status(200).send({
-            documents: promise, metadata
+          return response.status(200).send({
+            document: foundDocument.rows, metadata
           });
         })
+        // .then((foundDocuments) => {
+        //   if (foundDocuments.count === 0) {
+        //     return response
+        //       .status(404)
+        //       .send({
+        //         message: `User ${name} with id:${Id}` +
+        //         'has no documents he can view'
+        //       });
+        //   }
+        //   foundDocuments.rows.forEach((i) => {
+        //     if (i.access === 'public') {
+        //       promise.push(i);
+        //     } else if (i.ownerId === request.decoded.userId) {
+        //       promise.push(i);
+        //     } else if (i.access === 'role' && i.User.roleId ===
+        //     request.decoded.roleId) {
+        //       promise.push(i);
+        //     }
+        //   });
+        //   console.log('#######', promise.length);
+
+        //   const metadata = limit && offset ? {
+        //     totalCount: promise.length,
+        //     pages: Math.ceil(promise.length / limit),
+        //     currentPage: Math.floor(offset / limit) + 1
+        //   } : null;
+        //   response.status(200).send({
+        //     documents: promise, metadata
+        //   });
+        // })
         .catch(error => response.status(400).send({ message: error.message }));
     }
   }
@@ -228,7 +253,7 @@ class documentController {
 
     const userQuery = request.query.query;
     const role = Math.abs(request.query.role, 10);
-    const query = {
+    let query = {
       where: {
         $and: [{ $or: [
           { access: 'public' },
@@ -239,6 +264,21 @@ class documentController {
       offset,
       order: '"createdAt" ASC'
     };
+    if (request.decoded.roleId === 1) {
+      query = {
+        where: {
+          $and: [{
+            $or: [
+              { access: 'public' },
+              { ownerId: request.decoded.userId }
+            ]
+          }],
+        },
+        limit,
+        offset,
+        order: '"createdAt" ASC'
+      };
+    }
 
     if (userQuery) {
       query.where.$and.push({ $or: [
@@ -249,7 +289,6 @@ class documentController {
     if (role) {
       query.include = [{
         model: model.User,
-        as: 'Owner',
         attributes: [],
         include: [{
           model: model.Role,
@@ -259,7 +298,7 @@ class documentController {
       }];
     }
 
-    model.document.findAndCountAll(query)
+    model.Document.findAndCountAll(query)
       .then((documents) => {
         const metadata = query.limit && query.offset
         ? { totalCount: documents.count,

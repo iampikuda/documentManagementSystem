@@ -33,7 +33,10 @@ user.route('/api/user/:id')
 user.route('/api/user/login')
   .post(userController.login);
 
-// user.route('/api/user/logout')
-//   .post(auth.verifyToken, userController.logout);
+user.route('/api/user/search')
+  .post(auth.verifyToken, userController.searchUser);
+
+user.route('/api/user/logout')
+  .post(auth.verifyToken, userController.logout);
 
 module.exports = () => user;
