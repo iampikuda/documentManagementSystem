@@ -28,10 +28,6 @@ if (process.env.NODE_ENV !== 'production') {
   }));
   app.use(webpackHotMiddleware(compiler));
 }
-app.use(express.static(path.join(__dirname, 'client/dist')));
-app.get('/app/*', (req, res) => {
-  res.sendFile(`${__dirname}/client/dist/index.html`);
-});
 // Log requests to the console.
 app.use(logger('dev'));
 
@@ -41,10 +37,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Setup a default catch-all route that sends back a
 // welcome message in JSON format.
+
+app.use(express.static(path.join(__dirname, 'client/dist')));
 app.use(indexRoute());
 app.use(userRoute());
 app.use(roleRoute());
 app.use(documentRoute());
+app.get('*', (req, res) => {
+  res.sendFile(`${__dirname}/client/dist/index.html`);
+});
 
 app.listen(port, (req, res) => {
   console.log(`Listening on port ${port}`);

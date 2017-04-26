@@ -27,6 +27,7 @@
     "superInFunctions": true,
     "templateStrings": true
   },
+  "plugins": ["jsx"],
   "rules": {
     "max-len":[2, 80, 2],
     "one-var": 0,

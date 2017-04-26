@@ -43,7 +43,7 @@
 //       expect(user).not.to.be.null;
 //       expect(typeof user).to.equal('object');
 //     });
-//     it('should create a user with username, first & last name', () => {
+//     it('should create a user with first & last name', () => {
 //       expect(user.firstName).to.equal(userParams.firstName);
 //       expect(user.lastName).to.equal(userParams.lastName);
 //     });
