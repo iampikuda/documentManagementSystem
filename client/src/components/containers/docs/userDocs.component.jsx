@@ -44,7 +44,7 @@ const SingleDocument = (props) => {
       <td>{ document.title }</td>
       <td>{ document.access }</td>
       <td>{ document.content }</td>
-      {/*<td>{`${document.User.lastName} ${document.User.firstName}`}</td>*/}
+      <td>{`${document.User.lastName} ${document.User.firstName}`}</td>
       <td>{ (document.createdAt).slice(0, 10) }</td>
       <td>{ (document.updatedAt).slice(0, 10) }</td>
     </tr>

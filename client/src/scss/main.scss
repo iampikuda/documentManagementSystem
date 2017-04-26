@@ -136,7 +136,8 @@ nav a {
   box-shadow: $box-shadow
 }
 .tabContent{
-  height: 100vh;
+  max-height: 100vh;
+  overflow: scroll;
   background-color: $background-color;
   padding: .9rem !important;
   color: $text-color-two;

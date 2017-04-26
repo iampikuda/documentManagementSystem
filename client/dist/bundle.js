@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "003a0858a80d2d9dac08"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "bf92c73e48c63a78d372"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -12135,7 +12135,9 @@
 	    var _this = _possibleConstructorReturn(this, (signUpPage.__proto__ || Object.getPrototypeOf(signUpPage)).call(this, props));
 
 	    var token = window.localStorage.getItem('token');
-	    authUser = (0, _jwtDecode2.default)(token) || {};
+	    if (token) {
+	      authUser = (0, _jwtDecode2.default)(token);
+	    };
 	    _this.state = {
 	      firstName: '',
 	      lastName: '',
@@ -12151,8 +12153,10 @@
 	  _createClass(signUpPage, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      if (authUser.roleId !== 1) {
-	        _reactRouter.browserHistory.push('/dashboard');
+	      if (token) {
+	        if (authUser.roleId !== 1) {
+	          _reactRouter.browserHistory.push('/dashboard');
+	        }
 	      }
 	    }
 	  }, {

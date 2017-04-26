@@ -3,7 +3,11 @@ import React, { Component } from 'react';
 const PrivateDocs = (props) => {
   let documentList;
   if (props.document.document !== undefined) {
-    documentList = props.document.document.data.document
+    let docs = props.document.document.data.document;
+    if (docs === undefined){
+      docs = props.document.document.data.documents;
+    }
+    documentList = docs
     .filter((document) => {
       return document.access === 'private';
     })

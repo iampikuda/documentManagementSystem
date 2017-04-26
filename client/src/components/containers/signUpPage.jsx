@@ -7,11 +7,13 @@ import signupAction from '../../actions/authorization/signupAction.js';
 
 let authUser;
 const AdminRoleId = 1;
+let token;
+console.log('pear');
 class signUpPage extends Component {
   constructor(props) {
     super(props);
-    const token = window.localStorage.getItem('token');
-    authUser = jwtDecode(token) || {}
+    token = window.localStorage.getItem('token');
+    console.log('everywhere');
     this.state = {
       firstName: '',
       lastName: '',
@@ -23,8 +25,15 @@ class signUpPage extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
   componentWillMount() {
-    if (authUser.roleId !== 1) {
-      browserHistory.push('/dashboard');
+    authUser = {};
+    if (token) {
+      console.log('everywh');
+      authUser = jwtDecode(token) || {};
+      console.log(token);
+      console.log(authUser);
+      if (authUser.roleId !== 1) {
+        browserHistory.push('/dashboard');
+      }
     }
   }
   componentWillReceiveProps(nextProps) {
@@ -46,7 +55,8 @@ class signUpPage extends Component {
     this.props.Signup(this.state);
   }
   render() {
-    const roleId = authUser.roleId || null
+    const roleId = null || authUser.roleId
+    console.log('here');
     return (roleId === AdminRoleId) ?
       <div>
         <div className="row"></div>
