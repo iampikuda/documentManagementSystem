@@ -20,15 +20,18 @@ class Dashboard extends Component {
     this.setDeleteDocument = this.setDeleteDocument.bind(this);
     this.state = {};
   }
-  setEditDocument(document){
+  setEditDocument(document) {
+    
     console.log(document, 'to edit');
     this.setState({
       editDocument: document,
       documentId: document.id
     });
+    // browserHistory.push('/dashboard');
   }
   setDeleteDocument(documentId) {
     this.props.DeleteDocument(documentId);
+    browserHistory.push('/dashboard');
   }
   componentDidMount() {
     $('ul.tabs').tabs();
@@ -39,10 +42,10 @@ class Dashboard extends Component {
         <div id="modal1" className="modal modal-fixed-footer">
           <div className="modal-content">
             <h4>Edit Document</h4>
-            <CreateDocument document={this.state.editDocument || null} documentId={this.state.documentId || null}  onEdit={this.props.EditDocument}/>
+            <CreateDocument document={this.state.editDocument || null} documentId={this.state.documentId || null} onEdit={this.props.EditDocument} />
           </div>
           <div className="modal-footer">
-            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat ">Done</a>
+            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
           </div>
         </div>
         <div className="mainContainer">
@@ -61,7 +64,7 @@ class Dashboard extends Component {
               </ul>
             </div>
             <div id="test1" className="tabContent col s12">
-              <UserDocs document={this.props.documents} setEditDocument={this.setEditDocument} setDeleteDocument={this.setDeleteDocument} name="jezzuzzzz"/>
+              <UserDocs document={this.props.documents} setEditDocument={this.setEditDocument} setDeleteDocument={this.setDeleteDocument} name="jezzuzzzz" />
             </div>
             <div id="test2" className="tabContent col s12">
               <PrivateDocs document={this.props.documents} setEditDocument={this.setEditDocument} setDeleteDocument={this.setDeleteDocument} />
@@ -82,4 +85,11 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+// export default Dashboard;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    EditDocument: (documentDetails, documentId) => dispatch(EditDocument(documentDetails, documentId)),
+    DeleteDocument: (documentId) => dispatch(DeleteDocument(documentId))
+  };
+};
+export default connect(null, mapDispatchToProps)(Dashboard);

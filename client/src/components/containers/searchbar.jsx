@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import jwtDecode from 'jwt-decode';
 import AddDoc from './adddoc.component.jsx';
 import AddUser from './adduser.component.jsx';
+import AddRole from './addrole.component.jsx';
 
 class Searchbar extends Component {
   constructor(props) {
@@ -39,10 +40,8 @@ class Searchbar extends Component {
     return (roleId === this.state.AdminRoleId) ?
       <nav id="nav">
         <div className="nav-wrapper">
-
-         <AddDoc />
-         <AddUser />
-
+          <AddUser />
+          <AddRole />
           <div className="searchBox">
             <i className="material-icons">search</i>
             <input type="text" id="searchInput" placeholder="....SEARCH"></input>
@@ -63,7 +62,7 @@ class Searchbar extends Component {
       <nav id="nav">
         <div className="nav-wrapper">
 
-         <AddDoc />
+          <AddDoc />
 
           <div className="searchBox">
             <i className="material-icons">search</i>

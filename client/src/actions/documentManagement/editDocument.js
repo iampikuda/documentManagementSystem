@@ -3,11 +3,11 @@ import { browserHistory } from 'react-router';
 
 export default (details, documentid) => {
   return (dispatch) => {
-    const token=window.localStorage.getItem('token');
-    if(!token){
-      return
+    const token = window.localStorage.getItem('token');
+    if (!token) {
+      return;
     }
-    return axios.put(`/documents/${documentid}`, details, {
+    return axios.put(`/api/document/${documentid}`, details, {
       headers: {
         Authorization: token
       }

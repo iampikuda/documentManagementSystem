@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 export default (documentid) => {
   const token = window.localStorage.getItem('token');
   return (dispatch) => {
-    return axios.delete(`/documents/${documentid}`, {
+    return axios.delete(`/api/document/${documentid}`, {
       headers: {
         authorization: token
       }
