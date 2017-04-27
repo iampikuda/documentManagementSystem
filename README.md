@@ -66,5 +66,5 @@ Document management system is an application used to track, manage and store doc
 ## Limitations of the project
   N/A
 ## Contributing to the project
-**Delores Diei**
+**Pikuda Oluwadamisi**
 ## Troubleshooting and FAQ
