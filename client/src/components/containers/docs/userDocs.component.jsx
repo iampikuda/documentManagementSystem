@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import { browserHistory, Link } from 'react-router';
 import jwtDecode from 'jwt-decode';
 
-let myId;
 let firstName;
 const token = window.localStorage.getItem('token');
 if (token) {
-  myId = jwtDecode(token).userId;
   firstName = jwtDecode(token).firstName;
 }
 const UserDocs = (props) => {
@@ -17,7 +15,7 @@ const UserDocs = (props) => {
       docs = props.document.document.data.documents;
     }
     documentList = docs.map((document) => {
-      console.log(document);
+      // console.log(document);
       return (
         <SingleDocument document={document} key={document.id}
           setEditDocument={props.setEditDocument} setDeleteDocument={props.setDeleteDocument} />

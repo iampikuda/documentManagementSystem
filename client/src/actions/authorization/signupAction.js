@@ -3,10 +3,7 @@ import jwtDecode from 'jwt-decode';
 
 export const loginSuccessful = user => ({ type: 'LOGIN_SUCCESSFUL', user });
 export default (userData) => {
-  console.log('|||||||||||||', userData);
   userData.roleId = parseInt((userData.roleId), 10);
-  console.log('|||||||||||||', typeof (userData.roleId));
-  console.log('|||||||||||||', userData);
   return (dispatch) => {
     return axios.post('/api/user', userData)
       .then((response) => {

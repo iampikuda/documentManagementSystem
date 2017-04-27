@@ -7,6 +7,7 @@ import AdminDashboard from './admin.component.jsx';
 import UserDashboard from './user.component.jsx';
 import { bindActionCreators } from 'redux';
 import * as docActions from '../../actions/documentManagement/readDocument.js';
+import * as userActions from '../../actions/userManagement/getUsers.js';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -20,27 +21,30 @@ class Dashboard extends Component {
 
   componentWillMount() {
     const userId = this.state.authUser.userId || null
-    this.props.actions.viewUserDocuments(userId);
-    // console.log('***', userId);
+    this.props.actionsDoc.viewUserDocuments(userId);
+    this.props.actionsUser.viewUsers(userId);
+    console.log('***', this.props);
   }
 
   render() {
     const roleId = this.state.authUser.roleId || null
     return (roleId === this.state.AdminRoleId) ?
-      <AdminDashboard documents={this.props.documents} /> :
+      <AdminDashboard documents={this.props.documents} users= {this.props.users}/> :
       <UserDashboard documents={this.props.documents} />
   }
 }
 
 const mapStoreToProps = (state) => {
   return {
-    documents: state.documentReducer
+    documents: state.documentReducer,
+    users: state.userReducer
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators(docActions, dispatch)
+    actionsDoc: bindActionCreators(docActions, dispatch),
+    actionsUser: bindActionCreators(userActions, dispatch)
   }
 }
 

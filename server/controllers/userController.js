@@ -208,6 +208,7 @@ class UserController {
       offset,
       order: '"createdAt" ASC'
     }).then((user) => {
+      console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$');
       const data = limit && offset ? { totalCount: user.count,
         pages: Math.ceil(user.count / limit),
         currentPage: Math.floor(offset / limit) + 1,

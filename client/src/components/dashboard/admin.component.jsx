@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router';
 import Navbar from '../nav.component.js';
 import Searchbar from '../containers/searchbar.jsx';
-
+import UserDocs from '../containers/docs/userDocs.component.jsx';
+import Users from '../containers/admin/users.component.js';
+import Roles from '../containers/admin/roles.component.js';
 
 
 class Dashboard extends Component {
@@ -37,16 +39,20 @@ class Dashboard extends Component {
             <div className="tabRow">
               <ul className="tabs tabs-fixed-width">
                 <li className="tab"><Link to="#test1" className="active">All Docs</Link></li>
-                <li className="tab"><Link to="#test2">Private Docs</Link></li>
+                <li className="tab"><Link to="#test2">Users</Link></li>
+                <li className="tab"><Link to="#test3">Roles</Link></li>
               </ul>
             </div>
 
             <div id="test1" className="tabContent col s12">
-              <UserDocs document={this.props.documents} setEditDocument={this.setEditDocument} setDeleteDocument={this.setDeleteDocument} name="jezzuzzzz"/>
+              <UserDocs document={this.props.documents} />
             </div>
             <div id="test2" className="tabContent col s12">
-              <PrivateDocs document={this.props.documents} setEditDocument={this.setEditDocument} setDeleteDocument={this.setDeleteDocument} />
+              <Users user={this.props.users} />
             </div>
+            {/*<div id="test3" className="tabContent col s12">
+              <Roles document={this.props.documents} />
+            </div>*/}
           </div>
         </div>
       </div>
@@ -54,11 +60,11 @@ class Dashboard extends Component {
   }
 }
 
-// export default Dashboard;
-const mapDispatchToProps = (dispatch) => {
-  return {
-    EditDocument: (documentDetails, documentId) => dispatch(EditDocument(documentDetails, documentId)),
-    DeleteDocument: (documentId) => dispatch(DeleteDocument(documentId))
-  };
-};
-export default connect(null, mapDispatchToProps)(Dashboard);
+export default Dashboard;
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     EditDocument: (documentDetails, documentId) => dispatch(EditDocument(documentDetails, documentId)),
+//     DeleteDocument: (documentId) => dispatch(DeleteDocument(documentId))
+//   };
+// };
+// export default connect(null, mapDispatchToProps)(Dashboard);

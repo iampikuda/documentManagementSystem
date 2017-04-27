@@ -11,7 +11,8 @@ import indexRoute from './server/routes/index';
 import roleRoute from './server/routes/roleRoute';
 import userRoute from './server/routes/userRoute';
 import documentRoute from './server/routes/documentRoute';
-
+import swaggerRouteJson from './server/routes/swagger';
+import swaggerRoute from './server/routes/swagger-ui';
 
 
 
@@ -39,10 +40,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // welcome message in JSON format.
 
 app.use(express.static(path.join(__dirname, 'client/dist')));
+app.use(express.static(path.join(__dirname, '/api-docs')));
 app.use(indexRoute());
 app.use(userRoute());
 app.use(roleRoute());
 app.use(documentRoute());
+app.use(swaggerRouteJson());
+app.use(swaggerRoute());
 app.get('*', (req, res) => {
   res.sendFile(`${__dirname}/client/dist/index.html`);
 });
