@@ -84,16 +84,16 @@ export class CreateDocument extends Component {
               </div>
               <div className='row'>
                 <div className='input-field col s12'>
-                  <textarea
+                  <tinytextarea
                     value={this.state.content}
                     onChange={this.onChange}
                     name='content'
                     id='content'
-                    type='password'
-                    className='validate materialize-textarea'
+                    type='text'
+                    className='validate'
                     required>
-                  </textarea>
-                  <label htmlFor='password'>Content</label>
+                  </tinytextarea>
+                  {/*<label htmlFor='text'>Content</label>*/}
                 </div>
               </div>
               <div className='col m3 s12'>
