@@ -2,25 +2,39 @@ import React, { Component } from 'react';
 import { browserHistory, Link } from 'react-router';
 import jwtDecode from 'jwt-decode';
 
+
+const SingleDocument = (document, index) => {
+  // console.log('ahsdahdas', document, index);
+  return (
+    <tr className="hoverable" key={index}>
+      <td>{document.title}</td>
+      <td>{document.access}</td>
+      <td>{document.content}</td>
+      <td>{`${document.User.lastName} ${document.User.firstName}`}</td>
+      <td>{(document.createdAt).slice(0, 10)}</td>
+      <td>{(document.updatedAt).slice(0, 10)}</td>
+      {/*<td><a className="modal-trigger green-text" href="#modal1" onClick={() => { props.setEditDocument(document); }}><i className="material-icons">edit</i></a></td>
+    <td><a className="red-text" href="#" onClick={() => { props.setDeleteDocument(document.id); }} > <i className="material-icons">delete</i></a></td>*/}
+    </tr >
+  );
+}
+
 let firstName;
 const token = window.localStorage.getItem('token');
 if (token) {
   firstName = jwtDecode(token).firstName;
 }
+let documentList = [];
 const UserDocs = (props) => {
-  let documentList;
+  
+  // console.log('+++++------', props);
   if (props.document.document !== undefined) {
     let docs = props.document.document.data.document;
     if (docs === undefined) {
-      docs = props.document.document.data.documents;
+      documentList = props.document.document.data.documents;
     }
-    documentList = docs.map((document) => {
-      // console.log(document);
-      return (
-        <SingleDocument document={document} key={document.id}
-          setEditDocument={props.setEditDocument} setDeleteDocument={props.setDeleteDocument} />
-      )
-    })
+    // documentList = docs.map(SingleDocument)
+    // console.log(documentList, "jbkjjbbjbj")
   }
   return (
     <div>
@@ -36,28 +50,11 @@ const UserDocs = (props) => {
           </tr>
         </thead>
         <tbody>
-          {documentList}
+          {documentList.map(SingleDocument)}
         </tbody>
       </table>
     </div>
   )
-}
-
-
-const SingleDocument = (props) => {
-  const { document } = props
-  return (
-    <tr className="hoverable">
-      <td>{document.title}</td>
-      <td>{document.access}</td>
-      <td>{document.content}</td>
-      <td>{`${document.User.lastName} ${document.User.firstName}`}</td>
-      <td>{(document.createdAt).slice(0, 10)}</td>
-      <td>{(document.updatedAt).slice(0, 10)}</td>
-      <td><a className="modal-trigger green-text" href="#modal1" onClick={() => { props.setEditDocument(document); }}><i className="material-icons">edit</i></a></td>
-    <td><a className="red-text" href="#" onClick={() => { props.setDeleteDocument(document.id); }} > <i className="material-icons">delete</i></a></td>
-    </tr >
-  );
 }
 
 export default UserDocs;
