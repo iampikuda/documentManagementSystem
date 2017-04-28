@@ -49,8 +49,8 @@ export default (sequelize, DataTypes) => {
     },
     roleId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       defaultValue: 2,
+      allowNull: false,
       validate: {
         isInt: {
           msg: 'roleId must be an integer'
