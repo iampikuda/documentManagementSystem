@@ -19,7 +19,7 @@ class signUpPage extends Component {
       lastName: '',
       email: '',
       password: '',
-      roleId: ''
+      roleId: 2
     }
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -52,12 +52,13 @@ class signUpPage extends Component {
   }
   onSubmit(e) {
     e.preventDefault();
+    console.log('all is well', e);
     this.props.Signup(this.state);
   }
   render() {
-    const roleId = null || authUser.roleId
+    const roleIdNow = authUser.roleId || ''
     console.log('here');
-    return (roleId === AdminRoleId) ?
+    return (roleIdNow === AdminRoleId) ?
       <div>
         <div className="row"></div>
         <div className="row signupForm">
