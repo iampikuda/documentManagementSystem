@@ -13,7 +13,7 @@ class signUpPage extends Component {
   constructor(props) {
     super(props);
     token = window.localStorage.getItem('token');
-    console.log('everywhere');
+    // console.log('everywhere');
     this.state = {
       firstName: '',
       lastName: '',
@@ -27,7 +27,7 @@ class signUpPage extends Component {
   componentWillMount() {
     authUser = {};
     if (token) {
-      console.log('everywh');
+      // console.log('everywh');
       authUser = jwtDecode(token) || {};
       console.log(token);
       console.log(authUser);
