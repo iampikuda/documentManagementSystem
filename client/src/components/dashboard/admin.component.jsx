@@ -4,8 +4,8 @@ import { browserHistory, Link } from 'react-router';
 import Navbar from '../nav.component.js';
 import Searchbar from '../containers/searchbar.jsx';
 import UserDocs from '../containers/docs/userDocs.component.jsx';
-import Users from '../containers/admin/users.component.js';
-import Roles from '../containers/admin/roles.component.js';
+import Users from '../containers/admin/usersView.component.js';
+import Roles from '../containers/admin/rolesView.component.js';
 
 
 class Dashboard extends Component {
@@ -29,6 +29,7 @@ class Dashboard extends Component {
     $('ul.tabs').tabs();
   }
   render() {
+    console.log('+++++++', this.props);
     return (
       <div>
         <div className="mainContainer">
@@ -48,11 +49,11 @@ class Dashboard extends Component {
               <UserDocs document={this.props.documents} />
             </div>
             <div id="test2" className="tabContent col s12">
-              <Users user={this.props.users} />
+              <Users users={this.props.users} />
             </div>
-            {/*<div id="test3" className="tabContent col s12">
-              <Roles document={this.props.documents} />
-            </div>*/}
+            <div id="test3" className="tabContent col s12">
+              <Roles roles={this.props.roles} />
+            </div>
           </div>
         </div>
       </div>
@@ -60,11 +61,11 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     EditDocument: (documentDetails, documentId) => dispatch(EditDocument(documentDetails, documentId)),
-//     DeleteDocument: (documentId) => dispatch(DeleteDocument(documentId))
-//   };
-// };
-// export default connect(null, mapDispatchToProps)(Dashboard);
+// export default Dashboard;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    EditDocument: (documentDetails, documentId) => dispatch(EditDocument(documentDetails, documentId)),
+    DeleteDocument: (documentId) => dispatch(DeleteDocument(documentId))
+  };
+};
+export default connect(null, mapDispatchToProps)(Dashboard);
