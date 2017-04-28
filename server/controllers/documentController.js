@@ -53,6 +53,12 @@ class documentController {
     }
     if (request.decoded.roleId === 1) {
       model.Document.findAndCountAll({
+        include: [{
+          model: model.User,
+          attributes: [
+            'firstName', 'lastName', 'roleId'
+          ]
+        }],
         limit,
         offset,
         order: '"createdAt" ASC'
@@ -72,7 +78,10 @@ class documentController {
     } else {
       model.Document.findAndCountAll({
         include: [{
-          model: model.User
+          model: model.User,
+          attributes: [
+            'firstName', 'lastName', 'roleId'
+          ]
         }],
         where: {
           $or: [
