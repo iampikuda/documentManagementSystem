@@ -18,9 +18,7 @@ class UserController {
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
-      roleId: user.roleId,
-      createdAt: user.createdAt,
-      updatedAt: user.updatedAt
+      roleId: user.roleId
     };
   }
 
@@ -62,13 +60,15 @@ class UserController {
               });
           }
         }
+        console.log('`1`[]`]1[]`[1]`[`]]`]1]`][1`', request.body);
         model.User.create(request.body)
           .then((newUser) => {
             const token = jwt.sign({
               userId: newUser.id,
-              roleId: newUser.roleId
+              roleId: newUser.roleId,
+              firstName: newUser.firstName,
+              email: newUser.email,
             }, secret, { expiresIn: '2 days' });
-
             newUser = UserController.formattedUser(newUser);
             return response.status(201)
               .send({ newUser, token, expiresIn: '2 days' });
