@@ -136,7 +136,7 @@ nav a {
   box-shadow: $box-shadow
 }
 .tabContent{
-  max-height: 100vh;
+  max-height: 73vh;
   overflow: scroll;
   background-color: $background-color;
   padding: .9rem !important;
@@ -206,7 +206,26 @@ text-transform: uppercase;
 .inline {
   display: inline-block;
 }
+.input-field label:not(.label-icon) {
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  height: 50%
+}
 .input-field label:not(.label-icon).active {
-  -webkit-transform: translateY(-40%);
-  transform: translateY(-40%);
+  -webkit-transform: translateY(-90%);
+  transform: translateY(-90%);
+}
+.mce-tinymce * {
+  height: 100% !important;
+  line-height: 100% !important;
+}
+@media only screen and (min-width: 601px) {
+  .mce-tinymce * {
+    height: 100% !important;
+    line-height: 100% !important;
+  }
+}
+.nav .input-field input {
+  border-bottom: 1px solid;
+  width: 97%;
 }
