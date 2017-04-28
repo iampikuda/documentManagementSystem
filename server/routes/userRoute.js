@@ -8,7 +8,7 @@ const user = express.Router();
 
 user.route('/api/user')
   .get(auth.verifyToken, auth.adminAccess, userController.getAllUsers)
-  .post(auth.verifyToken, userController.createUser);
+  .post(userController.createUser);
 
 user.route('/api/user/profile')
   .get(auth.verifyToken, userController.getProfile);
