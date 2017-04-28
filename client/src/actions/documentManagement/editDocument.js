@@ -13,7 +13,7 @@ export default (details, documentid) => {
       }
     })
     .then(() => {
-      browserHistory.push('/');
+      browserHistory.push('/dasboard');
     }).catch((err) => {
       dispatch({
         type: 'DOCUMENT_UPDATE_FAILED',

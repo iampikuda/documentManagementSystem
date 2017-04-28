@@ -10,17 +10,16 @@ export default (details) => {
         Authorization: token
       }
     })
-      .then(() => {
+      .then((document) => {
         dispatch({
           type: actionTypes.DOCUMENT_CREATED,
           document,
           status: 'success'
         });
-        browserHistory.push('/app/dashboard');
+        browserHistory.push('/dashboard');
       }).catch((err) => {
         dispatch({
           type: actionTypes.DOCUMENT_CREATE_FAILED,
-          document,
           status: 'failed',
           error: err.message
         });

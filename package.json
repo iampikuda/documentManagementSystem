@@ -50,7 +50,7 @@
     "faker": "^4.1.0",
     "file-loader": "^0.11.1",
     "fm-log": "^4.4.3",
-    "istanbul": "^0.4.5",
+    "t": "^0.4.5",
     "izitoast": "^1.1.1",
     "jsonwebtoken": "^7.3.0",
     "jwt-decode": "^2.2.0",
