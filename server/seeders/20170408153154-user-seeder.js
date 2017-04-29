@@ -39,6 +39,6 @@ module.exports = {
       Return a promise to correctly handle asynchronicity.
   */
     return queryInterface.bulkDelete('User',
-    { roleId: [1, 2] }, { returning: true });
+    { id: [1, 2] }, { returning: true });
   }
 };
