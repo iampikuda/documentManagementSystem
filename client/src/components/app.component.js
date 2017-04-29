@@ -3,10 +3,10 @@ import { Route, Router, browserHistory } from 'react-router';
 import { BrowserRouter } from 'react-router-dom'
 
 import Index from './index.component';
-import loginPage from './containers/loginPage.jsx';
-import signUpPage from './containers/signUpPage.jsx';
-import dashboard from './dashboard/Index.component.jsx';
-import NotFound from './notFound.component';
+import loginPage from './authPages/loginPage.jsx';
+import signUpPage from './authPages/signUpPage.jsx';
+import dashboard from './dashboard/dashboardCommons/Index.component.jsx';
+import NotFound from './commons/notFound.component.js';
 
 class App extends Component {
     render() {

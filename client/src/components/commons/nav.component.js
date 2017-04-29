@@ -3,7 +3,7 @@ import jwtDecode from 'jwt-decode';
 import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router';
 import iziToast from 'iziToast';
-import logoutAction from '../actions/authorization/logoutAction.js';
+import logoutAction from '../../actions/authorization/logoutAction.js';
 
 class Navbar extends Component {
   constructor(props) {

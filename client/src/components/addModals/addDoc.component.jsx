@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import CreateDocument from './docs/createDocForm.component.jsx'
+import CreateDocument from './createDocForm.component.jsx'
 
-class AddRole extends Component {
+class AddDoc extends Component {
   constructor() {
     super();
   }
@@ -24,13 +24,13 @@ class AddRole extends Component {
   render() {
     return (
       <div className="inline">
-        <Link data-target="modalRole" id="createDoc" className="waves-effect waves-light btn-large createDoc">
+        <Link data-target="modalDoc" id="createDoc" className="waves-effect waves-light btn-large createDoc">
           <i className="material-icons left">add_circle_outline</i>
-          Add Role
+          Add Documents
           </Link>
-        <div id="modalRole" className="modal modal-fixed-footer">
+        <div id="modalDoc" className="modal modal-fixed-footer">
           <div className="modal-content">
-            <h4>Create a Role</h4>
+            <h4>Create a Document</h4>
             <CreateDocument />
           </div>
           <div className="modal-footer">
@@ -42,4 +42,4 @@ class AddRole extends Component {
   }
 }
 
-export default AddRole;
+export default AddDoc;

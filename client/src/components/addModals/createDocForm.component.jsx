@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router';
 import jwtDecode from 'jwt-decode';
-import newDocument from '../../../actions/documentManagement/newDocument.js';
+import newDocument from '../../actions/documentManagement/newDocument.js';
 
 
 const ResponseMessage = (props) => {

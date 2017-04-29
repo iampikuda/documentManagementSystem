@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "83d377c50c42725f813b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "46b53a9095e9a75fd9da"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -5708,7 +5708,6 @@
 	    if (token) {
 	      _this.state = { id: (0, _jwtDecode2.default)(token).userId, firstName: (0, _jwtDecode2.default)(token).firstName };
 	      _this.logout = _this.logout.bind(_this);
-	      console.log((0, _jwtDecode2.default)(token));
 	    }
 	    return _this;
 	  }
@@ -7566,17 +7565,17 @@
 
 	var _jwtDecode2 = _interopRequireDefault(_jwtDecode);
 
-	var _adddocComponent = __webpack_require__(196);
+	var _addDocComponent = __webpack_require__(194);
 
-	var _adddocComponent2 = _interopRequireDefault(_adddocComponent);
+	var _addDocComponent2 = _interopRequireDefault(_addDocComponent);
 
-	var _adduserComponent = __webpack_require__(198);
+	var _addUserComponent = __webpack_require__(196);
 
-	var _adduserComponent2 = _interopRequireDefault(_adduserComponent);
+	var _addUserComponent2 = _interopRequireDefault(_addUserComponent);
 
-	var _addroleComponent = __webpack_require__(197);
+	var _addRoleComponent = __webpack_require__(195);
 
-	var _addroleComponent2 = _interopRequireDefault(_addroleComponent);
+	var _addRoleComponent2 = _interopRequireDefault(_addRoleComponent);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -7635,8 +7634,8 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'nav-wrapper' },
-	          _react2.default.createElement(_adduserComponent2.default, null),
-	          _react2.default.createElement(_addroleComponent2.default, null),
+	          _react2.default.createElement(_addUserComponent2.default, null),
+	          _react2.default.createElement(_addRoleComponent2.default, null),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'searchBox' },
@@ -7673,7 +7672,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'nav-wrapper' },
-	          _react2.default.createElement(_adddocComponent2.default, null),
+	          _react2.default.createElement(_addDocComponent2.default, null),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'searchBox' },
@@ -11499,138 +11498,6 @@
 	  value: true
 	});
 
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(8);
-
-	var _jwtDecode = __webpack_require__(13);
-
-	var _jwtDecode2 = _interopRequireDefault(_jwtDecode);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var SingleDocument = function SingleDocument(document, index) {
-	  // console.log('ahsdahdas', document, index);
-	  return _react2.default.createElement(
-	    'tr',
-	    { className: 'hoverable', key: index },
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.title
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.access
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.content
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.User.lastName + ' ' + document.User.firstName
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.createdAt.slice(0, 10)
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.updatedAt.slice(0, 10)
-	    )
-	  );
-	};
-
-	var firstName = void 0;
-	var token = window.localStorage.getItem('token');
-	if (token) {
-	  firstName = (0, _jwtDecode2.default)(token).firstName;
-	}
-	var documentList = [];
-	var UserDocs = function UserDocs(props) {
-
-	  // console.log('+++++------', props);
-	  if (props.document.document !== undefined) {
-	    var docs = props.document.document.data.document;
-	    if (docs === undefined) {
-	      documentList = props.document.document.data.documents;
-	    }
-	    // documentList = docs.map(SingleDocument)
-	    // console.log(documentList, "jbkjjbbjbj")
-	  }
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      'table',
-	      { className: 'bordered  responsive' },
-	      _react2.default.createElement(
-	        'thead',
-	        null,
-	        _react2.default.createElement(
-	          'tr',
-	          null,
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Title'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Access'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Content'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Author'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Published date'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Updated date'
-	          )
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'tbody',
-	        null,
-	        documentList.map(SingleDocument)
-	      )
-	    )
-	  );
-	};
-
-	exports.default = UserDocs;
-
-/***/ }),
-/* 106 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(2);
@@ -11677,7 +11544,7 @@
 	    var _this = _possibleConstructorReturn(this, (signUpPage.__proto__ || Object.getPrototypeOf(signUpPage)).call(this, props));
 
 	    token = window.localStorage.getItem('token');
-	    console.log('everywhere');
+	    // console.log('everywhere');
 	    _this.state = {
 	      firstName: '',
 	      lastName: '',
@@ -11695,7 +11562,7 @@
 	    value: function componentWillMount() {
 	      authUser = {};
 	      if (token) {
-	        console.log('everywh');
+	        // console.log('everywh');
 	        authUser = (0, _jwtDecode2.default)(token) || {};
 	        console.log(token);
 	        console.log(authUser);
@@ -12036,6 +11903,138 @@
 	  };
 	};
 	exports.default = (0, _reactRedux.connect)(mapStoreToProps, mapDispatchToProps)(signUpPage);
+
+/***/ }),
+/* 106 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(8);
+
+	var _jwtDecode = __webpack_require__(13);
+
+	var _jwtDecode2 = _interopRequireDefault(_jwtDecode);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var SingleDocument = function SingleDocument(document, index) {
+	  // console.log('ahsdahdas', document, index);
+	  return _react2.default.createElement(
+	    'tr',
+	    { className: 'hoverable', key: index },
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.title
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.access
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.content
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.User.lastName + ' ' + document.User.firstName
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.createdAt.slice(0, 10)
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.updatedAt.slice(0, 10)
+	    )
+	  );
+	};
+
+	var firstName = void 0;
+	var token = window.localStorage.getItem('token');
+	if (token) {
+	  firstName = (0, _jwtDecode2.default)(token).firstName;
+	}
+	var documentList = [];
+	var UserDocs = function UserDocs(props) {
+
+	  // console.log('+++++------', props);
+	  if (props.document.document !== undefined) {
+	    var docs = props.document.document.data.document;
+	    if (docs === undefined) {
+	      documentList = props.document.document.data.documents;
+	    }
+	    // documentList = docs.map(SingleDocument)
+	    // console.log(documentList, "jbkjjbbjbj")
+	  }
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'table',
+	      { className: 'bordered  responsive' },
+	      _react2.default.createElement(
+	        'thead',
+	        null,
+	        _react2.default.createElement(
+	          'tr',
+	          null,
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Title'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Access'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Content'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Author'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Published date'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Updated date'
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'tbody',
+	        null,
+	        documentList.map(SingleDocument)
+	      )
+	    )
+	  );
+	};
+
+	exports.default = UserDocs;
 
 /***/ }),
 /* 107 */
@@ -21766,6 +21765,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var userGetSuccess = function userGetSuccess(users) {
+	  // console.log('$$$$$$$$$$$', users);
 	  return {
 	    type: actionTypes.GET_USER_SUCCESS,
 	    users: users
@@ -21787,207 +21787,6 @@
 
 /***/ }),
 /* 194 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(8);
-
-	var _reactRouterDom = __webpack_require__(374);
-
-	var _index = __webpack_require__(209);
-
-	var _index2 = _interopRequireDefault(_index);
-
-	var _loginPage = __webpack_require__(205);
-
-	var _loginPage2 = _interopRequireDefault(_loginPage);
-
-	var _signUpPage = __webpack_require__(106);
-
-	var _signUpPage2 = _interopRequireDefault(_signUpPage);
-
-	var _IndexComponent = __webpack_require__(206);
-
-	var _IndexComponent2 = _interopRequireDefault(_IndexComponent);
-
-	var _notFound = __webpack_require__(210);
-
-	var _notFound2 = _interopRequireDefault(_notFound);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var App = function (_Component) {
-	    _inherits(App, _Component);
-
-	    function App() {
-	        _classCallCheck(this, App);
-
-	        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
-	    }
-
-	    _createClass(App, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                _reactRouter.Router,
-	                { history: _reactRouter.browserHistory },
-	                _react2.default.createElement(_reactRouter.Route, { path: '/', component: _index2.default }),
-	                _react2.default.createElement(_reactRouter.Route, { path: '/login', component: _loginPage2.default }),
-	                _react2.default.createElement(_reactRouter.Route, { path: '/signup', component: _signUpPage2.default }),
-	                _react2.default.createElement(_reactRouter.Route, { exact: true, path: '/dashboard', component: _IndexComponent2.default }),
-	                _react2.default.createElement(_reactRouter.Route, { path: '/*', component: _notFound2.default })
-	            );
-	        }
-	    }]);
-
-	    return App;
-	}(_react.Component);
-
-	exports.default = App;
-
-/***/ }),
-/* 195 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactMaterialize = __webpack_require__(143);
-
-	var _reactRouter = __webpack_require__(8);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Body = function (_Component) {
-	  _inherits(Body, _Component);
-
-	  function Body() {
-	    _classCallCheck(this, Body);
-
-	    return _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).apply(this, arguments));
-	  }
-
-	  _createClass(Body, [{
-	    key: 'render',
-	    value: function render() {
-	      if (window.localStorage.getItem('token')) {
-	        return _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'bodyInnards' },
-	            _react2.default.createElement(
-	              _reactMaterialize.Row,
-	              null,
-	              _react2.default.createElement(
-	                _reactMaterialize.Col,
-	                { m: 12 },
-	                _react2.default.createElement(
-	                  'i',
-	                  { className: 'material-icons' },
-	                  'library_books'
-	                ),
-	                _react2.default.createElement(
-	                  'h4',
-	                  null,
-	                  'Your Document Management System ',
-	                  _react2.default.createElement('br', null),
-	                  _react2.default.createElement(
-	                    'em',
-	                    null,
-	                    '...A safe place for all your files'
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { to: '/dashboard', className: 'waves-effect waves-light btn-large' },
-	                  'Go to dashboard'
-	                )
-	              )
-	            )
-	          )
-	        );
-	      }
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'bodyInnards' },
-	          _react2.default.createElement(
-	            _reactMaterialize.Row,
-	            null,
-	            _react2.default.createElement(
-	              _reactMaterialize.Col,
-	              { m: 12 },
-	              _react2.default.createElement(
-	                'i',
-	                { className: 'material-icons' },
-	                'library_books'
-	              ),
-	              _react2.default.createElement(
-	                'h4',
-	                null,
-	                'Your Document Management System ',
-	                _react2.default.createElement('br', null),
-	                _react2.default.createElement(
-	                  'em',
-	                  null,
-	                  '...A safe place for all your files'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                _reactRouter.Link,
-	                { to: '/signup', className: 'waves-effect waves-light btn-large' },
-	                'Get Started'
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Body;
-	}(_react.Component);
-
-	exports.default = Body;
-
-/***/ }),
-/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22085,7 +21884,7 @@
 	exports.default = AddDoc;
 
 /***/ }),
-/* 197 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22183,7 +21982,7 @@
 	exports.default = AddRole;
 
 /***/ }),
-/* 198 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22200,7 +21999,7 @@
 
 	var _reactRouter = __webpack_require__(8);
 
-	var _signUpPage = __webpack_require__(106);
+	var _signUpPage = __webpack_require__(105);
 
 	var _signUpPage2 = _interopRequireDefault(_signUpPage);
 
@@ -22281,14 +22080,16 @@
 	exports.default = AddUser;
 
 /***/ }),
-/* 199 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(2);
 
@@ -22296,647 +22097,67 @@
 
 	var _reactRouter = __webpack_require__(8);
 
-	var _jwtDecode = __webpack_require__(13);
+	var _reactRouterDom = __webpack_require__(374);
 
-	var _jwtDecode2 = _interopRequireDefault(_jwtDecode);
+	var _index = __webpack_require__(210);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	var _index2 = _interopRequireDefault(_index);
 
-	var SingleRoles = function SingleRoles(roles, index) {
-	  return _react2.default.createElement(
-	    'tr',
-	    { className: 'hoverable', key: index },
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      roles.id
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      roles.title
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      roles.createdAt.slice(0, 10)
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      roles.updatedAt.slice(0, 10)
-	    )
-	  );
-	};
-	var rolesList = [];
-	var RoleView = function RoleView(props) {
-	  console.log('-=-=-=-=-=-=-', props);
-	  if (props.roles.roles !== undefined) {
-	    rolesList = props.roles.roles.data.roles;
-	    if (rolesList === undefined) {
-	      rolesList = props.roles.roles.data.roles;
-	    }
-	    console.log('-=-=-=-=-=-=-', rolesList);
-	  }
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      'table',
-	      { className: 'bordered  responsive' },
-	      _react2.default.createElement(
-	        'thead',
-	        null,
-	        _react2.default.createElement(
-	          'tr',
-	          null,
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'ID'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Title'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Created date'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Updated date'
-	          )
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'tbody',
-	        null,
-	        rolesList.map(SingleRoles)
-	      )
-	    )
-	  );
-	};
+	var _loginPage = __webpack_require__(198);
 
-	exports.default = RoleView;
+	var _loginPage2 = _interopRequireDefault(_loginPage);
 
-/***/ }),
-/* 200 */
-/***/ (function(module, exports, __webpack_require__) {
+	var _signUpPage = __webpack_require__(105);
 
-	'use strict';
+	var _signUpPage2 = _interopRequireDefault(_signUpPage);
 
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
+	var _IndexComponent = __webpack_require__(203);
 
-	var _react = __webpack_require__(2);
+	var _IndexComponent2 = _interopRequireDefault(_IndexComponent);
 
-	var _react2 = _interopRequireDefault(_react);
+	var _notFoundComponent = __webpack_require__(200);
 
-	var _reactRouter = __webpack_require__(8);
-
-	var _jwtDecode = __webpack_require__(13);
-
-	var _jwtDecode2 = _interopRequireDefault(_jwtDecode);
+	var _notFoundComponent2 = _interopRequireDefault(_notFoundComponent);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var SingleUsers = function SingleUsers(users, index) {
-	  return _react2.default.createElement(
-	    'tr',
-	    { className: 'hoverable', key: index },
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      users.firstName
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      users.lastName
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      users.email
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      users.roleId
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      users.createdAt.slice(0, 10)
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      users.updatedAt.slice(0, 10)
-	    )
-	  );
-	};
-	var usersList = [];
-	var UserDocs = function UserDocs(props) {
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	  if (props.users.users !== undefined) {
-	    usersList = props.users.users.data.users;
-	    if (usersList === undefined) {
-	      usersList = props.users.users.data.users;
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var App = function (_Component) {
+	    _inherits(App, _Component);
+
+	    function App() {
+	        _classCallCheck(this, App);
+
+	        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
 	    }
-	  }
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      'table',
-	      { className: 'bordered  responsive' },
-	      _react2.default.createElement(
-	        'thead',
-	        null,
-	        _react2.default.createElement(
-	          'tr',
-	          null,
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'First Name'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Last Name'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Email'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Role ID'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Created date'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Updated date'
-	          )
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'tbody',
-	        null,
-	        usersList.map(SingleUsers)
-	      )
-	    )
-	  );
-	};
 
-	exports.default = UserDocs;
+	    _createClass(App, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                _reactRouter.Router,
+	                { history: _reactRouter.browserHistory },
+	                _react2.default.createElement(_reactRouter.Route, { path: '/', component: _index2.default }),
+	                _react2.default.createElement(_reactRouter.Route, { path: '/login', component: _loginPage2.default }),
+	                _react2.default.createElement(_reactRouter.Route, { path: '/signup', component: _signUpPage2.default }),
+	                _react2.default.createElement(_reactRouter.Route, { exact: true, path: '/dashboard', component: _IndexComponent2.default }),
+	                _react2.default.createElement(_reactRouter.Route, { path: '/*', component: _notFoundComponent2.default })
+	            );
+	        }
+	    }]);
+
+	    return App;
+	}(_react.Component);
+
+	exports.default = App;
 
 /***/ }),
-/* 201 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _jwtDecode = __webpack_require__(13);
-
-	var _jwtDecode2 = _interopRequireDefault(_jwtDecode);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var myId = void 0;
-	var MyDocs = function MyDocs(props) {
-	  var token = window.localStorage.getItem('token');
-	  myId = (0, _jwtDecode2.default)(token).userId;
-	  var documentList = void 0;
-
-	  if (props.document.document !== undefined) {
-	    var docs = props.document.document.data.document;
-	    if (docs === undefined) {
-	      docs = props.document.document.data.documents;
-	    }
-	    documentList = docs.filter(function (document) {
-	      return document.ownerId === myId;
-	    }).map(function (document) {
-	      return _react2.default.createElement(SingleDocument, { document: document, key: document.id });
-	    });
-	  }
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      'table',
-	      { className: 'bordered  responsive' },
-	      _react2.default.createElement(
-	        'thead',
-	        null,
-	        _react2.default.createElement(
-	          'tr',
-	          null,
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Title'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Access'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Content'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Published date'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Updated date'
-	          )
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'tbody',
-	        null,
-	        documentList
-	      )
-	    )
-	  );
-	};
-
-	var SingleDocument = function SingleDocument(props) {
-	  var document = props.document;
-
-	  return _react2.default.createElement(
-	    'tr',
-	    { className: 'hoverable' },
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.title
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.access
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.content
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.createdAt.slice(0, 10)
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.updatedAt.slice(0, 10)
-	    )
-	  );
-	};
-
-	exports.default = MyDocs;
-
-/***/ }),
-/* 202 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var PrivateDocs = function PrivateDocs(props) {
-	  var documentList = void 0;
-	  if (props.document.document !== undefined) {
-	    var docs = props.document.document.data.document;
-	    if (docs === undefined) {
-	      docs = props.document.document.data.documents;
-	    }
-	    documentList = docs.filter(function (document) {
-	      return document.access === 'private';
-	    }).map(function (document) {
-	      return _react2.default.createElement(SingleDocument, { document: document, key: document.id });
-	    });
-	  }
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      'table',
-	      { className: 'bordered responsive' },
-	      _react2.default.createElement(
-	        'thead',
-	        null,
-	        _react2.default.createElement(
-	          'tr',
-	          null,
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Title'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Access'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Content'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Published date'
-	          )
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'tbody',
-	        null,
-	        documentList
-	      )
-	    )
-	  );
-	};
-
-	var SingleDocument = function SingleDocument(props) {
-	  var document = props.document;
-
-	  return _react2.default.createElement(
-	    'tr',
-	    { className: 'hoverable' },
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.title
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.access
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.content
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.createdAt.slice(0, 10)
-	    )
-	  );
-	};
-
-	exports.default = PrivateDocs;
-
-/***/ }),
-/* 203 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var PublicDocs = function PublicDocs(props) {
-	  var documentList = void 0;
-	  if (props.document.document !== undefined) {
-	    var docs = props.document.document.data.document;
-	    if (docs === undefined) {
-	      docs = props.document.document.data.documents;
-	    }
-	    documentList = docs.filter(function (document) {
-	      return document.access === 'public';
-	    }).map(function (document) {
-	      return _react2.default.createElement(SingleDocument, { document: document, key: document.id });
-	    });
-	  }
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      'table',
-	      { className: 'bordered responsive' },
-	      _react2.default.createElement(
-	        'thead',
-	        null,
-	        _react2.default.createElement(
-	          'tr',
-	          null,
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Title'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Access'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Content'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Published date'
-	          )
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'tbody',
-	        null,
-	        documentList
-	      )
-	    )
-	  );
-	};
-
-	var SingleDocument = function SingleDocument(props) {
-	  var document = props.document;
-
-	  return _react2.default.createElement(
-	    'tr',
-	    { className: 'hoverable' },
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.title
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.access
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.content
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.createdAt.slice(0, 10)
-	    )
-	  );
-	};
-
-	exports.default = PublicDocs;
-
-/***/ }),
-/* 204 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var RoleDocs = function RoleDocs(props) {
-	  var documentList = void 0;
-	  if (props.document.document !== undefined) {
-	    var docs = props.document.document.data.document;
-	    if (docs === undefined) {
-	      docs = props.document.document.data.documents;
-	    }
-	    documentList = docs.filter(function (document) {
-	      return document.access === 'role';
-	    }).map(function (document) {
-	      return _react2.default.createElement(SingleDocument, { document: document, key: document.id });
-	    });
-	  }
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      'table',
-	      { className: 'bordered responsive' },
-	      _react2.default.createElement(
-	        'thead',
-	        null,
-	        _react2.default.createElement(
-	          'tr',
-	          null,
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Title'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Access'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Content'
-	          ),
-	          _react2.default.createElement(
-	            'th',
-	            null,
-	            'Published date'
-	          )
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'tbody',
-	        null,
-	        documentList
-	      )
-	    )
-	  );
-	};
-
-	var SingleDocument = function SingleDocument(props) {
-	  var document = props.document;
-
-	  return _react2.default.createElement(
-	    'tr',
-	    { className: 'hoverable' },
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.title
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.access
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.content
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.createdAt.slice(0, 10)
-	    )
-	  );
-	};
-
-	exports.default = RoleDocs;
-
-/***/ }),
-/* 205 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23167,7 +22388,435 @@
 	exports.default = (0, _reactRedux.connect)(mapStoreToProps, mapDispatchToProps)(Login);
 
 /***/ }),
-/* 206 */
+/* 199 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactMaterialize = __webpack_require__(143);
+
+	var _reactRouter = __webpack_require__(8);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Body = function (_Component) {
+	  _inherits(Body, _Component);
+
+	  function Body() {
+	    _classCallCheck(this, Body);
+
+	    return _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).apply(this, arguments));
+	  }
+
+	  _createClass(Body, [{
+	    key: 'render',
+	    value: function render() {
+	      if (window.localStorage.getItem('token')) {
+	        return _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'bodyInnards' },
+	            _react2.default.createElement(
+	              _reactMaterialize.Row,
+	              null,
+	              _react2.default.createElement(
+	                _reactMaterialize.Col,
+	                { m: 12 },
+	                _react2.default.createElement(
+	                  'i',
+	                  { className: 'material-icons' },
+	                  'library_books'
+	                ),
+	                _react2.default.createElement(
+	                  'h4',
+	                  null,
+	                  'Your Document Management System ',
+	                  _react2.default.createElement('br', null),
+	                  _react2.default.createElement(
+	                    'em',
+	                    null,
+	                    '...A safe place for all your files'
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  _reactRouter.Link,
+	                  { to: '/dashboard', className: 'waves-effect waves-light btn-large' },
+	                  'Go to dashboard'
+	                )
+	              )
+	            )
+	          )
+	        );
+	      }
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'bodyInnards' },
+	          _react2.default.createElement(
+	            _reactMaterialize.Row,
+	            null,
+	            _react2.default.createElement(
+	              _reactMaterialize.Col,
+	              { m: 12 },
+	              _react2.default.createElement(
+	                'i',
+	                { className: 'material-icons' },
+	                'library_books'
+	              ),
+	              _react2.default.createElement(
+	                'h4',
+	                null,
+	                'Your Document Management System ',
+	                _react2.default.createElement('br', null),
+	                _react2.default.createElement(
+	                  'em',
+	                  null,
+	                  '...A safe place for all your files'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/signup', className: 'waves-effect waves-light btn-large' },
+	                'Get Started'
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Body;
+	}(_react.Component);
+
+	exports.default = Body;
+
+/***/ }),
+/* 200 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactMaterialize = __webpack_require__(143);
+
+	var _reactRouter = __webpack_require__(8);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var NotFound = function (_Component) {
+	  _inherits(NotFound, _Component);
+
+	  function NotFound() {
+	    _classCallCheck(this, NotFound);
+
+	    return _possibleConstructorReturn(this, (NotFound.__proto__ || Object.getPrototypeOf(NotFound)).apply(this, arguments));
+	  }
+
+	  _createClass(NotFound, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'bodyInnards' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'row' },
+	          _react2.default.createElement(
+	            'h1',
+	            null,
+	            '404'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'HUH!??'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/' },
+	                'Go back to home page'
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return NotFound;
+	}(_react.Component);
+
+	exports.default = NotFound;
+
+/***/ }),
+/* 201 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(8);
+
+	var _jwtDecode = __webpack_require__(13);
+
+	var _jwtDecode2 = _interopRequireDefault(_jwtDecode);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var SingleRoles = function SingleRoles(roles, index) {
+	  return _react2.default.createElement(
+	    'tr',
+	    { className: 'hoverable', key: index },
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      roles.id
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      roles.title
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      roles.createdAt.slice(0, 10)
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      roles.updatedAt.slice(0, 10)
+	    )
+	  );
+	};
+	var rolesList = [];
+	var RoleView = function RoleView(props) {
+	  console.log('-=-=-=-=-=-=-', props);
+	  if (props.roles.roles !== undefined) {
+	    rolesList = props.roles.roles.data.roles;
+	    if (rolesList === undefined) {
+	      rolesList = props.roles.roles.data.roles;
+	    }
+	    console.log('-=-=-=-=-=-=-', rolesList);
+	  }
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'table',
+	      { className: 'bordered  responsive' },
+	      _react2.default.createElement(
+	        'thead',
+	        null,
+	        _react2.default.createElement(
+	          'tr',
+	          null,
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'ID'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Title'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Created date'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Updated date'
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'tbody',
+	        null,
+	        rolesList.map(SingleRoles)
+	      )
+	    )
+	  );
+	};
+
+	exports.default = RoleView;
+
+/***/ }),
+/* 202 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(8);
+
+	var _jwtDecode = __webpack_require__(13);
+
+	var _jwtDecode2 = _interopRequireDefault(_jwtDecode);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var SingleUsers = function SingleUsers(users, index) {
+	  return _react2.default.createElement(
+	    'tr',
+	    { className: 'hoverable', key: index },
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      users.firstName
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      users.lastName
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      users.email
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      users.roleId
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      users.createdAt.slice(0, 10)
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      users.updatedAt.slice(0, 10)
+	    )
+	  );
+	};
+	var usersList = [];
+	var UserDocs = function UserDocs(props) {
+
+	  if (props.users.users !== undefined) {
+	    usersList = props.users.users.data.users;
+	    if (usersList === undefined) {
+	      usersList = props.users.users.data.users;
+	    }
+	  }
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'table',
+	      { className: 'bordered  responsive' },
+	      _react2.default.createElement(
+	        'thead',
+	        null,
+	        _react2.default.createElement(
+	          'tr',
+	          null,
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'First Name'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Last Name'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Email'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Role ID'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Created date'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Updated date'
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'tbody',
+	        null,
+	        usersList.map(SingleUsers)
+	      )
+	    )
+	  );
+	};
+
+	exports.default = UserDocs;
+
+/***/ }),
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23188,6 +22837,8 @@
 
 	var _jwtDecode2 = _interopRequireDefault(_jwtDecode);
 
+	var _redux = __webpack_require__(59);
+
 	var _navComponent = __webpack_require__(49);
 
 	var _navComponent2 = _interopRequireDefault(_navComponent);
@@ -23196,15 +22847,13 @@
 
 	var _searchbar2 = _interopRequireDefault(_searchbar);
 
-	var _adminComponent = __webpack_require__(207);
+	var _adminComponent = __webpack_require__(204);
 
 	var _adminComponent2 = _interopRequireDefault(_adminComponent);
 
-	var _userComponent = __webpack_require__(208);
+	var _userComponent = __webpack_require__(205);
 
 	var _userComponent2 = _interopRequireDefault(_userComponent);
-
-	var _redux = __webpack_require__(59);
 
 	var _readDocument = __webpack_require__(191);
 
@@ -23290,7 +22939,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStoreToProps, mapDispatchToProps)(Dashboard);
 
 /***/ }),
-/* 207 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23317,15 +22966,15 @@
 
 	var _searchbar2 = _interopRequireDefault(_searchbar);
 
-	var _userDocsComponent = __webpack_require__(105);
+	var _allDocsComponent = __webpack_require__(106);
 
-	var _userDocsComponent2 = _interopRequireDefault(_userDocsComponent);
+	var _allDocsComponent2 = _interopRequireDefault(_allDocsComponent);
 
-	var _usersViewComponent = __webpack_require__(200);
+	var _usersViewComponent = __webpack_require__(202);
 
 	var _usersViewComponent2 = _interopRequireDefault(_usersViewComponent);
 
-	var _rolesViewComponent = __webpack_require__(199);
+	var _rolesViewComponent = __webpack_require__(201);
 
 	var _rolesViewComponent2 = _interopRequireDefault(_rolesViewComponent);
 
@@ -23424,7 +23073,7 @@
 	            _react2.default.createElement(
 	              'div',
 	              { id: 'test1', className: 'tabContent col s12' },
-	              _react2.default.createElement(_userDocsComponent2.default, { document: this.props.documents })
+	              _react2.default.createElement(_allDocsComponent2.default, { document: this.props.documents })
 	            ),
 	            _react2.default.createElement(
 	              'div',
@@ -23481,7 +23130,7 @@
 	exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(Dashboard);
 
 /***/ }),
-/* 208 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23508,23 +23157,23 @@
 
 	var _searchbar2 = _interopRequireDefault(_searchbar);
 
-	var _userDocsComponent = __webpack_require__(105);
+	var _allDocsComponent = __webpack_require__(106);
 
-	var _userDocsComponent2 = _interopRequireDefault(_userDocsComponent);
+	var _allDocsComponent2 = _interopRequireDefault(_allDocsComponent);
 
-	var _privateDocsComponent = __webpack_require__(202);
+	var _privateDocsComponent = __webpack_require__(207);
 
 	var _privateDocsComponent2 = _interopRequireDefault(_privateDocsComponent);
 
-	var _publicDocsComponent = __webpack_require__(203);
+	var _publicDocsComponent = __webpack_require__(208);
 
 	var _publicDocsComponent2 = _interopRequireDefault(_publicDocsComponent);
 
-	var _roleDocsComponent = __webpack_require__(204);
+	var _roleDocsComponent = __webpack_require__(209);
 
 	var _roleDocsComponent2 = _interopRequireDefault(_roleDocsComponent);
 
-	var _myDocsComponent = __webpack_require__(201);
+	var _myDocsComponent = __webpack_require__(206);
 
 	var _myDocsComponent2 = _interopRequireDefault(_myDocsComponent);
 
@@ -23678,7 +23327,7 @@
 	            _react2.default.createElement(
 	              'div',
 	              { id: 'test1', className: 'tabContent col s12' },
-	              _react2.default.createElement(_userDocsComponent2.default, { document: this.props.documents, setEditDocument: this.setEditDocument, setDeleteDocument: this.setDeleteDocument, name: 'jezzuzzzz' })
+	              _react2.default.createElement(_allDocsComponent2.default, { document: this.props.documents, setEditDocument: this.setEditDocument, setDeleteDocument: this.setDeleteDocument, name: 'jezzuzzzz' })
 	            ),
 	            _react2.default.createElement(
 	              'div',
@@ -23725,7 +23374,437 @@
 	exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(Dashboard);
 
 /***/ }),
+/* 206 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _jwtDecode = __webpack_require__(13);
+
+	var _jwtDecode2 = _interopRequireDefault(_jwtDecode);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var myId = void 0;
+	var MyDocs = function MyDocs(props) {
+	  var token = window.localStorage.getItem('token');
+	  myId = (0, _jwtDecode2.default)(token).userId;
+	  var documentList = void 0;
+
+	  if (props.document.document !== undefined) {
+	    var docs = props.document.document.data.document;
+	    if (docs === undefined) {
+	      docs = props.document.document.data.documents;
+	    }
+	    documentList = docs.filter(function (document) {
+	      return document.ownerId === myId;
+	    }).map(function (document) {
+	      return _react2.default.createElement(SingleDocument, { document: document, key: document.id });
+	    });
+	  }
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'table',
+	      { className: 'bordered  responsive' },
+	      _react2.default.createElement(
+	        'thead',
+	        null,
+	        _react2.default.createElement(
+	          'tr',
+	          null,
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Title'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Access'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Content'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Published date'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Updated date'
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'tbody',
+	        null,
+	        documentList
+	      )
+	    )
+	  );
+	};
+
+	var SingleDocument = function SingleDocument(props) {
+	  var document = props.document;
+
+	  return _react2.default.createElement(
+	    'tr',
+	    { className: 'hoverable' },
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.title
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.access
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.content
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.createdAt.slice(0, 10)
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.updatedAt.slice(0, 10)
+	    )
+	  );
+	};
+
+	exports.default = MyDocs;
+
+/***/ }),
+/* 207 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var PrivateDocs = function PrivateDocs(props) {
+	  var documentList = void 0;
+	  if (props.document.document !== undefined) {
+	    var docs = props.document.document.data.document;
+	    if (docs === undefined) {
+	      docs = props.document.document.data.documents;
+	    }
+	    documentList = docs.filter(function (document) {
+	      return document.access === 'private';
+	    }).map(function (document) {
+	      return _react2.default.createElement(SingleDocument, { document: document, key: document.id });
+	    });
+	  }
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'table',
+	      { className: 'bordered responsive' },
+	      _react2.default.createElement(
+	        'thead',
+	        null,
+	        _react2.default.createElement(
+	          'tr',
+	          null,
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Title'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Access'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Content'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Published date'
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'tbody',
+	        null,
+	        documentList
+	      )
+	    )
+	  );
+	};
+
+	var SingleDocument = function SingleDocument(props) {
+	  var document = props.document;
+
+	  return _react2.default.createElement(
+	    'tr',
+	    { className: 'hoverable' },
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.title
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.access
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.content
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.createdAt.slice(0, 10)
+	    )
+	  );
+	};
+
+	exports.default = PrivateDocs;
+
+/***/ }),
+/* 208 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var PublicDocs = function PublicDocs(props) {
+	  var documentList = void 0;
+	  if (props.document.document !== undefined) {
+	    var docs = props.document.document.data.document;
+	    if (docs === undefined) {
+	      docs = props.document.document.data.documents;
+	    }
+	    documentList = docs.filter(function (document) {
+	      return document.access === 'public';
+	    }).map(function (document) {
+	      return _react2.default.createElement(SingleDocument, { document: document, key: document.id });
+	    });
+	  }
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'table',
+	      { className: 'bordered responsive' },
+	      _react2.default.createElement(
+	        'thead',
+	        null,
+	        _react2.default.createElement(
+	          'tr',
+	          null,
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Title'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Access'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Content'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Published date'
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'tbody',
+	        null,
+	        documentList
+	      )
+	    )
+	  );
+	};
+
+	var SingleDocument = function SingleDocument(props) {
+	  var document = props.document;
+
+	  return _react2.default.createElement(
+	    'tr',
+	    { className: 'hoverable' },
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.title
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.access
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.content
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.createdAt.slice(0, 10)
+	    )
+	  );
+	};
+
+	exports.default = PublicDocs;
+
+/***/ }),
 /* 209 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var RoleDocs = function RoleDocs(props) {
+	  var documentList = void 0;
+	  if (props.document.document !== undefined) {
+	    var docs = props.document.document.data.document;
+	    if (docs === undefined) {
+	      docs = props.document.document.data.documents;
+	    }
+	    documentList = docs.filter(function (document) {
+	      return document.access === 'role';
+	    }).map(function (document) {
+	      return _react2.default.createElement(SingleDocument, { document: document, key: document.id });
+	    });
+	  }
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'table',
+	      { className: 'bordered responsive' },
+	      _react2.default.createElement(
+	        'thead',
+	        null,
+	        _react2.default.createElement(
+	          'tr',
+	          null,
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Title'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Access'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Content'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
+	            'Published date'
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'tbody',
+	        null,
+	        documentList
+	      )
+	    )
+	  );
+	};
+
+	var SingleDocument = function SingleDocument(props) {
+	  var document = props.document;
+
+	  return _react2.default.createElement(
+	    'tr',
+	    { className: 'hoverable' },
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.title
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.access
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.content
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      document.createdAt.slice(0, 10)
+	    )
+	  );
+	};
+
+	exports.default = RoleDocs;
+
+/***/ }),
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23744,9 +23823,9 @@
 
 	var _nav2 = _interopRequireDefault(_nav);
 
-	var _body = __webpack_require__(195);
+	var _home = __webpack_require__(199);
 
-	var _body2 = _interopRequireDefault(_body);
+	var _home2 = _interopRequireDefault(_home);
 
 	var _jwtDecode = __webpack_require__(13);
 
@@ -23780,7 +23859,7 @@
 	          { className: 'mainContainer' },
 	          _react2.default.createElement('div', { className: 'bg' }),
 	          _react2.default.createElement(_nav2.default, null),
-	          _react2.default.createElement(_body2.default, null)
+	          _react2.default.createElement(_home2.default, null)
 	        )
 	      );
 	    }
@@ -23790,85 +23869,6 @@
 	}(_react.Component);
 
 	exports.default = Index;
-
-/***/ }),
-/* 210 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactMaterialize = __webpack_require__(143);
-
-	var _reactRouter = __webpack_require__(8);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var NotFound = function (_Component) {
-	  _inherits(NotFound, _Component);
-
-	  function NotFound() {
-	    _classCallCheck(this, NotFound);
-
-	    return _possibleConstructorReturn(this, (NotFound.__proto__ || Object.getPrototypeOf(NotFound)).apply(this, arguments));
-	  }
-
-	  _createClass(NotFound, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'bodyInnards' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'h1',
-	            null,
-	            '404'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            'HUH!??'
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              _react2.default.createElement(
-	                _reactRouter.Link,
-	                { to: '/' },
-	                'Go back to home page'
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return NotFound;
-	}(_react.Component);
-
-	exports.default = NotFound;
 
 /***/ }),
 /* 211 */
@@ -23896,7 +23896,7 @@
 
 	var _iziToast2 = _interopRequireDefault(_iziToast);
 
-	var _app = __webpack_require__(194);
+	var _app = __webpack_require__(197);
 
 	var _app2 = _interopRequireDefault(_app);
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import jwtDecode from 'jwt-decode';
-import AddDoc from './adddoc.component.jsx';
-import AddUser from './adduser.component.jsx';
-import AddRole from './addrole.component.jsx';
+import AddDoc from '../addModals/addDoc.component.jsx';
+import AddUser from '../addModals/addUser.component.jsx';
+import AddRole from '../addModals/addRole.component.jsx';
 
 class Searchbar extends Component {
   constructor(props) {

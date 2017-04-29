@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import jwtDecode from 'jwt-decode';
-import Navbar from '../nav.component.js';
-import Searchbar from '../containers/searchbar.jsx';
+import { bindActionCreators } from 'redux';
+import Navbar from '../../commons/nav.component.js';
+import Searchbar from '../../commons/searchbar.jsx';
 import AdminDashboard from './admin.component.jsx';
 import UserDashboard from './user.component.jsx';
-import { bindActionCreators } from 'redux';
-import * as docActions from '../../actions/documentManagement/readDocument.js';
-import * as userActions from '../../actions/userManagement/getUsers.js';
-import * as roleActions from '../../actions/userManagement/getRoles.js';
+import * as docActions from '../../../actions/documentManagement/readDocument.js';
+import * as userActions from '../../../actions/userManagement/getUsers.js';
+import * as roleActions from '../../../actions/userManagement/getRoles.js';
 
 class Dashboard extends Component {
   constructor(props) {

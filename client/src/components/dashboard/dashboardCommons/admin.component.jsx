@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router';
-import Navbar from '../nav.component.js';
-import Searchbar from '../containers/searchbar.jsx';
-import UserDocs from '../containers/docs/userDocs.component.jsx';
-import Users from '../containers/admin/usersView.component.js';
-import Roles from '../containers/admin/rolesView.component.js';
+import Navbar from '../../commons/nav.component.js';
+import Searchbar from '../../commons/searchbar.jsx';
+import AllDocs from '../userDashboard/allDocs.component.jsx';
+import Users from '../../dashboard/adminDashboard/usersView.component.js';
+import Roles from '../../dashboard/adminDashboard/rolesView.component.js';
 
 
 class Dashboard extends Component {
@@ -46,7 +46,7 @@ class Dashboard extends Component {
             </div>
 
             <div id="test1" className="tabContent col s12">
-              <UserDocs document={this.props.documents} />
+              <AllDocs document={this.props.documents} />
             </div>
             <div id="test2" className="tabContent col s12">
               <Users users={this.props.users} />

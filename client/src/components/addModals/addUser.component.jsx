@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import CreateUser from './signUpPage.jsx';
+import CreateUser from '../authPages/signUpPage.jsx';
 
 class AddUser extends Component {
   constructor() {

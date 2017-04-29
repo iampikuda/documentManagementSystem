@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router';
-import Navbar from '../nav.component.js';
-import Searchbar from '../containers/searchbar.jsx';
-import UserDocs from '../containers/docs/userDocs.component.jsx';
-import PrivateDocs from '../containers/docs/privateDocs.component.jsx';
-import PublicDocs from '../containers/docs/publicDocs.component.jsx';
-import RoleDocs from '../containers/docs/roleDocs.component.jsx';
-import MyDocs from '../containers/docs/myDocs.component.jsx';
-import CreateDocument from '../containers/docs/createDocForm.component'
-import EditDocument from '../../actions/documentManagement/editDocument';
-import DeleteDocument from '../../actions/documentManagement/deleteDocuments';
+import Navbar from '../../commons/nav.component.js';
+import Searchbar from '../../commons/searchbar.jsx';
+import AllDocs from '../../dashboard/userDashboard/allDocs.component.jsx';
+import PrivateDocs from '../../dashboard/userDashboard/privateDocs.component.jsx';
+import PublicDocs from '../../dashboard/userDashboard/publicDocs.component.jsx';
+import RoleDocs from '../../dashboard/userDashboard/roleDocs.component.jsx';
+import MyDocs from '../../dashboard/userDashboard/myDocs.component.jsx';
+import CreateDocument from '../../addModals/createDocForm.component'
+import EditDocument from '../../../actions/documentManagement/editDocument';
+import DeleteDocument from '../../../actions/documentManagement/deleteDocuments';
 
 
 class Dashboard extends Component {
@@ -64,7 +64,7 @@ class Dashboard extends Component {
               </ul>
             </div>
             <div id="test1" className="tabContent col s12">
-              <UserDocs document={this.props.documents} setEditDocument={this.setEditDocument} setDeleteDocument={this.setDeleteDocument} name="jezzuzzzz" />
+              <AllDocs document={this.props.documents} setEditDocument={this.setEditDocument} setDeleteDocument={this.setDeleteDocument} name="jezzuzzzz" />
             </div>
             <div id="test2" className="tabContent col s12">
               <PrivateDocs document={this.props.documents} setEditDocument={this.setEditDocument} setDeleteDocument={this.setDeleteDocument} />
