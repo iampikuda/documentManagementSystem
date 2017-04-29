@@ -16,7 +16,7 @@ module.exports = {
         title: 'regular',
         createdAt: new Date(),
         updatedAt: new Date()
-      }], { returning: true });
+      }], { returning: true, validate: true });
   },
 
   down(queryInterface) {
