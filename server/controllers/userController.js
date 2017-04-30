@@ -307,16 +307,16 @@ class UserController {
     }
   }
 
-//   /**
-//    * Method logout
-//    * @param {object} request - request object
-//    * @param {object} response - response object
-//    * @returns {object} - response object
-//    */
-//   static logout(request, response) {
-//     return response.status(200)
-//       .send({ message: 'Successful logout' });
-//   }
+  /**
+   * Method logout
+   * @param {object} request - request object
+   * @param {object} response - response object
+   * @returns {object} - response object
+   */
+  static logout(request, response) {
+    return response.status(200)
+      .send({ message: 'Successful logout' });
+  }
 
   // /**
   //  * Method to fetch all documents of a specific user
