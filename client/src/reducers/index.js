@@ -5,10 +5,24 @@ import documentReducer from './documentReducer';
 import userReducer from './userReducer';
 import roleReducer from './roleReducer';
 
-export default combineReducers({
+const appReducer = combineReducers({
   loginReducer,
   signupReducer,
   documentReducer,
   userReducer,
   roleReducer
 });
+
+const initialState = appReducer({}, {});
+
+export default (state = {}, action) => {
+  if (action.type === 'CLEAR_ALL') {
+    console.log('CLEAR_ALL');
+    console.log('1', state);
+    state = initialState;
+    console.log('2', state);
+    return appReducer(state, action);
+  }
+  console.log('3', state);
+  return appReducer(state, action);
+};
