@@ -7,24 +7,20 @@ import Searchbar from '../../commons/searchbar.jsx';
 import AdminDashboard from './admin.component.jsx';
 import UserDashboard from './user.component.jsx';
 import * as docActions from '../../../actions/documentManagement/readDocument.js';
-import * as userActions from '../../../actions/userManagement/getUsers.js';
-import * as roleActions from '../../../actions/userManagement/getRoles.js';
 
 class Dashboard extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     const token = window.localStorage.getItem('token');
     this.state = {
       AdminRoleId: 1,
       authUser: jwtDecode(token) || {},
-    }
+    };
   }
 
   componentWillMount() {
     const userId = this.state.authUser.userId || null
     this.props.actionsDoc.viewUserDocuments(userId);
-    this.props.actionsUser.viewUsers(userId);
-    this.props.actionsRole.viewRoles(userId);
   }
 
   render() {
@@ -42,16 +38,12 @@ class Dashboard extends Component {
 const mapStoreToProps = (state) => {
   return {
     documents: state.documentReducer,
-    users: state.userReducer,
-    roles: state.roleReducer
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actionsDoc: bindActionCreators(docActions, dispatch),
-    actionsUser: bindActionCreators(userActions, dispatch),
-    actionsRole: bindActionCreators(roleActions, dispatch)
+    actionsDoc: bindActionCreators(docActions, dispatch)
   }
 }
 
