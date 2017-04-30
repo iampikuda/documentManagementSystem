@@ -9,6 +9,7 @@ export default (state = {}, action) => {
         success: action.message
       };
     case 'LOGIN_ERROR':
+      console.log('=-=-[=-]-=0=-0=-0989879', action.message);
       return {
         ...state,
         error: action.message,

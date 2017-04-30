@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Row, Col, Input, Button } from 'react-materialize';
 import { Link } from 'react-router';
+import {toastr} from 'react-redux-toastr'
 
 class Body extends Component {
   render() {
+    // {() => toastr.success('The title', 'The message')}
     if (window.localStorage.getItem('token')) {
       return (
         <div>

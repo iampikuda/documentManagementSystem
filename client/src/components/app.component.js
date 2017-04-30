@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Router, browserHistory } from 'react-router';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
+import {toastr} from 'react-redux-toastr';
 
 import Index from './index.component';
 import loginPage from './authPages/loginPage.jsx';

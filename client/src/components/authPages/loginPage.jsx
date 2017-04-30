@@ -25,7 +25,7 @@ class Login extends Component {
   }
   onSubmit(e) {
     e.preventDefault();
-    // console.log('++++++++++++', this.state);
+    console.log('++++++++++++', this.state.error);
     this.props.login(this.state);
   }
   componentWillMount() {

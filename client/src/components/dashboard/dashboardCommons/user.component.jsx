@@ -30,8 +30,14 @@ class Dashboard extends Component {
     // browserHistory.push('/dashboard');
   }
   setDeleteDocument(documentId) {
-    this.props.DeleteDocument(documentId);
-    browserHistory.push('/dashboard');
+    const toastrConfirmOptions = {
+      onOk: () => console.log('OK: clicked'),
+      onCancel: () => console.log('CANCEL: clicked')
+    };
+    toastr.confirm('Are you sure about that!', toastrConfirmOptions);
+    console.log('>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<');
+    // this.props.DeleteDocument(documentId);
+    // browserHistory.push('/dashboard');
   }
   componentDidMount() {
     $('ul.tabs').tabs();
