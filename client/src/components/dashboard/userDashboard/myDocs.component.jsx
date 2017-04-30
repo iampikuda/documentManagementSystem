@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import jwtDecode from 'jwt-decode';
 
-let myId;
+
 const MyDocs = (props) => {
   const token = window.localStorage.getItem('token');
-  myId = jwtDecode(token).userId;
-  let documentList;
+  const myId = jwtDecode(token).userId;
+  let documentList = [];
 
   if (props.document.document !== undefined) {
     let docs = props.document.document.data.document;

@@ -18,21 +18,21 @@ const SingleDocument = (document, index) => {
     </tr >
   );
 }
-
 let firstName;
-const token = window.localStorage.getItem('token');
-if (token) {
-  firstName = jwtDecode(token).firstName;
-}
-let documentList = [];
+
 const UserDocs = (props) => {
-  
+  let documentList = [];
+  const token = window.localStorage.getItem('token');
+  if (token) {
+    firstName = jwtDecode(token).firstName;
+  }
   // console.log('+++++------', props);
   if (props.document.document !== undefined) {
     let docs = props.document.document.data.document;
     if (docs === undefined) {
-      documentList = props.document.document.data.documents;
+      docs = props.document.document.data.documents;
     }
+    documentList = docs;
     // documentList = docs.map(SingleDocument)
     // console.log(documentList, "jbkjjbbjbj")
   }
