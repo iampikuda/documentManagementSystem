@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router';
+import { bindActionCreators } from 'redux';
+import jwtDecode from 'jwt-decode';
 import Navbar from '../../commons/nav.component.js';
 import Searchbar from '../../commons/searchbar.jsx';
 import AllDocs from '../userDashboard/allDocs.component.jsx';
 import Users from '../../dashboard/adminDashboard/usersView.component.js';
 import Roles from '../../dashboard/adminDashboard/rolesView.component.js';
-
+import * as userActions from '../../../actions/userManagement/getUsers.js';
+import * as roleActions from '../../../actions/userManagement/getRoles.js';
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.setEditDocument = this.setEditDocument.bind(this);
     this.setDeleteDocument = this.setDeleteDocument.bind(this);
-    this.state = {};
+    const token = window.localStorage.getItem('token');
+    this.state = {
+      AdminRoleId: 1,
+      authUser: jwtDecode(token) || {},
+    };
   }
   setEditDocument(document){
     console.log(document, 'to edit');
@@ -24,6 +31,11 @@ class Dashboard extends Component {
   }
   setDeleteDocument(documentId) {
     this.props.DeleteDocument(documentId);
+  }
+  componentWillMount() {
+    const userId = this.state.authUser.userId || null
+    this.props.actionsUser.viewUsers(userId);
+    this.props.actionsRole.viewRoles(userId);
   }
   componentDidMount() {
     $('ul.tabs').tabs();
@@ -62,10 +74,19 @@ class Dashboard extends Component {
 }
 
 // export default Dashboard;
+const mapStoreToProps = (state) => {
+  return {
+    users: state.userReducer,
+    roles: state.roleReducer
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     EditDocument: (documentDetails, documentId) => dispatch(EditDocument(documentDetails, documentId)),
-    DeleteDocument: (documentId) => dispatch(DeleteDocument(documentId))
+    DeleteDocument: (documentId) => dispatch(DeleteDocument(documentId)),
+    actionsUser: bindActionCreators(userActions, dispatch),
+    actionsRole: bindActionCreators(roleActions, dispatch)
   };
 };
-export default connect(null, mapDispatchToProps)(Dashboard);
+export default connect(mapStoreToProps, mapDispatchToProps)(Dashboard);
