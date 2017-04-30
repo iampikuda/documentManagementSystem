@@ -3,7 +3,6 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import iziToast from 'iziToast';
 // import reduxImmutableStateVariant from 'redux-immutable-state-invariant';
 import App from './components/app.component';
 import combineReducers from './reducers/index.js';

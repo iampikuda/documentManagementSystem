@@ -1,15 +1,13 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 import * as actionTypes from '../actionTypes';
+import setAuthorizationToken from '../../utils/setAuth';
 
 export default (details) => {
   const token = window.localStorage.getItem('token');
   return (dispatch) => {
-    return axios.post('/api/document', details, {
-      headers: {
-        Authorization: token
-      }
-    })
+    setAuthorizationToken(token);
+    return axios.post('/api/document', details)
       .then((document) => {
         dispatch({
           type: actionTypes.DOCUMENT_CREATED,

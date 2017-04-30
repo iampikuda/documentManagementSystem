@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const PublicDocs = (props) => {
-  let documentList;
+  let documentList = [];
   if (props.document.document !== undefined) {
     let docs = props.document.document.data.document;
     if (docs === undefined){
