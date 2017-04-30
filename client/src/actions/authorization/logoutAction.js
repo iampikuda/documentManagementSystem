@@ -10,7 +10,12 @@ export default (credentials) => {
       dispatch({
         type: 'CLEAR_ALL'
       });
-      window.location = '/';
+      // window.location = '/';
+    }).catch((err) => {
+      dispatch({
+        type: 'LOGOUT_FAILED',
+        message: err.response.data.message
+      });
     });
   };
 };
