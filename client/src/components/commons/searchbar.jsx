@@ -40,6 +40,7 @@ class Searchbar extends Component {
     return (roleId === this.state.AdminRoleId) ?
       <nav id="nav">
         <div className="nav-wrapper">
+          <AddDoc />
           <AddUser />
           <AddRole />
           <div className="searchBox">

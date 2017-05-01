@@ -24,10 +24,6 @@ export default (sequelize, DataTypes) => {
       validate: {
         notEmpty: {
           msg: 'Content cannot be empty'
-        },
-        is: {
-          args: /^\w+/i,
-          msg: 'The content should only contain alpha-numeric characters.'
         }
       }
     },

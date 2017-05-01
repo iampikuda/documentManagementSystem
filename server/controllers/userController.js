@@ -29,6 +29,7 @@ class UserController {
    * @returns {Object} - response object
    */
   static createUser(request, response) {
+    console.log(request.decoded);
     model.User.findOne({ where: { email: request.body.email } })
       .then((foundUser) => {
         if (foundUser) {
@@ -36,6 +37,7 @@ class UserController {
             .send({ message: `${request.body.email} is already in use` });
         }
         if (request.body.roleId === '1') {
+          console.log(request.decoded);
           if (request.decoded.roleId === 1) {
             model.User.create(request.body)
               .then((newUser) => {
@@ -96,10 +98,10 @@ class UserController {
             .send({ message: `There is no user with id: ${Id}` });
         }
         if (request.body.roleId === '1') {
-          if (request.decoded.roleId === 2) {
+          if (request.decoded.roleId !== 1) {
             return response.status(403)
               .send({
-                message: 'You are not authorized to create an Admin.' +
+                message: 'You are not authorized to delete an Admin.' +
                 ' Contact Admin!'
               });
           }
@@ -131,7 +133,7 @@ class UserController {
             .send({ message: `There is no user with id: ${Id}` });
         }
         if (request.body.roleId === '1') {
-          if (request.decoded.roleId === 2) {
+          if (request.decoded.roleId !== 1) {
             return response.status(403)
               .send({
                 message: 'You are not authorized to create an Admin.' +
