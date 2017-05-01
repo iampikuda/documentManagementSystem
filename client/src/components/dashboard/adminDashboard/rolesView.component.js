@@ -9,7 +9,7 @@ const SingleRoles = (roles, index) => {
       <td>{roles.title}</td>
       <td>{(roles.createdAt).slice(0, 10)}</td>
       <td>{(roles.updatedAt).slice(0, 10)}</td>
-      {/*<td><a className="modal-trigger green-text" href="#modal1" onClick={() => { props.setEditroles(roles); }}><i className="material-icons">edit</i></a></td>
+      {/*<td><a className="modal-trigger green-text" href="#modalEdit" onClick={() => { props.setEditroles(roles); }}><i className="material-icons">edit</i></a></td>
       <td><a className="red-text" href="#" onClick={() => { props.setDeleteroles(roles.id); }} > <i className="material-icons">delete</i></a></td>*/}
     </tr >
   );

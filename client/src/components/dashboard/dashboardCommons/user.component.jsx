@@ -8,7 +8,7 @@ import PrivateDocs from '../../dashboard/userDashboard/privateDocs.component.jsx
 import PublicDocs from '../../dashboard/userDashboard/publicDocs.component.jsx';
 import RoleDocs from '../../dashboard/userDashboard/roleDocs.component.jsx';
 import MyDocs from '../../dashboard/userDashboard/myDocs.component.jsx';
-import CreateDocument from '../../addModals/createDocForm.component'
+import CreateDocument from '../../addModals/createDocForm.component';
 import EditDocument from '../../../actions/documentManagement/editDocument';
 import DeleteDocument from '../../../actions/documentManagement/deleteDocuments';
 
@@ -21,13 +21,12 @@ class Dashboard extends Component {
     this.state = {};
   }
   setEditDocument(document) {
-    
     console.log(document, 'to edit');
     this.setState({
       editDocument: document,
       documentId: document.id
     });
-    // browserHistory.push('/dashboard');
+    browserHistory.push('/dashboard');
   }
   setDeleteDocument(documentId) {
     this.props.DeleteDocument(documentId);
@@ -39,7 +38,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <div id="modal1" className="modal modal-fixed-footer">
+        {/*<div id="modalEdit" className="modal modal-fixed-footer">
           <div className="modal-content">
             <h4>Edit Document</h4>
             <CreateDocument document={this.state.editDocument || null} documentId={this.state.documentId || null} onEdit={this.props.EditDocument} />
@@ -47,7 +46,7 @@ class Dashboard extends Component {
           <div className="modal-footer">
             <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
           </div>
-        </div>
+        </div>*/}
         <div className="mainContainer">
           <div className="bg"></div>
           <Navbar />

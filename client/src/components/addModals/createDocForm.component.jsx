@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router';
 import jwtDecode from 'jwt-decode';
 import newDocument from '../../actions/documentManagement/newDocument.js';
-
+import TinyMCE from 'react-tinymce';
 
 const ResponseMessage = (props) => {
   if (props.status === 'success') {
@@ -25,39 +25,43 @@ const ResponseMessage = (props) => {
 
 export class CreateDocument extends Component {
   constructor(props) {
-      super(props);
-      const token = (window.localStorage.getItem('token'));
-      if (token) {
-        this.state = { id: jwtDecode(token).userId, email: jwtDecode(token).email};
-      }
-      this.state = {
-        title: props.document ? props.document.title :  '',
-        content: props.document ? props.document.content : '',
-        access: props.document ? props.document.access : '',
-        status: props.document ? props.document.status : '',
-        ownwerId: this.state.id
-      };
-      this.onChange = this.onChange.bind(this);
-      this.onSubmit = this.onSubmit.bind(this);
+    super(props);
+    const token = (window.localStorage.getItem('token'));
+    if (token) {
+      this.state = { id: jwtDecode(token).userId, email: jwtDecode(token).email};
     }
+    this.state = {
+      title: props.document ? props.document.title :  '',
+      content: props.document ? props.document.content : '',
+      access: props.document ? props.document.access : '',
+      status: props.document ? props.document.status : '',
+      ownwerId: this.state.id
+    };
+    this.onChange = this.onChange.bind(this);
+    this.contentOnChange = this.contentOnChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
   componentWillReceiveProps(nextProps) {
-      if (nextProps.status === 'success') {
-        browserHistory.push('/dashboard');
-      }
-      if (nextProps.document) {
-        this.setState({
-          title: nextProps.document.title,
-          content: nextProps.document.content,
-          access: nextProps.document.access,
-          status: nextProps.document.status
-        });
-      }
+    if (nextProps.status === 'success') {
+      browserHistory.push('/dashboard');
     }
-
+    if (nextProps.document) {
+      this.setState({
+        title: nextProps.document.title,
+        content: nextProps.document.content,
+        access: nextProps.document.access,
+        status: nextProps.document.status
+      });
+    }
+  }
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
-
+  contentOnChange(event) {
+    this.setState({
+      content: event.target.getContent()
+    });
+  }
   onSubmit(event) {
     event.preventDefault();
     this.props.CreateDocument(this.state);
@@ -84,16 +88,15 @@ export class CreateDocument extends Component {
               </div>
               <div className='row'>
                 <div className='input-field col s12'>
-                  <tinytextarea
-                    value={this.state.content}
-                    onChange={this.onChange}
+                  <TinyMCE
+                    content="<p>Content</p>"
                     name='content'
-                    id='content'
-                    type='text'
-                    className='validate'
-                    required>
-                  </tinytextarea>
-                  {/*<label htmlFor='text'>Content</label>*/}
+                    config={{
+                      plugins: 'autolink link image lists print preview',
+                      toolbar: 'undo redo | bold italic | alignleft aligncenter alignright'
+                    }}
+                    onChange={this.contentOnChange}
+                  />
                 </div>
               </div>
               <div className='col m3 s12'>

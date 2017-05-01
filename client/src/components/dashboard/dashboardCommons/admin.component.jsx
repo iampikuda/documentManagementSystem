@@ -8,6 +8,8 @@ import Searchbar from '../../commons/searchbar.jsx';
 import AllDocs from '../userDashboard/allDocs.component.jsx';
 import Users from '../../dashboard/adminDashboard/usersView.component.js';
 import Roles from '../../dashboard/adminDashboard/rolesView.component.js';
+import MyDocs from '../userDashboard/myDocs.component.jsx';
+import CreateDocument from '../../addModals/createDocForm.component';
 import * as userActions from '../../../actions/userManagement/getUsers.js';
 import * as roleActions from '../../../actions/userManagement/getRoles.js';
 
@@ -28,9 +30,12 @@ class Dashboard extends Component {
       editDocument: document,
       documentId: document.id
     });
+    browserHistory.push('/dashboard');
+
   }
   setDeleteDocument(documentId) {
     this.props.DeleteDocument(documentId);
+    browserHistory.push('/dashboard');
   }
   componentWillMount() {
     const userId = this.state.authUser.userId || null
@@ -41,9 +46,10 @@ class Dashboard extends Component {
     $('ul.tabs').tabs();
   }
   render() {
-    console.log('+++++++', this.props);
     return (
       <div>
+     
+        
         <div className="mainContainer">
           <div className="bg"></div>
           <Navbar />
@@ -54,6 +60,7 @@ class Dashboard extends Component {
                 <li className="tab"><Link to="#test1" className="active">All Docs</Link></li>
                 <li className="tab"><Link to="#test2">Users</Link></li>
                 <li className="tab"><Link to="#test3">Roles</Link></li>
+                <li className="tab"><Link to="#test4">My Docs</Link></li>
               </ul>
             </div>
 
@@ -65,6 +72,9 @@ class Dashboard extends Component {
             </div>
             <div id="test3" className="tabContent col s12">
               <Roles roles={this.props.roles} />
+            </div>
+            <div id="test4" className="tabContent col s12">
+              <MyDocs document={this.props.documents} setEditDocument={this.setEditDocument} setDeleteDocument={this.setDeleteDocument} />
             </div>
           </div>
         </div>

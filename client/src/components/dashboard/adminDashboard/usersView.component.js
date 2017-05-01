@@ -11,7 +11,7 @@ const SingleUsers = (users, index) => {
       <td>{users.roleId}</td>
       <td>{(users.createdAt).slice(0, 10)}</td>
       <td>{(users.updatedAt).slice(0, 10)}</td>
-      {/*<td><a className="modal-trigger green-text" href="#modal1" onClick={() => { props.setEditusers(users); }}><i className="material-icons">edit</i></a></td>
+      {/*<td><a className="modal-trigger green-text" href="#modalEdit" onClick={() => { props.setEditusers(users); }}><i className="material-icons">edit</i></a></td>
       <td><a className="red-text" href="#" onClick={() => { props.setDeleteusers(users.id); }} > <i className="material-icons">delete</i></a></td>*/}
     </tr >
   );
