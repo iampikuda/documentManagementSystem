@@ -137,6 +137,7 @@ nav a {
 }
 .tabContent{
   max-height: 73vh;
+  width: 100%;
   overflow: scroll;
   background-color: $background-color;
   padding: .9rem !important;
@@ -228,4 +229,10 @@ text-transform: uppercase;
 .nav .input-field input {
   border-bottom: 1px solid;
   width: 97%;
+}
+table .th {
+  text-align: center;
+}
+table {
+  table-layout: fixed;
 }
