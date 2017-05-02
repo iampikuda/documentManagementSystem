@@ -9,7 +9,7 @@ import AllDocs from '../userDashboard/allDocs.component.jsx';
 import Users from '../../dashboard/adminDashboard/usersView.component.js';
 import Roles from '../../dashboard/adminDashboard/rolesView.component.js';
 import MyDocs from '../userDashboard/myDocs.component.jsx';
-import CreateDocument from '../../addModals/createDocForm.component';
+import CreateDocument from '../../modals/createDocForm.component';
 import * as userActions from '../../../actions/userManagement/getUsers.js';
 import * as roleActions from '../../../actions/userManagement/getRoles.js';
 
