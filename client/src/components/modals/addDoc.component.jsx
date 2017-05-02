@@ -9,7 +9,7 @@ class AddDoc extends Component {
   componentDidMount() {
     $('.modal').modal({
       dismissible: false, // Modal can be dismissed by clicking outside of the modal
-      opacity: .5, // Opacity of modal background
+      opacity: .5, // Opacity of modal backgroundt
       inDuration: 300, // Transition in duration
       outDuration: 200, // Transition out duration
       startingTop: '4%', // Starting top style attribute
