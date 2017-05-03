@@ -170,7 +170,7 @@ document.route('/api/document/:id')
    */
   .delete(auth.verifyToken, documentController.deleteDocument);
 
-document.route('/api/document/search')
-  .post(auth.verifyToken, documentController.searchDoc);
+document.route('/api/search/document')
+  .get(auth.verifyToken, documentController.searchDoc);
 
 module.exports = () => document;
