@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2e48bf37757553f167b7"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a3ea1b8e4d29f4966234"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -12212,7 +12212,7 @@
 	      ),
 	      _react2.default.createElement(
 	        'td',
-	        null,
+	        { className: 'truncate' },
 	        _react2.default.createElement('a', { href: '#modalView', dangerouslySetInnerHTML: { __html: document.content }, onClick: function onClick() {
 	            props.setViewDocument(document);
 	          } })
