@@ -3,6 +3,17 @@ import jwtDecode from 'jwt-decode';
 
 
 const MyDocs = (props) => {
+  const SingleDocument = (document, index) => {
+    return (
+      <tr className="hoverable" key={index}>
+        <td>{document.title}</td>
+        <td>{document.access}</td>
+        <td className="truncate"><a href="#modalView" dangerouslySetInnerHTML={{ __html: document.content }} onClick={() => { props.setViewDocument(document); }} /></td>
+        <td>{(document.createdAt).slice(0, 10)}</td>
+        <td>{(document.updatedAt).slice(0, 10)}</td>
+      </tr>
+    );
+  }
   const token = window.localStorage.getItem('token');
   const myId = jwtDecode(token).userId;
   let documentList = [];
@@ -15,11 +26,6 @@ const MyDocs = (props) => {
     documentList = docs
       .filter((document) => {
         return document.ownerId === myId;
-      })
-      .map((document) => {
-        return (
-          <SingleDocument document={document} key={document.id} />
-        )
       })
   }
   return (
@@ -35,25 +41,11 @@ const MyDocs = (props) => {
           </tr>
         </thead>
         <tbody>
-          {documentList}
+          {documentList.map(SingleDocument)}
         </tbody>
       </table>
     </div>
   )
-}
-
-
-const SingleDocument = (props) => {
-  const { document } = props
-  return (
-    <tr className="hoverable">
-      <td>{document.title}</td>
-      <td>{document.access}</td>
-      <td>{document.content}</td>
-      <td>{(document.createdAt).slice(0, 10)}</td>
-      <td>{(document.updatedAt).slice(0, 10)}</td>
-    </tr>
-  );
 }
 
 export default MyDocs;
