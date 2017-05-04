@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import jwtDecode from 'jwt-decode';
 import { bindActionCreators } from 'redux';
 import Navbar from '../../commons/nav.component.js';
-import Searchbar from '../../commons/searchbar.jsx';
+import SubNavBar from '../../commons/subNavBar.jsx';
 import AdminDashboard from './admin.component.jsx';
 import UserDashboard from './user.component.jsx';
 import * as docActions from '../../../actions/documentManagement/readDocument.js';
@@ -27,10 +27,10 @@ class Dashboard extends Component {
     const roleId = this.state.authUser.roleId || null
     return (roleId === this.state.AdminRoleId) ?
       <div>
-        <AdminDashboard documents={this.props.documents} users={this.props.users} roles={this.props.roles}/>
+        <AdminDashboard documents={this.props.documents} users={this.props.users} roles={this.props.roles} />
       </div> :
       <div>
-        <UserDashboard documents={this.props.documents} />
+        <UserDashboard documents={this.props.documents} users={this.props.users} />
       </div>
   }
 }
@@ -38,6 +38,8 @@ class Dashboard extends Component {
 const mapStoreToProps = (state) => {
   return {
     documents: state.documentReducer,
+    users: state.userReducer,
+    roles: state.roleReducer
   };
 };
 
