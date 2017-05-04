@@ -8,12 +8,10 @@ import signupAction from '../../actions/authorization/signupAction.js';
 let authUser;
 const AdminRoleId = 1;
 let token;
-console.log('pear');
 class signUpPage extends Component {
   constructor(props) {
     super(props);
     token = window.localStorage.getItem('token');
-    // console.log('everywhere');
     this.state = {
       firstName: '',
       lastName: '',
@@ -27,17 +25,13 @@ class signUpPage extends Component {
   componentWillMount() {
     authUser = {};
     if (token) {
-      // console.log('everywh');
       authUser = jwtDecode(token) || {};
-      console.log(token);
-      console.log(authUser);
       if (authUser.roleId !== 1) {
         browserHistory.push('/dashboard');
       }
     }
   }
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps, 'nextProps');
     if (nextProps.error === 'unique violation') {
       this.setState({
         error: 'User already exists'
@@ -52,12 +46,10 @@ class signUpPage extends Component {
   }
   onSubmit(e) {
     e.preventDefault();
-    console.log('all is well', e);
     this.props.Signup(this.state);
   }
   render() {
     const roleIdNow = authUser.roleId || ''
-    console.log('here');
     return (roleIdNow === AdminRoleId) ?
       <div>
         <div className="row"></div>
@@ -123,8 +115,9 @@ class signUpPage extends Component {
                   value={this.state.roleId}
                   className="browser-default"
                   required
-                >
-                  <option value="" disabled selected>Select RoleId</option>
+                  defaultValue="1"
+                  >
+                  <option value="1" disabled>Select RoleId</option>
                   <option value={1}>Admin</option>
                   <option value={2}>Regular</option>
                 </select>

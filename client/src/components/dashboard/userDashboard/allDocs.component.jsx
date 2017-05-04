@@ -4,9 +4,8 @@ import jwtDecode from 'jwt-decode';
 
 
 let props;
-const UserDocs = (props) => {
+const AllDocs = (props) => {
   const SingleDocument = (document, index) => {
-    console.log('ahsdahdas', document, index, this, props);
     return (
       <tr className="hoverable" key={index} >
         <td>{document.title}</td>
@@ -21,7 +20,6 @@ const UserDocs = (props) => {
       </tr >
     );
   }
-  console.log('10101010101', props);
   let documentList = [];
   const token = window.localStorage.getItem('token');
   if (props.document.document !== undefined) {
@@ -33,7 +31,7 @@ const UserDocs = (props) => {
   }
   return (
     <div>
-      <table className="bordered centered responsive">
+      <table className="bordered  responsive">
         <thead>
           <tr>
             <th>Title</th>
@@ -52,4 +50,4 @@ const UserDocs = (props) => {
   )
 }
 
-export default UserDocs;
+export default AllDocs;
