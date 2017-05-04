@@ -3,7 +3,6 @@ import { browserHistory } from 'react-router';
 import * as actionTypes from '../actionTypes';
 
 const roleGetSuccess = (roles) => {
-  // console.log('$$$$$$$$$$$', roles);
   return {
     type: actionTypes.GET_ROLE_SUCCESS,
     roles
@@ -22,6 +21,11 @@ export const viewRoles = (userId) => {
       dispatch(roleGetSuccess(roles));
     })
     .catch((err) => {
+      dispatch({
+        type: actionTypes.GET_ROLE_FAILED,
+        status: 'failed',
+        error: err.message
+      });
     });
   };
 };

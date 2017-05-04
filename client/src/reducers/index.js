@@ -17,12 +17,8 @@ const initialState = appReducer({}, {});
 
 export default (state = {}, action) => {
   if (action.type === 'CLEAR_ALL') {
-    console.log('CLEAR_ALL');
-    console.log('1', state);
     state = initialState;
-    console.log('2', state);
     return appReducer(state, action);
   }
-  console.log('3', state);
   return appReducer(state, action);
 };
