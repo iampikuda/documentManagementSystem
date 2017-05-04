@@ -59,6 +59,9 @@ $background-color: #F2F2F2;
   color: $text-color-two;
   border-radius: 1px;
 }
+.searchForm {
+  display: inline;
+}
 .searchBox {
     right: 0;
     width: 40%;
@@ -235,4 +238,7 @@ table .th {
 }
 table {
   table-layout: fixed;
+}
+.displayNone {
+  display: none;
 }
