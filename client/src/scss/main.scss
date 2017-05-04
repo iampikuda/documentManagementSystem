@@ -233,11 +233,15 @@ text-transform: uppercase;
   border-bottom: 1px solid;
   width: 97%;
 }
-table .th {
-  text-align: center;
-}
 table {
-  table-layout: fixed;
+
+  width: 100%;
+  max-width: 100%;
+  min-width: 300px;
+}
+th, td {
+  max-width: 500px;
+  min-width: 20px;
 }
 .displayNone {
   display: none;
