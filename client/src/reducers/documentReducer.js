@@ -12,6 +12,10 @@ export default (state = {}, action) => {
       return { ...state, documents: action.documents };
     case actionTypes.VIEW_USER_DOCUMENTS_SUCCESS:
       return { ...state, document: action.documents };
+    case actionTypes.SEARCH_DOCS_COMPLETE:
+      return { ...state, search: action.documents, status: action.status };
+    case actionTypes.SEARCH_DOCS_FAILED:
+      return { ...state, status: action.status };
     default:
       return state;
   }
