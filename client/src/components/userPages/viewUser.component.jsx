@@ -1,4 +1,4 @@
-timport { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import jwtDecode from 'jwt-decode';
