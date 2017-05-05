@@ -57,7 +57,7 @@ class SubNavBar extends Component {
         <div className="nav-wrapper">
           <AddDoc />
           <AddUser />
-          <AddRole />
+          {/*<AddRole />*/}
           <form className="searchForm" onSubmit={this.onSubmit}>
             <div className="searchBox">
               <i className="material-icons">search</i>

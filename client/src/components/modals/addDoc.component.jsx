@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import CreateDocument from './createDocForm.component.jsx'
+import { browserHistory } from 'react-router';
 
 class AddDoc extends Component {
   constructor() {
@@ -18,7 +19,7 @@ class AddDoc extends Component {
       //   alert("Ready");
       //   console.log(modal, trigger);
       // },
-      // complete: function () { alert('Closed'); } // Callback for Modal close
+      complete: function () { browserHistory.push('/dashboard') } // Callback for Modal close
     });
   }
   render() {
