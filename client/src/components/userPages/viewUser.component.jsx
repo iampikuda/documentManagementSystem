@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+timport { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import jwtDecode from 'jwt-decode';
@@ -75,7 +75,7 @@ class ViewUser extends Component {
               </div>
               <div className="row">
                   <Link
-                    to="/app/profile/edit"
+                    to="/profile/edit"
                     className="btn"
                   >Edit Profile</Link>
                 </div>

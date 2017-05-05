@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e15018adf8e04c291c40"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "359ca102aa4880aee2d6"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -6055,7 +6055,6 @@
 	          { className: 'nav-wrapper' },
 	          _react2.default.createElement(_addDocComponent2.default, null),
 	          _react2.default.createElement(_addUserComponent2.default, null),
-	          _react2.default.createElement(_addRoleComponent2.default, null),
 	          _react2.default.createElement(
 	            'form',
 	            { className: 'searchForm', onSubmit: this.onSubmit },
@@ -23117,7 +23116,15 @@
 	        inDuration: 300, // Transition in duration
 	        outDuration: 200, // Transition out duration
 	        startingTop: '4%', // Starting top style attribute
-	        endingTop: '10%' });
+	        endingTop: '10%', // Ending top style attribute
+	        // ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+	        //   alert("Ready");
+	        //   console.log(modal, trigger);
+	        // },
+	        complete: function complete() {
+	          _reactRouter.browserHistory.push('/dashboard');
+	        } // Callback for Modal close
+	      });
 	    }
 	  }, {
 	    key: 'render',
