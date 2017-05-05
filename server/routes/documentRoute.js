@@ -29,7 +29,7 @@ const document = express.Router();
 document.route('/api/document')
   /**
    * @swagger
-   * /api/documents:
+   * /api/document:
    *   get:
    *     description: Gets all documents
    *     tags:
@@ -60,7 +60,7 @@ document.route('/api/document')
   .get(auth.verifyToken, documentController.getDocuments)
   /**
    * @swagger
-   * /api/documents:
+   * /api/document:
    *   post:
    *     description: Creates a document
    *     tags:
@@ -92,7 +92,7 @@ document.route('/api/document')
 
 document.route('/api/document/:id')
   /** @swagger
-  *  /api/documents/:id:
+  *  /api/document/:id:
   *   get:
   *     description: Returns {limit} documents from the the {offset}
   *     tags:
@@ -116,7 +116,7 @@ document.route('/api/document/:id')
   .get(auth.verifyToken, documentController.getDocument)
   /**
    * @swagger
-   * /api/documents/:id:
+   * /api/document/:id:
    *   put:
    *     description: Update  a document
    *     tags:
@@ -147,7 +147,7 @@ document.route('/api/document/:id')
   .put(auth.verifyToken, documentController.updateDocument)
   /**
    * @swagger
-   * /api/documents/1:
+   * /api/document/1:
    *    delete:
    *      description: Deletes the document with the id of 1
    *      tags:
@@ -171,6 +171,28 @@ document.route('/api/document/:id')
   .delete(auth.verifyToken, documentController.deleteDocument);
 
 document.route('/api/search/document')
+    /** @swagger
+    *  /api/search/documents/:
+    *   get:
+    *     description: Returns {limit} documents from the the {offset}
+    *     tags:
+    *       - Get documents
+    *     produces:
+    *        - application/json
+    *     parameters:
+    *        - name: Authorization
+    *          in: header
+    *          description: an authorization header
+    *          required: true
+    *          type: string
+    *     responses:
+    *        200:
+    *          description: get documents from the database
+    *          schema:
+    *            type: array
+    *            items:
+    *              $ref: '#/definitions/Document'
+    */
   .get(auth.verifyToken, documentController.searchDoc);
 
 module.exports = () => document;
