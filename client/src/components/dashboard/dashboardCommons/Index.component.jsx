@@ -12,6 +12,7 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     const token = window.localStorage.getItem('token');
+    this.updateUser = this.updateUser.bind(this);
     this.state = {
       AdminRoleId: 1,
       authUser: jwtDecode(token) || {},
@@ -21,6 +22,23 @@ class Dashboard extends Component {
   componentWillMount() {
     const userId = this.state.authUser.userId || null
     this.props.actionsDoc.viewUserDocuments(userId);
+    // this.props.actionsUser.viewUsers(userId);
+    // this.props.actionsRole.viewRoles(userId);
+  }
+
+  componentWillReceiveProps(nextProps){
+    const keys = ['users', 'documents', 'roles'];
+    keys.forEach(key=>{
+      if(nextProps[key]){
+        this.setState({
+          [key]: nextProps[key]
+        });
+      }
+    });
+  }
+
+  updateUser(values, id) {
+    this.props.actionEditUser(values, id);
   }
 
   render() {
@@ -45,7 +63,10 @@ const mapStoreToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actionsDoc: bindActionCreators(docActions, dispatch)
+    actionsDoc: bindActionCreators(docActions, dispatch),
+    // actionsUser: bindActionCreators(UserActions, dispatch),
+    // actionsRole: bindActionCreators(RoleActions, dispatch),
+    // actionEditUser: bindActionCreators(editUserActions, dispatch)
   }
 }
 

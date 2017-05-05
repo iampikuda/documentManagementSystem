@@ -12,7 +12,8 @@ import MyDocs from '../userDashboard/myDocs.component.jsx';
 import Search from '../userDashboard/search.component.jsx';
 import CreateDocument from '../../modals/createDocForm.component';
 import * as userActions from '../../../actions/userManagement/getUsers.js';
-import * as roleActions from '../../../actions/userManagement/getRoles.js';
+import * as roleActions from '../../../actions/roleManagement/getRoles.js';
+import deleteUserAction from '../../../actions/userManagement/deleteUser';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -94,7 +95,7 @@ class Dashboard extends Component {
               <AllDocs document={this.props.documents} setViewDocument={this.setViewDocument} />
             </div>
             <div id="test2" className="tabContent col s12">
-              <Users users={this.props.users} />
+              <Users updateUser={this.props.updateUser} users={this.props.users} roles={this.props.roles} deleteUser={this.props.deleteUser}/>
             </div>
             <div id="test3" className="tabContent col s12">
               <Roles roles={this.props.roles} />

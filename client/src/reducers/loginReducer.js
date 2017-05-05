@@ -1,6 +1,8 @@
+import * as actionTypes from '../actions/actionTypes';
+
 export default (state = {}, action) => {
   switch (action.type) {
-    case 'LOGIN_SUCCESSFUL':
+    case actionTypes.LOGIN_SUCCESSFUL:
       return {
         ...state,
         user: action.user,
@@ -8,7 +10,7 @@ export default (state = {}, action) => {
         error: null,
         success: action.message
       };
-    case 'LOGIN_ERROR':
+    case actionTypes.LOGIN_ERROR:
       return {
         ...state,
         error: action.message,

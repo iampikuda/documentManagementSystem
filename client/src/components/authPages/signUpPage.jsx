@@ -17,6 +17,7 @@ class signUpPage extends Component {
       lastName: '',
       email: '',
       password: '',
+      confirmPassword: '',
       roleId: 2
     }
     this.onChange = this.onChange.bind(this);
@@ -46,7 +47,11 @@ class signUpPage extends Component {
   }
   onSubmit(e) {
     e.preventDefault();
-    this.props.Signup(this.state);
+    if(this.state.password === this.state.confirmPassword){
+      this.props.Signup(this.state);
+    }else {
+      Materialize.toast('Passwords don\'t match!', 3000)
+    }
   }
   render() {
     const roleIdNow = authUser.roleId || ''
@@ -210,6 +215,19 @@ class signUpPage extends Component {
                   className="validate"
                   required />
                 <label htmlFor="password">Password</label>
+              </div>
+            </div>
+            <div className="row">
+              <div className="input-field col s12">
+                <input
+                value={this.state.confirmPassword}
+                onChange={this.onChange}
+                name="confirmPassword"
+                id="confirmPassword"
+                type="password"
+                 className="validate"
+                required />
+                <label  htmlFor="confirmPassword">Confirm Password</label>
               </div>
             </div>
 

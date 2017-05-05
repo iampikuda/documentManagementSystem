@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import jwtDecode from 'jwt-decode';
 import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router';
-import iziToast from 'iziToast';
 import logoutAction from '../../actions/authorization/logoutAction.js';
 
 class Navbar extends Component {
@@ -10,7 +9,10 @@ class Navbar extends Component {
     super(props);
     const token = (window.localStorage.getItem('token'));
     if (token) {
-      this.state = { id: jwtDecode(token).userId, firstName: jwtDecode(token).firstName };
+      this.state = {
+        id: jwtDecode(token).userId,
+        firstName: jwtDecode(token).firstName
+      };
       this.logout = this.logout.bind(this);
     }
   }
@@ -22,22 +24,12 @@ class Navbar extends Component {
     });
     browserHistory.push('/');
   }
-  handleClick1(e) {
-    e.preventDefault();
-    iziToast.show({
-      title: 'Hey',
-      message: 'What would you like to add?'
-    });
-  }
 
   render() {
     if (window.localStorage.getItem('token')) {
       return (
         <nav>
           <div className="nav-wrapper">
-            {/*<div>
-              <a href="#" onClick={this.handleClick1}>Click 1</a>
-            </div>*/}
             <Link to="/" className="brand-logo myContainer"><i className="material-icons left">library_books</i>PK-DOCMAN</Link>
             <Link to="#" data-activates="mobile" className="button-collapse"><i className="material-icons">menu</i></Link>
             <ul className="right hide-on-med-and-down">

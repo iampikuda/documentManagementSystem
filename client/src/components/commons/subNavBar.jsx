@@ -52,7 +52,6 @@ class SubNavBar extends Component {
 
   render() {
     const roleId = this.state.authUser.roleId || null
-    var message = 'You selected ' + this.state.database;
     return (roleId === this.state.AdminRoleId) ?
       <nav id="nav">
         <div className="nav-wrapper">

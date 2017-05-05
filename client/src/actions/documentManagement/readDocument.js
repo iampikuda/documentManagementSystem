@@ -19,6 +19,11 @@ export const viewUserDocuments = (userId) => {
       dispatch(documentReadSuccess(documents));
     })
     .catch((err) => {
+      dispatch({
+        type: 'READ_DOCS_FAILED',
+        status: 'failed',
+        error: err.message
+      });
     });
   };
 };

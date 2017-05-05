@@ -2,22 +2,23 @@ import axios from 'axios';
 import { browserHistory } from 'react-router';
 import * as actionTypes from '../actionTypes';
 
-export default (details, documentid) => {
+export default (userId) => {
+  const token = window.localStorage.getItem('token');
   return (dispatch) => {
-    const token = window.localStorage.getItem('token');
-    if (!token) {
-      return;
-    }
-    return axios.put(`/api/document/${documentid}`, details, {
+    return axios.delete(`/api/user/${userId}`, {
       headers: {
         Authorization: token
       }
     })
     .then(() => {
-      // browserHistory.push('/dasboard');
+      dispatch({
+        type: actionTypes.USER_DELETED,
+        status: 'success',
+        deletedUserId: userId
+      });
     }).catch((err) => {
       dispatch({
-        type: actionTypes.DOCUMENT_UPDATE_FAILED,
+        type: actionTypes.USER_DELETION_FAILED,
         status: 'failed',
         error: err.message
       });

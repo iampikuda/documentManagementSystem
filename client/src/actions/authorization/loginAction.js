@@ -3,6 +3,7 @@
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import setAuthorizationToken from '../../utils/setAuth';
+import * as actionTypes from '../actionTypes';
 
 
 export default (loginCredentials) => {
@@ -14,14 +15,14 @@ export default (loginCredentials) => {
         window.localStorage.setItem('token', token);
         setAuthorizationToken(token);
         dispatch({
-          type: 'LOGIN_SUCCESSFUL',
+          type: actionTypes.LOGIN_SUCCESSFUL,
           user,
           token,
           message: 'Login Successful'
         });
       }).catch((error) => {
         dispatch({
-          type: 'LOGIN_ERROR',
+          type: actionTypes.LOGIN_ERROR,
           message: error.response.data.error
         });
       });

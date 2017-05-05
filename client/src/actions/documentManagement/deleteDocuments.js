@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
+import * as actionTypes from '../actionTypes';
 
 export default (documentid) => {
   const token = window.localStorage.getItem('token');
@@ -11,13 +12,13 @@ export default (documentid) => {
     })
     .then(() => {
       dispatch({
-        type: 'DOCUMENT_DELETED',
+        type: actionTypes.DOCUMENT_DELETED,
         status: 'success'
       });
       browserHistory.push('/dashboard');
     }).catch((err) => {
       dispatch({
-        type: 'DOCUMENT_DELETION_FAILED',
+        type: actionTypes.DOCUMENT_DELETION_FAILED,
         status: 'failed',
         error: err.message
       });

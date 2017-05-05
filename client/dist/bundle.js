@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "57d3302f3c8ac28cd73a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "01301486bbba89453947"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -1696,7 +1696,7 @@
 
 	var _prodInvariant = __webpack_require__(33);
 
-	var ReactCurrentOwner = __webpack_require__(22);
+	var ReactCurrentOwner = __webpack_require__(23);
 
 	var invariant = __webpack_require__(3);
 	var warning = __webpack_require__(4);
@@ -2466,6 +2466,51 @@
 
 /***/ }),
 /* 21 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var ADD_ROLE_SUCCESS = exports.ADD_ROLE_SUCCESS = 'ADD_ROLE_SUCCESS';
+	var ALL_DOCUMENTS = exports.ALL_DOCUMENTS = 'ALL_DOCUMENTS';
+	var CLEAR_ALL = exports.CLEAR_ALL = 'CLEAR_ALL';
+	var DOCUMENT_CREATED = exports.DOCUMENT_CREATED = 'DOCUMENT_CREATED';
+	var DOCUMENT_CREATE_FAILED = exports.DOCUMENT_CREATE_FAILED = 'DOCUMENT_CREATE_FAILED';
+	var DOCUMENTS_CREATED = exports.DOCUMENTS_CREATED = 'DOCUMENTS_CREATED';
+	var DOCUMENTS_CREATE_FAILED = exports.DOCUMENTS_CREATE_FAILED = 'DOCUMENTS_CREATE_FAILED';
+	var DOCUMENTS_READ = exports.DOCUMENTS_READ = 'DOCUMENTS_READ';
+	var DOCUMENT_DELETED = exports.DOCUMENT_DELETED = 'DOCUMENT_DELETED';
+	var DOCUMENT_DELETION_FAILED = exports.DOCUMENT_DELETION_FAILED = 'DOCUMENT_DELETION_FAILED';
+	var DOCUMENT_UPDATE_FAILED = exports.DOCUMENT_UPDATE_FAILED = 'DOCUMENT_UPDATE_FAILED';
+	var GET_USER_SUCCESS = exports.GET_USER_SUCCESS = 'GET_USER_SUCCESS';
+	var GET_ROLE_SUCCESS = exports.GET_ROLE_SUCCESS = 'GET_ROLE_SUCCESS';
+	var GET_ROLE_FAILED = exports.GET_ROLE_FAILED = 'GET_ROLE_FAILED';
+	var LOGIN_SUCCESSFUL = exports.LOGIN_SUCCESSFUL = 'LOGIN_SUCCESSFUL';
+	var LOGIN_ERROR = exports.LOGIN_ERROR = 'LOGIN_ERROR';
+	var ROLE_CREATED = exports.ROLE_CREATED = 'ROLE_CREATED';
+	var ROLE_UPDATE = exports.ROLE_UPDATE = 'ROLE_UPDATE';
+	var ROLE_CREATE_FAILED = exports.ROLE_CREATE_FAILED = 'ROLE_CREATE_FAILED';
+	var ROLE_UPDATE_FAILED = exports.ROLE_UPDATE_FAILED = 'ROLE_UPDATE_FAILED';
+	var ROLE_RETRIEVAL_FAILED = exports.ROLE_RETRIEVAL_FAILED = 'ROLE_RETRIEVAL_FAILED';
+	var SEARCH_USER_COMPLETE = exports.SEARCH_USER_COMPLETE = 'SEARCH_USER_COMPLETE';
+	var SEARCH_USER_FAILED = exports.SEARCH_USER_FAILED = 'SEARCH_USER_FAILED';
+	var SEARCH_DOCS_COMPLETE = exports.SEARCH_DOCS_COMPLETE = 'SEARCH_DOCS_COMPLETE';
+	var SEARCH_DOCS_FAILED = exports.SEARCH_DOCS_FAILED = 'SEARCH_DOCS_FAILED';
+	var SIGNUP_FAILED = exports.SIGNUP_FAILED = 'SIGNUP_FAILED';
+	var USER_UPDATED = exports.USER_UPDATED = 'USER_UPDATED';
+	var USER_UPDATE_FAILED = exports.USER_UPDATE_FAILED = 'USER_UPDATE_FAILED';
+	var USER_RETRIEVAL_FAILED = exports.USER_RETRIEVAL_FAILED = 'USER_RETRIEVAL_FAILED';
+	var USER_DELETED = exports.USER_DELETED = 'USER_DELETED';
+	var USER_DELETION_FAILED = exports.USER_DELETION_FAILED = 'USER_DELETION_FAILED';
+	var VIEW_USER = exports.VIEW_USER = 'VIEW_USER';
+	var VIEW_ROLE = exports.VIEW_ROLE = 'VIEW_ROLE';
+	var VIEW_ALL_DOCUMENTS_SUCCESS = exports.VIEW_ALL_DOCUMENTS_SUCCESS = 'VIEW_ALL_DOCUMENTS_SUCCESS';
+	var VIEW_USER_DOCUMENTS_SUCCESS = exports.VIEW_USER_DOCUMENTS_SUCCESS = 'VIEW_USER_DOCUMENTS_SUCCESS';
+
+/***/ }),
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -2721,7 +2766,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports) {
 
 	/**
@@ -2754,28 +2799,6 @@
 	};
 
 	module.exports = ReactCurrentOwner;
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var DOCUMENT_CREATED = exports.DOCUMENT_CREATED = 'DOCUMENT_CREATED';
-	var DOCUMENT_CREATE_FAILED = exports.DOCUMENT_CREATE_FAILED = 'DOCUMENT_CREATE_FAILED';
-	var DOCUMENTS_READ = exports.DOCUMENTS_READ = 'DOCUMENTS_READ';
-	var VIEW_USER_DOCUMENTS_SUCCESS = exports.VIEW_USER_DOCUMENTS_SUCCESS = 'VIEW_USER_DOCUMENTS_SUCCESS';
-	var GET_USER_SUCCESS = exports.GET_USER_SUCCESS = 'GET_USER_SUCCESS';
-	var GET_ROLE_SUCCESS = exports.GET_ROLE_SUCCESS = 'GET_ROLE_SUCCESS';
-	var SEARCH_USER_COMPLETE = exports.SEARCH_USER_COMPLETE = 'SEARCH_USER_COMPLETE';
-	var SEARCH_USER_FAILED = exports.SEARCH_USER_FAILED = 'SEARCH_USER_FAILED';
-	var SEARCH_DOCS_COMPLETE = exports.SEARCH_DOCS_COMPLETE = 'SEARCH_DOCS_COMPLETE';
-	var SEARCH_DOCS_FAILED = exports.SEARCH_DOCS_FAILED = 'SEARCH_DOCS_FAILED';
-	var GET_ROLE_FAILED = exports.GET_ROLE_FAILED = 'GET_ROLE_FAILED';
-	var ADD_ROLE_SUCCESS = exports.ADD_ROLE_SUCCESS = 'ADD_ROLE_SUCCESS';
 
 /***/ }),
 /* 24 */
@@ -3740,7 +3763,7 @@
 
 	var _assign = __webpack_require__(8);
 
-	var ReactCurrentOwner = __webpack_require__(22);
+	var ReactCurrentOwner = __webpack_require__(23);
 
 	var warning = __webpack_require__(4);
 	var canDefineProperty = __webpack_require__(66);
@@ -4129,12 +4152,8 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function setAuthorisationToken(token) {
-	  // if (token) {
 	  delete _axios2.default.defaults.headers.common['x-access-token'];
 	  _axios2.default.defaults.headers.common['x-access-token'] = token;
-	  // } else {
-	  //   delete axios.defaults.headers.common['x-access-token'];
-	  // }
 	}
 
 /***/ }),
@@ -5885,15 +5904,6 @@
 	      _reactRouter.browserHistory.push('/');
 	    }
 	  }, {
-	    key: 'handleClick1',
-	    value: function handleClick1(e) {
-	      e.preventDefault();
-	      _iziToast2.default.show({
-	        title: 'Hey',
-	        message: 'What would you like to add?'
-	      });
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      if (window.localStorage.getItem('token')) {
@@ -6201,7 +6211,11 @@
 	    key: 'onSubmit',
 	    value: function onSubmit(event) {
 	      event.preventDefault();
-	      this.props.CreateDocument(this.state);
+	      if (this.state.content.length < 1) {
+	        Materialize.toast('Please add a content', 3000);
+	      } else {
+	        this.props.CreateDocument(this.state);
+	      }
 	    }
 	  }, {
 	    key: 'render',
@@ -7975,7 +7989,7 @@
 
 
 	// module
-	exports.push([module.id, ".myContainer {\n  margin: 0 18px; }\n\n.mainContainer {\n  background-color: rgba(0, 0, 0, 0.5);\n  color: #FDFEFE;\n  position: absolute;\n  height: 100%;\n  width: 100%; }\n\n.mainContainer .bg {\n  background-image: url(\"https://cloud.githubusercontent.com/assets/25608675/25169939/aec83538-24e0-11e7-84d5-8a26affcbd4e.jpg\");\n  background-size: cover;\n  background-repeat: no-repeat;\n  position: absolute;\n  width: 100vw;\n  height: 100vh;\n  z-index: -1; }\n\n.bodyInnards {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  margin-right: -50%;\n  transform: translate(-50%, -50%);\n  text-align: center; }\n\n.bodyInnards i,\n#createDoc i,\n#createUser i {\n  font-size: 6rem;\n  color: #FFD04A;\n  margin: 0; }\n\n.createDoc {\n  padding: 2px 9px 2px 2px;\n  width: 100%;\n  letter-spacing: normal;\n  background-color: #F2F2F2;\n  border: 1px solid #000;\n  border-radius: 8px;\n  color: #000;\n  border-radius: 1px; }\n\n.searchForm {\n  display: inline; }\n\n.searchBox {\n  right: 0;\n  width: 40%;\n  display: -webkit-inline-box;\n  position: absolute;\n  height: inherit;\n  padding: 0 20px;\n  border-radius: 8px;\n  background-color: #F2F2F2;\n  border: 1px solid #000;\n  opacity: 0.9;\n  z-index: 11; }\n\n.searchBox input {\n  border: 0px solid;\n  width: 100%;\n  color: #000; }\n\n.searchBox i {\n  padding-right: 10%;\n  color: #000; }\n\n.searchBox select {\n  display: block;\n  width: 100%;\n  height: 61px;\n  float: right;\n  color: #000;\n  background-color: #F2F2F2; }\n\n.inline {\n  margin-right: 5px; }\n\n.dropdown {\n  border-left: 2px solid #000;\n  display: inline-block;\n  position: absolute;\n  right: 0;\n  padding-right: 3%; }\n\n.userTopNav {\n  z-index: 30;\n  background-color: #FDFEFE; }\n\n.dropdown-content {\n  width: 50%;\n  color: #000; }\n\n.dropdown-content li {\n  text-align: left; }\n\nnav ul a {\n  color: #FDFEFE; }\n\nnav a {\n  color: #FDFEFE; }\n\nnav {\n  font-family: \"Sanchez\", serif;\n  background-color: rgba(255, 0, 0, 0.1); }\n\n.side-nav {\n  padding-top: 60px; }\n\n.tabs {\n  -webkit-box-shadow: 0 8px 10px -6px black;\n  -moz-box-shadow: 0 8px 10px -6px black;\n  box-shadow: 0 8px 10px -6px black;\n  z-index: 9; }\n\n.tabRow {\n  background-color: #003366;\n  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4); }\n\n.tabContent {\n  max-height: 73vh;\n  width: 100%;\n  overflow: scroll;\n  background-color: #F2F2F2;\n  padding: .9rem !important;\n  color: #000;\n  opacity: 0.9; }\n\n.tabs .tab a {\n  color: #000; }\n\n.tabs .tab a:hover, .tabs .tab a.active {\n  color: #4386FC; }\n\n.tabs .indicator {\n  background-color: #4386FC; }\n\n.dropdown-content li > a, .dropdown-content li > span {\n  left: 0%; }\n\n@media only screen and (max-width: 992px) {\n  nav .brand-logo {\n    left: 47%; } }\n\n.upperCase {\n  text-transform: uppercase; }\n\n.loginForm {\n  margin: 2% 25%;\n  width: 50%;\n  height: 80%;\n  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);\n  padding: 2% 3%; }\n\n.signupForm {\n  margin: auto;\n  width: 80%;\n  height: 80%;\n  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);\n  padding: 2% 3%; }\n\n.center {\n  text-align: center;\n  color: #212121; }\n\n.auth-button {\n  margin: 2%;\n  width: 95%;\n  background-color: #003366;\n  color: #FDFEFE; }\n\n.auth-button:hover {\n  background-color: #FFD04A; }\n\n.auth-header a {\n  color: #212121;\n  font-family: \"Sanchez\", serif; }\n\n.modal {\n  color: #000;\n  width: 80%; }\n\n.inline {\n  display: inline-block; }\n\n.input-field label:not(.label-icon) {\n  -webkit-transform: translateY(-50%);\n  transform: translateY(-50%);\n  height: 50%; }\n\n.input-field label:not(.label-icon).active {\n  -webkit-transform: translateY(-90%);\n  transform: translateY(-90%); }\n\n.mce-tinymce * {\n  height: 100% !important;\n  line-height: 100% !important; }\n\n@media only screen and (min-width: 601px) {\n  .mce-tinymce * {\n    height: 100% !important;\n    line-height: 100% !important; } }\n\n.nav .input-field input {\n  border-bottom: 1px solid;\n  width: 97%; }\n\ntable .th {\n  text-align: center; }\n\ntable {\n  table-layout: fixed; }\n\n.displayNone {\n  display: none; }\n", ""]);
+	exports.push([module.id, ".myContainer {\n  margin: 0 18px; }\n\n.mainContainer {\n  background-color: rgba(0, 0, 0, 0.5);\n  color: #FDFEFE;\n  position: absolute;\n  height: 100%;\n  width: 100%; }\n\n.mainContainer .bg {\n  background-image: url(\"https://cloud.githubusercontent.com/assets/25608675/25169939/aec83538-24e0-11e7-84d5-8a26affcbd4e.jpg\");\n  background-size: cover;\n  background-repeat: no-repeat;\n  position: absolute;\n  width: 100vw;\n  height: 100vh;\n  z-index: -1; }\n\n.bodyInnards {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  margin-right: -50%;\n  transform: translate(-50%, -50%);\n  text-align: center; }\n\n.bodyInnards i,\n#createDoc i,\n#createUser i {\n  font-size: 6rem;\n  color: #FFD04A;\n  margin: 0; }\n\n.createDoc {\n  padding: 2px 9px 2px 2px;\n  width: 100%;\n  letter-spacing: normal;\n  background-color: #F2F2F2;\n  border: 1px solid #000;\n  border-radius: 8px;\n  color: #000;\n  border-radius: 1px; }\n\n.searchForm {\n  display: inline; }\n\n.searchBox {\n  right: 0;\n  width: 40%;\n  display: -webkit-inline-box;\n  position: absolute;\n  height: inherit;\n  padding: 0 20px;\n  border-radius: 8px;\n  background-color: #F2F2F2;\n  border: 1px solid #000;\n  opacity: 0.9;\n  z-index: 11; }\n\n.searchBox input {\n  border: 0px solid;\n  width: 100%;\n  color: #000; }\n\n.searchBox i {\n  padding-right: 10%;\n  color: #000; }\n\n.searchBox select {\n  display: block;\n  width: 100%;\n  height: 61px;\n  float: right;\n  color: #000;\n  background-color: #F2F2F2; }\n\n.inline {\n  margin-right: 5px; }\n\n.dropdown {\n  border-left: 2px solid #000;\n  display: inline-block;\n  position: absolute;\n  right: 0;\n  padding-right: 3%; }\n\n.userTopNav {\n  z-index: 30;\n  background-color: #FDFEFE; }\n\n.dropdown-content {\n  width: 50%;\n  color: #000; }\n\n.dropdown-content li {\n  text-align: left; }\n\nnav ul a {\n  color: #FDFEFE; }\n\nnav a {\n  color: #FDFEFE; }\n\nnav {\n  font-family: \"Sanchez\", serif;\n  background-color: rgba(255, 0, 0, 0.1); }\n\n.side-nav {\n  padding-top: 60px; }\n\n.tabs {\n  -webkit-box-shadow: 0 8px 10px -6px black;\n  -moz-box-shadow: 0 8px 10px -6px black;\n  box-shadow: 0 8px 10px -6px black;\n  z-index: 9; }\n\n.tabRow {\n  background-color: #003366;\n  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4); }\n\n.tabContent {\n  max-height: 73vh;\n  width: 100%;\n  overflow: scroll;\n  background-color: #F2F2F2;\n  padding: .9rem !important;\n  color: #000;\n  opacity: 0.9; }\n\n.tabs .tab a {\n  color: #000; }\n\n.tabs .tab a:hover, .tabs .tab a.active {\n  color: #4386FC; }\n\n.tabs .indicator {\n  background-color: #4386FC; }\n\n.dropdown-content li > a, .dropdown-content li > span {\n  left: 0%; }\n\n@media only screen and (max-width: 992px) {\n  nav .brand-logo {\n    left: 47%; } }\n\n.upperCase {\n  text-transform: uppercase; }\n\n.loginForm {\n  margin: 2% 25%;\n  width: 50%;\n  height: 80%;\n  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);\n  padding: 2% 3%; }\n\n.signupForm {\n  margin: auto;\n  width: 80%;\n  height: 80%;\n  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);\n  padding: 2% 3%; }\n\n.center {\n  text-align: center;\n  color: #212121; }\n\n.auth-button {\n  margin: 2%;\n  width: 95%;\n  background-color: #003366;\n  color: #FDFEFE; }\n\n.auth-button:hover {\n  background-color: #FFD04A; }\n\n.auth-header a {\n  color: #212121;\n  font-family: \"Sanchez\", serif; }\n\n.modal {\n  color: #000;\n  width: 80%; }\n\n.inline {\n  display: inline-block; }\n\n.input-field label:not(.label-icon) {\n  -webkit-transform: translateY(-50%);\n  transform: translateY(-50%);\n  height: 50%; }\n\n.input-field label:not(.label-icon).active {\n  -webkit-transform: translateY(-90%);\n  transform: translateY(-90%); }\n\n.mce-tinymce * {\n  height: 100% !important;\n  line-height: 100% !important; }\n\n@media only screen and (min-width: 601px) {\n  .mce-tinymce * {\n    height: 100% !important;\n    line-height: 100% !important; } }\n\n.nav .input-field input {\n  border-bottom: 1px solid;\n  width: 97%; }\n\ntable {\n  width: 100%;\n  max-width: 100%;\n  min-width: 300px; }\n\nth, td {\n  max-width: 500px;\n  min-width: 20px; }\n\n.displayNone {\n  display: none; }\n", ""]);
 
 	// exports
 
@@ -9175,10 +9189,10 @@
 
 	var _prodInvariant = __webpack_require__(6);
 
-	var ReactCurrentOwner = __webpack_require__(22);
+	var ReactCurrentOwner = __webpack_require__(23);
 	var ReactInstanceMap = __webpack_require__(46);
 	var ReactInstrumentation = __webpack_require__(19);
-	var ReactUpdates = __webpack_require__(21);
+	var ReactUpdates = __webpack_require__(22);
 
 	var invariant = __webpack_require__(3);
 	var warning = __webpack_require__(4);
@@ -12391,6 +12405,39 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var MyDocs = function MyDocs(props) {
+	  var SingleDocument = function SingleDocument(document, index) {
+	    return _react2.default.createElement(
+	      'tr',
+	      { className: 'hoverable', key: index },
+	      _react2.default.createElement(
+	        'td',
+	        null,
+	        document.title
+	      ),
+	      _react2.default.createElement(
+	        'td',
+	        null,
+	        document.access
+	      ),
+	      _react2.default.createElement(
+	        'td',
+	        { className: 'truncate' },
+	        _react2.default.createElement('a', { href: '#modalView', dangerouslySetInnerHTML: { __html: document.content }, onClick: function onClick() {
+	            props.setViewDocument(document);
+	          } })
+	      ),
+	      _react2.default.createElement(
+	        'td',
+	        null,
+	        document.createdAt.slice(0, 10)
+	      ),
+	      _react2.default.createElement(
+	        'td',
+	        null,
+	        document.updatedAt.slice(0, 10)
+	      )
+	    );
+	  };
 	  var token = window.localStorage.getItem('token');
 	  var myId = (0, _jwtDecode2.default)(token).userId;
 	  var documentList = [];
@@ -12402,8 +12449,6 @@
 	    }
 	    documentList = docs.filter(function (document) {
 	      return document.ownerId === myId;
-	    }).map(function (document) {
-	      return _react2.default.createElement(SingleDocument, { document: document, key: document.id });
 	    });
 	  }
 	  return _react2.default.createElement(
@@ -12448,44 +12493,8 @@
 	      _react2.default.createElement(
 	        'tbody',
 	        null,
-	        documentList
+	        documentList.map(SingleDocument)
 	      )
-	    )
-	  );
-	};
-
-	var SingleDocument = function SingleDocument(props) {
-	  var document = props.document;
-
-	  return _react2.default.createElement(
-	    'tr',
-	    { className: 'hoverable' },
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.title
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.access
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      { className: 'truncate' },
-	      _react2.default.createElement('a', { href: '#modalView', dangerouslySetInnerHTML: { __html: document.content }, onClick: function onClick() {
-	          props.setViewDocument(document);
-	        } })
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.createdAt.slice(0, 10)
-	    ),
-	    _react2.default.createElement(
-	      'td',
-	      null,
-	      document.updatedAt.slice(0, 10)
 	    )
 	  );
 	};
@@ -15615,7 +15624,7 @@
 
 	var LinkedValueUtils = __webpack_require__(79);
 	var ReactDOMComponentTree = __webpack_require__(10);
-	var ReactUpdates = __webpack_require__(21);
+	var ReactUpdates = __webpack_require__(22);
 
 	var warning = __webpack_require__(4);
 
@@ -16083,7 +16092,7 @@
 	var DOMProperty = __webpack_require__(26);
 	var React = __webpack_require__(41);
 	var ReactBrowserEventEmitter = __webpack_require__(58);
-	var ReactCurrentOwner = __webpack_require__(22);
+	var ReactCurrentOwner = __webpack_require__(23);
 	var ReactDOMComponentTree = __webpack_require__(10);
 	var ReactDOMContainerInfo = __webpack_require__(281);
 	var ReactDOMFeatureFlags = __webpack_require__(283);
@@ -16093,7 +16102,7 @@
 	var ReactMarkupChecksum = __webpack_require__(303);
 	var ReactReconciler = __webpack_require__(36);
 	var ReactUpdateQueue = __webpack_require__(82);
-	var ReactUpdates = __webpack_require__(21);
+	var ReactUpdates = __webpack_require__(22);
 
 	var emptyObject = __webpack_require__(42);
 	var instantiateReactComponent = __webpack_require__(142);
@@ -17133,7 +17142,7 @@
 
 	var _prodInvariant = __webpack_require__(6);
 
-	var ReactCurrentOwner = __webpack_require__(22);
+	var ReactCurrentOwner = __webpack_require__(23);
 	var REACT_ELEMENT_TYPE = __webpack_require__(297);
 
 	var getIteratorFn = __webpack_require__(331);
@@ -19667,7 +19676,7 @@
 
 	'use strict';
 
-	var ReactCurrentOwner = __webpack_require__(22);
+	var ReactCurrentOwner = __webpack_require__(23);
 	var ReactComponentTreeHook = __webpack_require__(16);
 	var ReactElement = __webpack_require__(32);
 
@@ -21362,7 +21371,7 @@
 
 	var _reactRouter = __webpack_require__(7);
 
-	var _actionTypes = __webpack_require__(23);
+	var _actionTypes = __webpack_require__(21);
 
 	var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -21412,7 +21421,7 @@
 
 	var _reactRouter = __webpack_require__(7);
 
-	var _actionTypes = __webpack_require__(23);
+	var _actionTypes = __webpack_require__(21);
 
 	var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -21457,7 +21466,7 @@
 
 	var _reactRouter = __webpack_require__(7);
 
-	var _actionTypes = __webpack_require__(23);
+	var _actionTypes = __webpack_require__(21);
 
 	var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -21511,7 +21520,7 @@
 
 	var _reactRouter = __webpack_require__(7);
 
-	var _actionTypes = __webpack_require__(23);
+	var _actionTypes = __webpack_require__(21);
 
 	var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -21562,7 +21571,7 @@
 
 	var _reactRouter = __webpack_require__(7);
 
-	var _actionTypes = __webpack_require__(23);
+	var _actionTypes = __webpack_require__(21);
 
 	var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -21606,7 +21615,7 @@
 
 	var _reactRouter = __webpack_require__(7);
 
-	var _actionTypes = __webpack_require__(23);
+	var _actionTypes = __webpack_require__(21);
 
 	var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -22689,7 +22698,7 @@
 	                  _react2.default.createElement(
 	                    _reactRouter.Link,
 	                    { to: '#test1', className: 'active' },
-	                    'All Document'
+	                    'All Documents'
 	                  )
 	                ),
 	                _react2.default.createElement(
@@ -22698,7 +22707,7 @@
 	                  _react2.default.createElement(
 	                    _reactRouter.Link,
 	                    { to: '#test2' },
-	                    'Users'
+	                    'User List'
 	                  )
 	                ),
 	                _react2.default.createElement(
@@ -22707,7 +22716,7 @@
 	                  _react2.default.createElement(
 	                    _reactRouter.Link,
 	                    { to: '#test3' },
-	                    'Roles'
+	                    'Role List'
 	                  )
 	                ),
 	                _react2.default.createElement(
@@ -22716,7 +22725,7 @@
 	                  _react2.default.createElement(
 	                    _reactRouter.Link,
 	                    { to: '#test4' },
-	                    'My Document'
+	                    'My Documents'
 	                  )
 	                ),
 	                _react2.default.createElement(
@@ -23497,6 +23506,11 @@
 	          _react2.default.createElement(
 	            'th',
 	            null,
+	            'Owner'
+	          ),
+	          _react2.default.createElement(
+	            'th',
+	            null,
 	            'Published date'
 	          ),
 	          _react2.default.createElement(
@@ -23987,7 +24001,7 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _actionTypes = __webpack_require__(23);
+	var _actionTypes = __webpack_require__(21);
 
 	var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -24073,7 +24087,7 @@
 
 /***/ }),
 /* 226 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -24083,19 +24097,25 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+	var _actionTypes = __webpack_require__(21);
+
+	var actionTypes = _interopRequireWildcard(_actionTypes);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 	exports.default = function () {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	  var action = arguments[1];
 
 	  switch (action.type) {
-	    case 'LOGIN_SUCCESSFUL':
+	    case actionTypes.LOGIN_SUCCESSFUL:
 	      return _extends({}, state, {
 	        user: action.user,
 	        token: action.token,
 	        error: null,
 	        success: action.message
 	      });
-	    case 'LOGIN_ERROR':
+	    case actionTypes.LOGIN_ERROR:
 	      return _extends({}, state, {
 	        error: action.message,
 	        success: null,
@@ -24118,7 +24138,7 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _actionTypes = __webpack_require__(23);
+	var _actionTypes = __webpack_require__(21);
 
 	var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -24142,7 +24162,7 @@
 
 /***/ }),
 /* 228 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -24152,14 +24172,20 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+	var _actionTypes = __webpack_require__(21);
+
+	var actionTypes = _interopRequireWildcard(_actionTypes);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 	exports.default = function () {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	  var action = arguments[1];
 
 	  switch (action.type) {
-	    case 'LOGIN_SUCCESSFUL':
+	    case actionTypes.LOGIN_SUCCESSFUL:
 	      return _extends({}, state, { user: Object.assign({}, action.user) });
-	    case 'SIGNUP_FAILED':
+	    case actionTypes.SIGNUP_FAILED:
 	      return _extends({}, state, { error: action.message, success: null });
 	    default:
 	      return state;
@@ -24178,7 +24204,7 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _actionTypes = __webpack_require__(23);
+	var _actionTypes = __webpack_require__(21);
 
 	var actionTypes = _interopRequireWildcard(_actionTypes);
 
@@ -28230,7 +28256,7 @@
 	var EventPropagators = __webpack_require__(45);
 	var ExecutionEnvironment = __webpack_require__(11);
 	var ReactDOMComponentTree = __webpack_require__(10);
-	var ReactUpdates = __webpack_require__(21);
+	var ReactUpdates = __webpack_require__(22);
 	var SyntheticEvent = __webpack_require__(24);
 
 	var getEventTarget = __webpack_require__(86);
@@ -29300,7 +29326,7 @@
 
 	var React = __webpack_require__(41);
 	var ReactComponentEnvironment = __webpack_require__(80);
-	var ReactCurrentOwner = __webpack_require__(22);
+	var ReactCurrentOwner = __webpack_require__(23);
 	var ReactErrorUtils = __webpack_require__(81);
 	var ReactInstanceMap = __webpack_require__(46);
 	var ReactInstrumentation = __webpack_require__(19);
@@ -30208,7 +30234,7 @@
 	var ReactDefaultInjection = __webpack_require__(296);
 	var ReactMount = __webpack_require__(134);
 	var ReactReconciler = __webpack_require__(36);
-	var ReactUpdates = __webpack_require__(21);
+	var ReactUpdates = __webpack_require__(22);
 	var ReactVersion = __webpack_require__(311);
 
 	var findDOMNode = __webpack_require__(328);
@@ -31493,7 +31519,7 @@
 	var DOMPropertyOperations = __webpack_require__(127);
 	var LinkedValueUtils = __webpack_require__(79);
 	var ReactDOMComponentTree = __webpack_require__(10);
-	var ReactUpdates = __webpack_require__(21);
+	var ReactUpdates = __webpack_require__(22);
 
 	var invariant = __webpack_require__(3);
 	var warning = __webpack_require__(4);
@@ -32441,7 +32467,7 @@
 
 	var LinkedValueUtils = __webpack_require__(79);
 	var ReactDOMComponentTree = __webpack_require__(10);
-	var ReactUpdates = __webpack_require__(21);
+	var ReactUpdates = __webpack_require__(22);
 
 	var invariant = __webpack_require__(3);
 	var warning = __webpack_require__(4);
@@ -33225,7 +33251,7 @@
 
 	var _assign = __webpack_require__(8);
 
-	var ReactUpdates = __webpack_require__(21);
+	var ReactUpdates = __webpack_require__(22);
 	var Transaction = __webpack_require__(60);
 
 	var emptyFunction = __webpack_require__(18);
@@ -33452,7 +33478,7 @@
 	var ExecutionEnvironment = __webpack_require__(11);
 	var PooledClass = __webpack_require__(30);
 	var ReactDOMComponentTree = __webpack_require__(10);
-	var ReactUpdates = __webpack_require__(21);
+	var ReactUpdates = __webpack_require__(22);
 
 	var getEventTarget = __webpack_require__(86);
 	var getUnboundedScrollPosition = __webpack_require__(238);
@@ -33650,7 +33676,7 @@
 	var ReactEmptyComponent = __webpack_require__(130);
 	var ReactBrowserEventEmitter = __webpack_require__(58);
 	var ReactHostComponent = __webpack_require__(132);
-	var ReactUpdates = __webpack_require__(21);
+	var ReactUpdates = __webpack_require__(22);
 
 	var ReactInjection = {
 	  Component: ReactComponentEnvironment.injection,
@@ -33783,7 +33809,7 @@
 	var ReactInstanceMap = __webpack_require__(46);
 	var ReactInstrumentation = __webpack_require__(19);
 
-	var ReactCurrentOwner = __webpack_require__(22);
+	var ReactCurrentOwner = __webpack_require__(23);
 	var ReactReconciler = __webpack_require__(36);
 	var ReactChildReconciler = __webpack_require__(276);
 
@@ -36338,7 +36364,7 @@
 
 	var _prodInvariant = __webpack_require__(6);
 
-	var ReactCurrentOwner = __webpack_require__(22);
+	var ReactCurrentOwner = __webpack_require__(23);
 	var ReactDOMComponentTree = __webpack_require__(10);
 	var ReactInstanceMap = __webpack_require__(46);
 
@@ -47572,7 +47598,7 @@
 
 	var _prodInvariant = __webpack_require__(33);
 
-	var ReactCurrentOwner = __webpack_require__(22);
+	var ReactCurrentOwner = __webpack_require__(23);
 	var REACT_ELEMENT_TYPE = __webpack_require__(171);
 
 	var getIteratorFn = __webpack_require__(174);
