@@ -14,12 +14,10 @@ user.route('/api/user/profile')
   .get(auth.verifyToken, userController.getProfile);
 
 user.route('/api/user/admin')
-  .get(auth.verifyToken, auth.adminAccess, userController.getAllAdmin)
-  .post(auth.verifyToken, auth.adminAccess, userController.createUser);
+  .get(auth.verifyToken, auth.adminAccess, userController.getAllAdmin);
 
-user.route('/api/user/regular')
-  .get(auth.verifyToken, userController.getAllRegular)
-  .post(auth.verifyToken, userController.createUser);
+user.route('/api/user/role')
+  .get(auth.verifyToken, userController.getAllRole);
 
 user.route('/api/user/:id')
   .get(auth.verifyToken, userController.getUser)
@@ -32,6 +30,9 @@ user.route('/api/user/:id')
 
 user.route('/api/user/login')
   .post(userController.login);
+
+user.route('/api/search/user')
+  .get(auth.verifyToken, userController.searchUsers);
 
 user.route('/api/user/logout')
   .post(auth.verifyToken, userController.logout);

@@ -8,7 +8,7 @@ const secret = process.env.SECRET_TOKEN || 'secret';
 
 /**
  * Class UserController
- * To handle routing logic for documents route
+ * To handle routing logic for User route
  */
 class UserController {
 
@@ -29,7 +29,6 @@ class UserController {
    * @returns {Object} - response object
    */
   static createUser(request, response) {
-    console.log(request.decoded);
     model.User.findOne({ where: { email: request.body.email } })
       .then((foundUser) => {
         if (foundUser) {
@@ -37,7 +36,6 @@ class UserController {
             .send({ message: `${request.body.email} is already in use` });
         }
         if (request.body.roleId === '1') {
-          console.log(request.decoded);
           if (request.decoded.roleId === 1) {
             model.User.create(request.body)
               .then((newUser) => {
@@ -210,12 +208,11 @@ class UserController {
       offset,
       order: '"createdAt" ASC'
     }).then((user) => {
-      console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$');
-      const data = limit && offset ? { totalCount: user.count,
+      const metadata = limit && offset ? { totalCount: user.count,
         pages: Math.ceil(user.count / limit),
         currentPage: Math.floor(offset / limit) + 1,
         pageSize: user.rows.length } : null;
-      return response.status(200).send({ users: user.rows, data });
+      return response.status(200).send({ users: user.rows, metadata });
     })
     .catch(error => response.status(400).send({
       Error: error.message
@@ -228,23 +225,48 @@ class UserController {
    * @param {object} response - response object
    * @returns {Object} response object
    */
-  static getAllRegular(request, response) {
+  static getAllRole(request, response) {
     const limit = request.query.limit || '10';
     const offset = request.query.offset || '0';
+    const queryRole = request.query.role;
+    console.log('queryRole', typeof (queryRole));
+    console.log('request.decoded.roleId', typeof (request.decoded.roleId));
+    if (queryRole === '1') {
+      if (request.decoded.roleId !== 1) {
+        return response.status(401).send({
+          message: 'You are not authorized to get all admin'
+        });
+      }
+    }
     model.User.findAndCountAll({
+      include: [{
+        model: model.Role,
+        attributes: ['title']
+      }],
       limit,
       offset,
       order: '"createdAt" ASC',
       where: {
-        roleId: 2
+        roleId: queryRole
       }
-    }).then((user) => {
-      const data = limit && offset ? { totalCount: user.count,
-        pages: Math.ceil(user.count / limit),
+    }).then((users) => {
+      if (users.count === 0) {
+        return response.status(404)
+        .send({ message: 'There are no users with this role.' });
+      }
+      const metadata = limit && offset ? { totalCount: users.count,
+        pages: Math.ceil(users.count / limit),
         currentPage: Math.floor(offset / limit) + 1,
-        pageSize: user.rows.length } : null;
-      return response.status(200).send({ users: user.rows, data });
-    });
+        pageSize: users.rows.length } : null;
+      return response.status(200).send({
+        Role: users.rows[0].Role.title,
+        users: users.rows,
+        metadata
+      });
+    })
+    .catch(error => response.status(400).send({
+      message: error.message
+    }));
   }
 
   /**
@@ -264,11 +286,11 @@ class UserController {
         roleId: 1
       }
     }).then((user) => {
-      const data = limit && offset ? { totalCount: user.count,
+      const metadata = limit && offset ? { totalCount: user.count,
         pages: Math.ceil(user.count / limit),
         currentPage: Math.floor(offset / limit) + 1,
         pageSize: user.rows.length } : null;
-      return response.status(200).send({ users: user.rows, data });
+      return response.status(200).send({ users: user.rows, metadata });
     });
   }
 
@@ -284,7 +306,7 @@ class UserController {
         .then((foundUser) => {
           if (!foundUser) {
             return response.status(404)
-            .send({ message: 'User not found' });
+            .send({ message: 'User does not exist' });
           }
           if (foundUser && foundUser.verifyPassword(request.body.password)) {
             const token = jwt.sign({
@@ -368,6 +390,54 @@ class UserController {
   //     }
   //   });
   // }
+
+  /**
+   * Method to search for all users
+   * @param{Object} request - Request object
+   * @param{Object} response - Response object
+   * @return{Void} - returns void
+   */
+  static searchUsers(request, response) {
+    const limit = request.query.limit || '10';
+    const offset = request.query.offset || '0';
+    if (request.query.limit < 0 || request.query.offset < 0) {
+      return response.status(400)
+        .send({ message: 'Offset and limit can only be positive integers.' });
+    }
+
+    const userQuery = request.query.query;
+    const query = {
+      attributes: ['id', 'firstName', 'lastName', 'email', 'roleId'],
+      limit,
+      offset,
+      order: '"createdAt" ASC'
+    };
+    if (userQuery) {
+      query.where = {
+        $and: {
+          $or: [
+            { firstName: { $iLike: `%${userQuery}%` } },
+            { lastName: { $iLike: `%${userQuery}%` } }
+          ]
+        }
+      };
+    }
+
+    model.User.findAndCountAll(query)
+      .then((users) => {
+        const metadata = query.limit && query.offset
+          ? {
+            totalCount: users.count,
+            pages: Math.ceil(users.count / query.limit),
+            currentPage: Math.floor(query.offset / query.limit) + 1,
+            pageSize: users.rows.length
+          } : null;
+        response.send({ users: users.rows, metadata });
+      })
+      .catch(error => response.status(400).send({
+        message: error.message
+      }));
+  }
 }
 
 export default UserController;

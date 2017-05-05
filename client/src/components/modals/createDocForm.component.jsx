@@ -64,7 +64,11 @@ export class CreateDocument extends Component {
   }
   onSubmit(event) {
     event.preventDefault();
-    this.props.CreateDocument(this.state);
+    if(this.state.content.length < 1) {
+      Materialize.toast('Please add a content', 3000);
+    } else {
+      this.props.CreateDocument(this.state);
+    }
   }
 
   render() {
@@ -104,11 +108,11 @@ export class CreateDocument extends Component {
                   name='access'
                   id='access'
                   onChange={this.onChange}
-                  value={this.state.value}
+                  value={this.state.access}
                   className='browser-default'
                   required
                 >
-                  <option value='' disabled selected>Select Access Type</option>
+                  <option value='' disabled >Select Access Type</option>
                   <option value='public'>Public</option>
                   <option value='private'>Private</option>
                   <option value='role'>Role</option>

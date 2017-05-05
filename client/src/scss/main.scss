@@ -59,6 +59,9 @@ $background-color: #F2F2F2;
   color: $text-color-two;
   border-radius: 1px;
 }
+.searchForm {
+  display: inline;
+}
 .searchBox {
     right: 0;
     width: 40%;
@@ -230,9 +233,16 @@ text-transform: uppercase;
   border-bottom: 1px solid;
   width: 97%;
 }
-table .th {
-  text-align: center;
-}
 table {
-  table-layout: fixed;
+
+  width: 100%;
+  max-width: 100%;
+  min-width: 300px;
+}
+th, td {
+  max-width: 500px;
+  min-width: 20px;
+}
+.displayNone {
+  display: none;
 }

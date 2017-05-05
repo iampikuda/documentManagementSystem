@@ -189,43 +189,65 @@ class documentController {
     }
 
     const userQuery = request.query.query;
-    const role = Math.abs(request.query.role, 10);
-    const query = {
-      where: {
-        $and: [{
-          $or: [
-            { access: 'public' },
-            { ownerId: request.decoded.userId }
+    let query;
+    if (request.decoded.roleId === 1) {
+      query = {
+        include: [{
+          model: model.User,
+          attributes: [
+            'firstName', 'lastName', 'roleId'
           ]
         }],
-      },
-      limit,
-      offset,
-      order: '"createdAt" ASC'
-    };
-
-    if (userQuery) {
-      query.where.$and.push({
-        $or: [
-          { title: { $like: `%${userQuery}%` } },
-          { content: { $like: `%${userQuery}%` } }
-        ]
-      });
-    }
-    if (role) {
-      query.include = [{
-        model: model.User,
-        as: 'Owner',
-        attributes: [],
+        limit,
+        offset,
+        order: '"createdAt" ASC'
+      };
+      if (userQuery) {
+        query.where = {
+          $and: {
+            $or: [
+              { title: { $iLike: `%${userQuery}%` } },
+              { content: { $iLike: `%${userQuery}%` } }
+            ]
+          }
+        };
+      }
+    } else {
+      query = {
         include: [{
-          model: model.Role,
-          attributes: [],
-          where: { id: role }
-        }]
-      }];
+          model: model.User,
+          attributes: [
+            'firstName', 'lastName', 'roleId'
+          ]
+        }],
+        where: {
+          $or: [
+            { access: 'public' },
+            { ownerId: request.decoded.userId },
+            {
+              $and: [
+                { access: 'role' },
+                { '$User.roleId$': request.decoded.roleId }
+              ]
+            }
+          ]
+        },
+        limit,
+        offset,
+        order: '"createdAt" ASC'
+      };
+      if (userQuery) {
+        query.where.$and.push({
+          $or: [
+            { title: { $like: `%${userQuery}%` } },
+            { content: { $like: `%${userQuery}%` } }
+          ]
+        });
+      }
     }
 
-    model.document.findAndCountAll(query)
+
+    model.Document.findAndCountAll(query)
       .then((documents) => {
         const metadata = query.limit && query.offset
           ? {

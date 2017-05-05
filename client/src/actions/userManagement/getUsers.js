@@ -3,7 +3,6 @@ import { browserHistory } from 'react-router';
 import * as actionTypes from '../actionTypes';
 
 const userGetSuccess = (users) => {
-  // console.log('$$$$$$$$$$$', users);
   return {
     type: actionTypes.GET_USER_SUCCESS,
     users

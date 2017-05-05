@@ -16,13 +16,11 @@ const SingleRoles = (roles, index) => {
 }
 let rolesList = [];
 const RoleView = (props) => {
-   console.log('-=-=-=-=-=-=-', props);
   if (props.roles.roles !== undefined) {
     rolesList = props.roles.roles.data.roles;
     if (rolesList === undefined) {
       rolesList = props.roles.roles.data.roles;
     }
-    console.log('-=-=-=-=-=-=-', rolesList);
   }
   return (
     <div>

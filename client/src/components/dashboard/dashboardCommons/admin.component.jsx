@@ -4,11 +4,12 @@ import { browserHistory, Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import jwtDecode from 'jwt-decode';
 import Navbar from '../../commons/nav.component.js';
-import Searchbar from '../../commons/searchbar.jsx';
+import SubNavBar from '../../commons/subNavBar.jsx';
 import AllDocs from '../userDashboard/allDocs.component.jsx';
 import Users from '../../dashboard/adminDashboard/usersView.component.js';
 import Roles from '../../dashboard/adminDashboard/rolesView.component.js';
 import MyDocs from '../userDashboard/myDocs.component.jsx';
+import Search from '../userDashboard/search.component.jsx';
 import CreateDocument from '../../modals/createDocForm.component';
 import * as userActions from '../../../actions/userManagement/getUsers.js';
 import * as roleActions from '../../../actions/userManagement/getRoles.js';
@@ -18,20 +19,32 @@ class Dashboard extends Component {
     super(props);
     this.setEditDocument = this.setEditDocument.bind(this);
     this.setDeleteDocument = this.setDeleteDocument.bind(this);
+    this.setViewDocument = this.setViewDocument.bind(this);
+    this.handleSearchBarView = this.handleSearchBarView.bind(this);
     const token = window.localStorage.getItem('token');
     this.state = {
       AdminRoleId: 1,
+      searchBarView: 'noShow',
       authUser: jwtDecode(token) || {},
     };
   }
+
+  handleSearchBarView(view) {
+    this.setState({ searchBarView: view });
+  }
+
+  setViewDocument(document) {
+    this.setState({
+      viewTitle: document.title,
+      viewDocument: document.content,
+      documentId: document.id
+    });
+  }
   setEditDocument(document){
-    console.log(document, 'to edit');
     this.setState({
       editDocument: document,
       documentId: document.id
     });
-    browserHistory.push('/dashboard');
-
   }
   setDeleteDocument(documentId) {
     this.props.DeleteDocument(documentId);
@@ -48,24 +61,37 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-     
+        
+        <div id="modalView" className="modal modal-fixed-footer">
+          <div className="modal-content">
+            <h4 className="center">View Document</h4>
+            <h5>Title</h5>
+            <div>{ this.state.viewTitle }</div>
+            <h5>Content</h5>            
+            <div dangerouslySetInnerHTML={{ __html: this.state.viewDocument}} />
+          </div>
+          <div className="modal-footer">
+            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
+          </div>
+        </div>
         
         <div className="mainContainer">
           <div className="bg"></div>
           <Navbar />
-          <Searchbar />
+          <SubNavBar handleSearchBarView={this.handleSearchBarView}/>
           <div className="row">
             <div className="tabRow">
               <ul className="tabs tabs-fixed-width">
-                <li className="tab"><Link to="#test1" className="active">All Docs</Link></li>
-                <li className="tab"><Link to="#test2">Users</Link></li>
-                <li className="tab"><Link to="#test3">Roles</Link></li>
-                <li className="tab"><Link to="#test4">My Docs</Link></li>
+                <li className="tab"><Link to="#test1" className="active">All Documents</Link></li>
+                <li className="tab"><Link to="#test2">User List</Link></li>
+                <li className="tab"><Link to="#test3">Role List</Link></li>
+                <li className="tab"><Link to="#test4">My Documents</Link></li>
+                <li className="tab"><Link to="#searchTab">Search</Link></li>
               </ul>
             </div>
 
             <div id="test1" className="tabContent col s12">
-              <AllDocs document={this.props.documents} />
+              <AllDocs document={this.props.documents} setViewDocument={this.setViewDocument} />
             </div>
             <div id="test2" className="tabContent col s12">
               <Users users={this.props.users} />
@@ -74,7 +100,10 @@ class Dashboard extends Component {
               <Roles roles={this.props.roles} />
             </div>
             <div id="test4" className="tabContent col s12">
-              <MyDocs document={this.props.documents} setEditDocument={this.setEditDocument} setDeleteDocument={this.setDeleteDocument} />
+              <MyDocs document={this.props.documents} setEditDocument={this.setEditDocument} setViewDocument={this.setViewDocument} setDeleteDocument={this.setDeleteDocument} />
+            </div>
+            <div id="searchTab" className="tabContent col s12">
+              <Search document={this.props.documents} setViewDocument={this.setViewDocument} users={this.props.users} view= {this.state.searchBarView} />
             </div>
           </div>
         </div>
@@ -84,12 +113,6 @@ class Dashboard extends Component {
 }
 
 // export default Dashboard;
-const mapStoreToProps = (state) => {
-  return {
-    users: state.userReducer,
-    roles: state.roleReducer
-  }
-}
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -99,4 +122,4 @@ const mapDispatchToProps = (dispatch) => {
     actionsRole: bindActionCreators(roleActions, dispatch)
   };
 };
-export default connect(mapStoreToProps, mapDispatchToProps)(Dashboard);
+export default connect(null, mapDispatchToProps)(Dashboard);
