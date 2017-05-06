@@ -4,7 +4,7 @@ import CreateDocument from './createDocForm.component.jsx'
 import { browserHistory } from 'react-router';
 
 class AddDoc extends Component {
-  constructor() {
+  constructor(props) {
     super();
   }
   componentDidMount() {
@@ -19,7 +19,9 @@ class AddDoc extends Component {
       //   alert("Ready");
       //   console.log(modal, trigger);
       // },
-      complete: function () { window.location.reload(); } // Callback for Modal close
+      complete: function () {
+        // window.location.reload();
+      } // Callback for Modal close
     });
   }
   render() {

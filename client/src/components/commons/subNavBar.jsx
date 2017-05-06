@@ -4,7 +4,7 @@ import { browserHistory, Link } from 'react-router';
 import jwtDecode from 'jwt-decode';
 import AddDoc from '../modals/addDoc.component.jsx';
 import AddUser from '../modals/addUser.component.jsx';
-import AddRole from '../modals/addRole.component.jsx';
+
 import searchUsers from '../../actions/userManagement/searchUsers.js';
 import searchDocs from '../../actions/documentManagement/searchDocs.js';
 
@@ -56,7 +56,7 @@ class SubNavBar extends Component {
         <div className="nav-wrapper">
           <AddDoc />
           <AddUser />
-          {/*<AddRole />*/}
+
           <form className="searchForm" onSubmit={this.onSubmit}>
             <div className="searchBox">
               <i className="material-icons">search</i>

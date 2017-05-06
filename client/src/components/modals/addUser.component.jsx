@@ -18,7 +18,9 @@ class AddUser extends Component {
       //   alert("Ready");
       //   console.log(modal, trigger);
       // },
-      complete: function () { window.location.reload(); } // Callback for Modal close
+      complete: function () {
+        // window.location.reload();
+      } // Callback for Modal close
     });
   }
   render() {

@@ -17,7 +17,7 @@ class Login extends Component {
       password: ''
     }
     this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);ttttttt
     this.redirectIfLoggedIn = this.redirectIfLoggedIn.bind(this);
   }
   onChange(e) {

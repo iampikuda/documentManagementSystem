@@ -10,7 +10,7 @@ import Users from '../../dashboard/adminDashboard/usersView.component.js';
 import Roles from '../../dashboard/adminDashboard/rolesView.component.js';
 import MyDocs from '../userDashboard/myDocs.component.jsx';
 import Search from '../userDashboard/search.component.jsx';
-import CreateDocument from '../../modals/createDocForm.component';
+import EditDocument from '../../modals/editDocForm.component.jsx';
 import * as userActions from '../../../actions/userManagement/getUsers.js';
 import * as roleActions from '../../../actions/roleManagement/getRoles.js';
 import deleteUserAction from '../../../actions/userManagement/deleteUser';
@@ -80,7 +80,7 @@ class AdminDashboard extends Component {
         <div id="modalEdit" className="modal modal-fixed-footer">
           <div className="modal-content">
             <h4>Edit Document</h4>
-            <CreateDocument document={this.state.editDocument || null} documentId={this.state.documentId || null} onEdit={this.props.EditDocument} />
+            <EditDocument document={this.state.editDocument || null} documentId={this.state.documentId || null} onEdit={this.props.EditDocument} />
           </div>
           <div className="modal-footer">
             <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>

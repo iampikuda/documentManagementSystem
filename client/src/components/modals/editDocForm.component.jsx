@@ -94,15 +94,16 @@ export class CreateDocument extends Component {
               </div>
               <div className='row'>
                 <div className='input-field col s12'>
+                  {this.state.content &&
                   <TinyMCE
-                    content='Content'
+                    content={this.state.content}
                     name='content'
                     config={{
                       plugins: 'autolink link image lists print preview',
                       toolbar: 'undo redo | bold italic | alignleft aligncenter alignright'
                     }}
                     onChange={this.contentOnChange}
-                  />
+                  />}
                 </div>
               </div>
               <div className='col m3 s12'>
