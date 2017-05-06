@@ -15,7 +15,7 @@ export default (documentid) => {
         type: actionTypes.DOCUMENT_DELETED,
         status: 'success'
       });
-      browserHistory.push('/dashboard');
+      window.location.reload();
     }).catch((err) => {
       dispatch({
         type: actionTypes.DOCUMENT_DELETION_FAILED,

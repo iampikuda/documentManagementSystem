@@ -237,12 +237,12 @@ class documentController {
         order: '"createdAt" ASC'
       };
       if (userQuery) {
-        query.where.$and.push({
+        query.where.$and = [{
           $or: [
-            { title: { $like: `%${userQuery}%` } },
-            { content: { $like: `%${userQuery}%` } }
+            { title: { $iLike: `%${userQuery}%` } },
+            { content: { $iLike: `%${userQuery}%` } }
           ]
-        });
+        }];
       }
     }
 

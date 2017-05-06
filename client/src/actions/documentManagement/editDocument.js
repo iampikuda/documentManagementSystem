@@ -14,7 +14,7 @@ export default (details, documentid) => {
       }
     })
     .then(() => {
-      // browserHistory.push('/dasboard');
+      window.location.reload();
     }).catch((err) => {
       dispatch({
         type: actionTypes.DOCUMENT_UPDATE_FAILED,

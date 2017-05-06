@@ -8,11 +8,10 @@ import AdminDashboard from './admin.component.jsx';
 import UserDashboard from './user.component.jsx';
 import * as docActions from '../../../actions/documentManagement/readDocument.js';
 
-class Dashboard extends Component {
+class IndexDashboard extends Component {
   constructor(props) {
     super(props);
     const token = window.localStorage.getItem('token');
-    this.updateUser = this.updateUser.bind(this);
     this.state = {
       AdminRoleId: 1,
       authUser: jwtDecode(token) || {},
@@ -36,11 +35,6 @@ class Dashboard extends Component {
       }
     });
   }
-
-  updateUser(values, id) {
-    this.props.actionEditUser(values, id);
-  }
-
   render() {
     const roleId = this.state.authUser.roleId || null
     return (roleId === this.state.AdminRoleId) ?
@@ -70,4 +64,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStoreToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStoreToProps, mapDispatchToProps)(IndexDashboard);

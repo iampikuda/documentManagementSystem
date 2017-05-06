@@ -14,14 +14,16 @@ import CreateDocument from '../../modals/createDocForm.component';
 import * as userActions from '../../../actions/userManagement/getUsers.js';
 import * as roleActions from '../../../actions/roleManagement/getRoles.js';
 import deleteUserAction from '../../../actions/userManagement/deleteUser';
+import editUserActions from '../../../actions/userManagement/editUser.js';
 
-class Dashboard extends Component {
+class AdminDashboard extends Component {
   constructor(props) {
     super(props);
     this.setEditDocument = this.setEditDocument.bind(this);
     this.setDeleteDocument = this.setDeleteDocument.bind(this);
     this.setViewDocument = this.setViewDocument.bind(this);
     this.handleSearchBarView = this.handleSearchBarView.bind(this);
+    this.updateUser = this.updateUser.bind(this);
     const token = window.localStorage.getItem('token');
     this.state = {
       AdminRoleId: 1,
@@ -29,9 +31,20 @@ class Dashboard extends Component {
       authUser: jwtDecode(token) || {},
     };
   }
+  componentWillReceiveProps(nextProps){
+    const keys = ['users', 'documents', 'roles'];
+    keys.forEach(key=>{
+      if(nextProps[key]){
+        this.setState({
+          [key]: nextProps[key]
+        });
+      }
+    });
+  }
 
   handleSearchBarView(view) {
     this.setState({ searchBarView: view });
+    $('ul.tabs').tabs('select_tab', 'searchTab');
   }
 
   setViewDocument(document) {
@@ -47,9 +60,11 @@ class Dashboard extends Component {
       documentId: document.id
     });
   }
+  updateUser(values, id) {
+    this.props.actionEditUser(values, id);
+  }
   setDeleteDocument(documentId) {
     this.props.DeleteDocument(documentId);
-    browserHistory.push('/dashboard');
   }
   componentWillMount() {
     const userId = this.state.authUser.userId || null
@@ -62,7 +77,15 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        
+        <div id="modalEdit" className="modal modal-fixed-footer">
+          <div className="modal-content">
+            <h4>Edit Document</h4>
+            <CreateDocument document={this.state.editDocument || null} documentId={this.state.documentId || null} onEdit={this.props.EditDocument} />
+          </div>
+          <div className="modal-footer">
+            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+          </div>
+        </div>
         <div id="modalView" className="modal modal-fixed-footer">
           <div className="modal-content">
             <h4 className="center">View Document</h4>
@@ -72,7 +95,7 @@ class Dashboard extends Component {
             <div dangerouslySetInnerHTML={{ __html: this.state.viewDocument}} />
           </div>
           <div className="modal-footer">
-            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
+            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat ">Closet</a>
           </div>
         </div>
         
@@ -95,7 +118,7 @@ class Dashboard extends Component {
               <AllDocs document={this.props.documents} setViewDocument={this.setViewDocument} />
             </div>
             <div id="test2" className="tabContent col s12">
-              <Users updateUser={this.props.updateUser} users={this.props.users} roles={this.props.roles} deleteUser={this.props.deleteUser}/>
+              <Users updateUser={this.updateUser} users={this.props.users} roles={this.props.roles} deleteUser={this.props.deleteUser}/>
             </div>
             <div id="test3" className="tabContent col s12">
               <Roles roles={this.props.roles} />
@@ -120,7 +143,10 @@ const mapDispatchToProps = (dispatch) => {
     EditDocument: (documentDetails, documentId) => dispatch(EditDocument(documentDetails, documentId)),
     DeleteDocument: (documentId) => dispatch(DeleteDocument(documentId)),
     actionsUser: bindActionCreators(userActions, dispatch),
-    actionsRole: bindActionCreators(roleActions, dispatch)
+    actionsRole: bindActionCreators(roleActions, dispatch),
+    viewUser: (usertoken, userId) => dispatch(viewUserAction(usertoken, userId)),
+    deleteUser: (userId) => dispatch(deleteUserAction(userId)),
+    actionEditUser: bindActionCreators(editUserActions, dispatch)
   };
 };
-export default connect(null, mapDispatchToProps)(Dashboard);
+export default connect(null, mapDispatchToProps)(AdminDashboard);

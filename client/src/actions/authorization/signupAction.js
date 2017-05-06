@@ -1,5 +1,6 @@
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+import { Router } from 'react-router';
 import * as actionTypes from '../actionTypes';
 
 // export const loginSuccessful = user => ({ type: 'LOGIN_SUCCESSFUL', user });
@@ -14,10 +15,11 @@ export default (userData) => {
           type: actionTypes.LOGIN_SUCCESSFUL,
           user
         });
-      }).catch((err) => {
+        window.location.reload();
+      }).catch((error) => {
         dispatch({
           type: actionTypes.SIGNUP_FAILED,
-          message: err.response.data.error
+          message: error
         });
       });
   };

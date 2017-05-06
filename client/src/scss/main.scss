@@ -78,8 +78,9 @@ $background-color: #F2F2F2;
 }
 .searchBox input {
   border: 0px solid;
-  width: 100%;
+  width: 50%;
   color: $text-color-two;
+  display: block;
 }
 .searchBox i {
   padding-right: 10%;
@@ -244,5 +245,5 @@ th, td {
   min-width: 20px;
 }
 .displayNone {
-  display: none;
+  display: none !important;
 }

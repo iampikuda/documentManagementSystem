@@ -16,6 +16,7 @@ export default (userData, userId) => {
             id: userId
           })
         });
+        window.location.reload();
       }).catch((err) => {
         dispatch({
           type: actionTypes.USER_UPDATE_FAILED,

@@ -18,7 +18,7 @@ class signUpPage extends Component {
       email: '',
       password: '',
       confirmPassword: '',
-      roleId: 2
+      roleId: '99'
     }
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -44,13 +44,20 @@ class signUpPage extends Component {
   }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+    console.log(this.state);
   }
   onSubmit(e) {
     e.preventDefault();
-    if(this.state.password === this.state.confirmPassword){
-      this.props.Signup(this.state);
-    }else {
-      Materialize.toast('Passwords don\'t match!', 3000)
+    if(this.state.roleId === '99' && token) {
+      Materialize.toast('Please select a role', 3000)
+    } else {
+      if(this.state.password === this.state.confirmPassword){
+        this.props.Signup(this.state);
+        Materialize.toast('New user created', 3000)
+        // browserHistory.push('/');
+      }else {
+        Materialize.toast('Passwords don\'t match!', 3000)
+      }
     }
   }
   render() {
@@ -98,7 +105,7 @@ class signUpPage extends Component {
             </div>
 
             <div className="row">
-              <div className="input-field col s12">
+              <div className="input-field col s6">
                 <input
                   value={this.state.email}
                   onChange={this.onChange}
@@ -109,9 +116,6 @@ class signUpPage extends Component {
                   required />
                 <label htmlFor="email">Email</label>
               </div>
-            </div>
-
-            <div className="row">
               <div className="col s6">
                 <select
                   name="roleId"
@@ -120,13 +124,15 @@ class signUpPage extends Component {
                   value={this.state.roleId}
                   className="browser-default"
                   required
-                  defaultValue="1"
                   >
-                  <option value="1" disabled>Select RoleId</option>
+                  <option value={99} disabled>Select RoleId</option>
                   <option value={1}>Admin</option>
                   <option value={2}>Regular</option>
                 </select>
               </div>
+            </div>
+
+            <div className="row">
               <div className="input-field col s6">
                 <input
                   value={this.state.password}
@@ -137,6 +143,17 @@ class signUpPage extends Component {
                   className="validate"
                   required />
                 <label htmlFor="password">Password</label>
+              </div>
+              <div className="input-field col s6">
+                <input
+                value={this.state.confirmPassword}
+                onChange={this.onChange}
+                name="confirmPassword"
+                id="confirmPassword"
+                type="password"
+                 className="validate"
+                required />
+                <label  htmlFor="confirmPassword">Confirm Password</label>
               </div>
             </div>
 

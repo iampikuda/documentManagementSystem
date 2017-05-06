@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "359ca102aa4880aee2d6"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5074a9db9028c4cd1398"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -23973,7 +23973,7 @@
 	                _react2.default.createElement(
 	                  _reactRouter.Link,
 	                  {
-	                    to: '/app/profile/edit',
+	                    to: '/profile/edit',
 	                    className: 'btn'
 	                  },
 	                  'Edit Profile'

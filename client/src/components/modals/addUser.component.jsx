@@ -18,7 +18,7 @@ class AddUser extends Component {
       //   alert("Ready");
       //   console.log(modal, trigger);
       // },
-      // complete: function () { alert('Closed'); } // Callback for Modal close
+      complete: function () { window.location.reload(); } // Callback for Modal close
     });
   }
   render() {
@@ -34,7 +34,7 @@ class AddUser extends Component {
             <CreateUser />
           </div>
           <div className="modal-footer">
-            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat ">Done</a>
+            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
           </div>
         </div>
       </div>

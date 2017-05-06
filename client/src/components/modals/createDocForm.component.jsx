@@ -61,6 +61,7 @@ export class CreateDocument extends Component {
     this.setState({
       content: event.target.getContent()
     });
+    console.log(this.state, 'f');
   }
   onSubmit(event) {
     event.preventDefault();
@@ -72,6 +73,7 @@ export class CreateDocument extends Component {
   }
 
   render() {
+    console.log(this.state.content);
     return  (
       <div>
         <div>
@@ -92,15 +94,16 @@ export class CreateDocument extends Component {
               </div>
               <div className='row'>
                 <div className='input-field col s12'>
+                  {this.state.content &&
                   <TinyMCE
-                    content="<p>Content</p>"
+                    content={this.state.content}
                     name='content'
                     config={{
                       plugins: 'autolink link image lists print preview',
                       toolbar: 'undo redo | bold italic | alignleft aligncenter alignright'
                     }}
                     onChange={this.contentOnChange}
-                  />
+                  />}
                 </div>
               </div>
               <div className='col m3 s12'>

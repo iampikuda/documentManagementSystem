@@ -47,7 +47,6 @@ class SubNavBar extends Component {
       this.props.UserSearch(this.state.query);
       this.props.handleSearchBarView(false);
     }
-    
   }
 
   render() {

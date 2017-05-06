@@ -5,8 +5,6 @@ const secret = 'secret';
 
 const Auth = {
   verifyToken(request, response, next) {
-    // console.log('authorization', request.headers.authorization);
-    console.log(request.body);
     const token = request.headers.authorization ||
       request.body.token || request.headers['x-access-token'];
     if (!token) {

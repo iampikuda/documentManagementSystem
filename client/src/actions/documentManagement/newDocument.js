@@ -14,7 +14,7 @@ export default (details) => {
           document,
           status: 'success'
         });
-        browserHistory.push('/dashboard');
+        window.location.reload();
       }).catch((err) => {
         dispatch({
           type: actionTypes.DOCUMENT_CREATE_FAILED,
