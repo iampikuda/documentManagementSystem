@@ -19,8 +19,7 @@ class IndexDashboard extends Component {
   }
 
   componentWillMount() {
-    const userId = this.state.authUser.userId || null
-    this.props.actionsDoc.viewUserDocuments(userId);
+    this.props.actionsDoc.viewUserDocuments();
     // this.props.actionsUser.viewUsers(userId);
     // this.props.actionsRole.viewRoles(userId);
   }
@@ -39,10 +38,10 @@ class IndexDashboard extends Component {
     const roleId = this.state.authUser.roleId || null
     return (roleId === this.state.AdminRoleId) ?
       <div>
-        <AdminDashboard documents={this.props.documents} users={this.props.users} roles={this.props.roles} />
+        <AdminDashboard pagination={this.props.actionsDoc.viewUserDocuments} documents={this.props.documents} users={this.props.users} roles={this.props.roles} />
       </div> :
       <div>
-        <UserDashboard documents={this.props.documents} users={this.props.users} />
+        <UserDashboard pagination={this.props.actionsDoc.viewUserDocuments} documents={this.props.documents} users={this.props.users} />
       </div>
   }
 }
