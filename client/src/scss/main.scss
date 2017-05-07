@@ -139,9 +139,10 @@ nav a {
 .tabContent{
   max-height: 73vh;
   width: 100%;
+  position: relative;
   overflow: scroll;
   background-color: $background-color;
-  padding: .9rem !important;
+  padding: 2.9rem .9rem .9rem .9rem !important;
   color: $text-color-two;
   opacity: 0.9;
 }
@@ -243,4 +244,10 @@ th, td {
 }
 .displayNone {
   display: none !important;
+}
+.paginationKey{
+  position: fixed;
+  background: $text-color;
+  margin-left: 45%;
+  margin-top: -3%;
 }
