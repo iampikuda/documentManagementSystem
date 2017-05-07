@@ -1,6 +1,13 @@
 import axios from 'axios';
 import * as actionTypes from '../actionTypes';
 
+/**
+ * Get User
+ * @export
+ * @param {any} token
+ * @param {any} userId
+ * @returns {Object} object
+ */
 export default (token, userId) => {
   return (dispatch) => {
     axios.get(`/api/user/${userId}`, {

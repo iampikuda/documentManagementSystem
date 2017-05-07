@@ -8,7 +8,18 @@ import AddUser from '../modals/addUser.component.jsx';
 import searchUsers from '../../actions/userManagement/searchUsers.js';
 import searchDocs from '../../actions/documentManagement/searchDocs.js';
 
+/**
+ * 
+ * 
+ * @class SubNavBar
+ * @extends {Component}
+ */
 class SubNavBar extends Component {
+  /**
+   * Creates an instance of SubNavBar.
+   * @param {any} props 
+   * @memberof SubNavBar
+   */
   constructor(props) {
     super(props);
     const token = window.localStorage.getItem('token');
@@ -21,6 +32,10 @@ class SubNavBar extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+  /**
+   * Instantiates select button
+   * @memberof SubNavBar
+   */
   componentDidMount() {
     const userId = this.state.authUser.userId || null
     $('.dropdown-button').dropdown({
@@ -35,9 +50,17 @@ class SubNavBar extends Component {
     });
     $('select').material_select();
   }
+  /**
+   * @param {any} event 
+   * @memberof SubNavBar
+   */
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
+  /**
+   * @param {any} event 
+   * @memberof SubNavBar
+   */
   onSubmit(event){
     event.preventDefault();
     if(this.state.database === 'documents') {
@@ -49,6 +72,10 @@ class SubNavBar extends Component {
     }
   }
 
+  /**
+   * @returns {Object} object
+   * @memberof SubNavBar
+   */
   render() {
     const roleId = this.state.authUser.roleId || null
     return (roleId === this.state.AdminRoleId) ?
@@ -125,8 +152,10 @@ class SubNavBar extends Component {
       </nav>
   }
 }
-// export default SubNavBar;
-
+/**
+ * @param {any} dispatch
+ * @returns {object} object
+ */
 const mapDispatchToProps = (dispatch) => {
   return {
     UserSearch: query => dispatch(searchUsers(query)),

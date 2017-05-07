@@ -2,10 +2,16 @@ import axios from 'axios';
 import { browserHistory } from 'react-router';
 import * as actionTypes from '../actionTypes';
 
-export default (documentid) => {
+/**
+ * documentDeleted
+ * @export
+ * @param {any} documentId
+ * @returns {Object} object
+ */
+export default (documentId) => {
   const token = window.localStorage.getItem('token');
   return (dispatch) => {
-    return axios.delete(`/api/document/${documentid}`, {
+    return axios.delete(`/api/document/${documentId}`, {
       headers: {
         authorization: token
       }

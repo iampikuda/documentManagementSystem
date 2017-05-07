@@ -1,5 +1,10 @@
+/* eslint import/no-unresolved: 0 */
+/* eslint-disable no-unused-vars */
 import model from '../models';
 
+/**
+ * Controller for document management
+ */
 class documentController {
   /**
    * Method createDocument
@@ -7,8 +12,7 @@ class documentController {
    * @param {Object} response - request Object
    * @return {Object} response Object
    */
-  static createDocument(request, response) {
-    // request.body.access = request.body.access || 'role';
+  static createDocument(request, response) {t
     request.body.ownerId = request.decoded.userId;
     model.Document.sync();
     model.Document.findAll({

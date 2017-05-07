@@ -3,6 +3,12 @@ import { browserHistory } from 'react-router';
 import * as actionTypes from '../actionTypes';
 import setAuthorizationToken from '../../utils/setAuth';
 
+/**
+ * Return action type
+ * @export
+ * @param {any} users
+ * @returns {Object} object
+ */
 const userGetSuccess = (users) => {
   return {
     type: actionTypes.GET_USER_SUCCESS,
@@ -12,7 +18,13 @@ const userGetSuccess = (users) => {
   };
 };
 
-export const viewUsers = (offset) => {
+/**
+ * Get Users
+ * @export
+ * @param {any} offset
+ * @returns {Object} object
+ */
+export const viewUsers = (offset) => {//eslint-disable-line
   return (dispatch) => {
     const token = window.localStorage.getItem('token');
     setAuthorizationToken(token);

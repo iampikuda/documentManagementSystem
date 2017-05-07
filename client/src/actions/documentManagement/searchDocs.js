@@ -3,6 +3,13 @@ import { browserHistory } from 'react-router';
 import * as actionTypes from '../actionTypes';
 import setAuthorizationToken from '../../utils/setAuth';
 
+/**
+ * searchDocuments
+ * @export
+ * @param {any} query
+ * @param {any} offset
+ * @returns {Object} object
+ */
 export default (query, offset) => {
   return (dispatch) => {
     const token = window.localStorage.getItem('token');

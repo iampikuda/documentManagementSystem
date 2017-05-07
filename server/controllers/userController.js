@@ -1,3 +1,5 @@
+/* eslint import/no-extraneous-dependencies: 0 */
+/* eslint import/no-unresolved: 0 */
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt-nodejs';
 import model from '../models';
@@ -12,6 +14,13 @@ const secret = process.env.SECRET_TOKEN || 'secret';
  */
 class UserController {
 
+  /**
+   * Method for formatting user details
+   * @static
+   * @param {Object} user - Server res
+   * @returns {Object} return object
+   * @memberof UserController
+   */
   static formattedUser(user) {
     return {
       id: user.id,
@@ -231,8 +240,6 @@ class UserController {
     const limit = request.query.limit || '10';
     const offset = request.query.offset || '0';
     const queryRole = request.query.role;
-    console.log('queryRole', typeof (queryRole));
-    console.log('request.decoded.roleId', typeof (request.decoded.roleId));
     if (queryRole === '1') {
       if (request.decoded.roleId !== 1) {
         return response.status(401).send({
@@ -343,7 +350,7 @@ class UserController {
     return response.status(200)
       .send({ message: 'Successful logout' });
   }
-  
+
   /**
    * Method to search for all users
    * @param{Object} request - Request object

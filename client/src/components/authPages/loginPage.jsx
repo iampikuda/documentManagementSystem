@@ -4,6 +4,11 @@ import jwtDecode from 'jwt-decode';
 import { browserHistory, Link } from 'react-router';
 import loginAction from '../../actions/authorization/loginAction.js';
 
+/**
+ * Login page
+ * @class Login
+ * @extends {Component}
+ */
 class Login extends Component {
   /**
    * renders the Nav component

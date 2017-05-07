@@ -15,6 +15,12 @@ const SingleRoles = (roles, index) => {
   );
 }
 let rolesList = [];
+/**
+ * 
+ * 
+ * @param {any} props 
+ * @returns 
+ */
 const RoleView = (props) => {
   if (props.roles.roles !== undefined) {
     rolesList = props.roles.roles.data.roles;

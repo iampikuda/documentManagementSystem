@@ -4,6 +4,10 @@ import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router';
 import logoutAction from '../../actions/authorization/logoutAction.js';
 
+/**
+ * @class Navbar
+ * @extends {Component}
+ */
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +20,11 @@ class Navbar extends Component {
       this.logout = this.logout.bind(this);
     }
   }
+  /**
+   * @param {any} event
+   * @returns {void}
+   * @memberOf Navbar
+   */
   logout() {
     window.localStorage.removeItem('token');
     this.props.logout();
@@ -24,7 +33,11 @@ class Navbar extends Component {
     });
     browserHistory.push('/');
   }
-
+  /**
+   * renders the Nav component
+   * @returns {void}
+   * @memberOf Navbar
+   */
   render() {
     if (window.localStorage.getItem('token')) {
       return (
@@ -62,11 +75,21 @@ class Navbar extends Component {
     );
   }
 }
+/**
+ * mapDispatchToProps
+ * @param {any} dispatch 
+ * @returns {Object} Object
+ */
 const mapDispatchToProps = (dispatch) => {
   return {
     logout: (credentials) => dispatch(logoutAction(credentials))
   };
 };
+/**
+ * mapStoreToProps
+ * @param {any} state 
+ * @returns {Object} Object
+ */
 const mapStoreToProps = (state) => {
   return {
     user: state.user

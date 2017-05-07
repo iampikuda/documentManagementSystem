@@ -3,7 +3,12 @@ import jwtDecode from 'jwt-decode';
 import { Router } from 'react-router';
 import * as actionTypes from '../actionTypes';
 
-// export const loginSuccessful = user => ({ type: 'LOGIN_SUCCESSFUL', user });
+/**
+ * userSignupRequest
+ * @export
+ * @param {Object} userData
+ * @returns {Object} returns object
+ */
 export default (userData) => {
   userData.roleId = parseInt((userData.roleId), 10);
   return (dispatch) => {

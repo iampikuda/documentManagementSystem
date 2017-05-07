@@ -4,14 +4,18 @@ import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import * as actionTypes from '../actionTypes';
 
-export default (credentials) => {
+/**
+ * logout
+ * @export
+ * @returns {Object} returns object
+ */
+export default () => {
   return (dispatch) => {
-    return axios.post('/api/user/logout', credentials)
+    return axios.post('/api/user/logout')
     .then((response) => {
       dispatch({
         type: actionTypes.CLEAR_ALL
       });
-      // window.location = '/';
     }).catch((err) => {
       dispatch({
         type: actionTypes.LOGOUT_FAILED,

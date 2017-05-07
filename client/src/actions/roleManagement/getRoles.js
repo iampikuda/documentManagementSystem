@@ -2,6 +2,12 @@ import axios from 'axios';
 import { browserHistory } from 'react-router';
 import * as actionTypes from '../actionTypes';
 
+
+/**
+ * Set action type
+ * @param {any} roles
+ * @returns {Object} return object
+ */
 const roleGetSuccess = (roles) => {
   return {
     type: actionTypes.GET_ROLE_SUCCESS,
@@ -9,7 +15,13 @@ const roleGetSuccess = (roles) => {
   };
 };
 
-export const viewRoles = (userId) => {
+/**
+ * View roles
+ * @export
+ * @param {any} userId
+ * @returns {function} function
+ */
+export const viewRoles = (userId) => {// eslint-disable-line
   return (dispatch) => {
     const token = window.localStorage.getItem('token');
     axios.get('/api/role', {

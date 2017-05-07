@@ -1,6 +1,13 @@
 import axios from 'axios';
 import * as actionTypes from '../actionTypes';
 
+/**
+ * edit User
+ * @export
+ * @param {any} userData
+ * @param {any} userId
+ * @returns {Object} object
+ */
 export default (userData, userId) => {
   const token = window.localStorage.getItem('token');
   return (dispatch) => {

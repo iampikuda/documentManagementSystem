@@ -8,6 +8,10 @@ import signupAction from '../../actions/authorization/signupAction.js';
 let authUser;
 const AdminRoleId = 1;
 let token;
+/**
+ * @class signUpPage
+ * @extends {Component}
+ */
 class signUpPage extends Component {
   constructor(props) {
     super(props);
@@ -60,6 +64,10 @@ class signUpPage extends Component {
       }
     }
   }
+  /**
+   * @returns {Object} Object
+   * @memberof signUpPage
+   */
   render() {
     const roleIdNow = authUser.roleId || ''
     return (roleIdNow === AdminRoleId) ?

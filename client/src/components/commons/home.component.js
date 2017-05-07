@@ -2,7 +2,16 @@ import React, { Component } from 'react';
 import { Row, Col, Input, Button } from 'react-materialize';
 import { Link } from 'react-router';
 
+/**
+ * @class Body
+ * @extends {Component}
+ */
 class Body extends Component {
+  /**
+   * renders home component
+   * @returns {void}
+   * @memberof Body
+   */
   render() {
     if (window.localStorage.getItem('token')) {
       return (

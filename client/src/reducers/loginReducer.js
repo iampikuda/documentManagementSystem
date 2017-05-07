@@ -1,5 +1,11 @@
 import * as actionTypes from '../actions/actionTypes';
 
+/**
+ * @export
+ * @param {any} [state={}]
+ * @param {any} action
+ * @returns {state} return object
+ */
 export default (state = {}, action) => {
   switch (action.type) {
     case actionTypes.LOGIN_SUCCESSFUL:

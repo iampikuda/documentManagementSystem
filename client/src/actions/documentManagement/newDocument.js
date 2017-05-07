@@ -3,6 +3,12 @@ import { browserHistory } from 'react-router';
 import * as actionTypes from '../actionTypes';
 import setAuthorizationToken from '../../utils/setAuth';
 
+/**
+ * Add new Document
+ * @export
+ * @param {Object} details
+ * @returns {Object} return object
+ */
 export default (details) => {
   const token = window.localStorage.getItem('token');
   return (dispatch) => {

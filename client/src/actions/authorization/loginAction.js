@@ -5,7 +5,12 @@ import jwtDecode from 'jwt-decode';
 import setAuthorizationToken from '../../utils/setAuth';
 import * as actionTypes from '../actionTypes';
 
-
+/**
+ * userLoginRequest
+ * @export
+ * @param {Object} loginCredentials
+ * @returns {Object} return dispatch
+ */
 export default (loginCredentials) => {
   return (dispatch) => {
     return axios.post('/api/user/login', loginCredentials)
