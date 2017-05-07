@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 
+/**
+ * Private document component
+ * @param {Object} props 
+ * @returns {void} returns private document table
+ */
 const PrivateDocs = (props) => {
   let documentList= [];
   if (props.document.document !== undefined) {
@@ -36,7 +41,11 @@ const PrivateDocs = (props) => {
   )
 }
 
-
+/**
+ * @param {Object} document 
+ * @param {Integer} index 
+ * @returns {void} returns table row
+ */
 const SingleDocument = (props) => {
   const { document } = props
   return (

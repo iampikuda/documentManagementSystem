@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { browserHistory, Link } from 'react-router';
 import jwtDecode from 'jwt-decode';
 
+/**
+ * @param {any} {role} 
+ * @returns {void} returns table row
+ */
 const SingleRole = ({role}) => {
   return (
     <tr className="hoverable">
@@ -13,6 +17,12 @@ const SingleRole = ({role}) => {
   );
 }
 
+/**
+ * role view
+ * @export
+ * @class RoleView
+ * @extends {Component}
+ */
 export default class RoleView extends Component {
   constructor(props){
     super(props);
@@ -21,6 +31,10 @@ export default class RoleView extends Component {
     };
   }
 
+  /**
+   * @param {any} nextProps 
+   * @memberof RoleView
+   */
   componentWillReceiveProps(nextProps){
     if(nextProps.roles){
       this.setState({
@@ -29,6 +43,10 @@ export default class RoleView extends Component {
     }
   }
 
+  /**
+   * @returns {void} returns role table
+   * @memberof RoleView
+   */
   render(){
     return (
       <div>

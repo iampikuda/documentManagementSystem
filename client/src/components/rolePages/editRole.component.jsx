@@ -6,7 +6,17 @@ import SearchBar from '../common/searchbar.component'
 import editRoleAction from '../../actions/roleManagement/editRole.js';
 import viewRole from '../../actions/roleManagement/viewRole.js';
 
+/**
+ * Edit role component
+ * @class EditRole
+ * @extends {Component}
+ */
 class EditRole extends Component {
+  /**
+   * Creates an instance of EditRole.
+   * @param {any} props
+   * @memberof EditRole
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -17,6 +27,9 @@ class EditRole extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  /**
+   * @memberof EditRole
+   */
   componentWillMount() {
     if (!window.localStorage.getItem('token')) {
       browserHistory.push('/');
@@ -27,6 +40,10 @@ class EditRole extends Component {
     }
   }
 
+  /**
+   * @param {Object} nextProps 
+   * @memberof EditRole
+   */
   componentWillReceiveProps(nextProps) {
     this.setState({
       title: nextProps.role.title,
@@ -36,15 +53,27 @@ class EditRole extends Component {
     }
   }
 
+  /**
+   * @param {any} event 
+   * @memberof EditRole
+   */
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
 
+  /**
+   * @param {any} event 
+   * @memberof EditRole
+   */
   handleSubmit(event) {
     event.preventDefault();
     this.props.EditRole(this.state, localStorage.getItem('token'), this.props.params.id);
   }
 
+  /**
+   * @returns {void} returns edit role page
+   * @memberof EditRole
+   */
   render() {
     return (
       <div className="row col s12">
@@ -82,6 +111,11 @@ EditRole.contextTypes = {
   router: PropTypes.object
 };
 
+/**
+ * @param {Object} state 
+ * @param {Object} ownProps 
+ * @returns {Object} returns object
+ */
 const mapStoreToProps = (state, ownProps) => {
   return {
     role: state.roleReducer.role,
@@ -89,6 +123,10 @@ const mapStoreToProps = (state, ownProps) => {
   };
 };
 
+/**
+ * @param {any} dispatch 
+ * @returns {Object} returns object
+ */
 const mapDispatchToProps = (dispatch) => {
   return {
     EditRole: (roleDetails, token, roleid) => dispatch(editRoleAction(roleDetails, token, roleid)),

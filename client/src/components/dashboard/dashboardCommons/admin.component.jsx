@@ -20,7 +20,17 @@ import searchDocs from '../../../actions/documentManagement/searchDocs.js';
 import searchUsers from '../../../actions/userManagement/searchUsers.js';
 
 
+/**
+ * Admin dashboard
+ * @class AdminDashboard
+ * @extends {Component}
+ */
 class AdminDashboard extends Component {
+  /**
+   * Creates an instance of AdminDashboard.
+   * @param {any} props 
+   * @memberof AdminDashboard
+   */
   constructor(props) {
     super(props);
     this.setEditDocument = this.setEditDocument.bind(this);
@@ -35,6 +45,10 @@ class AdminDashboard extends Component {
       authUser: jwtDecode(token) || {},
     };
   }
+  /**
+   * @param {any} nextProps 
+   * @memberof AdminDashboard
+   */
   componentWillReceiveProps(nextProps){
     const keys = ['users', 'documents', 'roles'];
     keys.forEach(key=>{
@@ -46,11 +60,19 @@ class AdminDashboard extends Component {
     });
   }
 
+  /**
+   * @param {any} view 
+   * @memberof AdminDashboard
+   */
   handleSearchBarView(view) {
     this.setState({ searchBarView: view });
     $('ul.tabs').tabs('select_tab', 'searchTab');    
   }
 
+  /**
+   * @param {any} document 
+   * @memberof AdminDashboard
+   */
   setViewDocument(document) {
     this.setState({
       viewTitle: document.title,
@@ -58,26 +80,49 @@ class AdminDashboard extends Component {
       documentId: document.id
     });
   }
+  /**
+   * @param {any} document 
+   * @memberof AdminDashboard
+   */
   setEditDocument(document){
     this.setState({
       editDocument: document,
       documentId: document.id
     });
   }
+  /**
+   * @param {any} values 
+   * @param {any} id 
+   * @memberof AdminDashboard
+   */
   updateUser(values, id) {
     this.props.actionEditUser(values, id);
   }
+  /**
+   * @param {any} documentId 
+   * @memberof AdminDashboard
+   */
   setDeleteDocument(documentId) {
     this.props.DeleteDocument(documentId);
   }
+  /**
+   * @memberof AdminDashboard
+   */
   componentWillMount() {
     const userId = this.state.authUser.userId || null
     this.props.actionsUser.viewUsers();
     this.props.actionsRole.viewRoles();
   }
+  /**
+   * @memberof AdminDashboard
+   */
   componentDidMount() {
     $('ul.tabs').tabs();
   }
+  /**
+   * @returns {void} return admin dashboard
+   * @memberof AdminDashboard
+   */
   render() {
     return (
       <div>
@@ -173,7 +218,11 @@ class AdminDashboard extends Component {
   }
 }
 
-// export default Dashboard;
+
+/**
+ * @param {any} state 
+ * @returns {Object} object
+ */
 const mapStoreToProps = (state) => {
   return {
     documentPages: state.documentReducer.pageCount,
@@ -185,6 +234,10 @@ const mapStoreToProps = (state) => {
   };
 };
 
+/**
+ * @param {any} dispatch 
+ * @returns {void} returns actions as props
+ */
 const mapDispatchToProps = (dispatch) => {
   return {
     EditDocument: (documentDetails, documentId) => dispatch(EditDocument(documentDetails, documentId)),

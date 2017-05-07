@@ -30,7 +30,18 @@ const SingleUserComponent = ({user, deleteUser, props, change}) => {
   );
 }
 
+/**
+ * view all users component
+ * @export
+ * @class allUsers
+ * @extends {Component}
+ */
 export default class allUsers extends Component {
+  /**
+   * Creates an instance of allUsers.
+   * @param {any} props
+   * @memberof allUsers
+   */
   constructor(props){
     super(props);
     this.state = {
@@ -42,6 +53,10 @@ export default class allUsers extends Component {
     this.deleteUser = this.deleteUser.bind(this);
   }
 
+  /**
+   * @param {Object} nextProps 
+   * @memberof allUsers
+   */
   componentWillReceiveProps(nextProps){
     if(nextProps.users){
       this.setState({
@@ -51,15 +66,28 @@ export default class allUsers extends Component {
     }
   }
 
+  /**
+   * @param {any} e
+   * @param {any} id
+   * @memberof allUsers
+   */
   change(e, id) {
     this.setState({ change: e.target.value });
     this.props.updateUser({ roleId: e.target.value }, id);
   }
 
+  /**
+   * @param {any} userId 
+   * @memberof allUsers
+   */
   deleteUser(userId){
     this.props.deleteUser(userId);
     Materialize.toast('User deleted!', 3000);
   }
+  /**
+   * @returns {void} returns table
+   * @memberof allUsers
+   */
   render(){
     return (
       <div>

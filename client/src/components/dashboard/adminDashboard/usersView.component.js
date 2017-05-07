@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { browserHistory, Link } from 'react-router';
 import jwtDecode from 'jwt-decode';
 
+/**
+ * @param {any} roles 
+ * @param {any} index 
+ * @returns {void} returns table row
+ */
 const SingleUsers = (users, index) => {
   return (
     <tr className="hoverable" key={index}>
@@ -17,6 +22,10 @@ const SingleUsers = (users, index) => {
   );
 }
 let usersList = [];
+/**
+ * @param {any} props 
+ * @returns {void} return table
+ */
 const UserDocs = (props) => {
 
   if (props.users.users !== undefined) {

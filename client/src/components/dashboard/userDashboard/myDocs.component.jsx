@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import jwtDecode from 'jwt-decode';
 
-
+/**
+ * Owner document component
+ * @param {Object} props 
+ * @returns {void} returns owner document table
+ */
 const MyDocs = (props) => {
+  /**
+   * @param {Object} document 
+   * @param {Integer} index 
+   * @returns {void} returns table row
+   */
   const SingleDocument = (document, index) => {
     return (
       <tr className="hoverable" key={index}>

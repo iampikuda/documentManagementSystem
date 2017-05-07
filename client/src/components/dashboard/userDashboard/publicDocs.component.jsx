@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 
+/**
+ * Public document component
+ * @param {Object} props 
+ * @returns {void} returns public document table
+ */
 const PublicDocs = (props) => {
+  /**
+   * @param {Object} document 
+   * @param {Integer} index 
+   * @returns {void} returns table row
+   */
   const SingleDocument = (document, index) => {
     return (
       <tr className="hoverable" key={index}>

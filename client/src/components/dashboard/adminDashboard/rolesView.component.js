@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { browserHistory, Link } from 'react-router';
 import jwtDecode from 'jwt-decode';
 
+/**
+ * @param {any} roles 
+ * @param {any} index 
+ * @returns {void} returns table row
+ */
 const SingleRoles = (roles, index) => {
   return (
     <tr className="hoverable" key={index}>
@@ -16,10 +21,8 @@ const SingleRoles = (roles, index) => {
 }
 let rolesList = [];
 /**
- * 
- * 
  * @param {any} props 
- * @returns 
+ * @returns {void} return table
  */
 const RoleView = (props) => {
   if (props.roles.roles !== undefined) {

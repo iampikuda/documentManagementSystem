@@ -2,10 +2,21 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import CreateUser from './signUpPage.jsx';
 
+/**
+ * @class AddUser
+ * @extends {Component}
+ */
 class AddUser extends Component {
+  /**
+   * Creates an instance of AddUser.
+   * @memberof AddUser
+   */
   constructor() {
     super();
   }
+  /**
+   * @memberof AddUser
+   */
   componentDidMount() {
     $('.modal').modal({
       dismissible: false, // Modal can be dismissed by clicking outside of the modal
@@ -23,6 +34,10 @@ class AddUser extends Component {
       } // Callback for Modal close
     });
   }
+  /**
+   * @returns {void} returns user modal
+   * @memberof AddUser
+   */
   render() {
     return (
       <div className="inline">

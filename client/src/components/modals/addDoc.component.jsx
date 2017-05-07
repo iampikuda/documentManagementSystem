@@ -3,10 +3,22 @@ import { Link } from 'react-router';
 import CreateDocument from './createDocForm.component.jsx'
 import { browserHistory } from 'react-router';
 
+/**
+ * @class AddDoc
+ * @extends {Component}
+ */
 class AddDoc extends Component {
+  /**
+   * Creates an instance of AddDoc.
+   * @param {any} props 
+   * @memberof AddDoc
+   */
   constructor(props) {
     super();
   }
+  /**
+   * @memberof AddDoc
+   */
   componentDidMount() {
     $('.modal').modal({
       dismissible: false, // Modal can be dismissed by clicking outside of the modal
@@ -24,6 +36,10 @@ class AddDoc extends Component {
       } // Callback for Modal close
     });
   }
+  /**
+   * @returns {void} returns create document modal
+   * @memberof AddDoc
+   */
   render() {
     return (
       <div className="inline">

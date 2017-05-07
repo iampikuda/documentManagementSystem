@@ -2,10 +2,22 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import CreateRole from './createRoleForm.component.jsx'
 
+/**
+ * Add role page
+ * @class AddRole
+ * @extends {Component}
+ */
 class AddRole extends Component {
+  /**
+   * Creates an instance of AddRole.
+   * @memberof AddRole
+   */
   constructor() {
     super();
   }
+  /**
+   * @memberof AddRole
+   */
   componentDidMount() {
     $('.modal').modal({
       dismissible: false, // Modal can be dismissed by clicking outside of the modal
@@ -23,6 +35,10 @@ class AddRole extends Component {
       } // Callback for Modal close
     });
   }
+  /**
+   * @returns {void} returns role modal
+   * @memberof AddRole
+   */
   render() {
     return (
       <div className="inline">

@@ -5,7 +5,17 @@ import jwtDecode from 'jwt-decode';
 import createRoleAction from '../../actions/roleManagement/newRole';
 
 
+/**
+ * @export
+ * @class CreateRole
+ * @extends {Component}
+ */
 export class CreateRole extends Component {
+  /**
+   * Creates an instance of CreateRole.
+   * @param {any} props 
+   * @memberof CreateRole
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -16,27 +26,46 @@ export class CreateRole extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  /**
+   * @memberof CreateRole
+   */
   componentWillMount() {
     if (!window.localStorage.getItem('token')) {
       browserHistory.push('/app/dashboard');
     }
   }
 
+  /**
+   * @param {Object} nextProps 
+   * @memberof CreateRole
+   */
   componentWillReceiveProps(nextProps) {
     if (nextProps.status === 'success') {
       browserHistory.push('/app/dashboard');
     }
   }
 
+  /**
+   * @param {any} event
+   * @memberof CreateRole
+   */
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
 
+  /**
+   * @param {any} event
+   * @memberof CreateRole
+   */
   handleSubmit(event) {
     event.preventDefault();
     this.props.CreateRole(this.state);
   }
 
+  /**
+   * @returns {void} returns form
+   * @memberof CreateRole
+   */
   render() {
     return  (
       <div>
@@ -71,7 +100,10 @@ CreateRole.PropTypes = {
   role: PropTypes.object.isRequired,
 };
 
-
+/**
+ * @param {any} dispatch 
+ * @returns {Object} returns object
+ */
 const mapDispatchToProps = (dispatch) => {
   return {
     CreateRole: roleDetails => dispatch(createRoleAction(roleDetails)),

@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 
+/**
+ * Role document component
+ * @param {Object} props 
+ * @returns {void} returns Role document table
+ */
 const RoleDocs = (props) => {
+  /**
+   * @param {Object} document 
+   * @param {Integer} index 
+   * @returns {void} returns table row
+   */
   const SingleDocument = (document, index) => {
     return (
       <tr className="hoverable" key={index}>

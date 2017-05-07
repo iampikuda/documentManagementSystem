@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import jwtDecode from 'jwt-decode';
 
-
+/**
+ * Search component
+ * @param {Object} props 
+ * @returns {void} returns search table
+ */
 const Search = (props) => {
+  /**
+   * @param {Object} document 
+   * @param {Integer} index 
+   * @returns {void} returns table row
+   */
   const SingleDocument = (document, index) => {
     return (
       <tr className="hoverable" key={index} >
@@ -18,6 +27,11 @@ const Search = (props) => {
       </tr >
     );
   }
+  /**
+   * @param {Object} users 
+   * @param {Integer} index 
+   * @returns {void} returns table row
+   */
   const SingleUsers = (users, index) => {
     return (
       <tr className="hoverable" key={index}>

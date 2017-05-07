@@ -46,6 +46,10 @@ class IndexDashboard extends Component {
   }
 }
 
+/**
+ * @param {any} state 
+ * @returns {Object} returns object
+ */
 const mapStoreToProps = (state) => {
   return {
     documents: state.documentReducer,
@@ -54,6 +58,10 @@ const mapStoreToProps = (state) => {
   };
 };
 
+/**
+ * @param {any} dispatch 
+ * @returns {Object} returns object
+ */
 const mapDispatchToProps = (dispatch) => {
   return {
     actionsDoc: bindActionCreators(docActions, dispatch),

@@ -6,6 +6,11 @@ import Navbar from '../commons/nav.component.js';
 import viewUserAction from '../../actions/userManagement/viewUser.js';
 import editUserAction from '../../actions/userManagement/editUser.js';
 
+/**
+ * Edit user role component
+ * @class EditUsersRole
+ * @extends {Component}
+ */
 class EditUsersRole extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +21,10 @@ class EditUsersRole extends Component {
     this.updateUser = this.updateUser.bind(this);
   }
 
+  /**
+   * @returns {void}
+   * @memberof EditUsersRole
+   */
   // componentWillMount() {
   //   if (!window.localStorage.getItem('token')) {
   //     browserHistory.push('/');
@@ -27,19 +36,35 @@ class EditUsersRole extends Component {
   //   }
   // }
 
+  /**
+   * @param {Object} nextProps 
+   * @memberof EditUsersRole
+   */
   componentWillReceiveProps(nextProps) {
     this.setState(nextProps.user);
   }
 
+  /**
+   * @param {Object} event
+   * @memberof EditUsersRole
+   */
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
 
+  /**
+   * @param {Object} event
+   * @memberof EditUsersRole
+   */
   updateUser(event) {
     // const userId = jwtDecode(this.state.token).userId;
     this.props.updateUser(this.state, userId);
   }
 
+  /**
+   * @returns {void} returns edit user page
+   * @memberof EditUsersRole
+   */
   render() {
     return (
       <div className="row dashboardContainer col s12">
@@ -74,12 +99,21 @@ class EditUsersRole extends Component {
 }
 
 
+/**
+ * @param {Object} state 
+ * @param {Object} ownProps 
+ * @returns {Object} returns Object
+ */
 const mapStoreToProps = (state, ownProps) => {
   return {
     user: state.userReducer.user
   };
 };
 
+/**
+ * @param {any} dispatch 
+ * @returns {Object} returns object
+ */
 const mapDispatchToProps = (dispatch) => {
   return {
     updateUser: (usertoken, userDetails, userId) =>

@@ -11,6 +11,11 @@ import EditUser from './userPages/editUser.component';
 import EditUsersRole from './userPages/editUsersRole.component';
 
 
+/**
+ * Router component
+ * @class App
+ * @extends {Component}
+ */
 class App extends Component {
     render() {
         return (

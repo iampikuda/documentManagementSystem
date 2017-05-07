@@ -8,7 +8,17 @@ import SubNavBar from '../commons/subNavBar.jsx'
 import viewUserAction from '../../actions/userManagement/viewUser.js';
 
 
+/**
+ * View user componen
+ * @class ViewUser
+ * @extends {Component}
+ */
 class ViewUser extends Component {
+  /**
+   * Creates an instance of ViewUser.
+   * @param {Object} props
+   * @memberof ViewUser
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -21,6 +31,9 @@ class ViewUser extends Component {
     };
   }
 
+  /**
+   * @memberof ViewUser
+   */
   componentWillMount() {
     if (!window.localStorage.getItem('token')) {
       browserHistory.push('/');
@@ -32,14 +45,26 @@ class ViewUser extends Component {
     }
   }
 
+  /**
+   * @param {Object} nextProps 
+   * @memberof ViewUser
+   */
   componentWillReceiveProps(nextProps) {
     this.setState(nextProps.user);
   }
 
+  /**
+   * @param {any} event 
+   * @memberof ViewUser
+   */
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
 
+  /**
+   * @returns {void} returns page
+   * @memberof ViewUser
+   */
   render() {
     return (
       <div className="row  col s12">
@@ -89,13 +114,21 @@ class ViewUser extends Component {
   }
 }
 
-
+/**
+ * @param {Object} state 
+ * @param {Object} ownProps 
+ * @returns {void} returns object
+ */
 const mapStoreToProps = (state, ownProps) => {
   return {
     user: state.userReducer.user
   };
 };
 
+/**
+ * @param {any} dispatch 
+ * @returns {Object} returns object
+ */
 const mapDispatchToProps = (dispatch) => {
   return {
     viewUser: bindActionCreators(viewUserAction, dispatch)

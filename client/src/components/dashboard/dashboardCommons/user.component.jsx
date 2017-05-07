@@ -14,7 +14,17 @@ import EditDocument from '../../../actions/documentManagement/editDocument';
 import DeleteDocument from '../../../actions/documentManagement/deleteDocuments';
 import Search from '../userDashboard/search.component.jsx';
 
+/**
+ * User dashboard
+ * @class UserDashboard
+ * @extends {Component}
+ */
 class UserDashboard extends Component {
+  /**
+   * Creates an instance of UserDashboard.
+   * @param {any} props 
+   * @memberof UserDashboard
+   */
   constructor(props) {
     super(props);
     this.setEditDocument = this.setEditDocument.bind(this);
@@ -25,10 +35,18 @@ class UserDashboard extends Component {
       searchBarView: 'noShow',
     };
   }
+  /**
+   * @param {any} view 
+   * @memberof UserDashboard
+   */
   handleSearchBarView(view) {
     this.setState({ searchBarView: view });
     $('ul.tabs').tabs('select_tab', 'searchTab');
   }
+  /**
+   * @param {any} document 
+   * @memberof UserDashboard
+   */
   setViewDocument(document) {
     this.setState({
       viewTitle: document.title,
@@ -36,20 +54,34 @@ class UserDashboard extends Component {
       documentId: document.id
     });
   }
+  /**
+   * @param {any} document 
+   * @memberof UserDashboard
+   */
   setEditDocument(document) {
     this.setState({
       editDocument: document,
       documentId: document.id
     });
   }
+  /**
+   * @param {any} documentId 
+   * @memberof UserDashboard
+   */
   setDeleteDocument(documentId) {
     this.props.DeleteDocument(documentId);
   }
+  /**
+   * @memberof UserDashboard
+   */
   componentDidMount() {
     $('ul.tabs').tabs();
   }
+  /**
+   * @returns {void} returns user dashboard page
+   * @memberof UserDashboard
+   */
   render() {
-
     return (
       <div>
         <div id="modalEdit" className="modal modal-fixed-footer">
@@ -134,7 +166,11 @@ class UserDashboard extends Component {
   }
 }
 
-// export default Dashboard;
+
+/**
+ * @param {any} state 
+ * @returns {Object} returns object
+ */
 const mapStoreToProps = (state) => {
   return {
     documentPages: state.documentReducer.pageCount,
@@ -146,6 +182,10 @@ const mapStoreToProps = (state) => {
   };
 };
 
+/**
+ * @param {any} dispatch 
+ * @returns {Object} returns object
+ */
 const mapDispatchToProps = (dispatch) => {
   return {
     EditDocument: (documentDetails, documentId) => dispatch(EditDocument(documentDetails, documentId)),

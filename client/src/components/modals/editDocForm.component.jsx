@@ -5,6 +5,10 @@ import jwtDecode from 'jwt-decode';
 import newDocument from '../../actions/documentManagement/newDocument.js';
 import TinyMCE from 'react-tinymce';
 
+/**
+ * @param {any} props 
+ * @returns {Object} returns message
+ */
 const ResponseMessage = (props) => {
   if (props.status === 'success') {
     return (
@@ -23,7 +27,17 @@ const ResponseMessage = (props) => {
   }
 };
 
-export class CreateDocument extends Component {
+/**
+ * @export
+ * @class EditDocument
+ * @extends {Component}
+ */
+export class EditDocument extends Component {
+  /**
+   * Creates an instance of CreateDocument.
+   * @param {any} props 
+   * @memberof CreateDocument
+   */
   constructor(props) {
     super(props);
     const token = (window.localStorage.getItem('token'));
@@ -41,6 +55,10 @@ export class CreateDocument extends Component {
     this.contentOnChange = this.contentOnChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+  /**
+   * @param {any} nextProps
+   * @memberof CreateDocument
+   */
   componentWillReceiveProps(nextProps) {
     if (nextProps.status === 'success') {
       browserHistory.push('/dashboard');
@@ -54,15 +72,27 @@ export class CreateDocument extends Component {
       });
     }
   }
+  /**
+   * @param {any} event 
+   * @memberof CreateDocument
+   */
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
+  /**
+   * @param {any} event
+   * @memberof CreateDocument
+   */
   contentOnChange(event) {
     this.setState({
       content: event.target.getContent()
     });
     console.log(this.state, 'f');
   }
+  /**
+   * @param {any} event
+   * @memberof CreateDocument
+   */
   onSubmit(event) {
     event.preventDefault();
     if(this.state.content.length < 1) {
@@ -72,6 +102,10 @@ export class CreateDocument extends Component {
     }
   }
 
+  /**
+   * @returns {void} returns form
+   * @memberof CreateDocument
+   */
   render() {
     console.log(this.state.content);
     return  (
@@ -133,16 +167,24 @@ export class CreateDocument extends Component {
   }
 }
 
+/**
+ * @param {any} state 
+ * @returns {Object} returns object
+ */
 const mapStoreToProps = (state) => {
   return {
     status: state.documentReducer.createStatus
   };
 };
 
+/**
+ * @param {any} dispatch 
+ * @returns {Object} returns object
+ */
 const mapDispatchToProps = (dispatch) => {
   return {
     CreateDocument: documentDetails => dispatch(newDocument(documentDetails)),
   };
 };
 
-export default connect(mapStoreToProps, mapDispatchToProps)(CreateDocument);
+export default connect(mapStoreToProps, mapDispatchToProps)(EditDocument);

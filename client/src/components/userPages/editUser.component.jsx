@@ -6,7 +6,17 @@ import Navbar from '../commons/nav.component.js';
 import viewUserAction from '../../actions/userManagement/viewUser.js';
 import editUserAction from '../../actions/userManagement/editUser.js';
 
+/**
+ * Edit users
+ * @class EditUser
+ * @extends {Component}
+ */
 class EditUser extends Component {
+  /**
+   * Creates an instance of EditUser.
+   * @param {Object} props
+   * @memberof EditUser
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -20,6 +30,9 @@ class EditUser extends Component {
     this.updateUser = this.updateUser.bind(this);
   }
 
+  /**
+   * @memberof EditUser
+   */
   componentWillMount() {
     if (!window.localStorage.getItem('token')) {
       browserHistory.push('/');
@@ -31,19 +44,35 @@ class EditUser extends Component {
     }
   }
 
+  /**
+   * @param {Object} nextProps
+   * @memberof EditUser
+   */
   componentWillReceiveProps(nextProps) {
     this.setState(nextProps.user);
   }
 
+  /**
+   * @param {any} event
+   * @memberof EditUser
+   */
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
 
+  /**
+   * @param {any} event
+   * @memberof EditUser
+   */
   updateUser(event) {
     const userId = jwtDecode(this.state.token).userId;
     this.props.updateUser(this.state.token, this.state, userId);
   }
 
+  /**
+   * @returns {void} returns edit user page
+   * @memberof EditUser
+   */
   render() {
     return (
       <div className="row dashboardContainer col s12">
