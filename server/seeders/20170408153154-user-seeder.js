@@ -1,5 +1,8 @@
 const faker = require('faker');
 const bcrypt = require('bcrypt-nodejs');
+require('dotenv').config();
+
+const password = process.env.PASSWORD || 'ttt';
 
 module.exports = {
   up(queryInterface) {
@@ -13,7 +16,7 @@ module.exports = {
         firstName: 'Oluwadamisi',
         lastName: 'Pikuda',
         email: 'oluwadamisi.pikuda@andela.com',
-        password: bcrypt.hashSync('unlock'),
+        password: bcrypt.hashSync(password),
         roleId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -23,7 +26,7 @@ module.exports = {
         firstName: 'Kez',
         lastName: 'Crewda',
         email: 'kez@awesome.ness',
-        password: bcrypt.hashSync('unlock'),
+        password: bcrypt.hashSync(password),
         roleId: 2,
         createdAt: new Date(),
         updatedAt: new Date()
