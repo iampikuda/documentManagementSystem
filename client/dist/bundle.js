@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6cdd4e406c29478910a1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f098142824a99476785e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -3537,6 +3537,10 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/**
+	 * @class Navbar
+	 * @extends {Component}
+	 */
 	var Navbar = function (_Component) {
 	  _inherits(Navbar, _Component);
 
@@ -3555,6 +3559,12 @@
 	    }
 	    return _this;
 	  }
+	  /**
+	   * @param {any} event
+	   * @returns {void}
+	   * @memberOf Navbar
+	   */
+
 
 	  _createClass(Navbar, [{
 	    key: 'logout',
@@ -3566,6 +3576,12 @@
 	      });
 	      _reactRouter.browserHistory.push('/');
 	    }
+	    /**
+	     * renders the Nav component
+	     * @returns {void}
+	     * @memberOf Navbar
+	     */
+
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -3742,6 +3758,12 @@
 
 	  return Navbar;
 	}(_react.Component);
+	/**
+	 * mapDispatchToProps
+	 * @param {any} dispatch 
+	 * @returns {Object} Object
+	 */
+
 
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
@@ -3750,6 +3772,11 @@
 	    }
 	  };
 	};
+	/**
+	 * mapStoreToProps
+	 * @param {any} state 
+	 * @returns {Object} Object
+	 */
 	var mapStoreToProps = function mapStoreToProps(state) {
 	  return {
 	    user: state.user
@@ -5986,9 +6013,20 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/**
+	 * 
+	 * 
+	 * @class SubNavBar
+	 * @extends {Component}
+	 */
 	var SubNavBar = function (_Component) {
 	  _inherits(SubNavBar, _Component);
 
+	  /**
+	   * Creates an instance of SubNavBar.
+	   * @param {any} props 
+	   * @memberof SubNavBar
+	   */
 	  function SubNavBar(props) {
 	    _classCallCheck(this, SubNavBar);
 
@@ -6005,6 +6043,11 @@
 	    _this.onSubmit = _this.onSubmit.bind(_this);
 	    return _this;
 	  }
+	  /**
+	   * Instantiates select button
+	   * @memberof SubNavBar
+	   */
+
 
 	  _createClass(SubNavBar, [{
 	    key: 'componentDidMount',
@@ -6022,11 +6065,21 @@
 	      });
 	      $('select').material_select();
 	    }
+	    /**
+	     * @param {any} event 
+	     * @memberof SubNavBar
+	     */
+
 	  }, {
 	    key: 'onChange',
 	    value: function onChange(event) {
 	      this.setState(_defineProperty({}, event.target.name, event.target.value));
 	    }
+	    /**
+	     * @param {any} event 
+	     * @memberof SubNavBar
+	     */
+
 	  }, {
 	    key: 'onSubmit',
 	    value: function onSubmit(event) {
@@ -6039,6 +6092,12 @@
 	        this.props.handleSearchBarView(false);
 	      }
 	    }
+
+	    /**
+	     * @returns {Object} object
+	     * @memberof SubNavBar
+	     */
+
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -6160,7 +6219,11 @@
 
 	  return SubNavBar;
 	}(_react.Component);
-	// export default SubNavBar;
+	/**
+	 * @param {any} dispatch
+	 * @returns {object} object
+	 */
+
 
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
@@ -7799,6 +7862,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * edit User
+	 * @export
+	 * @param {any} userData
+	 * @param {any} userId
+	 * @returns {Object} object
+	 */
 	exports.default = function (userData, userId) {
 	  var token = window.localStorage.getItem('token');
 	  return function (dispatch) {
@@ -7846,6 +7916,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * Get User
+	 * @export
+	 * @param {any} token
+	 * @param {any} userId
+	 * @returns {Object} object
+	 */
 	exports.default = function (token, userId) {
 	  return function (dispatch) {
 	    _axios2.default.get('/api/user/' + userId, {
@@ -7876,7 +7953,7 @@
 
 
 	// module
-	exports.push([module.id, ".myContainer {\n  margin: 0 18px; }\n\n.mainContainer {\n  background-color: rgba(0, 0, 0, 0.5);\n  color: #FDFEFE;\n  position: absolute;\n  height: 100%;\n  width: 100%; }\n\n.mainContainer .bg {\n  background-image: url(\"https://cloud.githubusercontent.com/assets/25608675/25169939/aec83538-24e0-11e7-84d5-8a26affcbd4e.jpg\");\n  background-size: cover;\n  background-repeat: no-repeat;\n  position: absolute;\n  width: 100vw;\n  height: 100vh;\n  z-index: -1; }\n\n.bodyInnards {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  margin-right: -50%;\n  transform: translate(-50%, -50%);\n  text-align: center; }\n\n.bodyInnards i,\n#createDoc i,\n#createUser i {\n  font-size: 6rem;\n  color: #FFD04A;\n  margin: 0; }\n\n.createDoc {\n  padding: 2px 9px 2px 2px;\n  width: 100%;\n  letter-spacing: normal;\n  background-color: #F2F2F2;\n  border: 1px solid #000;\n  border-radius: 8px;\n  color: #000;\n  border-radius: 1px; }\n\n.searchForm {\n  display: inline; }\n\n.searchBox {\n  right: 0;\n  width: 40%;\n  display: -webkit-inline-box;\n  position: absolute;\n  height: inherit;\n  padding: 0 20px;\n  border-radius: 8px;\n  background-color: #F2F2F2;\n  border: 1px solid #000;\n  opacity: 0.9;\n  z-index: 11; }\n\n.searchBox input {\n  border: 0px solid;\n  width: 50%;\n  color: #000;\n  display: block; }\n\n.searchBox i {\n  padding-right: 10%;\n  color: #000; }\n\n.searchBox select {\n  display: block;\n  width: 100%;\n  height: 61px;\n  float: right;\n  color: #000;\n  background-color: #F2F2F2; }\n\n.inline {\n  margin-right: 5px; }\n\n.dropdown {\n  border-left: 2px solid #000;\n  display: inline-block;\n  position: absolute;\n  right: 0;\n  padding-right: 3%; }\n\n.userTopNav {\n  z-index: 30;\n  background-color: #FDFEFE; }\n\n.dropdown-content {\n  width: 50%;\n  color: #000; }\n\n.dropdown-content li {\n  text-align: left; }\n\nnav ul a {\n  color: #FDFEFE; }\n\nnav a {\n  color: #FDFEFE; }\n\nnav {\n  font-family: \"Sanchez\", serif;\n  background-color: rgba(255, 0, 0, 0.1); }\n\n.side-nav {\n  padding-top: 60px; }\n\n.tabs {\n  -webkit-box-shadow: 0 8px 10px -6px black;\n  -moz-box-shadow: 0 8px 10px -6px black;\n  box-shadow: 0 8px 10px -6px black;\n  z-index: 9; }\n\n.tabRow {\n  background-color: #003366;\n  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4); }\n\n.tabContent {\n  max-height: 73vh;\n  width: 100%;\n  position: relative;\n  overflow: scroll;\n  background-color: #F2F2F2;\n  padding: 2.9rem .9rem .9rem .9rem !important;\n  color: #000;\n  opacity: 0.9; }\n\n.tabs .tab a {\n  color: #000; }\n\n.tabs .tab a:hover, .tabs .tab a.active {\n  color: #4386FC; }\n\n.tabs .indicator {\n  background-color: #4386FC; }\n\n.dropdown-content li > a, .dropdown-content li > span {\n  left: 0%; }\n\n@media only screen and (max-width: 992px) {\n  nav .brand-logo {\n    left: 47%; } }\n\n.upperCase {\n  text-transform: uppercase; }\n\n.loginForm {\n  margin: 2% 25%;\n  width: 50%;\n  height: 80%;\n  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);\n  padding: 2% 3%; }\n\n.signupForm {\n  margin: auto;\n  width: 80%;\n  height: 80%;\n  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);\n  padding: 2% 3%; }\n\n.center {\n  text-align: center;\n  color: #212121; }\n\n.auth-button {\n  margin: 2%;\n  width: 95%;\n  background-color: #003366;\n  color: #FDFEFE; }\n\n.auth-button:hover {\n  background-color: #FFD04A; }\n\n.auth-header a {\n  color: #212121;\n  font-family: \"Sanchez\", serif; }\n\n.modal {\n  color: #000;\n  width: 80%; }\n\n.inline {\n  display: inline-block; }\n\n.input-field label:not(.label-icon) {\n  -webkit-transform: translateY(-50%);\n  transform: translateY(-50%);\n  height: 50%; }\n\n.input-field label:not(.label-icon).active {\n  -webkit-transform: translateY(-90%);\n  transform: translateY(-90%); }\n\n.mce-tinymce * {\n  height: 100% !important;\n  line-height: 100% !important; }\n\n@media only screen and (min-width: 601px) {\n  .mce-tinymce * {\n    height: 100% !important;\n    line-height: 100% !important; } }\n\n.nav .input-field input {\n  border-bottom: 1px solid;\n  width: 97%; }\n\ntable {\n  width: 100%;\n  max-width: 100%;\n  min-width: 300px; }\n\nth, td {\n  max-width: 500px;\n  min-width: 20px; }\n\n.displayNone {\n  display: none !important; }\n\n.paginationKey {\n  position: fixed;\n  background: #FDFEFE;\n  margin-left: 45%;\n  margin-top: -3%; }\n", ""]);
+	exports.push([module.id, ".myContainer {\n  margin: 0 18px; }\n\n.mainContainer {\n  background-color: rgba(0, 0, 0, 0.5);\n  color: #FDFEFE;\n  position: absolute;\n  height: 100%;\n  width: 100%; }\n\n.mainContainer .bg {\n  background-image: url(\"https://cloud.githubusercontent.com/assets/25608675/25169939/aec83538-24e0-11e7-84d5-8a26affcbd4e.jpg\");\n  background-size: cover;\n  background-repeat: no-repeat;\n  position: absolute;\n  width: 100vw;\n  height: 100vh;\n  z-index: -1; }\n\n.bodyInnards {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  margin-right: -50%;\n  transform: translate(-50%, -50%);\n  text-align: center; }\n\n.bodyInnards i,\n#createDoc i,\n#createUser i {\n  font-size: 6rem;\n  color: #FFD04A;\n  margin: 0; }\n\n.createDoc {\n  padding: 2px 9px 2px 2px;\n  width: 100%;\n  letter-spacing: normal;\n  background-color: #F2F2F2;\n  border: 1px solid #000;\n  border-radius: 8px;\n  color: #000;\n  border-radius: 1px; }\n\n.searchForm {\n  display: inline; }\n\n.searchBox {\n  right: 0;\n  width: 40%;\n  display: -webkit-inline-box;\n  position: absolute;\n  height: inherit;\n  padding: 0 20px;\n  border-radius: 8px;\n  background-color: #F2F2F2;\n  border: 1px solid #000;\n  opacity: 0.9;\n  z-index: 11; }\n\n.searchBox input {\n  border: 0px solid;\n  width: 50%;\n  color: #000;\n  display: block; }\n\n.searchBox i {\n  padding-right: 10%;\n  color: #000; }\n\n.searchBox select {\n  display: block;\n  width: 100%;\n  height: 61px;\n  float: right;\n  color: #000;\n  background-color: #F2F2F2; }\n\n.inline {\n  margin-right: 5px; }\n\n.dropdown {\n  border-left: 2px solid #000;\n  display: inline-block;\n  position: absolute;\n  right: 0;\n  padding-right: 3%; }\n\n.userTopNav {\n  z-index: 30;\n  background-color: #FDFEFE; }\n\n.dropdown-content {\n  width: 50%;\n  color: #000; }\n\n.dropdown-content li {\n  text-align: left; }\n\nnav ul a {\n  color: #FDFEFE; }\n\nnav a {\n  color: #FDFEFE; }\n\nnav {\n  font-family: \"Sanchez\", serif;\n  background-color: rgba(255, 0, 0, 0.1); }\n\n.side-nav {\n  padding-top: 60px; }\n\n.side-nav .upperCase {\n  padding-left: 17%;\n  color: #000; }\n\n.tabs {\n  -webkit-box-shadow: 0 8px 10px -6px black;\n  -moz-box-shadow: 0 8px 10px -6px black;\n  box-shadow: 0 8px 10px -6px black;\n  z-index: 9; }\n\n.tabRow {\n  background-color: #003366;\n  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4); }\n\n.tabContent {\n  max-height: 73vh;\n  width: 100%;\n  position: relative;\n  overflow: scroll;\n  background-color: #F2F2F2;\n  padding: 2.9rem .9rem .9rem .9rem !important;\n  color: #000;\n  opacity: 0.9; }\n\n.tabs .tab a {\n  color: #000; }\n\n.tabs .tab a:hover, .tabs .tab a.active {\n  color: #4386FC; }\n\n.tabs .indicator {\n  background-color: #4386FC; }\n\n.dropdown-content li > a, .dropdown-content li > span {\n  left: 0%; }\n\n@media only screen and (max-width: 992px) {\n  nav .brand-logo {\n    left: 47%; } }\n\n.upperCase {\n  text-transform: uppercase; }\n\n.loginForm {\n  margin: 2% 25%;\n  width: 50%;\n  height: 80%;\n  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);\n  padding: 2% 3%; }\n\n.signupForm {\n  margin: auto;\n  width: 80%;\n  height: 80%;\n  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);\n  padding: 2% 3%; }\n\n.center {\n  text-align: center;\n  color: #212121; }\n\n.auth-button {\n  margin: 2%;\n  width: 95%;\n  background-color: #003366;\n  color: #FDFEFE; }\n\n.auth-button:hover {\n  background-color: #FFD04A; }\n\n.auth-header a {\n  color: #212121;\n  font-family: \"Sanchez\", serif; }\n\n.modal {\n  color: #000;\n  width: 80%; }\n\n.inline {\n  display: inline-block; }\n\n.input-field label:not(.label-icon) {\n  -webkit-transform: translateY(-50%);\n  transform: translateY(-50%);\n  height: 50%; }\n\n.input-field label:not(.label-icon).active {\n  -webkit-transform: translateY(-90%);\n  transform: translateY(-90%); }\n\n.mce-tinymce * {\n  height: 100% !important;\n  line-height: 100% !important; }\n\n@media only screen and (min-width: 601px) {\n  .mce-tinymce * {\n    height: 100% !important;\n    line-height: 100% !important; } }\n\n.nav .input-field input {\n  border-bottom: 1px solid;\n  width: 97%; }\n\ntable {\n  width: 100%;\n  max-width: 100%;\n  min-width: 300px; }\n\nth, td {\n  max-width: 500px;\n  min-width: 20px; }\n\n.displayNone {\n  display: none !important; }\n\n.paginationKey {\n  position: fixed;\n  background: #FDFEFE;\n  margin-left: 45%;\n  margin-top: -3%; }\n", ""]);
 
 	// exports
 
@@ -11346,6 +11423,12 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * Add new Document
+	 * @export
+	 * @param {Object} details
+	 * @returns {Object} return object
+	 */
 	exports.default = function (details) {
 	  var token = window.localStorage.getItem('token');
 	  return function (dispatch) {
@@ -11395,6 +11478,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * searchDocuments
+	 * @export
+	 * @param {any} query
+	 * @param {any} offset
+	 * @returns {Object} object
+	 */
 	exports.default = function (query, offset) {
 	  return function (dispatch) {
 	    var token = window.localStorage.getItem('token');
@@ -11450,6 +11540,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * searchUsers
+	 * @export
+	 * @param {any} query
+	 * @param {any} offset
+	 * @returns {Object} object
+	 */
 	exports.default = function (query, offset) {
 	  return function (dispatch) {
 	    var token = window.localStorage.getItem('token');
@@ -11522,6 +11619,10 @@
 	var authUser = void 0;
 	var AdminRoleId = 1;
 	var token = void 0;
+	/**
+	 * @class signUpPage
+	 * @extends {Component}
+	 */
 
 	var signUpPage = function (_Component) {
 	  _inherits(signUpPage, _Component);
@@ -11590,6 +11691,11 @@
 	        }
 	      }
 	    }
+	    /**
+	     * @returns {Object} Object
+	     * @memberof signUpPage
+	     */
+
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -11957,8 +12063,17 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var props = void 0;
+	/**
+	 * All document component
+	 * @param {Object} props 
+	 * @returns {void} returns all document table
+	 */
 	var AllDocs = function AllDocs(props) {
+	  /**
+	   * @param {Object} document 
+	   * @param {Integer} index 
+	   * @returns {void} returns table row
+	   */
 	  var SingleDocument = function SingleDocument(document, index) {
 	    return _react2.default.createElement(
 	      'tr',
@@ -12081,7 +12196,17 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * Owner document component
+	 * @param {Object} props 
+	 * @returns {void} returns owner document table
+	 */
 	var MyDocs = function MyDocs(props) {
+	  /**
+	   * @param {Object} document 
+	   * @param {Integer} index 
+	   * @returns {void} returns table row
+	   */
 	  var SingleDocument = function SingleDocument(document, index) {
 	    return _react2.default.createElement(
 	      'tr',
@@ -12229,7 +12354,17 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * Search component
+	 * @param {Object} props 
+	 * @returns {void} returns search table
+	 */
 	var Search = function Search(props) {
+	  /**
+	   * @param {Object} document 
+	   * @param {Integer} index 
+	   * @returns {void} returns table row
+	   */
 	  var SingleDocument = function SingleDocument(document, index) {
 	    return _react2.default.createElement(
 	      'tr',
@@ -12268,6 +12403,11 @@
 	      )
 	    );
 	  };
+	  /**
+	   * @param {Object} users 
+	   * @param {Integer} index 
+	   * @returns {void} returns table row
+	   */
 	  var SingleUsers = function SingleUsers(users, index) {
 	    return _react2.default.createElement(
 	      'tr',
@@ -12451,6 +12591,10 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/**
+	 * @param {any} props 
+	 * @returns {Object} returns message
+	 */
 	var ResponseMessage = function ResponseMessage(props) {
 	  if (props.status === 'success') {
 	    return _react2.default.createElement(
@@ -12469,9 +12613,21 @@
 	  }
 	};
 
+	/**
+	 * Create document modal
+	 * @export
+	 * @class CreateDocument
+	 * @extends {Component}
+	 */
+
 	var CreateDocument = exports.CreateDocument = function (_Component) {
 	  _inherits(CreateDocument, _Component);
 
+	  /**
+	   * Creates an instance of CreateDocument.
+	   * @param {any} props 
+	   * @memberof CreateDocument
+	   */
 	  function CreateDocument(props) {
 	    _classCallCheck(this, CreateDocument);
 
@@ -12493,6 +12649,11 @@
 	    _this.onSubmit = _this.onSubmit.bind(_this);
 	    return _this;
 	  }
+	  /**
+	   * @param {any} nextProps 
+	   * @memberof CreateDocument
+	   */
+
 
 	  _createClass(CreateDocument, [{
 	    key: 'componentWillReceiveProps',
@@ -12509,11 +12670,21 @@
 	        });
 	      }
 	    }
+	    /**
+	     * @param {any} event 
+	     * @memberof CreateDocument
+	     */
+
 	  }, {
 	    key: 'onChange',
 	    value: function onChange(event) {
 	      this.setState(_defineProperty({}, event.target.name, event.target.value));
 	    }
+	    /**
+	     * @param {any} event 
+	     * @memberof CreateDocument
+	     */
+
 	  }, {
 	    key: 'contentOnChange',
 	    value: function contentOnChange(event) {
@@ -12522,6 +12693,11 @@
 	      });
 	      console.log(this.state, 'f');
 	    }
+	    /**
+	     * @param {any} event 
+	     * @memberof CreateDocument
+	     */
+
 	  }, {
 	    key: 'onSubmit',
 	    value: function onSubmit(event) {
@@ -12532,6 +12708,12 @@
 	        this.props.CreateDocument(this.state);
 	      }
 	    }
+
+	    /**
+	     * @returns {void} returns form
+	     * @memberof CreateDocument
+	     */
+
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -12642,12 +12824,22 @@
 	  return CreateDocument;
 	}(_react.Component);
 
+	/**
+	 * @param {any} state 
+	 * @returns {Object} returns object
+	 */
+
+
 	var mapStoreToProps = function mapStoreToProps(state) {
 	  return {
 	    status: state.documentReducer.createStatus
 	  };
 	};
 
+	/**
+	 * @param {any} dispatch 
+	 * @returns {Object} returns object
+	 */
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
 	    CreateDocument: function CreateDocument(documentDetails) {
@@ -20907,6 +21099,12 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * userLoginRequest
+	 * @export
+	 * @param {Object} loginCredentials
+	 * @returns {Object} return dispatch
+	 */
 	/* eslint-disable import/prefer-default-export */
 	/* eslint-disable no-undef */
 	exports.default = function (loginCredentials) {
@@ -20957,13 +21155,17 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = function (credentials) {
+	/**
+	 * logout
+	 * @export
+	 * @returns {Object} returns object
+	 */
+	exports.default = function () {
 	  return function (dispatch) {
-	    return _axios2.default.post('/api/user/logout', credentials).then(function (response) {
+	    return _axios2.default.post('/api/user/logout').then(function (response) {
 	      dispatch({
 	        type: actionTypes.CLEAR_ALL
 	      });
-	      // window.location = '/';
 	    }).catch(function (err) {
 	      dispatch({
 	        type: actionTypes.LOGOUT_FAILED,
@@ -21002,7 +21204,12 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// export const loginSuccessful = user => ({ type: 'LOGIN_SUCCESSFUL', user });
+	/**
+	 * userSignupRequest
+	 * @export
+	 * @param {Object} userData
+	 * @returns {Object} returns object
+	 */
 	exports.default = function (userData) {
 	  userData.roleId = parseInt(userData.roleId, 10);
 	  return function (dispatch) {
@@ -21047,10 +21254,16 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = function (documentid) {
+	/**
+	 * documentDeleted
+	 * @export
+	 * @param {any} documentId
+	 * @returns {Object} object
+	 */
+	exports.default = function (documentId) {
 	  var token = window.localStorage.getItem('token');
 	  return function (dispatch) {
-	    return _axios2.default.delete('/api/document/' + documentid, {
+	    return _axios2.default.delete('/api/document/' + documentId, {
 	      headers: {
 	        authorization: token
 	      }
@@ -21094,13 +21307,20 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = function (details, documentid) {
+	/**
+	 * Edit documents
+	 * @export
+	 * @param {any} details
+	 * @param {any} documentId
+	 * @returns {object} object
+	 */
+	exports.default = function (details, documentId) {
 	  return function (dispatch) {
 	    var token = window.localStorage.getItem('token');
 	    if (!token) {
 	      return;
 	    }
-	    return _axios2.default.put('/api/document/' + documentid, details, {
+	    return _axios2.default.put('/api/document/' + documentId, details, {
 	      headers: {
 	        Authorization: token
 	      }
@@ -21199,6 +21419,11 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * Set action type
+	 * @param {any} roles
+	 * @returns {Object} return object
+	 */
 	var roleGetSuccess = function roleGetSuccess(roles) {
 	  return {
 	    type: actionTypes.GET_ROLE_SUCCESS,
@@ -21206,7 +21431,14 @@
 	  };
 	};
 
+	/**
+	 * View roles
+	 * @export
+	 * @param {any} userId
+	 * @returns {function} function
+	 */
 	var viewRoles = exports.viewRoles = function viewRoles(userId) {
+	  // eslint-disable-line
 	  return function (dispatch) {
 	    var token = window.localStorage.getItem('token');
 	    _axios2.default.get('/api/role', {
@@ -21249,6 +21481,12 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * deleteUser
+	 * @export
+	 * @param {any} userId
+	 * @returns {Object} object
+	 */
 	exports.default = function (userId) {
 	  var token = window.localStorage.getItem('token');
 	  return function (dispatch) {
@@ -21301,6 +21539,12 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * Return action type
+	 * @export
+	 * @param {any} users
+	 * @returns {Object} object
+	 */
 	var userGetSuccess = function userGetSuccess(users) {
 	  return {
 	    type: actionTypes.GET_USER_SUCCESS,
@@ -21310,7 +21554,14 @@
 	  };
 	};
 
+	/**
+	 * Get Users
+	 * @export
+	 * @param {any} offset
+	 * @returns {Object} object
+	 */
 	var viewUsers = exports.viewUsers = function viewUsers(offset) {
+	  //eslint-disable-line
 	  return function (dispatch) {
 	    var token = window.localStorage.getItem('token');
 	    (0, _setAuth2.default)(token);
@@ -21382,6 +21633,11 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/**
+	 * Router component
+	 * @class App
+	 * @extends {Component}
+	 */
 	var App = function (_Component) {
 	    _inherits(App, _Component);
 
@@ -21452,6 +21708,11 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/**
+	 * Login page
+	 * @class Login
+	 * @extends {Component}
+	 */
 	var Login = function (_Component) {
 	  _inherits(Login, _Component);
 
@@ -21671,6 +21932,10 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/**
+	 * @class Body
+	 * @extends {Component}
+	 */
 	var Body = function (_Component) {
 	  _inherits(Body, _Component);
 
@@ -21682,6 +21947,12 @@
 
 	  _createClass(Body, [{
 	    key: 'render',
+
+	    /**
+	     * renders home component
+	     * @returns {void}
+	     * @memberof Body
+	     */
 	    value: function render() {
 	      if (window.localStorage.getItem('token')) {
 	        return _react2.default.createElement(
@@ -21795,6 +22066,10 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/**
+	 * @class NotFound
+	 * @extends {Component}
+	 */
 	var NotFound = function (_Component) {
 	  _inherits(NotFound, _Component);
 
@@ -21806,6 +22081,12 @@
 
 	  _createClass(NotFound, [{
 	    key: 'render',
+
+	    /**
+	     * Renders not found page
+	     * @returns {void}
+	     * @memberof NotFound
+	     */
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
@@ -21868,6 +22149,11 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * @param {any} roles 
+	 * @param {any} index 
+	 * @returns {void} returns table row
+	 */
 	var SingleRoles = function SingleRoles(roles, index) {
 	  return _react2.default.createElement(
 	    'tr',
@@ -21895,6 +22181,10 @@
 	  );
 	};
 	var rolesList = [];
+	/**
+	 * @param {any} props 
+	 * @returns {void} return table
+	 */
 	var RoleView = function RoleView(props) {
 	  if (props.roles.roles !== undefined) {
 	    rolesList = props.roles.roles.data.roles;
@@ -21969,6 +22259,11 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * @param {any} roles 
+	 * @param {any} index 
+	 * @returns {void} returns table row
+	 */
 	var SingleUsers = function SingleUsers(users, index) {
 	  return _react2.default.createElement(
 	    'tr',
@@ -22006,6 +22301,10 @@
 	  );
 	};
 	var usersList = [];
+	/**
+	 * @param {any} props 
+	 * @returns {void} return table
+	 */
 	var UserDocs = function UserDocs(props) {
 
 	  if (props.users.users !== undefined) {
@@ -22179,6 +22478,12 @@
 	  return IndexDashboard;
 	}(_react.Component);
 
+	/**
+	 * @param {any} state 
+	 * @returns {Object} returns object
+	 */
+
+
 	var mapStoreToProps = function mapStoreToProps(state) {
 	  return {
 	    documents: state.documentReducer,
@@ -22187,6 +22492,10 @@
 	  };
 	};
 
+	/**
+	 * @param {any} dispatch 
+	 * @returns {Object} returns object
+	 */
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
 	    actionsDoc: (0, _redux.bindActionCreators)(docActions, dispatch)
@@ -22291,9 +22600,19 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/**
+	 * Admin dashboard
+	 * @class AdminDashboard
+	 * @extends {Component}
+	 */
 	var AdminDashboard = function (_Component) {
 	  _inherits(AdminDashboard, _Component);
 
+	  /**
+	   * Creates an instance of AdminDashboard.
+	   * @param {any} props 
+	   * @memberof AdminDashboard
+	   */
 	  function AdminDashboard(props) {
 	    _classCallCheck(this, AdminDashboard);
 
@@ -22312,6 +22631,11 @@
 	    };
 	    return _this;
 	  }
+	  /**
+	   * @param {any} nextProps 
+	   * @memberof AdminDashboard
+	   */
+
 
 	  _createClass(AdminDashboard, [{
 	    key: 'componentWillReceiveProps',
@@ -22325,12 +22649,24 @@
 	        }
 	      });
 	    }
+
+	    /**
+	     * @param {any} view 
+	     * @memberof AdminDashboard
+	     */
+
 	  }, {
 	    key: 'handleSearchBarView',
 	    value: function handleSearchBarView(view) {
 	      this.setState({ searchBarView: view });
 	      $('ul.tabs').tabs('select_tab', 'searchTab');
 	    }
+
+	    /**
+	     * @param {any} document 
+	     * @memberof AdminDashboard
+	     */
+
 	  }, {
 	    key: 'setViewDocument',
 	    value: function setViewDocument(document) {
@@ -22340,6 +22676,11 @@
 	        documentId: document.id
 	      });
 	    }
+	    /**
+	     * @param {any} document 
+	     * @memberof AdminDashboard
+	     */
+
 	  }, {
 	    key: 'setEditDocument',
 	    value: function setEditDocument(document) {
@@ -22348,16 +22689,31 @@
 	        documentId: document.id
 	      });
 	    }
+	    /**
+	     * @param {any} values 
+	     * @param {any} id 
+	     * @memberof AdminDashboard
+	     */
+
 	  }, {
 	    key: 'updateUser',
 	    value: function updateUser(values, id) {
 	      this.props.actionEditUser(values, id);
 	    }
+	    /**
+	     * @param {any} documentId 
+	     * @memberof AdminDashboard
+	     */
+
 	  }, {
 	    key: 'setDeleteDocument',
 	    value: function setDeleteDocument(documentId) {
 	      this.props.DeleteDocument(documentId);
 	    }
+	    /**
+	     * @memberof AdminDashboard
+	     */
+
 	  }, {
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
@@ -22365,11 +22721,20 @@
 	      this.props.actionsUser.viewUsers();
 	      this.props.actionsRole.viewRoles();
 	    }
+	    /**
+	     * @memberof AdminDashboard
+	     */
+
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      $('ul.tabs').tabs();
 	    }
+	    /**
+	     * @returns {void} return admin dashboard
+	     * @memberof AdminDashboard
+	     */
+
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -22573,7 +22938,10 @@
 	  return AdminDashboard;
 	}(_react.Component);
 
-	// export default Dashboard;
+	/**
+	 * @param {any} state 
+	 * @returns {Object} object
+	 */
 
 
 	var mapStoreToProps = function mapStoreToProps(state) {
@@ -22587,6 +22955,10 @@
 	  };
 	};
 
+	/**
+	 * @param {any} dispatch 
+	 * @returns {void} returns actions as props
+	 */
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
 	    EditDocument: function EditDocument(documentDetails, documentId) {
@@ -22694,9 +23066,19 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/**
+	 * User dashboard
+	 * @class UserDashboard
+	 * @extends {Component}
+	 */
 	var UserDashboard = function (_Component) {
 	  _inherits(UserDashboard, _Component);
 
+	  /**
+	   * Creates an instance of UserDashboard.
+	   * @param {any} props 
+	   * @memberof UserDashboard
+	   */
 	  function UserDashboard(props) {
 	    _classCallCheck(this, UserDashboard);
 
@@ -22711,6 +23093,11 @@
 	    };
 	    return _this;
 	  }
+	  /**
+	   * @param {any} view 
+	   * @memberof UserDashboard
+	   */
+
 
 	  _createClass(UserDashboard, [{
 	    key: 'handleSearchBarView',
@@ -22718,6 +23105,11 @@
 	      this.setState({ searchBarView: view });
 	      $('ul.tabs').tabs('select_tab', 'searchTab');
 	    }
+	    /**
+	     * @param {any} document 
+	     * @memberof UserDashboard
+	     */
+
 	  }, {
 	    key: 'setViewDocument',
 	    value: function setViewDocument(document) {
@@ -22727,6 +23119,11 @@
 	        documentId: document.id
 	      });
 	    }
+	    /**
+	     * @param {any} document 
+	     * @memberof UserDashboard
+	     */
+
 	  }, {
 	    key: 'setEditDocument',
 	    value: function setEditDocument(document) {
@@ -22735,16 +23132,30 @@
 	        documentId: document.id
 	      });
 	    }
+	    /**
+	     * @param {any} documentId 
+	     * @memberof UserDashboard
+	     */
+
 	  }, {
 	    key: 'setDeleteDocument',
 	    value: function setDeleteDocument(documentId) {
 	      this.props.DeleteDocument(documentId);
 	    }
+	    /**
+	     * @memberof UserDashboard
+	     */
+
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      $('ul.tabs').tabs();
 	    }
+	    /**
+	     * @returns {void} returns user dashboard page
+	     * @memberof UserDashboard
+	     */
+
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -22936,7 +23347,10 @@
 	  return UserDashboard;
 	}(_react.Component);
 
-	// export default Dashboard;
+	/**
+	 * @param {any} state 
+	 * @returns {Object} returns object
+	 */
 
 
 	var mapStoreToProps = function mapStoreToProps(state) {
@@ -22950,6 +23364,10 @@
 	  };
 	};
 
+	/**
+	 * @param {any} dispatch 
+	 * @returns {Object} returns object
+	 */
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
 	    EditDocument: function EditDocument(documentDetails, documentId) {
@@ -22978,7 +23396,17 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * Public document component
+	 * @param {Object} props 
+	 * @returns {void} returns public document table
+	 */
 	var PublicDocs = function PublicDocs(props) {
+	  /**
+	   * @param {Object} document 
+	   * @param {Integer} index 
+	   * @returns {void} returns table row
+	   */
 	  var SingleDocument = function SingleDocument(document, index) {
 	    return _react2.default.createElement(
 	      "tr",
@@ -23088,7 +23516,17 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * Role document component
+	 * @param {Object} props 
+	 * @returns {void} returns Role document table
+	 */
 	var RoleDocs = function RoleDocs(props) {
+	  /**
+	   * @param {Object} document 
+	   * @param {Integer} index 
+	   * @returns {void} returns table row
+	   */
 	  var SingleDocument = function SingleDocument(document, index) {
 	    return _react2.default.createElement(
 	      "tr",
@@ -23216,6 +23654,11 @@
 
 	// import jwtDecode from 'jwt-decode';
 
+	/**
+	 * Home component
+	 * @class Index
+	 * @extends {Component}
+	 */
 	var Index = function (_Component) {
 	  _inherits(Index, _Component);
 
@@ -23277,14 +23720,27 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/**
+	 * @class AddDoc
+	 * @extends {Component}
+	 */
 	var AddDoc = function (_Component) {
 	  _inherits(AddDoc, _Component);
 
+	  /**
+	   * Creates an instance of AddDoc.
+	   * @param {any} props 
+	   * @memberof AddDoc
+	   */
 	  function AddDoc(props) {
 	    _classCallCheck(this, AddDoc);
 
 	    return _possibleConstructorReturn(this, (AddDoc.__proto__ || Object.getPrototypeOf(AddDoc)).call(this));
 	  }
+	  /**
+	   * @memberof AddDoc
+	   */
+
 
 	  _createClass(AddDoc, [{
 	    key: 'componentDidMount',
@@ -23305,6 +23761,11 @@
 	        // Callback for Modal close
 	      });
 	    }
+	    /**
+	     * @returns {void} returns create document modal
+	     * @memberof AddDoc
+	     */
+
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -23383,14 +23844,27 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/**
+	 * add user modal
+	 * @class AddUser
+	 * @extends {Component}
+	 */
 	var AddUser = function (_Component) {
 	  _inherits(AddUser, _Component);
 
+	  /**
+	   * Creates an instance of AddUser.
+	   * @memberof AddUser
+	   */
 	  function AddUser() {
 	    _classCallCheck(this, AddUser);
 
 	    return _possibleConstructorReturn(this, (AddUser.__proto__ || Object.getPrototypeOf(AddUser)).call(this));
 	  }
+	  /**
+	   * @memberof AddUser
+	   */
+
 
 	  _createClass(AddUser, [{
 	    key: 'componentDidMount',
@@ -23411,6 +23885,11 @@
 	        // Callback for Modal close
 	      });
 	    }
+	    /**
+	     * @returns {void} returns create user modal
+	     * @memberof AddUser
+	     */
+
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -23468,7 +23947,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.CreateDocument = undefined;
+	exports.EditDocument = undefined;
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -23502,6 +23981,10 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/**
+	 * @param {any} props 
+	 * @returns {Object} returns message
+	 */
 	var ResponseMessage = function ResponseMessage(props) {
 	  if (props.status === 'success') {
 	    return _react2.default.createElement(
@@ -23520,13 +24003,24 @@
 	  }
 	};
 
-	var CreateDocument = exports.CreateDocument = function (_Component) {
-	  _inherits(CreateDocument, _Component);
+	/**
+	 * @export
+	 * @class EditDocument
+	 * @extends {Component}
+	 */
 
-	  function CreateDocument(props) {
-	    _classCallCheck(this, CreateDocument);
+	var EditDocument = exports.EditDocument = function (_Component) {
+	  _inherits(EditDocument, _Component);
 
-	    var _this = _possibleConstructorReturn(this, (CreateDocument.__proto__ || Object.getPrototypeOf(CreateDocument)).call(this, props));
+	  /**
+	   * Creates an instance of CreateDocument.
+	   * @param {any} props 
+	   * @memberof CreateDocument
+	   */
+	  function EditDocument(props) {
+	    _classCallCheck(this, EditDocument);
+
+	    var _this = _possibleConstructorReturn(this, (EditDocument.__proto__ || Object.getPrototypeOf(EditDocument)).call(this, props));
 
 	    var token = window.localStorage.getItem('token');
 	    if (token) {
@@ -23544,8 +24038,13 @@
 	    _this.onSubmit = _this.onSubmit.bind(_this);
 	    return _this;
 	  }
+	  /**
+	   * @param {any} nextProps
+	   * @memberof CreateDocument
+	   */
 
-	  _createClass(CreateDocument, [{
+
+	  _createClass(EditDocument, [{
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
 	      if (nextProps.status === 'success') {
@@ -23560,11 +24059,21 @@
 	        });
 	      }
 	    }
+	    /**
+	     * @param {any} event 
+	     * @memberof CreateDocument
+	     */
+
 	  }, {
 	    key: 'onChange',
 	    value: function onChange(event) {
 	      this.setState(_defineProperty({}, event.target.name, event.target.value));
 	    }
+	    /**
+	     * @param {any} event
+	     * @memberof CreateDocument
+	     */
+
 	  }, {
 	    key: 'contentOnChange',
 	    value: function contentOnChange(event) {
@@ -23573,6 +24082,11 @@
 	      });
 	      console.log(this.state, 'f');
 	    }
+	    /**
+	     * @param {any} event
+	     * @memberof CreateDocument
+	     */
+
 	  }, {
 	    key: 'onSubmit',
 	    value: function onSubmit(event) {
@@ -23583,6 +24097,12 @@
 	        this.props.CreateDocument(this.state);
 	      }
 	    }
+
+	    /**
+	     * @returns {void} returns form
+	     * @memberof CreateDocument
+	     */
+
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -23690,8 +24210,14 @@
 	    }
 	  }]);
 
-	  return CreateDocument;
+	  return EditDocument;
 	}(_react.Component);
+
+	/**
+	 * @param {any} state 
+	 * @returns {Object} returns object
+	 */
+
 
 	var mapStoreToProps = function mapStoreToProps(state) {
 	  return {
@@ -23699,6 +24225,10 @@
 	  };
 	};
 
+	/**
+	 * @param {any} dispatch 
+	 * @returns {Object} returns object
+	 */
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
 	    CreateDocument: function CreateDocument(documentDetails) {
@@ -23707,7 +24237,7 @@
 	  };
 	};
 
-	exports.default = (0, _reactRedux.connect)(mapStoreToProps, mapDispatchToProps)(CreateDocument);
+	exports.default = (0, _reactRedux.connect)(mapStoreToProps, mapDispatchToProps)(EditDocument);
 
 /***/ }),
 /* 217 */
@@ -23755,9 +24285,19 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/**
+	 * Edit users
+	 * @class EditUser
+	 * @extends {Component}
+	 */
 	var EditUser = function (_Component) {
 	  _inherits(EditUser, _Component);
 
+	  /**
+	   * Creates an instance of EditUser.
+	   * @param {Object} props
+	   * @memberof EditUser
+	   */
 	  function EditUser(props) {
 	    _classCallCheck(this, EditUser);
 
@@ -23775,6 +24315,11 @@
 	    return _this;
 	  }
 
+	  /**
+	   * @memberof EditUser
+	   */
+
+
 	  _createClass(EditUser, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
@@ -23787,22 +24332,46 @@
 	        this.props.viewUser(token, (0, _jwtDecode2.default)(token).userId);
 	      }
 	    }
+
+	    /**
+	     * @param {Object} nextProps
+	     * @memberof EditUser
+	     */
+
 	  }, {
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
 	      this.setState(nextProps.user);
 	    }
+
+	    /**
+	     * @param {any} event
+	     * @memberof EditUser
+	     */
+
 	  }, {
 	    key: 'handleChange',
 	    value: function handleChange(event) {
 	      this.setState(_defineProperty({}, event.target.name, event.target.value));
 	    }
+
+	    /**
+	     * @param {any} event
+	     * @memberof EditUser
+	     */
+
 	  }, {
 	    key: 'updateUser',
 	    value: function updateUser(event) {
 	      var userId = (0, _jwtDecode2.default)(this.state.token).userId;
 	      this.props.updateUser(this.state.token, this.state, userId);
 	    }
+
+	    /**
+	     * @returns {void} returns edit user page
+	     * @memberof EditUser
+	     */
+
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -23983,6 +24552,11 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/**
+	 * Edit user role component
+	 * @class EditUsersRole
+	 * @extends {Component}
+	 */
 	var EditUsersRole = function (_Component) {
 	  _inherits(EditUsersRole, _Component);
 
@@ -23999,6 +24573,10 @@
 	    return _this;
 	  }
 
+	  /**
+	   * @returns {void}
+	   * @memberof EditUsersRole
+	   */
 	  // componentWillMount() {
 	  //   if (!window.localStorage.getItem('token')) {
 	  //     browserHistory.push('/');
@@ -24010,22 +24588,46 @@
 	  //   }
 	  // }
 
+	  /**
+	   * @param {Object} nextProps 
+	   * @memberof EditUsersRole
+	   */
+
+
 	  _createClass(EditUsersRole, [{
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
 	      this.setState(nextProps.user);
 	    }
+
+	    /**
+	     * @param {Object} event
+	     * @memberof EditUsersRole
+	     */
+
 	  }, {
 	    key: 'handleChange',
 	    value: function handleChange(event) {
 	      this.setState(_defineProperty({}, event.target.name, event.target.value));
 	    }
+
+	    /**
+	     * @param {Object} event
+	     * @memberof EditUsersRole
+	     */
+
 	  }, {
 	    key: 'updateUser',
 	    value: function updateUser(event) {
 	      // const userId = jwtDecode(this.state.token).userId;
 	      this.props.updateUser(this.state, userId);
 	    }
+
+	    /**
+	     * @returns {void} returns edit user page
+	     * @memberof EditUsersRole
+	     */
+
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -24091,12 +24693,23 @@
 	  return EditUsersRole;
 	}(_react.Component);
 
+	/**
+	 * @param {Object} state 
+	 * @param {Object} ownProps 
+	 * @returns {Object} returns Object
+	 */
+
+
 	var mapStoreToProps = function mapStoreToProps(state, ownProps) {
 	  return {
 	    user: state.userReducer.user
 	  };
 	};
 
+	/**
+	 * @param {any} dispatch 
+	 * @returns {Object} returns object
+	 */
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
 	    updateUser: function updateUser(usertoken, userDetails, userId) {
@@ -24155,9 +24768,19 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/**
+	 * View user componen
+	 * @class ViewUser
+	 * @extends {Component}
+	 */
 	var ViewUser = function (_Component) {
 	  _inherits(ViewUser, _Component);
 
+	  /**
+	   * Creates an instance of ViewUser.
+	   * @param {Object} props
+	   * @memberof ViewUser
+	   */
 	  function ViewUser(props) {
 	    _classCallCheck(this, ViewUser);
 
@@ -24174,6 +24797,11 @@
 	    return _this;
 	  }
 
+	  /**
+	   * @memberof ViewUser
+	   */
+
+
 	  _createClass(ViewUser, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
@@ -24186,16 +24814,34 @@
 	        this.props.viewUser(token, (0, _jwtDecode2.default)(token).userId);
 	      }
 	    }
+
+	    /**
+	     * @param {Object} nextProps 
+	     * @memberof ViewUser
+	     */
+
 	  }, {
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
 	      this.setState(nextProps.user);
 	    }
+
+	    /**
+	     * @param {any} event 
+	     * @memberof ViewUser
+	     */
+
 	  }, {
 	    key: 'handleChange',
 	    value: function handleChange(event) {
 	      this.setState(_defineProperty({}, event.target.name, event.target.value));
 	    }
+
+	    /**
+	     * @returns {void} returns page
+	     * @memberof ViewUser
+	     */
+
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -24329,12 +24975,23 @@
 	  return ViewUser;
 	}(_react.Component);
 
+	/**
+	 * @param {Object} state 
+	 * @param {Object} ownProps 
+	 * @returns {void} returns object
+	 */
+
+
 	var mapStoreToProps = function mapStoreToProps(state, ownProps) {
 	  return {
 	    user: state.userReducer.user
 	  };
 	};
 
+	/**
+	 * @param {any} dispatch 
+	 * @returns {Object} returns object
+	 */
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
 	    viewUser: (0, _redux.bindActionCreators)(_viewUser2.default, dispatch)
@@ -24418,6 +25075,12 @@
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+	/**
+	 * @export
+	 * @param {any} [state={}]
+	 * @param {any} action
+	 * @returns {state} return object
+	 */
 	exports.default = function () {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	  var action = arguments[1];
@@ -24431,9 +25094,17 @@
 	    case 'ALL_DOCUMENTS':
 	      return _extends({}, state, { documents: action.documents });
 	    case actionTypes.VIEW_USER_DOCUMENTS_SUCCESS:
-	      return _extends({}, state, { document: action.documents, pageCount: action.pageCount });
+	      return _extends({}, state, {
+	        document: action.documents,
+	        pageCount: action.pageCount
+	      });
 	    case actionTypes.SEARCH_DOCS_COMPLETE:
-	      return _extends({}, state, { search: action.documents, status: action.status, searchPageCount: action.pageCount, query: action.query });
+	      return _extends({}, state, {
+	        search: action.documents,
+	        status: action.status,
+	        searchPageCount: action.pageCount,
+	        query: action.query
+	      });
 	    case actionTypes.SEARCH_DOCS_FAILED:
 	      return _extends({}, state, { status: action.status });
 	    default:
@@ -24514,6 +25185,12 @@
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+	/**
+	 * @export
+	 * @param {any} [state={}]
+	 * @param {any} action
+	 * @returns {state} return object
+	 */
 	exports.default = function () {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	  var action = arguments[1];
@@ -24555,6 +25232,12 @@
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+	/**
+	 * @export
+	 * @param {any} [state={}]
+	 * @param {any} action
+	 * @returns {state} return object
+	 */
 	exports.default = function () {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	  var action = arguments[1];
@@ -24589,6 +25272,12 @@
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+	/**
+	 * @export
+	 * @param {any} [state={}]
+	 * @param {any} action
+	 * @returns {state} return object
+	 */
 	exports.default = function () {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	  var action = arguments[1];
@@ -24626,6 +25315,12 @@
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+	/**
+	 * @export
+	 * @param {any} [state={}]
+	 * @param {any} action
+	 * @returns {state} return object
+	 */
 	exports.default = function () {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	  var action = arguments[1];
@@ -24634,7 +25329,12 @@
 	    case actionTypes.GET_USER_SUCCESS:
 	      return _extends({}, state, { users: action.users, pageCount: action.pageCount });
 	    case actionTypes.SEARCH_USER_COMPLETE:
-	      return _extends({}, state, { search: action.users, status: action.status, searchPageCount: action.pageCount, query: action.query });
+	      return _extends({}, state, {
+	        search: action.users,
+	        status: action.status,
+	        searchPageCount: action.pageCount,
+	        query: action.query
+	      });
 	    case actionTypes.SEARCH_USER_FAILED:
 	      return _extends({}, state, { status: action.status });
 	    default:

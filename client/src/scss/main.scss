@@ -125,6 +125,11 @@ nav a {
  }
 .side-nav {
   padding-top: 60px;
+  background-color: #FFD04A;
+}
+.side-nav .upperCase{
+  padding-left: 17%;
+  color: $text-color-two
 }
 .tabs {
   -webkit-box-shadow: 0 8px 10px -6px black;
@@ -160,11 +165,11 @@ background-color: $primary-color;
   left: 0%
 }
 
-@media only screen and (max-width: 992px) {
-  nav .brand-logo {
-    left: 47%;
-  }
-}
+// @media only screen and (max-width: 992px) {
+//   nav .brand-logo {
+//     left: 47%;
+//   }
+// }
 .upperCase {
 text-transform: uppercase;
 }

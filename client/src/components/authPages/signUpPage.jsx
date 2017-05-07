@@ -13,6 +13,11 @@ let token;
  * @extends {Component}
  */
 class signUpPage extends Component {
+  /**
+   * Creates an instance of signUpPage.
+   * @param {any} props
+   * @memberof signUpPage
+   */
   constructor(props) {
     super(props);
     token = window.localStorage.getItem('token');
@@ -27,6 +32,9 @@ class signUpPage extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+  /**
+   * @memberof signUpPage
+   */
   componentWillMount() {
     authUser = {};
     if (token) {
@@ -36,6 +44,10 @@ class signUpPage extends Component {
       }
     }
   }
+  /**
+   * @param {any} nextProps
+   * @memberof signUpPage
+   */
   componentWillReceiveProps(nextProps) {
     if (nextProps.error === 'unique violation') {
       this.setState({
@@ -46,10 +58,18 @@ class signUpPage extends Component {
       browserHistory.push('/dashboard');
     }
   }
+  /**
+   * @param {any} e
+   * @memberof signUpPage
+   */
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
     console.log(this.state);
   }
+  /**
+   * @param {any} e
+   * @memberof signUpPage
+   */
   onSubmit(e) {
     e.preventDefault();
     if(this.state.roleId === '99' && token) {
