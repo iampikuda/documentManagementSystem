@@ -3,13 +3,13 @@ import { browserHistory } from 'react-router';
 import * as actionTypes from '../actionTypes';
 import setAuthorizationToken from '../../utils/setAuth';
 
-export default (details, offset) => {
+export default (query, offset) => {
   return (dispatch) => {
     const token = window.localStorage.getItem('token');
     setAuthorizationToken(token);
     return axios.get('/api/search/user', {
       params: {
-        query: details,
+        query,
         offset
       }
     })
@@ -17,7 +17,9 @@ export default (details, offset) => {
       dispatch({
         type: actionTypes.SEARCH_USER_COMPLETE,
         users,
-        status: 'success'
+        query,
+        status: 'success',
+        pageCount: users.data.metadata.pages
       });
     })
     .catch((err) => {

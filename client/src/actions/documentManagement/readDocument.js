@@ -6,16 +6,22 @@ import setAuthorizationToken from '../../utils/setAuth';
 const documentReadSuccess = (documents) => {
   return {
     type: actionTypes.VIEW_USER_DOCUMENTS_SUCCESS,
-    documents
+    documents,
+    pageCount: documents.data.metadata.pages
   };
 };
 
-export const viewUserDocuments = (userId) => {
+export const viewUserDocuments = (offset) => {
   return (dispatch) => {
     const token = window.localStorage.getItem('token');
     setAuthorizationToken(token);
-    axios.get('/api/document')
+    axios.get('/api/document', {
+      params: {
+        offset
+      }
+    })
     .then((documents) => {
+      console.log(documents);
       dispatch(documentReadSuccess(documents));
     })
     .catch((err) => {
