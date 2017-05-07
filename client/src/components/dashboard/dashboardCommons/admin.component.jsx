@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import jwtDecode from 'jwt-decode';
+import { Pagination } from 'react-materialize';
 import Navbar from '../../commons/nav.component.js';
 import SubNavBar from '../../commons/subNavBar.jsx';
 import AllDocs from '../userDashboard/allDocs.component.jsx';
@@ -15,6 +16,9 @@ import * as userActions from '../../../actions/userManagement/getUsers.js';
 import * as roleActions from '../../../actions/roleManagement/getRoles.js';
 import deleteUserAction from '../../../actions/userManagement/deleteUser';
 import editUserActions from '../../../actions/userManagement/editUser.js';
+import searchDocs from '../../../actions/documentManagement/searchDocs.js';
+import searchUsers from '../../../actions/userManagement/searchUsers.js';
+
 
 class AdminDashboard extends Component {
   constructor(props) {
@@ -44,7 +48,7 @@ class AdminDashboard extends Component {
 
   handleSearchBarView(view) {
     this.setState({ searchBarView: view });
-    $('ul.tabs').tabs('select_tab', 'searchTab');
+    $('ul.tabs').tabs('select_tab', 'searchTab');    
   }
 
   setViewDocument(document) {
@@ -68,8 +72,8 @@ class AdminDashboard extends Component {
   }
   componentWillMount() {
     const userId = this.state.authUser.userId || null
-    this.props.actionsUser.viewUsers(userId);
-    this.props.actionsRole.viewRoles(userId);
+    this.props.actionsUser.viewUsers();
+    this.props.actionsRole.viewRoles();
   }
   componentDidMount() {
     $('ul.tabs').tabs();
@@ -115,9 +119,29 @@ class AdminDashboard extends Component {
             </div>
 
             <div id="test1" className="tabContent col s12">
+              <center className="paginationKey">
+                <Pagination id="allPagination" className="pag"
+                  items={this.props.documentPages}
+                  maxButtons={8}
+                  onSelect={(page) => {
+                    const offset = (page - 1) * 10;
+                    this.props.pagination(offset);
+                  }}
+                  />
+              </center>
               <AllDocs document={this.props.documents} setViewDocument={this.setViewDocument} />
             </div>
             <div id="test2" className="tabContent col s12">
+              <center className="paginationKey">
+                <Pagination id="allPagination" className="pag"
+                  items={this.props.userPages}
+                  maxButtons={8}
+                  onSelect={(page) => {
+                    const offset = (page - 1) * 10;
+                    this.props.actionsUser.viewUsers(offset);
+                  }}
+                  />
+              </center>
               <Users updateUser={this.updateUser} users={this.props.users} roles={this.props.roles} deleteUser={this.props.deleteUser}/>
             </div>
             <div id="test3" className="tabContent col s12">
@@ -127,6 +151,19 @@ class AdminDashboard extends Component {
               <MyDocs document={this.props.documents} setEditDocument={this.setEditDocument} setViewDocument={this.setViewDocument} setDeleteDocument={this.setDeleteDocument} />
             </div>
             <div id="searchTab" className="tabContent col s12">
+              <center className="paginationKey">
+                <Pagination id="searchPagination" className="pag"
+                  items={this.state.searchBarView ? this.props.documentSearchPages : this.props.userSearchPages}
+                  maxButtons={8}
+                  onSelect={(page) => {
+                    const offset = (page - 1) * 10;
+                    {this.state.searchBarView ?
+                    this.props.DocSearch(this.props.documentSearchQuery, offset)
+                    :
+                    this.props.UserSearch(this.props.userSearchQuery, offset) }
+                  }}
+                  />
+              </center>
               <Search document={this.props.documents} setViewDocument={this.setViewDocument} users={this.props.users} view= {this.state.searchBarView} />
             </div>
           </div>
@@ -137,6 +174,16 @@ class AdminDashboard extends Component {
 }
 
 // export default Dashboard;
+const mapStoreToProps = (state) => {
+  return {
+    documentPages: state.documentReducer.pageCount,
+    documentSearchPages: state.documentReducer.searchPageCount,
+    documentSearchQuery: state.documentReducer.query,
+    userSearchPages: state.userReducer.searchPageCount,
+    userSearchQuery: state.userReducer.query,
+    userPages: state.userReducer.pageCount
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -146,7 +193,9 @@ const mapDispatchToProps = (dispatch) => {
     actionsRole: bindActionCreators(roleActions, dispatch),
     viewUser: (usertoken, userId) => dispatch(viewUserAction(usertoken, userId)),
     deleteUser: (userId) => dispatch(deleteUserAction(userId)),
-    actionEditUser: bindActionCreators(editUserActions, dispatch)
+    actionEditUser: bindActionCreators(editUserActions, dispatch),
+    UserSearch: (query, offset) => dispatch(searchUsers(query, offset)),
+    DocSearch: (query, offset) => dispatch(searchDocs(query, offset))
   };
 };
-export default connect(null, mapDispatchToProps)(AdminDashboard);
+export default connect(mapStoreToProps, mapDispatchToProps)(AdminDashboard);
