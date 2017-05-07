@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router';
+import { Pagination } from 'react-materialize';
 import Navbar from '../../commons/nav.component.js';
 import SubNavBar from '../../commons/subNavBar.jsx';
 import AllDocs from '../../dashboard/userDashboard/allDocs.component.jsx';
@@ -89,6 +90,16 @@ class UserDashboard extends Component {
               </ul>
             </div>
             <div id="test1" className="tabContent col s12">
+              <center className="paginationKey">
+                <Pagination id="allPagination" className="pag"
+                  items={this.props.documentPages}
+                  maxButtons={8}
+                  onSelect={(page) => {
+                    const offset = (page - 1) * 10;
+                    this.props.pagination(offset);
+                  }}
+                  />
+              </center>
               <AllDocs document={this.props.documents} setEditDocument={this.setEditDocument} setViewDocument={this.setViewDocument} tname="jezzuzzzz" />
             </div>
             <div id="test2" className="tabContent col s12">
@@ -101,6 +112,19 @@ class UserDashboard extends Component {
               <MyDocs document={this.props.documents} setEditDocument={this.setEditDocument} setViewDocument={this.setViewDocument} setDeleteDocument={this.setDeleteDocument} />
             </div>
             <div id="searchTab" className="tabContent col s12">
+              <center className="paginationKey">
+                <Pagination id="searchPagination" className="pag"
+                  items={this.state.searchBarView ? this.props.documentSearchPages : this.props.userSearchPages}
+                  maxButtons={8}
+                  onSelect={(page) => {
+                    const offset = (page - 1) * 10;
+                    {this.state.searchBarView ?
+                    this.props.DocSearch(this.props.documentSearchQuery, offset)
+                    :
+                    this.props.UserSearch(this.props.userSearchQuery, offset) }
+                  }}
+                  />
+              </center>
               <Search document={this.props.documents} setViewDocument={this.setViewDocument} users={this.props.users} view= {this.state.searchBarView} />
             </div>
           </div>
@@ -111,10 +135,21 @@ class UserDashboard extends Component {
 }
 
 // export default Dashboard;
+const mapStoreToProps = (state) => {
+  return {
+    documentPages: state.documentReducer.pageCount,
+    documentSearchPages: state.documentReducer.searchPageCount,
+    documentSearchQuery: state.documentReducer.query,
+    userSearchPages: state.userReducer.searchPageCount,
+    userSearchQuery: state.userReducer.query,
+    userPages: state.userReducer.pageCount
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     EditDocument: (documentDetails, documentId) => dispatch(EditDocument(documentDetails, documentId)),
     DeleteDocument: (documentId) => dispatch(DeleteDocument(documentId))
   };
 };
-export default connect(null, mapDispatchToProps)(UserDashboard);
+export default connect(mapStoreToProps, mapDispatchToProps)(UserDashboard);
