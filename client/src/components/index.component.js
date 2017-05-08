@@ -12,7 +12,7 @@ class Index extends Component {
   render() {
     return (
       <div >
-        <div className="mainContainer">
+        <div className="main-container">
           <div className="bg"></div>
           <Navbar />
           <Body />

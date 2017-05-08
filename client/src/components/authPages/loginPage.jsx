@@ -56,7 +56,7 @@ class Login extends Component {
         <div className="row">
           <h4 className="center auth-header"><Link to="/">PK-DOCMAN</Link></h4>
         </div>
-        <div className="row loginForm">
+        <div className="row login-form">
           <h4 className="center">Login</h4>
           <form className="col s12" onSubmit={this.onSubmit}>
             <div className="row">

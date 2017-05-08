@@ -122,12 +122,12 @@ class UserDashboard extends Component {
           </div>
         </div>
 
-        <div className="mainContainer">
+        <div className="main-container">
           <div className="bg"></div>
           <Navbar />
           <SubNavBar handleSearchBarView={this.handleSearchBarView} />
           <div className="row">
-            <div className="tabRow">
+            <div className="tab-row">
               <ul className="tabs tabs-fixed-width">
                 <li className="tab">
                   <Link
@@ -150,8 +150,8 @@ class UserDashboard extends Component {
                 </li>
               </ul>
             </div>
-            <div id="allDocuments" className="tabContent col s12">
-              <center className="paginationKey">
+            <div id="allDocuments" className="tab-content col s12">
+              <center className="pagination-key">
                 <Pagination id="allPagination" className="pag"
                   items={this.props.documentPages}
                   maxButtons={8}
@@ -166,25 +166,25 @@ class UserDashboard extends Component {
                 setEditDocument={this.setEditDocument}
                 setViewDocument={this.setViewDocument}/>
             </div>
-            <div id="publicDocuments" className="tabContent col s12">
+            <div id="publicDocuments" className="tab-content col s12">
               <PublicDocuments
                 document={this.props.documents}
                 setViewDocument={this.setViewDocument} />
             </div>
-            <div id="roleDocuments" className="tabContent col s12">
+            <div id="roleDocuments" className="tab-content col s12">
               <RoleDocuments
                 document={this.props.documents}
                 setViewDocument={this.setViewDocument} />
             </div>
-            <div id="ownerDocuments" className="tabContent col s12">
+            <div id="ownerDocuments" className="tab-content col s12">
               <MyDocuments
                 document={this.props.documents}
                 setEditDocument={this.setEditDocument}
                 setViewDocument={this.setViewDocument}
                 setDeleteDocument={this.setDeleteDocument} />
             </div>
-            <div id="searchTab" className="tabContent col s12">
-              <center className="paginationKey">
+            <div id="searchTab" className="tab-content col s12">
+              <center className="pagination-key">
                 <Pagination id="searchPagination" className="pag"
                   items={this.state.searchBarView ?
                   this.props.documentSearchPages : this.props.userSearchPages}

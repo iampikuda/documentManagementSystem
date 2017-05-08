@@ -86,8 +86,8 @@ class SubNavBar extends Component {
           <AddDoc />
           <AddUser />
 
-          <form className="searchForm" onSubmit={this.onSubmit}>
-            <div className="searchBox">
+          <form className="search-form" onSubmit={this.onSubmit}>
+            <div className="search-box">
               <i className="material-icons">search</i>
               <input
                 value={this.state.query}
@@ -109,7 +109,7 @@ class SubNavBar extends Component {
                   <option value="users">USERS</option>
                   <option value="documents">DOCUMENTS</option>
                 </select>
-                <input type="submit" value="Submit" className="displayNone" />                
+                <input type="submit" value="Submit" className="display-none" />                
               </div>
             </div>
           </form>
@@ -120,8 +120,8 @@ class SubNavBar extends Component {
 
           <AddDoc />
 
-          <form className="searchForm" onSubmit={this.onSubmit}>
-            <div className="searchBox">
+          <form className="search-form" onSubmit={this.onSubmit}>
+            <div className="search-box">
               <i className="material-icons">search</i>
               <input
                 value={this.state.query}
@@ -144,7 +144,7 @@ class SubNavBar extends Component {
                   <option value="documents">DOCUMENTS</option>
                 </select>
               </div>
-              <input type="submit" value="Submit" className="displayNone" />
+              <input type="submit" value="Submit" className="display-none" />
             </div>
           </form>
 

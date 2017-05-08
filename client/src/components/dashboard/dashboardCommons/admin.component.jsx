@@ -156,12 +156,12 @@ class AdminDashboard extends Component {
           </div>
         </div>
         
-        <div className="mainContainer">
+        <div className="main-container">
           <div className="bg"></div>
           <Navbar />
           <SubNavBar handleSearchBarView={this.handleSearchBarView}/>
           <div className="row">
-            <div className="tabRow">
+            <div className="tab-row">
               <ul className="tabs tabs-fixed-width">
                 <li className="tab"><Link to="#test1" className="active">All Documents</Link></li>
                 <li className="tab"><Link to="#test2">User List</Link></li>
@@ -171,8 +171,8 @@ class AdminDashboard extends Component {
               </ul>
             </div>
 
-            <div id="test1" className="tabContent col s12">
-              <center className="paginationKey">
+            <div id="test1" className="tab-content col s12">
+              <center className="pagination-key">
                 <Pagination id="allPagination" className="pag"
                   items={this.props.documentPages}
                   maxButtons={8}
@@ -186,8 +186,8 @@ class AdminDashboard extends Component {
                 document={this.props.documents}
                 setViewDocument={this.setViewDocument} />
             </div>
-            <div id="test2" className="tabContent col s12">
-              <center className="paginationKey">
+            <div id="test2" className="tab-content col s12">
+              <center className="pagination-key">
                 <Pagination id="allPagination" className="pag"
                   items={this.props.userPages}
                   maxButtons={8}
@@ -200,17 +200,17 @@ class AdminDashboard extends Component {
               <Users updateUser={this.updateUser} users={this.props.users}
                 roles={this.props.roles} deleteUser={this.props.deleteUser}/>
             </div>
-            <div id="test3" className="tabContent col s12">
+            <div id="test3" className="tab-content col s12">
               <Roles roles={this.props.roles} />
             </div>
-            <div id="test4" className="tabContent col s12">
+            <div id="test4" className="tab-content col s12">
               <MyDocuments document={this.props.documents}
                 setEditDocument={this.setEditDocument}
                 setViewDocument={this.setViewDocument}
                 setDeleteDocument={this.setDeleteDocument} />
             </div>
-            <div id="searchTab" className="tabContent col s12">
-              <center className="paginationKey">
+            <div id="searchTab" className="tab-content col s12">
+              <center className="pagination-key">
                 <Pagination id="searchPagination" className="pag"
                   items={this.state.searchBarView ?
                   this.props.documentSearchPages : this.props.userSearchPages}

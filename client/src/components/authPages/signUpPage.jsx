@@ -93,7 +93,7 @@ class signUpPage extends Component {
     return (roleIdNow === AdminRoleId) ?
       <div>
         <div className="row"></div>
-        <div className="row signupForm">
+        <div className="row signup-form">
           <form className="col s12" onSubmit={this.onSubmit}>
             {this.state.error ?
               <div className="center">
@@ -198,7 +198,7 @@ class signUpPage extends Component {
         <div className="row">
           <h4 className="center auth-header"><Link to="/">PK-DOCMAN</Link></h4>
         </div>
-        <div className="row signupForm">
+        <div className="row signup-form">
           <h4 className="center">Sign Up</h4>
           <form className="col s12" onSubmit={this.onSubmit}>
             {this.state.error ?

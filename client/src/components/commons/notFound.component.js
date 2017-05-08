@@ -14,7 +14,7 @@ class NotFound extends Component {
    */
   render() {
     return (
-      <div className="bodyInnards">
+      <div className="body-innards">
         <div className="row">
           <h1>404</h1>
           <p>HUH!??</p>

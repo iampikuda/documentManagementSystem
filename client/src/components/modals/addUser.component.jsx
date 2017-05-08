@@ -44,8 +44,8 @@ class AddUser extends Component {
   render() {
     return (
       <div className="inline">
-        <Link data-target="modalUser" id="createUser"
-          className="waves-effect waves-light btn-large createDoc">
+        <Link data-target="modalUser" id="create-user"
+          className="waves-effect waves-light btn-large create-doc">
           <i className="material-icons left">add_circle_outline</i>
           Add User
         </Link>

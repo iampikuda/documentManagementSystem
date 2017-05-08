@@ -16,7 +16,7 @@ class Body extends Component {
     if (window.localStorage.getItem('token')) {
       return (
         <div>
-          <div className="bodyInnards">
+          <div className="body-innards">
             <Row>
               <Col m={12}>
                 <i className="material-icons">library_books</i>
@@ -36,7 +36,7 @@ class Body extends Component {
     }
     return (
       <div>
-        <div className="bodyInnards">
+        <div className="body-innards">
           <Row>
             <Col m={12}>
               <i className="material-icons">library_books</i>

@@ -43,7 +43,7 @@ class Navbar extends Component {
       return (
         <nav>
           <div className="nav-wrapper">
-            <Link to="/" className="myContainer">
+            <Link to="/" className="my-container">
               <i className="material-icons left">library_books</i>
               PK-DOCMAN
             </Link>
@@ -63,7 +63,7 @@ class Navbar extends Component {
     return (
       <nav id="nav">
         <div className="nav-wrapper">
-          <Link to='/' className="myContainer">
+          <Link to='/' className="my-container">
             <i className="material-icons left">library_books</i>
             PK-DOCMAN
           </Link>
