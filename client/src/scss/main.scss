@@ -4,8 +4,8 @@ $text-color: #FDFEFE;
 $text-color-two: #000;
 $box-shadow: 2px 2px 2px 2px rgba(0.4, 0.4, 0.4, 0.4);
 $center-align: center;
-$transparent-nav-color: rgba(255,0,0,0.1);
-$transparent-body-color: rgba(0,0,0,0.5);
+$transparent-nav-color: rgba(255, 0, 0, 0.1);
+$transparent-body-color: rgba(0, 0, 0, 0.5);
 $primary-color: #4386FC;
 $logo-color: #FFD04A;
 $background-color: #F2F2F2;
@@ -67,23 +67,24 @@ $background-color: #F2F2F2;
 }
 
 .search-box {
-    right: 0;
-    width: 40%;
-    display: -webkit-inline-box;
-    position: absolute;
-    height: inherit;
-    padding: 0 20px;
-    border-radius: 1px;
-    background-color: $background-color;
-    border: 1px solid $text-color-two;
-    opacity: 0.9;
+  right: 0;
+  width: 40%;
+  display: -webkit-inline-box;
+  position: absolute;
+  height: inherit;
+  padding: 0 20px;
+  border-radius: 1px;
+  background-color: $background-color;
+  border: 1px solid $text-color-two;
+  opacity: 0.9;
 }
 
 .search-box input,
 .search-box i,
 .search-box select {
-    color: $text-color-two;
+  color: $text-color-two;
 }
+
 .search-box input {
   border: 0px solid;
   width: 100%;
@@ -134,9 +135,9 @@ nav {
 
 .tabs {
   -webkit-box-shadow: 0 8px 10px -6px black;
-	   -moz-box-shadow: 0 8px 10px -6px black;
-	        box-shadow: 0 8px 10px -6px black;
-          z-index: 9;
+  -moz-box-shadow: 0 8px 10px -6px black;
+  box-shadow: 0 8px 10px -6px black;
+  z-index: 9;
 }
 
 .tab-row {
