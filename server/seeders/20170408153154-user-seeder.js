@@ -2,7 +2,7 @@ const faker = require('faker');
 const bcrypt = require('bcrypt-nodejs');
 require('dotenv').config();
 
-const password = process.env.PASSWORD || 'ttt';
+const password = process.env.PASSWORD || 'unlock';
 
 module.exports = {
   up(queryInterface) {
