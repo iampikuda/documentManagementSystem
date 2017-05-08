@@ -59,18 +59,6 @@ class Login extends Component {
         <div className="row loginForm">
           <h4 className="center">Login</h4>
           <form className="col s12" onSubmit={this.onSubmit}>
-            { this.state.error ?
-              <div className="center">
-                { this.state.error }
-              </div>
-                : <span />
-            }
-              { this.state.success ?
-                <div className="center">
-                  { this.state.success }
-                </div>
-                  : <span />
-              }
             <div className="row">
               <div className="input-field col s12">
                 <input

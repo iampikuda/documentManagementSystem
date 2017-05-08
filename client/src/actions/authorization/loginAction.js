@@ -15,6 +15,7 @@ export default (loginCredentials) => {
   return (dispatch) => {
     return axios.post('/api/user/login', loginCredentials)
       .then((response) => {
+        console.log('asdkjashdkjahsdkjsh');
         const token = response.data.token;
         const user = jwtDecode(token).user;
         window.localStorage.setItem('token', token);
@@ -25,7 +26,12 @@ export default (loginCredentials) => {
           token,
           message: 'Login Successful'
         });
+        Materialize.toast(response.data.message, 2000, 'green');
       }).catch((error) => {
+        // console.log(JSON.parse(error));
+        Materialize.toast(
+          'Please check the email and/or password',
+          3000, 'red');
         dispatch({
           type: actionTypes.LOGIN_ERROR,
           message: error.response.data.error

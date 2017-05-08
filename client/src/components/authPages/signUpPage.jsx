@@ -77,7 +77,7 @@ class signUpPage extends Component {
     } else {
       if(this.state.password === this.state.confirmPassword){
         this.props.Signup(this.state);
-        Materialize.toast('New user created', 3000)
+        Materialize.toast('New user created', 2000)
         // browserHistory.push('/');
       }else {
         Materialize.toast('Passwords don\'t match!', 3000)
