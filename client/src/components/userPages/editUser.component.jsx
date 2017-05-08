@@ -142,7 +142,8 @@ const mapStoreToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    viewUser: (usertoken, userId) => dispatch(viewUserAction(usertoken, userId)),
+    viewUser: (usertoken, userId) =>
+    dispatch(viewUserAction(usertoken, userId)),
     updateUser: (usertoken, userDetails, userId) =>
     dispatch(editUserAction(userDetails, userId)),
     deleteUser: (userId) => dispatch(deleteUserAction(userId))

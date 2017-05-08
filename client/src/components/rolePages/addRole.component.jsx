@@ -26,7 +26,8 @@ class AddRole extends Component {
       outDuration: 200, // Transition out duration
       startingTop: '4%', // Starting top style attribute
       endingTop: '10%', // Ending top style attribute
-      // ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+      // ready: function (modal, trigger) {
+      //  // Callback for Modal open. Modal and trigger parameters available.
       //   alert("Ready");
       //   console.log(modal, trigger);
       // },
@@ -42,17 +43,19 @@ class AddRole extends Component {
   render() {
     return (
       <div className="inline">
-        <Link data-target="modalRole" id="createDoc" className="waves-effect waves-light btn-large createDoc">
+        <Link data-target="modalRole" id="createDoc" 
+          className="waves-effect waves-light btn-large createDoc">
           <i className="material-icons left">add_circle_outline</i>
           Add Role
-          </Link>
+        </Link>
         <div id="modalRole" className="modal modal-fixed-footer">
           <div className="modal-content">
             <h4>Create a Role</h4>
             <CreateRole />
           </div>
           <div className="modal-footer">
-            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+            <a href="#!" className="modal-action modal-close
+              waves-effect waves-green btn-flat ">Close</a>
           </div>
         </div>
       </div>

@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "755960fe9122370ae0a5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8aeb1c690bd5208bb8d2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -3640,7 +3640,7 @@
 	            { to: '/', className: 'myContainer' },
 	            _react2.default.createElement(
 	              'i',
-	              { className: 'material-icons' },
+	              { className: 'material-icons left' },
 	              'library_books'
 	            ),
 	            'PK-DOCMAN'
@@ -3657,9 +3657,9 @@
 	                _react2.default.createElement(
 	                  'i',
 	                  { className: 'material-icons left' },
-	                  'lock_open  '
+	                  'lock_open'
 	                ),
-	                'LOGIN   '
+	                'LOGIN'
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -3671,9 +3671,9 @@
 	                _react2.default.createElement(
 	                  'i',
 	                  { className: 'material-icons left' },
-	                  'vpn_key    '
+	                  'vpn_key'
 	                ),
-	                'SIGNUP  '
+	                'SIGNUP'
 	              )
 	            )
 	          )
@@ -3727,6 +3727,11 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * set authorizational header
+	 * @export
+	 * @param {Object} token
+	 */
 	function setAuthorisationToken(token) {
 	  delete _axios2.default.defaults.headers.common['x-access-token'];
 	  _axios2.default.defaults.headers.common['x-access-token'] = token;
@@ -5982,11 +5987,13 @@
 	      $('.dropdown-button').dropdown({
 	        inDuration: 300,
 	        outDuration: 225,
-	        constrainWidth: false, // Does not change width of dropdown to that of the activator
+	        constrainWidth: false,
+	        // Does not change width of dropdown to that of the activator
 	        hover: true, // Activate on hover
 	        gutter: 0, // Spacing from edge
 	        belowOrigin: true, // Displays dropdown below the button
-	        alignment: 'left', // Displays dropdown with edge aligned to the left of button
+	        alignment: 'left',
+	        // Displays dropdown with edge aligned to the left of button
 	        stopPropagation: false // Stops event propagation
 	      });
 	      $('select').material_select();
@@ -11634,7 +11641,7 @@
 	      } else {
 	        if (this.state.password === this.state.confirmPassword) {
 	          this.props.Signup(this.state);
-	          Materialize.toast('New user created', 3000);
+	          Materialize.toast('New user created', 2000);
 	          // browserHistory.push('/');
 	        } else {
 	          Materialize.toast('Passwords don\'t match!', 3000);
@@ -11799,7 +11806,9 @@
 	            ),
 	            _react2.default.createElement(
 	              'button',
-	              { className: 'btn waves-effect waves-light center auth-button', type: 'submit', name: 'action' },
+	              {
+	                className: 'btn waves-effect waves-light center auth-button',
+	                type: 'submit', name: 'action' },
 	              'Add User',
 	              _react2.default.createElement('i', { className: 'material-icons right' })
 	            )
@@ -11945,7 +11954,9 @@
 	            ),
 	            _react2.default.createElement(
 	              'button',
-	              { className: 'btn waves-effect waves-light center auth-button', type: 'submit', name: 'action' },
+	              {
+	                className: 'btn waves-effect waves-light center auth-button',
+	                type: 'submit', name: 'action' },
 	              'Sign Up',
 	              _react2.default.createElement('i', { className: 'material-icons right' })
 	            ),
@@ -12041,7 +12052,9 @@
 	      _react2.default.createElement(
 	        'td',
 	        { className: 'truncate' },
-	        _react2.default.createElement('a', { href: '#modalView', dangerouslySetInnerHTML: { __html: document.content }, onClick: function onClick() {
+	        _react2.default.createElement('a', { href: '#modalView',
+	          dangerouslySetInnerHTML: { __html: document.content },
+	          onClick: function onClick() {
 	            props.setViewDocument(document);
 	          } })
 	      ),
@@ -12059,6 +12072,42 @@
 	        'td',
 	        null,
 	        document.updatedAt.slice(0, 10)
+	      ),
+	      _react2.default.createElement(
+	        'td',
+	        null,
+	        _react2.default.createElement(
+	          'a',
+	          {
+	            className: 'modal-trigger green-text',
+	            href: '#modalEdit',
+	            onClick: function onClick() {
+	              props.setEditDocument(document);
+	            } },
+	          _react2.default.createElement(
+	            'i',
+	            { className: 'material-icons' },
+	            'edit'
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'td',
+	        null,
+	        _react2.default.createElement(
+	          'a',
+	          {
+	            className: 'red-text',
+	            href: '#',
+	            onClick: function onClick() {
+	              props.setDeleteDocument(document.id);
+	            } },
+	          _react2.default.createElement(
+	            'i',
+	            { className: 'material-icons' },
+	            'delete'
+	          )
+	        )
 	      )
 	    );
 	  };
@@ -12174,7 +12223,9 @@
 	      _react2.default.createElement(
 	        'td',
 	        { className: 'truncate' },
-	        _react2.default.createElement('a', { href: '#modalView', dangerouslySetInnerHTML: { __html: document.content }, onClick: function onClick() {
+	        _react2.default.createElement('a', { href: '#modalView',
+	          dangerouslySetInnerHTML: { __html: document.content },
+	          onClick: function onClick() {
 	            props.setViewDocument(document);
 	          } })
 	      ),
@@ -12193,7 +12244,9 @@
 	        null,
 	        _react2.default.createElement(
 	          'a',
-	          { className: 'modal-trigger green-text', href: '#modalEdit', onClick: function onClick() {
+	          { className: 'modal-trigger green-text',
+	            href: '#modalEdit',
+	            onClick: function onClick() {
 	              props.setEditDocument(document);
 	            } },
 	          _react2.default.createElement(
@@ -12208,10 +12261,10 @@
 	        null,
 	        _react2.default.createElement(
 	          'a',
-	          { className: 'red-text', href: '#', onClick: function onClick() {
+	          { className: 'red-text', href: '#',
+	            onClick: function onClick() {
 	              props.setDeleteDocument(document.id);
 	            } },
-	          ' ',
 	          _react2.default.createElement(
 	            'i',
 	            { className: 'material-icons' },
@@ -12332,7 +12385,9 @@
 	      _react2.default.createElement(
 	        'td',
 	        { className: 'truncate' },
-	        _react2.default.createElement('a', { href: '#modalView', dangerouslySetInnerHTML: { __html: document.content }, onClick: function onClick() {
+	        _react2.default.createElement('a', { href: '#modalView',
+	          dangerouslySetInnerHTML: { __html: document.content },
+	          onClick: function onClick() {
 	            props.setViewDocument(document);
 	          } })
 	      ),
@@ -12350,6 +12405,39 @@
 	        'td',
 	        null,
 	        document.updatedAt.slice(0, 10)
+	      ),
+	      _react2.default.createElement(
+	        'td',
+	        null,
+	        _react2.default.createElement(
+	          'a',
+	          { className: 'modal-trigger green-text',
+	            href: '#modalEdit',
+	            onClick: function onClick() {
+	              props.setEditDocument(document);
+	            } },
+	          _react2.default.createElement(
+	            'i',
+	            { className: 'material-icons' },
+	            'edit'
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'td',
+	        null,
+	        _react2.default.createElement(
+	          'a',
+	          { className: 'red-text', href: '#',
+	            onClick: function onClick() {
+	              props.setDeleteDocument(document.id);
+	            } },
+	          _react2.default.createElement(
+	            'i',
+	            { className: 'material-icons' },
+	            'delete'
+	          )
+	        )
 	      )
 	    );
 	  };
@@ -12381,6 +12469,38 @@
 	        'td',
 	        null,
 	        users.roleId
+	      ),
+	      _react2.default.createElement(
+	        'td',
+	        null,
+	        _react2.default.createElement(
+	          'a',
+	          { className: 'modal-trigger green-text', href: '#modalEdit',
+	            onClick: function onClick() {
+	              props.setEditusers(users);
+	            } },
+	          _react2.default.createElement(
+	            'i',
+	            { className: 'material-icons' },
+	            'edit'
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'td',
+	        null,
+	        _react2.default.createElement(
+	          'a',
+	          { className: 'red-text', href: '#',
+	            onClick: function onClick() {
+	              props.setDeleteusers(users.id);
+	            } },
+	          _react2.default.createElement(
+	            'i',
+	            { className: 'material-icons' },
+	            'delete'
+	          )
+	        )
 	      )
 	    );
 	  };
@@ -12585,7 +12705,10 @@
 
 	    var token = window.localStorage.getItem('token');
 	    if (token) {
-	      _this.state = { id: (0, _jwtDecode2.default)(token).userId, email: (0, _jwtDecode2.default)(token).email };
+	      _this.state = {
+	        id: (0, _jwtDecode2.default)(token).userId,
+	        email: (0, _jwtDecode2.default)(token).email
+	      };
 	    }
 	    _this.state = {
 	      title: props.document ? props.document.title : '',
@@ -12681,7 +12804,8 @@
 	            { className: 'row' },
 	            _react2.default.createElement(
 	              'form',
-	              { className: 'col s12', onSubmit: this.props.onEdit ? function () {
+	              { className: 'col s12',
+	                onSubmit: this.props.onEdit ? function () {
 	                  _this2.props.onEdit(_this2.state, _this2.props.documentId);
 	                } : this.onSubmit },
 	              _react2.default.createElement(
@@ -12716,7 +12840,8 @@
 	                    name: 'content',
 	                    config: {
 	                      plugins: 'autolink link image lists print preview',
-	                      toolbar: 'undo redo | bold italic | alignleft aligncenter alignright'
+	                      toolbar: 'undo redo | bold italic | \
+	                      alignleft aligncenter alignright'
 	                    },
 	                    onChange: this.contentOnChange
 	                  })
@@ -12759,7 +12884,9 @@
 	              ),
 	              _react2.default.createElement(
 	                'button',
-	                { className: 'btn waves-effect waves-light center auth-button', type: 'submit', name: 'action' },
+	                {
+	                  className: 'btn waves-effect waves-light center auth-button',
+	                  type: 'submit', name: 'action' },
 	                'Save',
 	                _react2.default.createElement('i', { className: 'material-icons right' })
 	              ),
@@ -21060,6 +21187,7 @@
 	exports.default = function (loginCredentials) {
 	  return function (dispatch) {
 	    return _axios2.default.post('/api/user/login', loginCredentials).then(function (response) {
+	      console.log('asdkjashdkjahsdkjsh');
 	      var token = response.data.token;
 	      var user = (0, _jwtDecode2.default)(token).user;
 	      window.localStorage.setItem('token', token);
@@ -21070,7 +21198,10 @@
 	        token: token,
 	        message: 'Login Successful'
 	      });
+	      Materialize.toast(response.data.message, 2000, 'green');
 	    }).catch(function (error) {
+	      // console.log(JSON.parse(error));
+	      Materialize.toast('Please check the email and/or password', 3000, 'red');
 	      dispatch({
 	        type: actionTypes.LOGIN_ERROR,
 	        message: error.response.data.error
@@ -21753,16 +21884,6 @@
 	          _react2.default.createElement(
 	            'form',
 	            { className: 'col s12', onSubmit: this.onSubmit },
-	            this.state.error ? _react2.default.createElement(
-	              'div',
-	              { className: 'center' },
-	              this.state.error
-	            ) : _react2.default.createElement('span', null),
-	            this.state.success ? _react2.default.createElement(
-	              'div',
-	              { className: 'center' },
-	              this.state.success
-	            ) : _react2.default.createElement('span', null),
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'row' },
@@ -21807,7 +21928,10 @@
 	            ),
 	            _react2.default.createElement(
 	              'button',
-	              { className: 'btn waves-effect waves-light center auth-button', type: 'submit', name: 'action' },
+	              {
+	                className: 'btn waves-effect waves-light center auth-button',
+	                type: 'submit',
+	                name: 'action' },
 	              'Login',
 	              _react2.default.createElement('i', { className: 'material-icons right' })
 	            ),
@@ -21935,7 +22059,9 @@
 	                ),
 	                _react2.default.createElement(
 	                  _reactRouter.Link,
-	                  { to: '/dashboard', className: 'waves-effect waves-light btn-large' },
+	                  {
+	                    to: '/dashboard',
+	                    className: 'waves-effect waves-light btn-large' },
 	                  'Go to dashboard'
 	                )
 	              )
@@ -21973,7 +22099,9 @@
 	              ),
 	              _react2.default.createElement(
 	                _reactRouter.Link,
-	                { to: '/signup', className: 'waves-effect waves-light btn-large' },
+	                {
+	                  to: '/signup',
+	                  className: 'waves-effect waves-light btn-large' },
 	                'Get Started'
 	              )
 	            )
@@ -22416,11 +22544,18 @@
 	      return roleId === this.state.AdminRoleId ? _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_adminComponent2.default, { pagination: this.props.actionsDoc.viewUserDocuments, documents: this.props.documents, users: this.props.users, roles: this.props.roles })
+	        _react2.default.createElement(_adminComponent2.default, {
+	          pagination: this.props.actionsDoc.viewUserDocuments,
+	          documents: this.props.documents,
+	          users: this.props.users,
+	          roles: this.props.roles })
 	      ) : _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_userComponent2.default, { pagination: this.props.actionsDoc.viewUserDocuments, documents: this.props.documents, users: this.props.users })
+	        _react2.default.createElement(_userComponent2.default, {
+	          pagination: this.props.actionsDoc.viewUserDocuments,
+	          documents: this.props.documents,
+	          users: this.props.users })
 	      );
 	    }
 	  }]);
@@ -22704,7 +22839,9 @@
 	              null,
 	              'Edit Document'
 	            ),
-	            _react2.default.createElement(_editDocFormComponent2.default, { document: this.state.editDocument || null, documentId: this.state.documentId || null, onEdit: this.props.EditDocument })
+	            _react2.default.createElement(_editDocFormComponent2.default, { document: this.state.editDocument || null,
+	              documentId: this.state.documentId || null,
+	              onEdit: this.props.EditDocument })
 	          ),
 	          _react2.default.createElement(
 	            'div',
@@ -22750,7 +22887,7 @@
 	            _react2.default.createElement(
 	              'a',
 	              { href: '#!', className: 'modal-action modal-close waves-effect waves-green btn-flat ' },
-	              'Closet'
+	              'Close'
 	            )
 	          )
 	        ),
@@ -22831,7 +22968,9 @@
 	                  }
 	                })
 	              ),
-	              _react2.default.createElement(_allDocsComponent2.default, { document: this.props.documents, setViewDocument: this.setViewDocument })
+	              _react2.default.createElement(_allDocsComponent2.default, {
+	                document: this.props.documents,
+	                setViewDocument: this.setViewDocument })
 	            ),
 	            _react2.default.createElement(
 	              'div',
@@ -22848,7 +22987,8 @@
 	                  }
 	                })
 	              ),
-	              _react2.default.createElement(_usersViewComponent2.default, { updateUser: this.updateUser, users: this.props.users, roles: this.props.roles, deleteUser: this.props.deleteUser })
+	              _react2.default.createElement(_usersViewComponent2.default, { updateUser: this.updateUser, users: this.props.users,
+	                roles: this.props.roles, deleteUser: this.props.deleteUser })
 	            ),
 	            _react2.default.createElement(
 	              'div',
@@ -22858,7 +22998,10 @@
 	            _react2.default.createElement(
 	              'div',
 	              { id: 'test4', className: 'tabContent col s12' },
-	              _react2.default.createElement(_myDocsComponent2.default, { document: this.props.documents, setEditDocument: this.setEditDocument, setViewDocument: this.setViewDocument, setDeleteDocument: this.setDeleteDocument })
+	              _react2.default.createElement(_myDocsComponent2.default, { document: this.props.documents,
+	                setEditDocument: this.setEditDocument,
+	                setViewDocument: this.setViewDocument,
+	                setDeleteDocument: this.setDeleteDocument })
 	            ),
 	            _react2.default.createElement(
 	              'div',
@@ -22877,7 +23020,9 @@
 	                  }
 	                })
 	              ),
-	              _react2.default.createElement(_searchComponent2.default, { document: this.props.documents, setViewDocument: this.setViewDocument, users: this.props.users, view: this.state.searchBarView })
+	              _react2.default.createElement(_searchComponent2.default, { document: this.props.documents,
+	                setViewDocument: this.setViewDocument,
+	                users: this.props.users, view: this.state.searchBarView })
 	            )
 	          )
 	        )
@@ -23125,14 +23270,19 @@
 	              null,
 	              'Edit Document'
 	            ),
-	            _react2.default.createElement(_createDocForm2.default, { document: this.state.editDocument || null, documentId: this.state.documentId || null, onEdit: this.props.EditDocument })
+	            _react2.default.createElement(_createDocForm2.default, {
+	              document: this.state.editDocument || null,
+	              documentId: this.state.documentId || null,
+	              onEdit: this.props.EditDocument })
 	          ),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'modal-footer' },
 	            _react2.default.createElement(
 	              'a',
-	              { href: '#!', className: 'modal-action modal-close waves-effect waves-green btn-flat ' },
+	              {
+	                href: '#!',
+	                className: 'modal-action modal-close waves-effect waves-green btn-flat ' },
 	              'Close'
 	            )
 	          )
@@ -23170,7 +23320,9 @@
 	            { className: 'modal-footer' },
 	            _react2.default.createElement(
 	              'a',
-	              { href: '#!', className: 'modal-action modal-close waves-effect waves-green btn-flat ' },
+	              {
+	                href: '#!',
+	                className: 'modal-action modal-close waves-effect waves-green btn-flat ' },
 	              'Close'
 	            )
 	          )
@@ -23195,8 +23347,10 @@
 	                  { className: 'tab' },
 	                  _react2.default.createElement(
 	                    _reactRouter.Link,
-	                    { to: '#test1', className: 'active' },
-	                    'All Docs'
+	                    {
+	                      to: '#allDocuments',
+	                      className: 'active' },
+	                    'All Documents'
 	                  )
 	                ),
 	                _react2.default.createElement(
@@ -23204,8 +23358,8 @@
 	                  { className: 'tab' },
 	                  _react2.default.createElement(
 	                    _reactRouter.Link,
-	                    { to: '#test2' },
-	                    'Public Docs'
+	                    { to: '#publicDocuments' },
+	                    'Public Documents'
 	                  )
 	                ),
 	                _react2.default.createElement(
@@ -23213,8 +23367,8 @@
 	                  { className: 'tab' },
 	                  _react2.default.createElement(
 	                    _reactRouter.Link,
-	                    { to: '#test3' },
-	                    'Role Docs'
+	                    { to: '#roleDocuments' },
+	                    'Role Documents'
 	                  )
 	                ),
 	                _react2.default.createElement(
@@ -23222,8 +23376,8 @@
 	                  { className: 'tab' },
 	                  _react2.default.createElement(
 	                    _reactRouter.Link,
-	                    { to: '#test4' },
-	                    'My Docs'
+	                    { to: '#ownerDocuments' },
+	                    'My Documents'
 	                  )
 	                ),
 	                _react2.default.createElement(
@@ -23239,7 +23393,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { id: 'test1', className: 'tabContent col s12' },
+	              { id: 'allDocuments', className: 'tabContent col s12' },
 	              _react2.default.createElement(
 	                'center',
 	                { className: 'paginationKey' },
@@ -23252,22 +23406,33 @@
 	                  }
 	                })
 	              ),
-	              _react2.default.createElement(_allDocsComponent2.default, { document: this.props.documents, setEditDocument: this.setEditDocument, setViewDocument: this.setViewDocument, tname: 'jezzuzzzz' })
+	              _react2.default.createElement(_allDocsComponent2.default, {
+	                document: this.props.documents,
+	                setEditDocument: this.setEditDocument,
+	                setViewDocument: this.setViewDocument })
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { id: 'test2', className: 'tabContent col s12' },
-	              _react2.default.createElement(_publicDocsComponent2.default, { document: this.props.documents, setViewDocument: this.setViewDocument })
+	              { id: 'publicDocuments', className: 'tabContent col s12' },
+	              _react2.default.createElement(_publicDocsComponent2.default, {
+	                document: this.props.documents,
+	                setViewDocument: this.setViewDocument })
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { id: 'test3', className: 'tabContent col s12' },
-	              _react2.default.createElement(_roleDocsComponent2.default, { document: this.props.documents, setViewDocument: this.setViewDocument })
+	              { id: 'roleDocuments', className: 'tabContent col s12' },
+	              _react2.default.createElement(_roleDocsComponent2.default, {
+	                document: this.props.documents,
+	                setViewDocument: this.setViewDocument })
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { id: 'test4', className: 'tabContent col s12' },
-	              _react2.default.createElement(_myDocsComponent2.default, { document: this.props.documents, setEditDocument: this.setEditDocument, setViewDocument: this.setViewDocument, setDeleteDocument: this.setDeleteDocument })
+	              { id: 'ownerDocuments', className: 'tabContent col s12' },
+	              _react2.default.createElement(_myDocsComponent2.default, {
+	                document: this.props.documents,
+	                setEditDocument: this.setEditDocument,
+	                setViewDocument: this.setViewDocument,
+	                setDeleteDocument: this.setDeleteDocument })
 	            ),
 	            _react2.default.createElement(
 	              'div',
@@ -23286,7 +23451,11 @@
 	                  }
 	                })
 	              ),
-	              _react2.default.createElement(_searchComponent2.default, { document: this.props.documents, setViewDocument: this.setViewDocument, users: this.props.users, view: this.state.searchBarView })
+	              _react2.default.createElement(_searchComponent2.default, {
+	                document: this.props.documents,
+	                setViewDocument: this.setViewDocument,
+	                users: this.props.users,
+	                view: this.state.searchBarView })
 	            )
 	          )
 	        )
@@ -23374,7 +23543,9 @@
 	      _react2.default.createElement(
 	        "td",
 	        { className: "truncate" },
-	        _react2.default.createElement("a", { href: "#modalView", dangerouslySetInnerHTML: { __html: document.content }, onClick: function onClick() {
+	        _react2.default.createElement("a", { href: "#modalView",
+	          dangerouslySetInnerHTML: { __html: document.content },
+	          onClick: function onClick() {
 	            props.setViewDocument(document);
 	          } })
 	      ),
@@ -23494,7 +23665,9 @@
 	      _react2.default.createElement(
 	        "td",
 	        { className: "truncate" },
-	        _react2.default.createElement("a", { href: "#modalView", dangerouslySetInnerHTML: { __html: document.content }, onClick: function onClick() {
+	        _react2.default.createElement("a", { href: "#modalView",
+	          dangerouslySetInnerHTML: { __html: document.content },
+	          onClick: function onClick() {
 	            props.setViewDocument(document);
 	          } })
 	      ),
@@ -23702,7 +23875,8 @@
 	        outDuration: 200, // Transition out duration
 	        startingTop: '4%', // Starting top style attribute
 	        endingTop: '10%', // Ending top style attribute
-	        // ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+	        // ready: function (modal, trigger) {
+	        //  // Callback for Modal open. Modal and trigger parameters available.
 	        //   alert("Ready");
 	        //   console.log(modal, trigger);
 	        // },
@@ -23724,7 +23898,8 @@
 	        { className: 'inline' },
 	        _react2.default.createElement(
 	          _reactRouter.Link,
-	          { 'data-target': 'modalDoc', id: 'createDoc', className: 'waves-effect waves-light btn-large createDoc' },
+	          { 'data-target': 'modalDoc', id: 'createDoc',
+	            className: 'waves-effect waves-light btn-large createDoc' },
 	          _react2.default.createElement(
 	            'i',
 	            { className: 'material-icons left' },
@@ -23820,13 +23995,15 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      $('.modal').modal({
-	        dismissible: false, // Modal can be dismissed by clicking outside of the modal
+	        dismissible: false,
+	        // Modal can be dismissed by clicking outside of the modal
 	        opacity: .5, // Opacity of modal background
 	        inDuration: 300, // Transition in duration
 	        outDuration: 200, // Transition out duration
 	        startingTop: '4%', // Starting top style attribute
 	        endingTop: '10%', // Ending top style attribute
-	        // ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+	        // ready: function (modal, trigger) {
+	        //  // Callback for Modal open. Modal and trigger parameters available.
 	        //   alert("Ready");
 	        //   console.log(modal, trigger);
 	        // },
@@ -23848,7 +24025,8 @@
 	        { className: 'inline' },
 	        _react2.default.createElement(
 	          _reactRouter.Link,
-	          { 'data-target': 'modalUser', id: 'createUser', className: 'waves-effect waves-light btn-large createDoc' },
+	          { 'data-target': 'modalUser', id: 'createUser',
+	            className: 'waves-effect waves-light btn-large createDoc' },
 	          _react2.default.createElement(
 	            'i',
 	            { className: 'material-icons left' },
@@ -23974,7 +24152,10 @@
 
 	    var token = window.localStorage.getItem('token');
 	    if (token) {
-	      _this.state = { id: (0, _jwtDecode2.default)(token).userId, email: (0, _jwtDecode2.default)(token).email };
+	      _this.state = {
+	        id: (0, _jwtDecode2.default)(token).userId,
+	        email: (0, _jwtDecode2.default)(token).email
+	      };
 	    }
 	    _this.state = {
 	      title: props.document ? props.document.title : '',
@@ -24070,7 +24251,8 @@
 	            { className: 'row' },
 	            _react2.default.createElement(
 	              'form',
-	              { className: 'col s12', onSubmit: this.props.onEdit ? function () {
+	              { className: 'col s12',
+	                onSubmit: this.props.onEdit ? function () {
 	                  _this2.props.onEdit(_this2.state, _this2.props.documentId);
 	                } : this.onSubmit },
 	              _react2.default.createElement(
@@ -24105,7 +24287,8 @@
 	                    name: 'content',
 	                    config: {
 	                      plugins: 'autolink link image lists print preview',
-	                      toolbar: 'undo redo | bold italic | alignleft aligncenter alignright'
+	                      toolbar: 'undo redo | bold italic |\
+	                      alignleft aligncenter alignright'
 	                    },
 	                    onChange: this.contentOnChange
 	                  })
@@ -24148,7 +24331,9 @@
 	              ),
 	              _react2.default.createElement(
 	                'button',
-	                { className: 'btn waves-effect waves-light center auth-button', type: 'submit', name: 'action' },
+	                {
+	                  className: 'btn waves-effect waves-light center auth-button',
+	                  type: 'submit', name: 'action' },
 	                'Save',
 	                _react2.default.createElement('i', { className: 'material-icons right' })
 	              ),

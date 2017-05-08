@@ -6,12 +6,15 @@ import Navbar from '../../commons/nav.component.js';
 import SubNavBar from '../../commons/subNavBar.jsx';
 import AllDocuments from '../../dashboard/userDashboard/allDocs.component.jsx';
 
-import PublicDocuments from '../../dashboard/userDashboard/publicDocs.component.jsx';
-import RoleDocuments from '../../dashboard/userDashboard/roleDocs.component.jsx';
+import PublicDocuments from
+'../../dashboard/userDashboard/publicDocs.component.jsx';
+import RoleDocuments from
+'../../dashboard/userDashboard/roleDocs.component.jsx';
 import MyDocuments from '../../dashboard/userDashboard/myDocs.component.jsx';
 import CreateDocument from '../../modals/createDocForm.component';
 import EditDocument from '../../../actions/documentManagement/editDocument';
-import DeleteDocument from '../../../actions/documentManagement/deleteDocuments';
+import DeleteDocument from
+'../../../actions/documentManagement/deleteDocuments';
 import Search from '../userDashboard/search.component.jsx';
 
 /**
@@ -87,10 +90,18 @@ class UserDashboard extends Component {
         <div id="modalEdit" className="modal modal-fixed-footer">
           <div className="modal-content">
             <h4>Edit Document</h4>
-            <CreateDocument document={this.state.editDocument || null} documentId={this.state.documentId || null} onEdit={this.props.EditDocument} />
+            <CreateDocument
+              document={this.state.editDocument || null}
+              documentId={this.state.documentId || null}
+              onEdit={this.props.EditDocument} />
           </div>
           <div className="modal-footer">
-            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+            <a
+              href="#!"
+              className="modal-action modal-close
+              waves-effect waves-green btn-flat ">
+              Close
+            </a>
           </div>
         </div>
         <div id="modalView" className="modal modal-fixed-footer">
@@ -102,7 +113,12 @@ class UserDashboard extends Component {
             <div dangerouslySetInnerHTML={{ __html: this.state.viewDocument}} />
           </div>
           <div className="modal-footer">
-            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+            <a
+              href="#!"
+              className="modal-action modal-close
+              waves-effect waves-green btn-flat ">
+              Close
+            </a>
           </div>
         </div>
 
@@ -113,12 +129,25 @@ class UserDashboard extends Component {
           <div className="row">
             <div className="tabRow">
               <ul className="tabs tabs-fixed-width">
-                <li className="tab"><Link to="#allDocuments" className="active">All Documents</Link>
+                <li className="tab">
+                  <Link
+                    to="#allDocuments"
+                    className="active">
+                    All Documents
+                  </Link>
                 </li>
-                <li className="tab"><Link to="#publicDocuments">Public Documents</Link></li>
-                <li className="tab"><Link to="#roleDocuments">Role Documents</Link></li>
-                <li className="tab"><Link to="#ownerDocuments">My Documents</Link></li>
-                <li className="tab"><Link to="#searchTab">Search</Link></li>
+                <li className="tab">
+                  <Link to="#publicDocuments">Public Documents</Link>
+                </li>
+                <li className="tab">
+                  <Link to="#roleDocuments">Role Documents</Link>
+                </li>
+                <li className="tab">
+                  <Link to="#ownerDocuments">My Documents</Link>
+                </li>
+                <li className="tab">
+                  <Link to="#searchTab">Search</Link>
+                </li>
               </ul>
             </div>
             <div id="allDocuments" className="tabContent col s12">
@@ -132,21 +161,33 @@ class UserDashboard extends Component {
                   }}
                   />
               </center>
-              <AllDocuments document={this.props.documents} setEditDocument={this.setEditDocument} setViewDocument={this.setViewDocument} tname="jezzuzzzz" />
+              <AllDocuments
+                document={this.props.documents}
+                setEditDocument={this.setEditDocument}
+                setViewDocument={this.setViewDocument}/>
             </div>
             <div id="publicDocuments" className="tabContent col s12">
-              <PublicDocuments document={this.props.documents} setViewDocument={this.setViewDocument} />
+              <PublicDocuments
+                document={this.props.documents}
+                setViewDocument={this.setViewDocument} />
             </div>
             <div id="roleDocuments" className="tabContent col s12">
-              <RoleDocuments document={this.props.documents} setViewDocument={this.setViewDocument} />
+              <RoleDocuments
+                document={this.props.documents}
+                setViewDocument={this.setViewDocument} />
             </div>
             <div id="ownerDocuments" className="tabContent col s12">
-              <MyDocuments document={this.props.documents} setEditDocument={this.setEditDocument} setViewDocument={this.setViewDocument} setDeleteDocument={this.setDeleteDocument} />
+              <MyDocuments
+                document={this.props.documents}
+                setEditDocument={this.setEditDocument}
+                setViewDocument={this.setViewDocument}
+                setDeleteDocument={this.setDeleteDocument} />
             </div>
             <div id="searchTab" className="tabContent col s12">
               <center className="paginationKey">
                 <Pagination id="searchPagination" className="pag"
-                  items={this.state.searchBarView ? this.props.documentSearchPages : this.props.userSearchPages}
+                  items={this.state.searchBarView ?
+                  this.props.documentSearchPages : this.props.userSearchPages}
                   maxButtons={8}
                   onSelect={(page) => {
                     const offset = (page - 1) * 10;
@@ -157,7 +198,11 @@ class UserDashboard extends Component {
                   }}
                   />
               </center>
-              <Search document={this.props.documents} setViewDocument={this.setViewDocument} users={this.props.users} view= {this.state.searchBarView} />
+              <Search 
+                document={this.props.documents}
+                setViewDocument={this.setViewDocument}
+                users={this.props.users}
+                view= {this.state.searchBarView} />
             </div>
           </div>
         </div>
@@ -188,7 +233,8 @@ const mapStoreToProps = (state) => {
  */
 const mapDispatchToProps = (dispatch) => {
   return {
-    EditDocument: (documentDetails, documentId) => dispatch(EditDocument(documentDetails, documentId)),
+    EditDocument: (documentDetails, documentId) =>
+    dispatch(EditDocument(documentDetails, documentId)),
     DeleteDocument: (documentId) => dispatch(DeleteDocument(documentId))
   };
 };

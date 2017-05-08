@@ -43,10 +43,18 @@ class Navbar extends Component {
       return (
         <nav>
           <div className="nav-wrapper">
-            <Link to="/" className="myContainer"><i className="material-icons left">library_books</i>PK-DOCMAN</Link>
+            <Link to="/" className="myContainer">
+              <i className="material-icons left">library_books</i>
+              PK-DOCMAN
+            </Link>
             <ul className="right">
               <li className="upperCase">Welcome, {this.state.firstName}</li>
-              <li><Link onClick={this.logout}><i className="material-icons left">lock_outline</i>Sign Out</Link></li>
+              <li>
+                <Link onClick={this.logout}>
+                  <i className="material-icons left">lock_outline</i>
+                  Sign Out
+                </Link>
+              </li>
             </ul>
           </div>
         </nav>
@@ -55,10 +63,23 @@ class Navbar extends Component {
     return (
       <nav id="nav">
         <div className="nav-wrapper">
-          <Link to='/' className="myContainer"><i className="material-icons left">library_books</i>PK-DOCMAN</Link>
+          <Link to='/' className="myContainer">
+            <i className="material-icons left">library_books</i>
+            PK-DOCMAN
+          </Link>
           <ul className="right">
-            <li><Link to="/login"><i className="material-icons left">lock_open  </i>LOGIN   </Link></li>
-            <li><Link to="/signup"><i className="material-icons left">vpn_key    </i>SIGNUP  </Link></li>
+            <li>
+              <Link to="/login">
+                <i className="material-icons left">lock_open</i>
+                LOGIN
+              </Link>
+            </li>
+            <li>
+              <Link to="/signup">
+                <i className="material-icons left">vpn_key</i>
+                SIGNUP
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>

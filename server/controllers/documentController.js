@@ -36,7 +36,9 @@ class documentController {
         }
         model.Document.create(request.body)
           .then(newDocument => response.status(201).send(newDocument))
-          .catch(error => response.status(400).send({ message: error.message }));
+          .catch(error => response.status(400).send({
+            message: error.message
+          }));
       });
   }
 

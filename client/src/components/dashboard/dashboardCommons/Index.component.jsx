@@ -6,7 +6,8 @@ import Navbar from '../../commons/nav.component.js';
 import SubNavBar from '../../commons/subNavBar.jsx';
 import AdminDashboard from './admin.component.jsx';
 import UserDashboard from './user.component.jsx';
-import * as docActions from '../../../actions/documentManagement/readDocument.js';
+import * as docActions from
+'../../../actions/documentManagement/readDocument.js';
 
 class IndexDashboard extends Component {
   constructor(props) {
@@ -38,10 +39,17 @@ class IndexDashboard extends Component {
     const roleId = this.state.authUser.roleId || null
     return (roleId === this.state.AdminRoleId) ?
       <div>
-        <AdminDashboard pagination={this.props.actionsDoc.viewUserDocuments} documents={this.props.documents} users={this.props.users} roles={this.props.roles} />
+        <AdminDashboard
+          pagination={this.props.actionsDoc.viewUserDocuments}
+          documents={this.props.documents}
+          users={this.props.users}
+          roles={this.props.roles} />
       </div> :
       <div>
-        <UserDashboard pagination={this.props.actionsDoc.viewUserDocuments} documents={this.props.documents} users={this.props.users} />
+        <UserDashboard
+          pagination={this.props.actionsDoc.viewUserDocuments}
+          documents={this.props.documents}
+          users={this.props.users} />
       </div>
   }
 }

@@ -185,7 +185,10 @@ class signUpPage extends Component {
               </div>
             </div>
 
-            <button className="btn waves-effect waves-light center auth-button" type="submit" name="action">Add User
+            <button 
+              className="btn waves-effect waves-light center auth-button" 
+              type="submit" name="action">
+              Add User
               <i className="material-icons right"></i>
             </button>
           </form>
@@ -276,12 +279,17 @@ class signUpPage extends Component {
               </div>
             </div>
 
-            <button className="btn waves-effect waves-light center auth-button" type="submit" name="action">Sign Up
+            <button 
+              className="btn waves-effect waves-light center auth-button"
+              type="submit" name="action">
+              Sign Up
               <i className="material-icons right"></i>
             </button>
             <div className="row">
               <div className="col s12">
-                <p className="center">Already have an account? <Link to="/login"> Login </Link></p>
+                <p className="center">
+                  Already have an account? <Link to="/login"> Login </Link>
+                </p>
               </div>
             </div>
           </form>

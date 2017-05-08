@@ -129,10 +129,15 @@ class AdminDashboard extends Component {
         <div id="modalEdit" className="modal modal-fixed-footer">
           <div className="modal-content">
             <h4>Edit Document</h4>
-            <EditDocument document={this.state.editDocument || null} documentId={this.state.documentId || null} onEdit={this.props.EditDocument} />
+            <EditDocument document={this.state.editDocument || null}
+              documentId={this.state.documentId || null}
+              onEdit={this.props.EditDocument} />
           </div>
           <div className="modal-footer">
-            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+            <a href="#!" className="modal-action modal-close
+              waves-effect waves-green btn-flat ">
+              Close
+            </a>
           </div>
         </div>
         <div id="modalView" className="modal modal-fixed-footer">
@@ -144,7 +149,10 @@ class AdminDashboard extends Component {
             <div dangerouslySetInnerHTML={{ __html: this.state.viewDocument}} />
           </div>
           <div className="modal-footer">
-            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat ">Closet</a>
+            <a href="#!" className="modal-action modal-close
+              waves-effect waves-green btn-flat ">
+              Close
+            </a>
           </div>
         </div>
         
@@ -174,7 +182,9 @@ class AdminDashboard extends Component {
                   }}
                   />
               </center>
-              <AllDocuments document={this.props.documents} setViewDocument={this.setViewDocument} />
+              <AllDocuments
+                document={this.props.documents}
+                setViewDocument={this.setViewDocument} />
             </div>
             <div id="test2" className="tabContent col s12">
               <center className="paginationKey">
@@ -187,18 +197,23 @@ class AdminDashboard extends Component {
                   }}
                   />
               </center>
-              <Users updateUser={this.updateUser} users={this.props.users} roles={this.props.roles} deleteUser={this.props.deleteUser}/>
+              <Users updateUser={this.updateUser} users={this.props.users}
+                roles={this.props.roles} deleteUser={this.props.deleteUser}/>
             </div>
             <div id="test3" className="tabContent col s12">
               <Roles roles={this.props.roles} />
             </div>
             <div id="test4" className="tabContent col s12">
-              <MyDocuments document={this.props.documents} setEditDocument={this.setEditDocument} setViewDocument={this.setViewDocument} setDeleteDocument={this.setDeleteDocument} />
+              <MyDocuments document={this.props.documents}
+                setEditDocument={this.setEditDocument}
+                setViewDocument={this.setViewDocument}
+                setDeleteDocument={this.setDeleteDocument} />
             </div>
             <div id="searchTab" className="tabContent col s12">
               <center className="paginationKey">
                 <Pagination id="searchPagination" className="pag"
-                  items={this.state.searchBarView ? this.props.documentSearchPages : this.props.userSearchPages}
+                  items={this.state.searchBarView ?
+                  this.props.documentSearchPages : this.props.userSearchPages}
                   maxButtons={8}
                   onSelect={(page) => {
                     const offset = (page - 1) * 10;
@@ -209,7 +224,9 @@ class AdminDashboard extends Component {
                   }}
                   />
               </center>
-              <Search document={this.props.documents} setViewDocument={this.setViewDocument} users={this.props.users} view= {this.state.searchBarView} />
+              <Search document={this.props.documents}
+                setViewDocument={this.setViewDocument}
+                users={this.props.users} view= {this.state.searchBarView} />
             </div>
           </div>
         </div>
@@ -240,11 +257,13 @@ const mapStoreToProps = (state) => {
  */
 const mapDispatchToProps = (dispatch) => {
   return {
-    EditDocument: (documentDetails, documentId) => dispatch(EditDocument(documentDetails, documentId)),
+    EditDocument: (documentDetails, documentId) =>
+    dispatch(EditDocument(documentDetails, documentId)),
     DeleteDocument: (documentId) => dispatch(DeleteDocument(documentId)),
     actionsUser: bindActionCreators(userActions, dispatch),
     actionsRole: bindActionCreators(roleActions, dispatch),
-    viewUser: (usertoken, userId) => dispatch(viewUserAction(usertoken, userId)),
+    viewUser: (usertoken, userId) =>
+    dispatch(viewUserAction(usertoken, userId)),
     deleteUser: (userId) => dispatch(deleteUserAction(userId)),
     actionEditUser: bindActionCreators(editUserActions, dispatch),
     UserSearch: (query, offset) => dispatch(searchUsers(query, offset)),

@@ -42,7 +42,10 @@ export class EditDocument extends Component {
     super(props);
     const token = (window.localStorage.getItem('token'));
     if (token) {
-      this.state = { id: jwtDecode(token).userId, email: jwtDecode(token).email};
+      this.state = {
+        id: jwtDecode(token).userId,
+        email: jwtDecode(token).email
+      };
     }
     this.state = {
       title: props.document ? props.document.title :  '',
@@ -112,7 +115,10 @@ export class EditDocument extends Component {
       <div>
         <div>
           <div className='row'>
-            <form className='col s12' onSubmit={this.props.onEdit ? () => { this.props.onEdit(this.state, this.props.documentId) } : this.onSubmit}>
+            <form className='col s12'
+              onSubmit={this.props.onEdit ? () =>
+              { this.props.onEdit(this.state, this.props.documentId) } :
+              this.onSubmit}>
               <div className='row'>
                 <div className='input-field col s12'>
                   <input
@@ -134,7 +140,8 @@ export class EditDocument extends Component {
                     name='content'
                     config={{
                       plugins: 'autolink link image lists print preview',
-                      toolbar: 'undo redo | bold italic | alignleft aligncenter alignright'
+                      toolbar: 'undo redo | bold italic |\
+                      alignleft aligncenter alignright'
                     }}
                     onChange={this.contentOnChange}
                   />}
@@ -155,8 +162,11 @@ export class EditDocument extends Component {
                   <option value='role'>Role</option>
                 </select>
               </div>
-              <button className='btn waves-effect waves-light center auth-button' type='submit' name='action'>Save
-              <i className='material-icons right'></i>
+              <button 
+                className='btn waves-effect waves-light center auth-button'
+                type='submit' name='action'>
+                Save
+                <i className='material-icons right'></i>
               </button>
               <ResponseMessage status={this.props.status} />
             </form>

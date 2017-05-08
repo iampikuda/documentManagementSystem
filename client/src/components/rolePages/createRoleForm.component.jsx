@@ -85,7 +85,11 @@ export class CreateRole extends Component {
                 <label  htmlFor="title">Title</label>
               </div>
             </div>
-            <button className="btn waves-effect waves-light center auth-button" type="submit" name="action">Save
+            <button
+              className="btn waves-effect waves-light center auth-button"
+              type="submit"
+              name="action">
+              Save
               <i className="material-icons right"></i>
             </button>
           </form>

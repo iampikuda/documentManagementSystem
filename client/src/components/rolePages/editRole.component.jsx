@@ -67,7 +67,11 @@ class EditRole extends Component {
    */
   handleSubmit(event) {
     event.preventDefault();
-    this.props.EditRole(this.state, localStorage.getItem('token'), this.props.params.id);
+    this.props.EditRole(
+      this.state,
+      localStorage.getItem('token'),
+      this.props.params.id
+      );
   }
 
   /**

@@ -16,7 +16,11 @@ const PublicDocs = (props) => {
       <tr className="hoverable" key={index}>
         <td>{ document.title }</td>
         <td>{ document.access }</td>
-        <td className="truncate"><a href="#modalView" dangerouslySetInnerHTML={{ __html: document.content}} onClick={() => { props.setViewDocument(document); }} /></td>
+        <td className="truncate">
+          <a href="#modalView"
+            dangerouslySetInnerHTML={{ __html: document.content}}
+            onClick={() => { props.setViewDocument(document); }} />
+        </td>
         <td>{`${document.User.lastName} ${document.User.firstName}`}</td>
         <td>{ (document.createdAt).slice(0, 10) }</td>
       </tr>

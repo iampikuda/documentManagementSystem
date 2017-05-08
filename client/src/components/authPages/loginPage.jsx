@@ -85,12 +85,18 @@ class Login extends Component {
                 <label htmlFor="password">Password</label>
               </div>
             </div>
-            <button className="btn waves-effect waves-light center auth-button" type="submit" name="action">Login
+            <button
+              className="btn waves-effect waves-light center auth-button"
+              type="submit"
+              name="action">
+              Login
               <i className="material-icons right"></i>
             </button>
             <div className="row">
               <div className="col s12">
-                <p className="center">Don't have an account? <Link to="/signup"> Sign Up </Link></p>
+                <p className="center">
+                  Don't have an account? <Link to="/signup"> Sign Up </Link>
+                </p>
               </div>
             </div>
           </form>

@@ -17,13 +17,27 @@ const Search = (props) => {
       <tr className="hoverable" key={index} >
         <td>{document.title}</td>
         <td>{document.access}</td>
-        <td className="truncate"><a href="#modalView" dangerouslySetInnerHTML={{ __html: document.content}} onClick={() => { props.setViewDocument(document); }} /></td>
+        <td className="truncate">
+          <a href="#modalView"
+            dangerouslySetInnerHTML={{ __html: document.content}}
+            onClick={() => { props.setViewDocument(document); }}/>
+        </td>
         <td>{`${document.User.lastName} ${document.User.firstName}`}</td>
         <td>{(document.createdAt).slice(0, 10)}</td>
         <td>{(document.updatedAt).slice(0, 10)}</td>
-        {/*</a>*/}
-        {/*<td><a className="modal-trigger green-text" href="#modalEdit" onClick={() => { props.setEditDocument(document); }}><i className="material-icons">edit</i></a></td>
-      <td><a className="red-text" href="#" onClick={() => { props.setDeleteDocument(document.id); }} > <i className="material-icons">delete</i></a></td>*/}
+        <td>
+          <a className="modal-trigger green-text" 
+            href="#modalEdit"
+            onClick={() => { props.setEditDocument(document);}}>
+            <i className="material-icons">edit</i>
+          </a>
+        </td>
+        <td>
+          <a className="red-text" href="#"
+            onClick={() => { props.setDeleteDocument(document.id);}}>
+            <i className="material-icons">delete</i>
+          </a>
+        </td>
       </tr >
     );
   }
@@ -39,8 +53,17 @@ const Search = (props) => {
         <td>{users.lastName}</td>
         <td>{users.email}</td>
         <td>{users.roleId}</td>
-        {/*<td><a className="modal-trigger green-text" href="#modalEdit" onClick={() => { props.setEditusers(users); }}><i className="material-icons">edit</i></a></td>
-      <td><a className="red-text" href="#" onClick={() => { props.setDeleteusers(users.id); }} > <i className="material-icons">delete</i></a></td>*/}
+        <td>
+          <a className="modal-trigger green-text" href="#modalEdit"
+            onClick={() => { props.setEditusers(users);}}>
+            <i className="material-icons">edit</i>
+          </a>
+        </td>
+        <td>
+          <a className="red-text" href="#"
+          onClick={() => { props.setDeleteusers(users.id);}}>
+          <i className="material-icons">delete</i>
+        </a></td>
       </tr >
     );
   }
