@@ -143,7 +143,7 @@ class UserController {
         }
         if (request.body.roleId === '1') {
           if (request.decoded.roleId !== 1) {
-            return response.status(403)
+            return response.status(401)
               .send({
                 message: 'You are not authorized to create an Admin.' +
                 ' Contact Admin!'
@@ -176,7 +176,7 @@ class UserController {
         if (!foundUser) {
           return response
           .status(404)
-          .send({ message: 'You don\'t seem to exist' });
+          .send({ message: 'You don\'t seem to exist! Security!!!' });
         }
 
         foundUser = UserController.formattedUser(foundUser);
@@ -197,7 +197,7 @@ class UserController {
         if (!foundUser) {
           return response
           .status(404)
-          .send({ message: `There is no user with id: ${request.params.id}` });
+          .send({ message: `There is no user with id: ${Id}` });
         }
 
         foundUser = UserController.formattedUser(foundUser);
@@ -259,7 +259,7 @@ class UserController {
         roleId: queryRole
       }
     }).then((users) => {
-      if (users.count === 0) {
+      if (users.count < 1) {
         return response.status(404)
         .send({ message: 'There are no users with this role.' });
       }
@@ -314,8 +314,10 @@ class UserController {
       model.User.findOne({ where: { email: request.body.email } })
         .then((foundUser) => {
           if (!foundUser) {
-            return response.status(404)
-            .send({ message: 'User does not exist' });
+            return response.status(400)
+            .send({
+              message: 'Please check the email and/or password'
+            });
           }
           if (foundUser && foundUser.verifyPassword(request.body.password)) {
             const token = jwt.sign({
