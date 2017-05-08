@@ -12,7 +12,7 @@ class documentController {
    * @param {Object} response - request Object
    * @return {Object} response Object
    */
-  static createDocument(request, response) {t
+  static createDocument(request, response) {
     request.body.ownerId = request.decoded.userId;
     model.Document.sync();
     model.Document.findAll({
@@ -260,7 +260,9 @@ class documentController {
             currentPage: Math.floor(query.offset / query.limit) + 1,
             pageSize: documents.rows.length
           } : null;
-        response.send({ documents: documents.rows, metadata });
+        return response.status(200).send({
+          documents: documents.rows, metadata
+        });
       })
       .catch(error => response.status(400).send({
         message: error.message
