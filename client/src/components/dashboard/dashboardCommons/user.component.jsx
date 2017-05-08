@@ -4,11 +4,11 @@ import { browserHistory, Link } from 'react-router';
 import { Pagination } from 'react-materialize';
 import Navbar from '../../commons/nav.component.js';
 import SubNavBar from '../../commons/subNavBar.jsx';
-import AllDocs from '../../dashboard/userDashboard/allDocs.component.jsx';
+import AllDocuments from '../../dashboard/userDashboard/allDocs.component.jsx';
 
-import PublicDocs from '../../dashboard/userDashboard/publicDocs.component.jsx';
-import RoleDocs from '../../dashboard/userDashboard/roleDocs.component.jsx';
-import MyDocs from '../../dashboard/userDashboard/myDocs.component.jsx';
+import PublicDocuments from '../../dashboard/userDashboard/publicDocs.component.jsx';
+import RoleDocuments from '../../dashboard/userDashboard/roleDocs.component.jsx';
+import MyDocuments from '../../dashboard/userDashboard/myDocs.component.jsx';
 import CreateDocument from '../../modals/createDocForm.component';
 import EditDocument from '../../../actions/documentManagement/editDocument';
 import DeleteDocument from '../../../actions/documentManagement/deleteDocuments';
@@ -113,15 +113,15 @@ class UserDashboard extends Component {
           <div className="row">
             <div className="tabRow">
               <ul className="tabs tabs-fixed-width">
-                <li className="tab"><Link to="#test1" className="active">All Docs</Link>
+                <li className="tab"><Link to="#allDocuments" className="active">All Documents</Link>
                 </li>
-                <li className="tab"><Link to="#test2">Public Docs</Link></li>
-                <li className="tab"><Link to="#test3">Role Docs</Link></li>
-                <li className="tab"><Link to="#test4">My Docs</Link></li>
+                <li className="tab"><Link to="#publicDocuments">Public Documents</Link></li>
+                <li className="tab"><Link to="#roleDocuments">Role Documents</Link></li>
+                <li className="tab"><Link to="#ownerDocuments">My Documents</Link></li>
                 <li className="tab"><Link to="#searchTab">Search</Link></li>
               </ul>
             </div>
-            <div id="test1" className="tabContent col s12">
+            <div id="allDocuments" className="tabContent col s12">
               <center className="paginationKey">
                 <Pagination id="allPagination" className="pag"
                   items={this.props.documentPages}
@@ -132,16 +132,16 @@ class UserDashboard extends Component {
                   }}
                   />
               </center>
-              <AllDocs document={this.props.documents} setEditDocument={this.setEditDocument} setViewDocument={this.setViewDocument} tname="jezzuzzzz" />
+              <AllDocuments document={this.props.documents} setEditDocument={this.setEditDocument} setViewDocument={this.setViewDocument} tname="jezzuzzzz" />
             </div>
-            <div id="test2" className="tabContent col s12">
-              <PublicDocs document={this.props.documents} setViewDocument={this.setViewDocument} />
+            <div id="publicDocuments" className="tabContent col s12">
+              <PublicDocuments document={this.props.documents} setViewDocument={this.setViewDocument} />
             </div>
-            <div id="test3" className="tabContent col s12">
-              <RoleDocs document={this.props.documents} setViewDocument={this.setViewDocument} />
+            <div id="roleDocuments" className="tabContent col s12">
+              <RoleDocuments document={this.props.documents} setViewDocument={this.setViewDocument} />
             </div>
-            <div id="test4" className="tabContent col s12">
-              <MyDocs document={this.props.documents} setEditDocument={this.setEditDocument} setViewDocument={this.setViewDocument} setDeleteDocument={this.setDeleteDocument} />
+            <div id="ownerDocuments" className="tabContent col s12">
+              <MyDocuments document={this.props.documents} setEditDocument={this.setEditDocument} setViewDocument={this.setViewDocument} setDeleteDocument={this.setDeleteDocument} />
             </div>
             <div id="searchTab" className="tabContent col s12">
               <center className="paginationKey">
