@@ -6,17 +6,17 @@ import jwtDecode from 'jwt-decode';
 import { Pagination } from 'react-materialize';
 import Navbar from '../../commons/nav.component.js';
 import SubNavBar from '../../commons/subNavBar.jsx';
-import AllDocs from '../userDashboard/allDocs.component.jsx';
+import AllDocuments from '../userDashboard/allDocs.component.jsx';
 import Users from '../../dashboard/adminDashboard/usersView.component.js';
 import Roles from '../../dashboard/adminDashboard/rolesView.component.js';
-import MyDocs from '../userDashboard/myDocs.component.jsx';
+import MyDocuments from '../userDashboard/myDocs.component.jsx';
 import Search from '../userDashboard/search.component.jsx';
 import EditDocument from '../../modals/editDocForm.component.jsx';
 import * as userActions from '../../../actions/userManagement/getUsers.js';
 import * as roleActions from '../../../actions/roleManagement/getRoles.js';
 import deleteUserAction from '../../../actions/userManagement/deleteUser';
 import editUserActions from '../../../actions/userManagement/editUser.js';
-import searchDocs from '../../../actions/documentManagement/searchDocs.js';
+import searchDocuments from '../../../actions/documentManagement/searchDocs.js';
 import searchUsers from '../../../actions/userManagement/searchUsers.js';
 
 
@@ -174,7 +174,7 @@ class AdminDashboard extends Component {
                   }}
                   />
               </center>
-              <AllDocs document={this.props.documents} setViewDocument={this.setViewDocument} />
+              <AllDocuments document={this.props.documents} setViewDocument={this.setViewDocument} />
             </div>
             <div id="test2" className="tabContent col s12">
               <center className="paginationKey">
@@ -193,7 +193,7 @@ class AdminDashboard extends Component {
               <Roles roles={this.props.roles} />
             </div>
             <div id="test4" className="tabContent col s12">
-              <MyDocs document={this.props.documents} setEditDocument={this.setEditDocument} setViewDocument={this.setViewDocument} setDeleteDocument={this.setDeleteDocument} />
+              <MyDocuments document={this.props.documents} setEditDocument={this.setEditDocument} setViewDocument={this.setViewDocument} setDeleteDocument={this.setDeleteDocument} />
             </div>
             <div id="searchTab" className="tabContent col s12">
               <center className="paginationKey">
@@ -248,7 +248,7 @@ const mapDispatchToProps = (dispatch) => {
     deleteUser: (userId) => dispatch(deleteUserAction(userId)),
     actionEditUser: bindActionCreators(editUserActions, dispatch),
     UserSearch: (query, offset) => dispatch(searchUsers(query, offset)),
-    DocSearch: (query, offset) => dispatch(searchDocs(query, offset))
+    DocSearch: (query, offset) => dispatch(searchDocuments(query, offset))
   };
 };
 export default connect(mapStoreToProps, mapDispatchToProps)(AdminDashboard);
