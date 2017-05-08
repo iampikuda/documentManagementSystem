@@ -1,4 +1,5 @@
-import axios from 'axios';
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable no-undef */import axios from 'axios';
 import { browserHistory } from 'react-router';
 import * as actionTypes from '../actionTypes';
 import setAuthorizationToken from '../../utils/setAuth';
@@ -6,7 +7,7 @@ import setAuthorizationToken from '../../utils/setAuth';
 /**
  * Return action type
  * @export
- * @param {any} users
+ * @param {Object} users
  * @returns {Object} object
  */
 const userGetSuccess = (users) => {
@@ -21,7 +22,7 @@ const userGetSuccess = (users) => {
 /**
  * Get Users
  * @export
- * @param {any} offset
+ * @param {Object} offset
  * @returns {Object} object
  */
 export const viewUsers = (offset) => {//eslint-disable-line

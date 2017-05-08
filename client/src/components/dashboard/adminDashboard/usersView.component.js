@@ -3,8 +3,8 @@ import { browserHistory, Link } from 'react-router';
 import jwtDecode from 'jwt-decode';
 
 /**
- * @param {any} roles 
- * @param {any} index 
+ * @param {Object} roles 
+ * @param {Object} index 
  * @returns {void} returns table row
  */
 const SingleUsers = (users, index) => {
@@ -34,7 +34,7 @@ const SingleUsers = (users, index) => {
 }
 let usersList = [];
 /**
- * @param {any} props 
+ * @param {Object} props 
  * @returns {void} return table
  */
 const UserDocs = (props) => {

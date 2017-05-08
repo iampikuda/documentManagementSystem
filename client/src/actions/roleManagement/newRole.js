@@ -1,3 +1,5 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable no-undef */
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 import * as actionTypes from '../actionTypes';
@@ -5,7 +7,7 @@ import * as actionTypes from '../actionTypes';
 /**
  * Create role
  * @export
- * @param {any} details
+ * @param {Object} details
  * @returns {Object} return object
  */
 export default (details) => {
@@ -22,8 +24,17 @@ export default (details) => {
           role,
           status: 'success'
         });
-        browserHistory.push('/dasboard');
+        Materialize.toast(
+          'Role created',
+          3000,
+          'green'
+          );
       }).catch((err) => {
+        Materialize.toast(
+          'Something went wrong creating a new role',
+          3000,
+          'red'
+          );
         dispatch({
           type: actionTypes.ROLE_CREATE_FAILED,
           status: 'failed',

@@ -1,3 +1,5 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable no-undef */
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 import * as actionTypes from '../actionTypes';
@@ -5,7 +7,7 @@ import * as actionTypes from '../actionTypes';
 
 /**
  * Set action type
- * @param {any} roles
+ * @param {Object} roles
  * @returns {Object} return object
  */
 const roleGetSuccess = (roles) => {
@@ -18,7 +20,7 @@ const roleGetSuccess = (roles) => {
 /**
  * View roles
  * @export
- * @param {any} userId
+ * @param {Object} userId
  * @returns {function} function
  */
 export const viewRoles = (userId) => {// eslint-disable-line
@@ -33,6 +35,11 @@ export const viewRoles = (userId) => {// eslint-disable-line
       dispatch(roleGetSuccess(roles));
     })
     .catch((err) => {
+      Materialize.toast(
+        'Something went wrong getting roles',
+        3000,
+        'red'
+        );
       dispatch({
         type: actionTypes.GET_ROLE_FAILED,
         status: 'failed',

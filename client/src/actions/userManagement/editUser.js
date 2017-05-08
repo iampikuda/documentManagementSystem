@@ -1,21 +1,21 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable no-undef */
 import axios from 'axios';
 import * as actionTypes from '../actionTypes';
+import setAuthorizationToken from '../../utils/setAuth';
 
 /**
  * edit User
  * @export
- * @param {any} userData
- * @param {any} userId
+ * @param {Object} userData
+ * @param {Object} userId
  * @returns {Object} object
  */
 export default (userData, userId) => {
   const token = window.localStorage.getItem('token');
   return (dispatch) => {
-    return axios.put(`/api/user/${userId}`, userData, {
-      headers: {
-        Authorization: token
-      }
-    })
+    setAuthorizationToken(token);
+    return axios.put(`/api/user/${userId}`, userData)
       .then((res) => {
         dispatch({
           type: actionTypes.USER_UPDATED,
@@ -23,8 +23,17 @@ export default (userData, userId) => {
             id: userId
           })
         });
-        window.location.reload();
+        Materialize.toast(
+          'User editted',
+          3000,
+          'red'
+          );
       }).catch((err) => {
+        Materialize.toast(
+          'Something went wrong editing user',
+          3000,
+          'red'
+          );
         dispatch({
           type: actionTypes.USER_UPDATE_FAILED,
           status: 'failed',

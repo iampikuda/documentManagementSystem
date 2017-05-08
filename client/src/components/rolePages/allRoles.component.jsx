@@ -3,7 +3,7 @@ import { browserHistory, Link } from 'react-router';
 import jwtDecode from 'jwt-decode';
 
 /**
- * @param {any} {role} 
+ * @param {Object} {role} 
  * @returns {void} returns table row
  */
 const SingleRole = ({role}) => {
@@ -32,7 +32,7 @@ export default class RoleView extends Component {
   }
 
   /**
-   * @param {any} nextProps 
+   * @param {Object} nextProps 
    * @memberof RoleView
    */
   componentWillReceiveProps(nextProps){

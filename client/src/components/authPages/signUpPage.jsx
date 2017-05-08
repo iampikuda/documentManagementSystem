@@ -15,7 +15,7 @@ let token;
 class signUpPage extends Component {
   /**
    * Creates an instance of signUpPage.
-   * @param {any} props
+   * @param {Object} props
    * @memberof signUpPage
    */
   constructor(props) {
@@ -45,7 +45,7 @@ class signUpPage extends Component {
     }
   }
   /**
-   * @param {any} nextProps
+   * @param {Object} nextProps
    * @memberof signUpPage
    */
   componentWillReceiveProps(nextProps) {
@@ -55,19 +55,18 @@ class signUpPage extends Component {
       });
     }
     if (nextProps.user) {
-      browserHistory.push('/dashboard');
+      // browserHistory.push('/dashboard');
     }
   }
   /**
-   * @param {any} e
+   * @param {Object} e
    * @memberof signUpPage
    */
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state);
   }
   /**
-   * @param {any} e
+   * @param {Object} e
    * @memberof signUpPage
    */
   onSubmit(e) {

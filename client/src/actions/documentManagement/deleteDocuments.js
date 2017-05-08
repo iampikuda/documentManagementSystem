@@ -1,28 +1,30 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable no-undef */
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 import * as actionTypes from '../actionTypes';
+import setAuthorizationToken from '../../utils/setAuth';
 
 /**
  * documentDeleted
  * @export
- * @param {any} documentId
+ * @param {Object} documentId
  * @returns {Object} object
  */
 export default (documentId) => {
   const token = window.localStorage.getItem('token');
   return (dispatch) => {
-    return axios.delete(`/api/document/${documentId}`, {
-      headers: {
-        authorization: token
-      }
-    })
+    setAuthorizationToken(token);
+    console.log('we be steady deleting shit');
+    return axios.delete(`/api/document/${documentId}`)
     .then(() => {
       dispatch({
         type: actionTypes.DOCUMENT_DELETED,
         status: 'success'
       });
-      window.location.reload();
+      Materialize.toast('Document deleted', 3000, 'green');
     }).catch((err) => {
+      Materialize.toast('Something went wrong', 3000, 'red');
       dispatch({
         type: actionTypes.DOCUMENT_DELETION_FAILED,
         status: 'failed',

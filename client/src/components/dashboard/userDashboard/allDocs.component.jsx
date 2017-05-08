@@ -27,22 +27,6 @@ const AllDocs = (props) => {
         <td>{`${document.User.lastName} ${document.User.firstName}`}</td>
         <td>{(document.createdAt).slice(0, 10)}</td>
         <td>{(document.updatedAt).slice(0, 10)}</td>
-        <td>
-          <a 
-            className="modal-trigger green-text"
-            href="#modalEdit"
-            onClick={() => { props.setEditDocument(document); }}>
-            <i className="material-icons">edit</i>
-          </a>
-        </td>
-        <td>
-          <a 
-            className="red-text"
-            href="#"
-            onClick={() => { props.setDeleteDocument(document.id); }}>
-            <i className="material-icons">delete</i>
-          </a>
-        </td>
       </tr >
     );
   }

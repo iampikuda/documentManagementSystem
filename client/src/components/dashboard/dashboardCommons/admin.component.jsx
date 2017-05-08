@@ -11,7 +11,11 @@ import Users from '../../dashboard/adminDashboard/usersView.component.js';
 import Roles from '../../dashboard/adminDashboard/rolesView.component.js';
 import MyDocuments from '../userDashboard/myDocs.component.jsx';
 import Search from '../userDashboard/search.component.jsx';
-import EditDocument from '../../modals/editDocForm.component.jsx';
+import EditDocumentModal from '../../modals/editDocForm.component.jsx';
+import DeleteDocumentAction from
+'../../../actions/documentManagement/deleteDocuments';
+import EditDocumentAction from
+'../../../actions/documentManagement/editDocument.js';
 import * as userActions from '../../../actions/userManagement/getUsers.js';
 import * as roleActions from '../../../actions/roleManagement/getRoles.js';
 import deleteUserAction from '../../../actions/userManagement/deleteUser';
@@ -28,7 +32,7 @@ import searchUsers from '../../../actions/userManagement/searchUsers.js';
 class AdminDashboard extends Component {
   /**
    * Creates an instance of AdminDashboard.
-   * @param {any} props 
+   * @param {Object} props 
    * @memberof AdminDashboard
    */
   constructor(props) {
@@ -46,7 +50,7 @@ class AdminDashboard extends Component {
     };
   }
   /**
-   * @param {any} nextProps 
+   * @param {Object} nextProps 
    * @memberof AdminDashboard
    */
   componentWillReceiveProps(nextProps){
@@ -61,7 +65,7 @@ class AdminDashboard extends Component {
   }
 
   /**
-   * @param {any} view 
+   * @param {Object} view 
    * @memberof AdminDashboard
    */
   handleSearchBarView(view) {
@@ -70,7 +74,7 @@ class AdminDashboard extends Component {
   }
 
   /**
-   * @param {any} document 
+   * @param {Object} document 
    * @memberof AdminDashboard
    */
   setViewDocument(document) {
@@ -81,7 +85,7 @@ class AdminDashboard extends Component {
     });
   }
   /**
-   * @param {any} document 
+   * @param {Object} document 
    * @memberof AdminDashboard
    */
   setEditDocument(document){
@@ -91,15 +95,15 @@ class AdminDashboard extends Component {
     });
   }
   /**
-   * @param {any} values 
-   * @param {any} id 
+   * @param {Object} values 
+   * @param {Object} id 
    * @memberof AdminDashboard
    */
   updateUser(values, id) {
     this.props.actionEditUser(values, id);
   }
   /**
-   * @param {any} documentId 
+   * @param {Object} documentId 
    * @memberof AdminDashboard
    */
   setDeleteDocument(documentId) {
@@ -117,6 +121,22 @@ class AdminDashboard extends Component {
    * @memberof AdminDashboard
    */
   componentDidMount() {
+    $('.modal').modal({
+      dismissible: false, // Modal can be dismissed by clicking outside of the modal
+      opacity: .5, // Opacity of modal background
+      inDuration: 300, // Transition in duration
+      outDuration: 200, // Transition out duration
+      startingTop: '4%', // Starting top style attribute
+      endingTop: '10%', // Ending top style attribute
+      // ready: function (modal, trigger) {
+      //  // Callback for Modal open. Modal and trigger parameters available.
+      //   alert("Ready");
+      //   console.log(modal, trigger);
+      // },
+      complete: function () {
+        console.log("wait!!!!")
+      } // Callback for Modal close
+    });
     $('ul.tabs').tabs();
   }
   /**
@@ -129,12 +149,12 @@ class AdminDashboard extends Component {
         <div id="modalEdit" className="modal modal-fixed-footer">
           <div className="modal-content">
             <h4>Edit Document</h4>
-            <EditDocument document={this.state.editDocument || null}
+            <EditDocumentModal document={this.state.editDocument || null}
               documentId={this.state.documentId || null}
-              onEdit={this.props.EditDocument} />
+              onEdit={this.props.EditingDocument} />
           </div>
           <div className="modal-footer">
-            <a href="#!" className="modal-action modal-close
+            <a className="modal-action modal-close
               waves-effect waves-green btn-flat ">
               Close
             </a>
@@ -237,7 +257,7 @@ class AdminDashboard extends Component {
 
 
 /**
- * @param {any} state 
+ * @param {Object} state 
  * @returns {Object} object
  */
 const mapStoreToProps = (state) => {
@@ -252,14 +272,14 @@ const mapStoreToProps = (state) => {
 };
 
 /**
- * @param {any} dispatch 
+ * @param {Object} dispatch 
  * @returns {void} returns actions as props
  */
 const mapDispatchToProps = (dispatch) => {
   return {
-    EditDocument: (documentDetails, documentId) =>
-    dispatch(EditDocument(documentDetails, documentId)),
-    DeleteDocument: (documentId) => dispatch(DeleteDocument(documentId)),
+    EditingDocument: (documentDetails, documentId) =>
+    dispatch(EditDocumentAction(documentDetails, documentId)),
+    DeleteDocument: (documentId) => dispatch(DeleteDocumentAction(documentId)),
     actionsUser: bindActionCreators(userActions, dispatch),
     actionsRole: bindActionCreators(roleActions, dispatch),
     viewUser: (usertoken, userId) =>

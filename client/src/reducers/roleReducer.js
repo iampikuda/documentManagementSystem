@@ -2,8 +2,8 @@ import * as actionTypes from '../actions/actionTypes';
 
 /**
  * @export
- * @param {any} [state={}]
- * @param {any} action
+ * @param {Object} [state={}]
+ * @param {Object} action
  * @returns {state} return object
  */
 export default (state = {}, action) => {

@@ -6,7 +6,7 @@ import newDocument from '../../actions/documentManagement/newDocument.js';
 import TinyMCE from 'react-tinymce';
 
 /**
- * @param {any} props 
+ * @param {Object} props 
  * @returns {Object} returns message
  */
 const ResponseMessage = (props) => {
@@ -36,7 +36,7 @@ const ResponseMessage = (props) => {
 export class CreateDocument extends Component {
   /**
    * Creates an instance of CreateDocument.
-   * @param {any} props 
+   * @param {Object} props 
    * @memberof CreateDocument
    */
   constructor(props) {
@@ -60,7 +60,7 @@ export class CreateDocument extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
   /**
-   * @param {any} nextProps 
+   * @param {Object} nextProps 
    * @memberof CreateDocument
    */
   componentWillReceiveProps(nextProps) {
@@ -77,14 +77,14 @@ export class CreateDocument extends Component {
     }
   }
   /**
-   * @param {any} event 
+   * @param {Object} event 
    * @memberof CreateDocument
    */
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
   /**
-   * @param {any} event 
+   * @param {Object} event 
    * @memberof CreateDocument
    */
   contentOnChange(event) {
@@ -94,7 +94,7 @@ export class CreateDocument extends Component {
     console.log(this.state, 'f');
   }
   /**
-   * @param {any} event 
+   * @param {Object} event 
    * @memberof CreateDocument
    */
   onSubmit(event) {
@@ -178,7 +178,7 @@ export class CreateDocument extends Component {
 }
 
 /**
- * @param {any} state 
+ * @param {Object} state 
  * @returns {Object} returns object
  */
 const mapStoreToProps = (state) => {
@@ -188,7 +188,7 @@ const mapStoreToProps = (state) => {
 };
 
 /**
- * @param {any} dispatch 
+ * @param {Object} dispatch 
  * @returns {Object} returns object
  */
 const mapDispatchToProps = (dispatch) => {

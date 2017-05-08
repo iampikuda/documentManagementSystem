@@ -39,7 +39,7 @@ const SingleUserComponent = ({user, deleteUser, props, change}) => {
 export default class allUsers extends Component {
   /**
    * Creates an instance of allUsers.
-   * @param {any} props
+   * @param {Object} props
    * @memberof allUsers
    */
   constructor(props){
@@ -67,8 +67,8 @@ export default class allUsers extends Component {
   }
 
   /**
-   * @param {any} e
-   * @param {any} id
+   * @param {Object} e
+   * @param {Object} id
    * @memberof allUsers
    */
   change(e, id) {
@@ -77,7 +77,7 @@ export default class allUsers extends Component {
   }
 
   /**
-   * @param {any} userId 
+   * @param {Object} userId 
    * @memberof allUsers
    */
   deleteUser(userId){

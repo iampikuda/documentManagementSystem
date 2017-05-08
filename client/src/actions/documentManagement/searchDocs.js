@@ -1,3 +1,5 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable no-undef */
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 import * as actionTypes from '../actionTypes';
@@ -6,8 +8,8 @@ import setAuthorizationToken from '../../utils/setAuth';
 /**
  * searchDocuments
  * @export
- * @param {any} query
- * @param {any} offset
+ * @param {Object} query
+ * @param {Object} offset
  * @returns {Object} object
  */
 export default (query, offset) => {
@@ -28,8 +30,14 @@ export default (query, offset) => {
         status: 'success',
         pageCount: documents.data.metadata.pages
       });
+      Materialize.toast("Here's what we found", 2000, 'green');
     })
     .catch((err) => {
+      Materialize.toast(
+        'Something went wrong searching for documents',
+        3000,
+        'red'
+        );
       dispatch({
         type: actionTypes.SEARCH_DOCS_FAILED,
         status: 'failed',

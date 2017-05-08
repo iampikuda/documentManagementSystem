@@ -11,9 +11,8 @@ import PublicDocuments from
 import RoleDocuments from
 '../../dashboard/userDashboard/roleDocs.component.jsx';
 import MyDocuments from '../../dashboard/userDashboard/myDocs.component.jsx';
-import CreateDocument from '../../modals/createDocForm.component';
-import EditDocument from '../../../actions/documentManagement/editDocument';
-import DeleteDocument from
+import EditDocument from '../../modals/editDocForm.component.jsx';
+import DeleteDocumentAction from
 '../../../actions/documentManagement/deleteDocuments';
 import Search from '../userDashboard/search.component.jsx';
 
@@ -25,7 +24,7 @@ import Search from '../userDashboard/search.component.jsx';
 class UserDashboard extends Component {
   /**
    * Creates an instance of UserDashboard.
-   * @param {any} props 
+   * @param {Object} props 
    * @memberof UserDashboard
    */
   constructor(props) {
@@ -39,7 +38,7 @@ class UserDashboard extends Component {
     };
   }
   /**
-   * @param {any} view 
+   * @param {Object} view 
    * @memberof UserDashboard
    */
   handleSearchBarView(view) {
@@ -47,7 +46,7 @@ class UserDashboard extends Component {
     $('ul.tabs').tabs('select_tab', 'searchTab');
   }
   /**
-   * @param {any} document 
+   * @param {Object} document 
    * @memberof UserDashboard
    */
   setViewDocument(document) {
@@ -58,7 +57,7 @@ class UserDashboard extends Component {
     });
   }
   /**
-   * @param {any} document 
+   * @param {Object} document 
    * @memberof UserDashboard
    */
   setEditDocument(document) {
@@ -68,7 +67,7 @@ class UserDashboard extends Component {
     });
   }
   /**
-   * @param {any} documentId 
+   * @param {Object} documentId 
    * @memberof UserDashboard
    */
   setDeleteDocument(documentId) {
@@ -90,14 +89,13 @@ class UserDashboard extends Component {
         <div id="modalEdit" className="modal modal-fixed-footer">
           <div className="modal-content">
             <h4>Edit Document</h4>
-            <CreateDocument
+            <EditDocument
               document={this.state.editDocument || null}
               documentId={this.state.documentId || null}
               onEdit={this.props.EditDocument} />
           </div>
           <div className="modal-footer">
             <a
-              href="#!"
               className="modal-action modal-close
               waves-effect waves-green btn-flat ">
               Close
@@ -163,7 +161,6 @@ class UserDashboard extends Component {
               </center>
               <AllDocuments
                 document={this.props.documents}
-                setEditDocument={this.setEditDocument}
                 setViewDocument={this.setViewDocument}/>
             </div>
             <div id="publicDocuments" className="tab-content col s12">
@@ -213,7 +210,7 @@ class UserDashboard extends Component {
 
 
 /**
- * @param {any} state 
+ * @param {Object} state 
  * @returns {Object} returns object
  */
 const mapStoreToProps = (state) => {
@@ -228,14 +225,14 @@ const mapStoreToProps = (state) => {
 };
 
 /**
- * @param {any} dispatch 
+ * @param {Object} dispatch 
  * @returns {Object} returns object
  */
 const mapDispatchToProps = (dispatch) => {
   return {
     EditDocument: (documentDetails, documentId) =>
     dispatch(EditDocument(documentDetails, documentId)),
-    DeleteDocument: (documentId) => dispatch(DeleteDocument(documentId))
+    DeleteDocument: (documentId) => dispatch(DeleteDocumentAction(documentId))
   };
 };
 export default connect(mapStoreToProps, mapDispatchToProps)(UserDashboard);

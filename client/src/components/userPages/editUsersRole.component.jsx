@@ -111,7 +111,7 @@ const mapStoreToProps = (state, ownProps) => {
 };
 
 /**
- * @param {any} dispatch 
+ * @param {Object} dispatch 
  * @returns {Object} returns object
  */
 const mapDispatchToProps = (dispatch) => {

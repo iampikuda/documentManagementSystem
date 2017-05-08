@@ -4,8 +4,8 @@
 /**
  * Get role
  * @export
- * @param {any} token
- * @param {any} roleid
+ * @param {String} token
+ * @param {Object} roleid
  * @returns {Object} return object
  */
 // export default (token, roleid) => {

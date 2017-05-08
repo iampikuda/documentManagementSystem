@@ -17,7 +17,7 @@ import searchDocs from '../../actions/documentManagement/searchDocs.js';
 class SubNavBar extends Component {
   /**
    * Creates an instance of SubNavBar.
-   * @param {any} props 
+   * @param {Object} props 
    * @memberof SubNavBar
    */
   constructor(props) {
@@ -53,14 +53,14 @@ class SubNavBar extends Component {
     $('select').material_select();
   }
   /**
-   * @param {any} event 
+   * @param {Object} event 
    * @memberof SubNavBar
    */
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
   /**
-   * @param {any} event 
+   * @param {Object} event 
    * @memberof SubNavBar
    */
   onSubmit(event){
@@ -155,7 +155,7 @@ class SubNavBar extends Component {
   }
 }
 /**
- * @param {any} dispatch
+ * @param {Object} dispatch
  * @returns {object} object
  */
 const mapDispatchToProps = (dispatch) => {

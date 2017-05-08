@@ -55,7 +55,7 @@ class IndexDashboard extends Component {
 }
 
 /**
- * @param {any} state 
+ * @param {Object} state 
  * @returns {Object} returns object
  */
 const mapStoreToProps = (state) => {
@@ -67,15 +67,12 @@ const mapStoreToProps = (state) => {
 };
 
 /**
- * @param {any} dispatch 
+ * @param {Object} dispatch 
  * @returns {Object} returns object
  */
 const mapDispatchToProps = (dispatch) => {
   return {
     actionsDoc: bindActionCreators(docActions, dispatch),
-    // actionsUser: bindActionCreators(UserActions, dispatch),
-    // actionsRole: bindActionCreators(RoleActions, dispatch),
-    // actionEditUser: bindActionCreators(editUserActions, dispatch)
   }
 }
 

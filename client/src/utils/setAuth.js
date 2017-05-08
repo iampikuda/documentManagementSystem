@@ -3,7 +3,7 @@ import axios from 'axios';
 /**
  * set authorizational header
  * @export
- * @param {Object} token
+ * @param {String} token
  */
 export default function setAuthorisationToken(token) {
   delete axios.defaults.headers.common['x-access-token'];

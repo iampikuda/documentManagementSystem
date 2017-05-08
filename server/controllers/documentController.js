@@ -21,7 +21,6 @@ class documentController {
           ownerId: request.decoded.userId
         },
         $or: [
-          { content: request.body.content },
           { title: request.body.title }
         ]
       }
@@ -290,7 +289,7 @@ class documentController {
             message: 'You cannot update this document'
           });
         }
-        model.Document.findAll({
+        const query = {
           where: {
             $and: {
               ownerId: request.decoded.userId
@@ -299,7 +298,13 @@ class documentController {
               { title: request.body.title }
             ]
           }
-        })
+        };
+        if (foundDocument.title === request.body.title) {
+          return foundDocument
+              .update(request.body)
+              .then(() => response.status(200).send(foundDocument));
+        }
+        model.Document.findAll(query)
           .then((usedDocument) => {
             if (usedDocument.length > 0) {
               return response.status(409)

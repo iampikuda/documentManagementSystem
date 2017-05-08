@@ -13,7 +13,7 @@ import createRoleAction from '../../actions/roleManagement/newRole';
 export class CreateRole extends Component {
   /**
    * Creates an instance of CreateRole.
-   * @param {any} props 
+   * @param {Object} props 
    * @memberof CreateRole
    */
   constructor(props) {
@@ -31,7 +31,7 @@ export class CreateRole extends Component {
    */
   componentWillMount() {
     if (!window.localStorage.getItem('token')) {
-      browserHistory.push('/app/dashboard');
+      browserHistory.push('/dashboard');
     }
   }
 
@@ -41,12 +41,12 @@ export class CreateRole extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.status === 'success') {
-      browserHistory.push('/app/dashboard');
+      browserHistory.push('/dashboard');
     }
   }
 
   /**
-   * @param {any} event
+   * @param {Object} event
    * @memberof CreateRole
    */
   handleChange(event) {
@@ -54,7 +54,7 @@ export class CreateRole extends Component {
   }
 
   /**
-   * @param {any} event
+   * @param {Object} event
    * @memberof CreateRole
    */
   handleSubmit(event) {
@@ -105,7 +105,7 @@ CreateRole.PropTypes = {
 };
 
 /**
- * @param {any} dispatch 
+ * @param {Object} dispatch 
  * @returns {Object} returns object
  */
 const mapDispatchToProps = (dispatch) => {

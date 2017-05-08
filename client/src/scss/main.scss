@@ -4,8 +4,8 @@ $text-color: #FDFEFE;
 $text-color-two: #000;
 $box-shadow: 2px 2px 2px 2px rgba(0.4, 0.4, 0.4, 0.4);
 $center-align: center;
-$transparentNavColor: rgba(255,0,0,0.1);
-$transparentBodyColor: rgba(0,0,0,0.5);
+$transparent-nav-color: rgba(255,0,0,0.1);
+$transparent-body-color: rgba(0,0,0,0.5);
 $primary-color: #4386FC;
 $logo-color: #FFD04A;
 $background-color: #F2F2F2;
@@ -15,14 +15,14 @@ $background-color: #F2F2F2;
 }
 
 .main-container {
-  background-color: $transparentBodyColor;
+  background-color: $transparent-body-color;
   color: $text-color;
   position: absolute;
   height: 100%;
   width: 100%;
 }
 
-.main-container .bg {
+.bg {
   background-image: url("https://cloud.githubusercontent.com/assets/25608675/25169939/aec83538-24e0-11e7-84d5-8a26affcbd4e.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -51,7 +51,7 @@ $background-color: #F2F2F2;
   margin: 0;
 }
 
-.create-doc{
+.create-doc {
   padding: 2px 9px 2px 2px;
   width: 100%;
   letter-spacing: normal;
@@ -73,23 +73,24 @@ $background-color: #F2F2F2;
     position: absolute;
     height: inherit;
     padding: 0 20px;
-    border-radius: 8px;
+    border-radius: 1px;
     background-color: $background-color;
     border: 1px solid $text-color-two;
     opacity: 0.9;
-    z-index: 11;
-    
 }
 
+.search-box input,
+.search-box i,
+.search-box select {
+    color: $text-color-two;
+}
 .search-box input {
   border: 0px solid;
-  color: $text-color-two;
   width: 100%;
 }
 
 .search-box i {
   padding-right: 10%;
-  color: $text-color-two;
 }
 
 .search-box select {
@@ -97,7 +98,6 @@ $background-color: #F2F2F2;
   width: 100%;
   height: 61px;
   float: right;
-  color: $text-color-two;
   background-color: $background-color;
 }
 
@@ -122,17 +122,14 @@ $background-color: #F2F2F2;
   text-align: left;
 }
 
-nav ul a {
-  color: $text-color;
-}
-
+nav ul a,
 nav a {
   color: $text-color;
 }
 
 nav {
   font-family: $header-font;
-  background-color: $transparentNavColor;
+  background-color: $transparent-nav-color;
 }
 
 .tabs {
@@ -153,7 +150,7 @@ nav {
   position: relative;
   overflow: scroll;
   background-color: $background-color;
-  padding: 2.9rem .9rem !important;//eslint-disable-line
+  padding: 3rem 0.9rem !important;//eslint-disable-line
   color: $text-color-two;
   opacity: 0.9;
 }
@@ -262,6 +259,8 @@ table {
 th, td {
   max-width: 500px;
   min-width: 20px;
+  min-height: 50px;
+  max-height: 100px;
 }
 
 .display-none {

@@ -1,3 +1,5 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable no-undef */
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import { Router } from 'react-router';
@@ -20,8 +22,10 @@ export default (userData) => {
           type: actionTypes.LOGIN_SUCCESSFUL,
           user
         });
-        window.location.reload();
+        Materialize.toast('Welcome!', 2000, 'green');
       }).catch((error) => {
+        Materialize.toast(
+          'Something went wrong creating a new user', 3000, 'red');
         dispatch({
           type: actionTypes.SIGNUP_FAILED,
           message: error

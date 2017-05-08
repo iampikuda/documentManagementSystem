@@ -57,7 +57,7 @@ const MyDocs = (props) => {
   }
   return (
     <div>
-      <table className="bordered  responsive">
+      <table className="bordered responsive">
         <thead>
           <tr>
             <th>Title</th>

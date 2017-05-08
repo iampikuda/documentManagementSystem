@@ -53,7 +53,7 @@ class EditUser extends Component {
   }
 
   /**
-   * @param {any} event
+   * @param {Object} event
    * @memberof EditUser
    */
   handleChange(event) {
@@ -61,7 +61,7 @@ class EditUser extends Component {
   }
 
   /**
-   * @param {any} event
+   * @param {Object} event
    * @memberof EditUser
    */
   updateUser(event) {

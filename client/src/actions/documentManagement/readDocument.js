@@ -1,3 +1,5 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable no-undef */
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 import * as actionTypes from '../actionTypes';
@@ -21,7 +23,6 @@ export const viewUserDocuments = (offset) => {
       }
     })
     .then((documents) => {
-      console.log(documents);
       dispatch(documentReadSuccess(documents));
     })
     .catch((err) => {

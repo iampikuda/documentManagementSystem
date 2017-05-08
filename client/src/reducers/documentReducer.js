@@ -2,15 +2,17 @@ import * as actionTypes from '../actions/actionTypes';
 
 /**
  * @export
- * @param {any} [state={}]
- * @param {any} action
- * @returns {state} return object
+ * @param {Object} [state={}]
+ * @param {Object} action
+ * @returns {Object} return object
  */
 export default (state = {}, action) => {
   switch (action.type) {
     case actionTypes.DOCUMENT_CREATED:
       return {
-        ...state, createStatus: action.status, documents: action.documents
+        ...state,
+        createStatus: action.status,
+        documents: action.documents
       };
     case actionTypes.DOCUMENT_CREATE_FAILED:
       return { ...state, status: action.status };

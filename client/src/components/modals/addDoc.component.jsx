@@ -10,7 +10,7 @@ import { browserHistory } from 'react-router';
 class AddDoc extends Component {
   /**
    * Creates an instance of AddDoc.
-   * @param {any} props 
+   * @param {Object} props 
    * @memberof AddDoc
    */
   constructor(props) {
@@ -19,24 +19,23 @@ class AddDoc extends Component {
   /**
    * @memberof AddDoc
    */
-  componentDidMount() {
-    $('.modal').modal({
-      dismissible: false, // Modal can be dismissed by clicking outside of the modal
-      opacity: .5, // Opacity of modal backgroundt
-      inDuration: 300, // Transition in duration
-      outDuration: 200, // Transition out duration
-      startingTop: '4%', // Starting top style attribute
-      endingTop: '10%', // Ending top style attribute
-      // ready: function (modal, trigger) {
-      //  // Callback for Modal open. Modal and trigger parameters available.
-      //   alert("Ready");
-      //   console.log(modal, trigger);
-      // },
-      complete: function () {
-        // window.location.reload();
-      } // Callback for Modal close
-    });
-  }
+  // componentDidMount() {
+  //   $('.modal').modal({
+  //     dismissible: true, // Modal can be dismissed by clicking outside of the modal
+  //     opacity: .5, // Opacity of modal backgroundt
+  //     inDuration: 300, // Transition in duration
+  //     outDuration: 200, // Transition out duration
+  //     startingTop: '4%', // Starting top style attribute
+  //     endingTop: '10%', // Ending top style attribute
+  //     // ready: function (modal, trigger) {
+  //     //  // Callback for Modal open. Modal and trigger parameters available.
+  //     //   alert("Ready");
+  //     //   console.log(modal, trigger);
+  //     // },
+  //     complete: function () {
+  //     } // Callback for Modal close
+  //   });
+  // }
   /**
    * @returns {void} returns create document modal
    * @memberof AddDoc

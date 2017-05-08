@@ -21,7 +21,7 @@ class Navbar extends Component {
     }
   }
   /**
-   * @param {any} event
+   * @param {Object} event
    * @returns {void}
    * @memberOf Navbar
    */
@@ -31,7 +31,7 @@ class Navbar extends Component {
     this.setState({
       id: null
     });
-    browserHistory.push('/');
+    // browserHistory.push('/');
   }
   /**
    * renders the Nav component
@@ -88,7 +88,7 @@ class Navbar extends Component {
 }
 /**
  * mapDispatchToProps
- * @param {any} dispatch 
+ * @param {Object} dispatch 
  * @returns {Object} Object
  */
 const mapDispatchToProps = (dispatch) => {
@@ -98,7 +98,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 /**
  * mapStoreToProps
- * @param {any} state 
+ * @param {Object} state 
  * @returns {Object} Object
  */
 const mapStoreToProps = (state) => {

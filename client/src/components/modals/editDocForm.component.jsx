@@ -6,7 +6,7 @@ import newDocument from '../../actions/documentManagement/newDocument.js';
 import TinyMCE from 'react-tinymce';
 
 /**
- * @param {any} props 
+ * @param {Object} props 
  * @returns {Object} returns message
  */
 const ResponseMessage = (props) => {
@@ -35,7 +35,7 @@ const ResponseMessage = (props) => {
 export class EditDocument extends Component {
   /**
    * Creates an instance of CreateDocument.
-   * @param {any} props 
+   * @param {Object} props 
    * @memberof CreateDocument
    */
   constructor(props) {
@@ -48,7 +48,7 @@ export class EditDocument extends Component {
       };
     }
     this.state = {
-      title: props.document ? props.document.title :  '',
+      title: '',
       content: props.document ? props.document.content : '',
       access: props.document ? props.document.access : '',
       status: props.document ? props.document.status : '',
@@ -59,49 +59,50 @@ export class EditDocument extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
   /**
-   * @param {any} nextProps
+   * @param {Object} nextProps
    * @memberof CreateDocument
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.status === 'success') {
-      browserHistory.push('/dashboard');
+      // browserHistory.push('/dashboard');
     }
     if (nextProps.document) {
+      console.log(nextProps.document.content);
       this.setState({
         title: nextProps.document.title,
         content: nextProps.document.content,
         access: nextProps.document.access,
         status: nextProps.document.status
       });
+      tinymce.activeEditor.setContent(nextProps.document.content);
     }
   }
   /**
-   * @param {any} event 
+   * @param {Object} event 
    * @memberof CreateDocument
    */
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
   /**
-   * @param {any} event
+   * @param {Object} event
    * @memberof CreateDocument
    */
   contentOnChange(event) {
     this.setState({
       content: event.target.getContent()
     });
-    console.log(this.state, 'f');
   }
   /**
-   * @param {any} event
+   * @param {Object} event
    * @memberof CreateDocument
    */
   onSubmit(event) {
     event.preventDefault();
     if(this.state.content.length < 1) {
-      Materialize.toast('Please add a content', 3000);
+      Materialize.toast('Please add a content', 3000, 'blue');
     } else {
-      this.props.CreateDocument(this.state);
+      this.props.onEdit(this.state, this.props.documentId);
     }
   }
 
@@ -110,15 +111,12 @@ export class EditDocument extends Component {
    * @memberof CreateDocument
    */
   render() {
-    console.log(this.state.content);
     return  (
       <div>
         <div>
           <div className='row'>
             <form className='col s12'
-              onSubmit={this.props.onEdit ? () =>
-              { this.props.onEdit(this.state, this.props.documentId) } :
-              this.onSubmit}>
+              onSubmit= {this.onSubmit }>
               <div className='row'>
                 <div className='input-field col s12'>
                   <input
@@ -139,12 +137,13 @@ export class EditDocument extends Component {
                     content={this.state.content}
                     name='content'
                     config={{
-                      plugins: 'autolink link image lists print preview',
+                      plugins: 'autolink link image code lists print preview',
                       toolbar: 'undo redo | bold italic |\
-                      alignleft aligncenter alignright'
+                      alignleft aligncenter alignright | code'
                     }}
                     onChange={this.contentOnChange}
-                  />}
+                  />
+                  }
                 </div>
               </div>
               <div className='col m3 s12'>
@@ -178,7 +177,7 @@ export class EditDocument extends Component {
 }
 
 /**
- * @param {any} state 
+ * @param {Object} state 
  * @returns {Object} returns object
  */
 const mapStoreToProps = (state) => {
@@ -188,7 +187,7 @@ const mapStoreToProps = (state) => {
 };
 
 /**
- * @param {any} dispatch 
+ * @param {Object} dispatch 
  * @returns {Object} returns object
  */
 const mapDispatchToProps = (dispatch) => {

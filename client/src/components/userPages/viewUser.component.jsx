@@ -54,7 +54,7 @@ class ViewUser extends Component {
   }
 
   /**
-   * @param {any} event 
+   * @param {Object} event 
    * @memberof ViewUser
    */
   handleChange(event) {
@@ -126,7 +126,7 @@ const mapStoreToProps = (state, ownProps) => {
 };
 
 /**
- * @param {any} dispatch 
+ * @param {Object} dispatch 
  * @returns {Object} returns object
  */
 const mapDispatchToProps = (dispatch) => {

@@ -14,7 +14,7 @@ import viewRole from '../../actions/roleManagement/viewRole.js';
 class EditRole extends Component {
   /**
    * Creates an instance of EditRole.
-   * @param {any} props
+   * @param {Object} props
    * @memberof EditRole
    */
   constructor(props) {
@@ -54,7 +54,7 @@ class EditRole extends Component {
   }
 
   /**
-   * @param {any} event 
+   * @param {Object} event 
    * @memberof EditRole
    */
   handleChange(event) {
@@ -62,7 +62,7 @@ class EditRole extends Component {
   }
 
   /**
-   * @param {any} event 
+   * @param {Object} event 
    * @memberof EditRole
    */
   handleSubmit(event) {
@@ -128,7 +128,7 @@ const mapStoreToProps = (state, ownProps) => {
 };
 
 /**
- * @param {any} dispatch 
+ * @param {Object} dispatch 
  * @returns {Object} returns object
  */
 const mapDispatchToProps = (dispatch) => {
