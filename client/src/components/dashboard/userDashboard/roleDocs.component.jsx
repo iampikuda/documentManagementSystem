@@ -1,6 +1,31 @@
 import React, { Component } from 'react';
 
+/**
+ * Role document component
+ * @param {Object} props 
+ * @returns {void} returns Role document table
+ */
 const RoleDocs = (props) => {
+  /**
+   * @param {Object} document 
+   * @param {Integer} index 
+   * @returns {void} returns table row
+   */
+  const SingleDocument = (document, index) => {
+    return (
+      <tr className="hoverable" key={index}>
+        <td>{ document.title }</td>
+        <td>{ document.access }</td>
+        <td className="truncate">
+          <a href="#modalView" 
+            dangerouslySetInnerHTML={{ __html: document.content}}
+            onClick={() => { props.setViewDocument(document); }}/>
+        </td>
+        <td>{`${document.User.lastName} ${document.User.firstName}`}</td>
+        <td>{ (document.createdAt).slice(0, 10) }</td>
+      </tr>
+    );
+  }
   let documentList = [];
   if (props.document.document !== undefined) {
     let docs = props.document.document.data.document;
@@ -11,11 +36,6 @@ const RoleDocs = (props) => {
     .filter((document) => {
       return document.access === 'role';
     })
-    .map((document) => {
-      return (
-        <SingleDocument document={document} key={document.id} />
-      )
-    })
   }
   return (
     <div>
@@ -25,28 +45,16 @@ const RoleDocs = (props) => {
               <th>Title</th>
               <th>Access</th>
               <th>Content</th>
+              <th>Author</th>
               <th>Published date</th>
           </tr>
         </thead>
         <tbody>
-          { documentList }
+          { documentList.map(SingleDocument) }
         </tbody>
       </table>
     </div>
   )
-}
-
-
-const SingleDocument = (props) => {
-  const { document } = props
-  return (
-    <tr className="hoverable">
-      <td>{ document.title }</td>
-      <td>{ document.access }</td>
-      <td>{ document.content }</td>
-      <td>{ (document.createdAt).slice(0, 10) }</td>
-    </tr>
-  );
 }
 
 export default RoleDocs;

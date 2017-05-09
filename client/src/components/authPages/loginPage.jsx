@@ -4,6 +4,11 @@ import jwtDecode from 'jwt-decode';
 import { browserHistory, Link } from 'react-router';
 import loginAction from '../../actions/authorization/loginAction.js';
 
+/**
+ * Login page
+ * @class Login
+ * @extends {Component}
+ */
 class Login extends Component {
   /**
    * renders the Nav component
@@ -51,21 +56,9 @@ class Login extends Component {
         <div className="row">
           <h4 className="center auth-header"><Link to="/">PK-DOCMAN</Link></h4>
         </div>
-        <div className="row loginForm">
+        <div className="row login-form">
           <h4 className="center">Login</h4>
           <form className="col s12" onSubmit={this.onSubmit}>
-            { this.state.error ?
-              <div className="center">
-                { this.state.error }
-              </div>
-                : <span />
-            }
-              { this.state.success ?
-                <div className="center">
-                  { this.state.success }
-                </div>
-                  : <span />
-              }
             <div className="row">
               <div className="input-field col s12">
                 <input
@@ -92,12 +85,18 @@ class Login extends Component {
                 <label htmlFor="password">Password</label>
               </div>
             </div>
-            <button className="btn waves-effect waves-light center auth-button" type="submit" name="action">Login
+            <button
+              className="btn waves-effect waves-light center auth-button"
+              type="submit"
+              name="action">
+              Login
               <i className="material-icons right"></i>
             </button>
             <div className="row">
               <div className="col s12">
-                <p className="center">Don't have an account? <Link to="/signup"> Sign Up </Link></p>
+                <p className="center">
+                  Don't have an account? <Link to="/signup"> Sign Up </Link>
+                </p>
               </div>
             </div>
           </form>
@@ -108,10 +107,10 @@ class Login extends Component {
 }
 const mapStoreToProps = (state) => {
   return {
-    user: state.loginReducer.user,
+    // user: state.loginReducer.user,
     loginSuccess: state.loginReducer.success,
     loginError: state.loginReducer.error,
-    token: state.loginReducer.token
+    // token: state.loginReducer.token
   };
 };
 const mapDispatchToProps = (dispatch) => {

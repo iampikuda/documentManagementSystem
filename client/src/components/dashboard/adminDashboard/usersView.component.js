@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { browserHistory, Link } from 'react-router';
 import jwtDecode from 'jwt-decode';
 
+/**
+ * @param {Object} roles 
+ * @param {Object} index 
+ * @returns {void} returns table row
+ */
 const SingleUsers = (users, index) => {
   return (
     <tr className="hoverable" key={index}>
@@ -11,12 +16,27 @@ const SingleUsers = (users, index) => {
       <td>{users.roleId}</td>
       <td>{(users.createdAt).slice(0, 10)}</td>
       <td>{(users.updatedAt).slice(0, 10)}</td>
-      {/*<td><a className="modal-trigger green-text" href="#modalEdit" onClick={() => { props.setEditusers(users); }}><i className="material-icons">edit</i></a></td>
-      <td><a className="red-text" href="#" onClick={() => { props.setDeleteusers(users.id); }} > <i className="material-icons">delete</i></a></td>*/}
+      {/*<td>
+        <a className="modal-trigger green-text"
+        href="#modalEdit"
+        onClick={() => { props.setEditusers(users); }}>
+          <i className="material-icons">edit</i>
+        </a>
+      </td>
+      <td>
+        <a className="red-text"
+        href="#" onClick={() => { props.setDeleteusers(users.id); }}>
+          <i className="material-icons">delete</i>
+        </a>
+      </td>*/}
     </tr >
   );
 }
 let usersList = [];
+/**
+ * @param {Object} props 
+ * @returns {void} return table
+ */
 const UserDocs = (props) => {
 
   if (props.users.users !== undefined) {

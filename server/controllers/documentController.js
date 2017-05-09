@@ -1,5 +1,10 @@
+/* eslint import/no-unresolved: 0 */
+/* eslint-disable no-unused-vars */
 import model from '../models';
 
+/**
+ * Controller for document management
+ */
 class documentController {
   /**
    * Method createDocument
@@ -8,7 +13,6 @@ class documentController {
    * @return {Object} response Object
    */
   static createDocument(request, response) {
-    // request.body.access = request.body.access || 'role';
     request.body.ownerId = request.decoded.userId;
     model.Document.sync();
     model.Document.findAll({
@@ -17,7 +21,6 @@ class documentController {
           ownerId: request.decoded.userId
         },
         $or: [
-          { content: request.body.content },
           { title: request.body.title }
         ]
       }
@@ -32,7 +35,9 @@ class documentController {
         }
         model.Document.create(request.body)
           .then(newDocument => response.status(201).send(newDocument))
-          .catch(error => response.status(400).send({ message: error.message }));
+          .catch(error => response.status(400).send({
+            message: error.message
+          }));
       });
   }
 
@@ -237,12 +242,12 @@ class documentController {
         order: '"createdAt" ASC'
       };
       if (userQuery) {
-        query.where.$and.push({
+        query.where.$and = [{
           $or: [
-            { title: { $like: `%${userQuery}%` } },
-            { content: { $like: `%${userQuery}%` } }
+            { title: { $iLike: `%${userQuery}%` } },
+            { content: { $iLike: `%${userQuery}%` } }
           ]
-        });
+        }];
       }
     }
 
@@ -256,7 +261,9 @@ class documentController {
             currentPage: Math.floor(query.offset / query.limit) + 1,
             pageSize: documents.rows.length
           } : null;
-        response.send({ documents: documents.rows, metadata });
+        return response.status(200).send({
+          documents: documents.rows, metadata
+        });
       })
       .catch(error => response.status(400).send({
         message: error.message
@@ -282,7 +289,7 @@ class documentController {
             message: 'You cannot update this document'
           });
         }
-        model.Document.findAll({
+        const query = {
           where: {
             $and: {
               ownerId: request.decoded.userId
@@ -291,7 +298,13 @@ class documentController {
               { title: request.body.title }
             ]
           }
-        })
+        };
+        if (foundDocument.title === request.body.title) {
+          return foundDocument
+              .update(request.body)
+              .then(() => response.status(200).send(foundDocument));
+        }
+        model.Document.findAll(query)
           .then((usedDocument) => {
             if (usedDocument.length > 0) {
               return response.status(409)

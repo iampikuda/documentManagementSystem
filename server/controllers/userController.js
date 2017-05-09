@@ -1,3 +1,5 @@
+/* eslint import/no-extraneous-dependencies: 0 */
+/* eslint import/no-unresolved: 0 */
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt-nodejs';
 import model from '../models';
@@ -12,6 +14,13 @@ const secret = process.env.SECRET_TOKEN || 'secret';
  */
 class UserController {
 
+  /**
+   * Method for formatting user details
+   * @static
+   * @param {Object} user - Server res
+   * @returns {Object} return object
+   * @memberof UserController
+   */
   static formattedUser(user) {
     return {
       id: user.id,
@@ -50,7 +59,7 @@ class UserController {
               })
               .catch((error) => {
                 return response.status(400)
-                  .send(error.errors);
+                  .send(error);
               });
           } else {
             return response.status(403)
@@ -60,7 +69,9 @@ class UserController {
               });
           }
         }
-        console.log('`1`[]`]1[]`[1]`[`]]`]1]`][1`', request.body);
+        if (request.body.roleId === 99) {
+          request.body.roleId = 2;
+        }
         model.User.create(request.body)
           .then((newUser) => {
             const token = jwt.sign({
@@ -75,7 +86,7 @@ class UserController {
           })
           .catch((error) => {
             return response.status(400)
-              .send(error.errors);
+              .send(error);
           });
       });
   }
@@ -132,7 +143,7 @@ class UserController {
         }
         if (request.body.roleId === '1') {
           if (request.decoded.roleId !== 1) {
-            return response.status(403)
+            return response.status(401)
               .send({
                 message: 'You are not authorized to create an Admin.' +
                 ' Contact Admin!'
@@ -165,7 +176,7 @@ class UserController {
         if (!foundUser) {
           return response
           .status(404)
-          .send({ message: 'You don\'t seem to exist' });
+          .send({ message: 'You don\'t seem to exist! Security!!!' });
         }
 
         foundUser = UserController.formattedUser(foundUser);
@@ -186,7 +197,7 @@ class UserController {
         if (!foundUser) {
           return response
           .status(404)
-          .send({ message: `There is no user with id: ${request.params.id}` });
+          .send({ message: `There is no user with id: ${Id}` });
         }
 
         foundUser = UserController.formattedUser(foundUser);
@@ -229,8 +240,6 @@ class UserController {
     const limit = request.query.limit || '10';
     const offset = request.query.offset || '0';
     const queryRole = request.query.role;
-    console.log('queryRole', typeof (queryRole));
-    console.log('request.decoded.roleId', typeof (request.decoded.roleId));
     if (queryRole === '1') {
       if (request.decoded.roleId !== 1) {
         return response.status(401).send({
@@ -250,7 +259,7 @@ class UserController {
         roleId: queryRole
       }
     }).then((users) => {
-      if (users.count === 0) {
+      if (users.count < 1) {
         return response.status(404)
         .send({ message: 'There are no users with this role.' });
       }
@@ -305,8 +314,10 @@ class UserController {
       model.User.findOne({ where: { email: request.body.email } })
         .then((foundUser) => {
           if (!foundUser) {
-            return response.status(404)
-            .send({ message: 'User does not exist' });
+            return response.status(400)
+            .send({
+              message: 'Please check the email and/or password'
+            });
           }
           if (foundUser && foundUser.verifyPassword(request.body.password)) {
             const token = jwt.sign({
@@ -341,55 +352,6 @@ class UserController {
     return response.status(200)
       .send({ message: 'Successful logout' });
   }
-
-  // /**
-  //  * Method to fetch all documents of a specific user
-  //  * @param{Object} request - Request object
-  //  * @param{Object} response - Response object
-  //  * @return{Void} - returns void
-  //  */
-  // static fetchUserDocuments(request, response) {
-  //   const id = Number(request.params.id);
-  //   const requesterRoleId = request.decoded.roleId;
-  //   const requesterId = request.decoded.userId;
-  //   model.User.findById(id, {
-  //     attributes: ['id', 'firstName', 'lastName', 'email', 'roleId'],
-  //     include: {
-  //       model: model.Document,
-  //       attributes: ['id', 'access', 'title', 'content', 'ownerId', 'createdAt']
-  //     }
-  //   })
-  //   .then((user) => {
-  //     if (user) {
-  //       const documents = user.Documents.filter((document) => {
-  //         if (Authenticator.verifyAdmin(requesterRoleId)) {
-  //           return true;
-  //         // for other users, ensure they have appropriate access rights
-  //         } else if (
-  //           (document.access === 'public' ||
-  //           requesterRoleId === user.roleId)
-  //           && document.access !== 'private') {
-  //           return true;
-  //         } else if (document.access === 'private'
-  //           && document.ownerId === requesterId) {
-  //           return true;
-  //         }
-  //         return false;
-  //       });
-  //       const safeUser = Object.assign(
-  //         {},
-  //         UserController.getSafeUserFields(user),
-  //         { documents });
-  //       ResponseHandler.sendResponse(
-  //         response,
-  //         200,
-  //         safeUser
-  //       );
-  //     } else {
-  //       ResponseHandler.send404(response);
-  //     }
-  //   });
-  // }
 
   /**
    * Method to search for all users

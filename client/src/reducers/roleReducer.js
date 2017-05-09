@@ -1,5 +1,11 @@
 import * as actionTypes from '../actions/actionTypes';
 
+/**
+ * @export
+ * @param {Object} [state={}]
+ * @param {Object} action
+ * @returns {state} return object
+ */
 export default (state = {}, action) => {
   switch (action.type) {
     case actionTypes.GET_ROLE_SUCCESS:

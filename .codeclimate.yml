@@ -1,4 +1,3 @@
----
 engines:
   csslint:
     enabled: true
@@ -20,5 +19,11 @@ ratings:
   - "**.js"
   - "**.css"
 exclude_paths:
+- "api-docs/"
+- "coverage/"
 - "jasmine/"
+- "node_modules/"
+- "test/"
+- "testis/"
 - "bundle.js"
+- "**.spec.js"

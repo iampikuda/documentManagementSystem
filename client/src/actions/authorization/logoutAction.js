@@ -2,18 +2,23 @@
 /* eslint-disable no-undef */
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+import * as actionTypes from '../actionTypes';
 
-export default (credentials) => {
+/**
+ * logout
+ * @export
+ * @returns {Object} returns object
+ */
+export default () => {
   return (dispatch) => {
-    return axios.post('/api/user/logout', credentials)
+    return axios.post('/api/user/logout')
     .then((response) => {
       dispatch({
-        type: 'CLEAR_ALL'
+        type: actionTypes.CLEAR_ALL
       });
-      // window.location = '/';
     }).catch((err) => {
       dispatch({
-        type: 'LOGOUT_FAILED',
+        type: actionTypes.LOGOUT_FAILED,
         message: err.response.data.message
       });
     });

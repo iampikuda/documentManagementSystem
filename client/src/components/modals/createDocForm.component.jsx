@@ -5,6 +5,10 @@ import jwtDecode from 'jwt-decode';
 import newDocument from '../../actions/documentManagement/newDocument.js';
 import TinyMCE from 'react-tinymce';
 
+/**
+ * @param {Object} props 
+ * @returns {Object} returns message
+ */
 const ResponseMessage = (props) => {
   if (props.status === 'success') {
     return (
@@ -23,12 +27,26 @@ const ResponseMessage = (props) => {
   }
 };
 
+/**
+ * Create document modal
+ * @export
+ * @class CreateDocument
+ * @extends {Component}
+ */
 export class CreateDocument extends Component {
+  /**
+   * Creates an instance of CreateDocument.
+   * @param {Object} props 
+   * @memberof CreateDocument
+   */
   constructor(props) {
     super(props);
     const token = (window.localStorage.getItem('token'));
     if (token) {
-      this.state = { id: jwtDecode(token).userId, email: jwtDecode(token).email};
+      this.state = {
+        id: jwtDecode(token).userId,
+        email: jwtDecode(token).email
+      };
     }
     this.state = {
       title: props.document ? props.document.title :  '',
@@ -41,6 +59,10 @@ export class CreateDocument extends Component {
     this.contentOnChange = this.contentOnChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+  /**
+   * @param {Object} nextProps 
+   * @memberof CreateDocument
+   */
   componentWillReceiveProps(nextProps) {
     if (nextProps.status === 'success') {
       browserHistory.push('/dashboard');
@@ -54,14 +76,27 @@ export class CreateDocument extends Component {
       });
     }
   }
+  /**
+   * @param {Object} event 
+   * @memberof CreateDocument
+   */
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
+  /**
+   * @param {Object} event 
+   * @memberof CreateDocument
+   */
   contentOnChange(event) {
     this.setState({
       content: event.target.getContent()
     });
+    console.log(this.state, 'f');
   }
+  /**
+   * @param {Object} event 
+   * @memberof CreateDocument
+   */
   onSubmit(event) {
     event.preventDefault();
     if(this.state.content.length < 1) {
@@ -71,12 +106,20 @@ export class CreateDocument extends Component {
     }
   }
 
+  /**
+   * @returns {void} returns form
+   * @memberof CreateDocument
+   */
   render() {
+    console.log(this.state.content);
     return  (
       <div>
         <div>
           <div className='row'>
-            <form className='col s12' onSubmit={this.props.onEdit ? () => { this.props.onEdit(this.state, this.props.documentId) } : this.onSubmit}>
+            <form className='col s12'
+              onSubmit={this.props.onEdit ? () =>
+              { this.props.onEdit(this.state, this.props.documentId)} :
+              this.onSubmit}>
               <div className='row'>
                 <div className='input-field col s12'>
                   <input
@@ -93,11 +136,12 @@ export class CreateDocument extends Component {
               <div className='row'>
                 <div className='input-field col s12'>
                   <TinyMCE
-                    content="<p>Content</p>"
+                    content='Content'
                     name='content'
                     config={{
                       plugins: 'autolink link image lists print preview',
-                      toolbar: 'undo redo | bold italic | alignleft aligncenter alignright'
+                      toolbar: 'undo redo | bold italic | \
+                      alignleft aligncenter alignright'
                     }}
                     onChange={this.contentOnChange}
                   />
@@ -118,8 +162,11 @@ export class CreateDocument extends Component {
                   <option value='role'>Role</option>
                 </select>
               </div>
-              <button className='btn waves-effect waves-light center auth-button' type='submit' name='action'>Save
-              <i className='material-icons right'></i>
+              <button
+                className='btn waves-effect waves-light center auth-button'
+                type='submit' name='action'>
+                Save
+                <i className='material-icons right'></i>
               </button>
               <ResponseMessage status={this.props.status} />
             </form>
@@ -130,12 +177,20 @@ export class CreateDocument extends Component {
   }
 }
 
+/**
+ * @param {Object} state 
+ * @returns {Object} returns object
+ */
 const mapStoreToProps = (state) => {
   return {
     status: state.documentReducer.createStatus
   };
 };
 
+/**
+ * @param {Object} dispatch 
+ * @returns {Object} returns object
+ */
 const mapDispatchToProps = (dispatch) => {
   return {
     CreateDocument: documentDetails => dispatch(newDocument(documentDetails)),

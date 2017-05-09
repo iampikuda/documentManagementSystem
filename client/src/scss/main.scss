@@ -4,27 +4,25 @@ $text-color: #FDFEFE;
 $text-color-two: #000;
 $box-shadow: 2px 2px 2px 2px rgba(0.4, 0.4, 0.4, 0.4);
 $center-align: center;
-$transparentNavColor: rgba(255,0,0,0.1);
-$transparentBodyColor: rgba(0,0,0,0.5);
+$transparent-nav-color: rgba(255, 0, 0, 0.1);
+$transparent-body-color: rgba(0, 0, 0, 0.5);
 $primary-color: #4386FC;
 $logo-color: #FFD04A;
 $background-color: #F2F2F2;
-// $: 'Sanchez', serif;
-// $: 'Pacifico', cursive;
-// $: 'Tillana', cursive;
 
-.myContainer {
+.my-container {
   margin: 0 18px;
 }
 
-.mainContainer {
-  background-color: $transparentBodyColor;
+.main-container {
+  background-color: $transparent-body-color;
   color: $text-color;
   position: absolute;
   height: 100%;
   width: 100%;
 }
-.mainContainer .bg {
+
+.bg {
   background-image: url("https://cloud.githubusercontent.com/assets/25608675/25169939/aec83538-24e0-11e7-84d5-8a26affcbd4e.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -33,7 +31,8 @@ $background-color: #F2F2F2;
   height: 100vh;
   z-index: -1;
 }
-.bodyInnards {
+
+.body-innards {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -41,15 +40,18 @@ $background-color: #F2F2F2;
   transform: translate(-50%, -50%);
   text-align: center;
 }
-.bodyInnards i,
-#createDoc i,
-#createUser i
+
+.body-innards i,
+#create-doc i,
+#create-role i,
+#create-user i
 {
   font-size: 6rem;
   color: $logo-color;
   margin: 0;
 }
-.createDoc{
+
+.create-doc {
   padding: 2px 9px 2px 2px;
   width: 100%;
   letter-spacing: normal;
@@ -59,43 +61,51 @@ $background-color: #F2F2F2;
   color: $text-color-two;
   border-radius: 1px;
 }
-.searchForm {
+
+.search-form {
   display: inline;
 }
-.searchBox {
-    right: 0;
-    width: 40%;
-    display: -webkit-inline-box;
-    position: absolute;
-    height: inherit;
-    padding: 0 20px;
-    border-radius: 8px;
-    background-color: $background-color;
-    border: 1px solid $text-color-two;
-    opacity: 0.9;
-    z-index: 11;
-    
+
+.search-box {
+  right: 0;
+  width: 40%;
+  display: -webkit-inline-box;
+  position: absolute;
+  height: inherit;
+  padding: 0 20px;
+  border-radius: 1px;
+  background-color: $background-color;
+  border: 1px solid $text-color-two;
+  opacity: 0.9;
 }
-.searchBox input {
+
+.search-box input,
+.search-box i,
+.search-box select {
+  color: $text-color-two;
+}
+
+.search-box input {
   border: 0px solid;
   width: 100%;
-  color: $text-color-two;
 }
-.searchBox i {
+
+.search-box i {
   padding-right: 10%;
-  color: $text-color-two;
 }
-.searchBox select {
+
+.search-box select {
   display: block;
   width: 100%;
   height: 61px;
   float: right;
-  color: $text-color-two;
   background-color: $background-color;
 }
+
 .inline {
   margin-right: 5px;
 }
+
 .dropdown{
   border-left: 2px solid $text-color-two;
   display: inline-block;
@@ -103,146 +113,168 @@ $background-color: #F2F2F2;
   right: 0;
   padding-right: 3%;
 }
-.userTopNav {
-  z-index: 30;
-  background-color: $text-color;
-}
+
 .dropdown-content {
   width: 50%;
   color: $text-color-two;
 }
+
 .dropdown-content li {
   text-align: left;
 }
 
-nav ul a {
-  color: $text-color;
-}
+nav ul a,
 nav a {
   color: $text-color;
 }
- nav {
-   font-family: $header-font;
-   background-color: $transparentNavColor;
- }
-.side-nav {
-  padding-top: 60px;
+
+nav {
+  font-family: $header-font;
+  background-color: $transparent-nav-color;
 }
+
 .tabs {
   -webkit-box-shadow: 0 8px 10px -6px black;
-	   -moz-box-shadow: 0 8px 10px -6px black;
-	        box-shadow: 0 8px 10px -6px black;
-          z-index: 9;
+  -moz-box-shadow: 0 8px 10px -6px black;
+  box-shadow: 0 8px 10px -6px black;
+  z-index: 9;
 }
-.tabRow {
+
+.tab-row {
   background-color: $nav-color;
-  box-shadow: $box-shadow
+  box-shadow: $box-shadow;
 }
-.tabContent{
+
+.tab-content {
   max-height: 73vh;
   width: 100%;
+  position: relative;
   overflow: scroll;
   background-color: $background-color;
-  padding: .9rem !important;
+  padding: 3rem 0.9rem !important;//eslint-disable-line
   color: $text-color-two;
   opacity: 0.9;
 }
+
 .tabs .tab a {
   color: $text-color-two;
 
 }
+
 .tabs .tab a:hover, .tabs .tab a.active {
   color: $primary-color;
 }
+
 .tabs .indicator {
 background-color: $primary-color;
 }
+
 .dropdown-content li>a, .dropdown-content li>span {
   left: 0%
 }
 
-@media only screen and (max-width: 992px) {
-  nav .brand-logo {
-    left: 47%;
-  }
-}
 .upperCase {
 text-transform: uppercase;
 }
 
-
-
-.loginForm {
+.login-form {
   margin: 2% 25%;
   width: 50%;
   height: 80%;
   box-shadow: $box-shadow;
   padding: 2% 3%;
 }
-.signupForm {
+
+.signup-form {
   margin: auto;
   width: 80%;
   height: 80%;
   box-shadow: $box-shadow;
   padding: 2% 3%;
 }
+
 .center {
   text-align: center;
   color: #212121;
 }
+
 .auth-button {
   margin: 2%;
   width: 95%;
   background-color: $nav-color;
   color: $text-color;
 }
+
 .auth-button:hover {
   background-color: $logo-color;
 }
+
 .auth-header a{
   color: #212121;
   font-family: $header-font;
 }
+
 .modal {
   color: $text-color-two;
   width: 80%;
 }
+
 .inline {
   display: inline-block;
 }
+
 .input-field label:not(.label-icon) {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   height: 50%
 }
+
 .input-field label:not(.label-icon).active {
   -webkit-transform: translateY(-90%);
   transform: translateY(-90%);
 }
+
 .mce-tinymce * {
-  height: 100% !important;
-  line-height: 100% !important;
+  height: 100% !important;//eslint-disable-line
+  line-height: 100% !important;//eslint-disable-line
 }
+
 @media only screen and (min-width: 601px) {
   .mce-tinymce * {
-    height: 100% !important;
-    line-height: 100% !important;
+    height: 100% !important;//eslint-disable-line
+    line-height: 100% !important; //eslint-disable-line
   }
 }
+
 .nav .input-field input {
   border-bottom: 1px solid;
   width: 97%;
 }
-table {
 
+table {
   width: 100%;
   max-width: 100%;
   min-width: 300px;
 }
+
 th, td {
   max-width: 500px;
   min-width: 20px;
+  min-height: 50px;
+  max-height: 100px;
 }
-.displayNone {
+
+.display-none {
   display: none;
+}
+
+.pagination-key {
+  background: $text-color;
+  margin-left: 45%;
+  margin-top: -2%;
+  position: fixed;
+}
+
+.nav-wrapper {
+  font-size: 20px;
 }

@@ -52,7 +52,9 @@ app.get('*', (req, res) => {
 });
 
 app.listen(port, (req, res) => {
-  console.log(`Listening on port ${port}`);
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(`Listening on port ${port}`);//eslint-disable-line
+  }
 });
 
 module.exports = app;

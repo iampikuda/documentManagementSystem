@@ -2,29 +2,49 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import CreateUser from '../authPages/signUpPage.jsx';
 
+/**
+ * add user modal
+ * @class AddUser
+ * @extends {Component}
+ */
 class AddUser extends Component {
+  /**
+   * Creates an instance of AddUser.
+   * @memberof AddUser
+   */
   constructor() {
     super();
   }
-  componentDidMount() {
-    $('.modal').modal({
-      dismissible: false, // Modal can be dismissed by clicking outside of the modal
-      opacity: .5, // Opacity of modal background
-      inDuration: 300, // Transition in duration
-      outDuration: 200, // Transition out duration
-      startingTop: '4%', // Starting top style attribute
-      endingTop: '10%', // Ending top style attribute
-      // ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-      //   alert("Ready");
-      //   console.log(modal, trigger);
-      // },
-      // complete: function () { alert('Closed'); } // Callback for Modal close
-    });
-  }
+  /**
+   * @memberof AddUser
+   */
+  // componentDidMount() {
+  //   $('.modal').modal({
+  //     dismissible: false,
+  //     // Modal can be dismissed by clicking outside of the modal
+  //     opacity: .5, // Opacity of modal background
+  //     inDuration: 300, // Transition in duration
+  //     outDuration: 200, // Transition out duration
+  //     startingTop: '4%', // Starting top style attribute
+  //     endingTop: '10%', // Ending top style attribute
+  //     // ready: function (modal, trigger) {
+  //     //  // Callback for Modal open. Modal and trigger parameters available.
+  //     //   alert("Ready");
+  //     //   console.log(modal, trigger);
+  //     // },
+  //     complete: function () {
+  //     } // Callback for Modal close
+  //   });
+  // }
+  /**
+   * @returns {void} returns create user modal
+   * @memberof AddUser
+   */
   render() {
     return (
       <div className="inline">
-        <Link data-target="modalUser" id="createUser" className="waves-effect waves-light btn-large createDoc">
+        <Link data-target="modalUser" id="create-user"
+          className="waves-effect waves-light btn-large create-doc">
           <i className="material-icons left">add_circle_outline</i>
           Add User
         </Link>
@@ -34,7 +54,8 @@ class AddUser extends Component {
             <CreateUser />
           </div>
           <div className="modal-footer">
-            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat ">Done</a>
+            <a href="#!" className="modal-action modal-close
+            waves-effect waves-green btn-flat ">Close</a>
           </div>
         </div>
       </div>

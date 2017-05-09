@@ -1,4 +1,5 @@
 # Document Mangement System
+[![Build Status](https://travis-ci.org/andela-opikuda/documentManagementSystem.svg?branch=master)](https://travis-ci.org/andela-opikuda/documentManagementSystem) [![Code Climate](https://codeclimate.com/github/andela-opikuda/documentManagementSystem/badges/gpa.svg)](https://codeclimate.com/github/andela-opikuda/documentManagementSystem) [![Test Coverage](https://codeclimate.com/github/andela-opikuda/documentManagementSystem/badges/coverage.svg)](https://codeclimate.com/github/andela-opikuda/documentManagementSystem/coverage) [![Issue Count](https://codeclimate.com/github/andela-opikuda/documentManagementSystem/badges/issue_count.svg)](https://codeclimate.com/github/andela-opikuda/documentManagementSystem)
 ## Background Information
 Document management system is an application used to track, manage and store documents.
 ## Features

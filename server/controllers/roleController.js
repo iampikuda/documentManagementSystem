@@ -1,5 +1,10 @@
+/* eslint import/no-extraneous-dependencies: 0 */
+/* eslint import/no-unresolved: 0 */
 import model from '../models';
 
+/**
+ * Class to implement Role controlllers
+ */
 class roleController {
 
   /**
@@ -38,50 +43,6 @@ class roleController {
         return response.status(200).send({ roles: roles.rows, data });
       });
   }
-
-  // /**
-  //  * Method updateRole
-  //  * @param {Object} request - request Object
-  //  * @param {Object} response - request Object
-  //  * @return {Object} response object
-  //  */
-  // static updateRole(request, response) {
-  //   model.Role.findById(request.params.id)
-  //     .then((role) => {
-  //       if (!role) {
-  //         return response.status(404)
-  //         .send({ message: `Ǹo role with id: ${request.params.role}` });
-  //       }
-
-  //       role.update(request.body)
-  //         .then((updatedRole) => {
-  //           return response.status(200)
-  //             .send(updatedRole);
-  //         });
-  //     });
-  // }
-
-  // /**
-  //  * Method deleteRole
-  //  * @param {Object} request - request Object
-  //  * @param {Object} response - request Object
-  //  * @return {Object} response object
-  //  */
-  // static deleteRole(request, response) {
-  //   model.Role.findById(request.params.id)
-  //     .then((role) => {
-  //       if (!role) {
-  //         return response.status(404)
-  //         .send({ message: `Ǹo role with id: ${request.params.role}` });
-  //       }
-
-  //       role.destroy()
-  //         .then(() => {
-  //           return response.status(200)
-  //             .send({ message: 'Succesfully deleted role' });
-  //         });
-  //     });
-  // }
 }
 
 export default roleController;

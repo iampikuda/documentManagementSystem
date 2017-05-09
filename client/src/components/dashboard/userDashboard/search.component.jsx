@@ -1,23 +1,51 @@
 import React, { Component } from 'react';
 import jwtDecode from 'jwt-decode';
 
-
+/**
+ * Search component
+ * @param {Object} props 
+ * @returns {void} returns search table
+ */
 const Search = (props) => {
+  /**
+   * @param {Object} document 
+   * @param {Integer} index 
+   * @returns {void} returns table row
+   */
   const SingleDocument = (document, index) => {
     return (
       <tr className="hoverable" key={index} >
         <td>{document.title}</td>
         <td>{document.access}</td>
-        <td className="truncate"><a href="#modalView" dangerouslySetInnerHTML={{ __html: document.content}} onClick={() => { props.setViewDocument(document); }} /></td>
+        <td className="truncate">
+          <a href="#modalView"
+            dangerouslySetInnerHTML={{ __html: document.content}}
+            onClick={() => { props.setViewDocument(document); }}/>
+        </td>
         <td>{`${document.User.lastName} ${document.User.firstName}`}</td>
         <td>{(document.createdAt).slice(0, 10)}</td>
         <td>{(document.updatedAt).slice(0, 10)}</td>
-        {/*</a>*/}
-        {/*<td><a className="modal-trigger green-text" href="#modalEdit" onClick={() => { props.setEditDocument(document); }}><i className="material-icons">edit</i></a></td>
-      <td><a className="red-text" href="#" onClick={() => { props.setDeleteDocument(document.id); }} > <i className="material-icons">delete</i></a></td>*/}
+        <td>
+          <a className="modal-trigger green-text" 
+            href="#modalEdit"
+            onClick={() => { props.setEditDocument(document);}}>
+            <i className="material-icons">edit</i>
+          </a>
+        </td>
+        <td>
+          <a className="red-text" href="#"
+            onClick={() => { props.setDeleteDocument(document.id);}}>
+            <i className="material-icons">delete</i>
+          </a>
+        </td>
       </tr >
     );
   }
+  /**
+   * @param {Object} users 
+   * @param {Integer} index 
+   * @returns {void} returns table row
+   */
   const SingleUsers = (users, index) => {
     return (
       <tr className="hoverable" key={index}>
@@ -25,8 +53,17 @@ const Search = (props) => {
         <td>{users.lastName}</td>
         <td>{users.email}</td>
         <td>{users.roleId}</td>
-        {/*<td><a className="modal-trigger green-text" href="#modalEdit" onClick={() => { props.setEditusers(users); }}><i className="material-icons">edit</i></a></td>
-      <td><a className="red-text" href="#" onClick={() => { props.setDeleteusers(users.id); }} > <i className="material-icons">delete</i></a></td>*/}
+        <td>
+          <a className="modal-trigger green-text" href="#modalEdit"
+            onClick={() => { props.setEditusers(users);}}>
+            <i className="material-icons">edit</i>
+          </a>
+        </td>
+        <td>
+          <a className="red-text" href="#"
+          onClick={() => { props.setDeleteusers(users.id);}}>
+          <i className="material-icons">delete</i>
+        </a></td>
       </tr >
     );
   }

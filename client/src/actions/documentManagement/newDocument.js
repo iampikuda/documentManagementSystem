@@ -1,8 +1,16 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable no-undef */
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 import * as actionTypes from '../actionTypes';
 import setAuthorizationToken from '../../utils/setAuth';
 
+/**
+ * Add new Document
+ * @export
+ * @param {Object} details
+ * @returns {Object} return object
+ */
 export default (details) => {
   const token = window.localStorage.getItem('token');
   return (dispatch) => {
@@ -14,8 +22,13 @@ export default (details) => {
           document,
           status: 'success'
         });
-        browserHistory.push('/dashboard');
+        Materialize.toast('Document created', 2000, 'green');
       }).catch((err) => {
+        Materialize.toast(
+          'Something went wrong creating a new document',
+          3000,
+          'red'
+          );
         dispatch({
           type: actionTypes.DOCUMENT_CREATE_FAILED,
           status: 'failed',
