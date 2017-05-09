@@ -25,8 +25,8 @@ const role = express.Router();
  */
 role.route('/api/role')
   .all(auth.verifyToken, auth.adminAccess)
-    /**
-  * @swagger
+  /**
+    * @swagger
     * /api/roles:
     *    get:
     *      description: Returns all roles
@@ -74,6 +74,6 @@ role.route('/api/role')
      *          items:
      *            $ref: '#/definitions/Role'
      */
-    .post(roleController.createRole);
+  .post(roleController.createRole);
 
 module.exports = () => role;

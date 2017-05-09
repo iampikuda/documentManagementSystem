@@ -22,7 +22,7 @@ export default (documentId) => {
         type: actionTypes.DOCUMENT_DELETED,
         status: 'success'
       });
-      Materialize.toast('Document deleted', 3000, 'green');
+
     }).catch((err) => {
       Materialize.toast('Something went wrong', 3000, 'red');
       dispatch({

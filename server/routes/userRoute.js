@@ -312,10 +312,6 @@ user.route('/api/user/:id')
    */
   .delete(auth.verifyToken, userController.deleteUser);
 
-// user.route('/api/user/:id/documents')
-  // .all(auth.verifyToken)
-//   .get(documentsController.getUserDocuments);
-
 user.route('/api/user/login')
   /**
    * @swagger
@@ -350,7 +346,7 @@ user.route('/api/user/login')
   .post(userController.login);
 
 user.route('/api/search/user')
-    /** @swagger
+  /** @swagger
     *  /api/search/users/:
     *   get:
     *     description: Returns {limit} users from the {offset}

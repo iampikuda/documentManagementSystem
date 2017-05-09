@@ -67,11 +67,23 @@ class UserDashboard extends Component {
     });
   }
   /**
-   * @param {Object} documentId 
+   * @param {Function} callback
+   * @param {Object} documentId
    * @memberof UserDashboard
    */
-  setDeleteDocument(documentId) {
-    this.props.DeleteDocument(documentId);
+ setDeleteDocument(callback, documentId) {
+    swal({
+      title: "Are you sure?",
+      text: "You will not be able to recover this file!",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Yes, delete it!",
+      closeOnConfirm: false
+    },
+    function(){
+      callback(documentId);
+    });
   }
   /**
    * @memberof UserDashboard
@@ -178,7 +190,8 @@ class UserDashboard extends Component {
                 document={this.props.documents}
                 setEditDocument={this.setEditDocument}
                 setViewDocument={this.setViewDocument}
-                setDeleteDocument={this.setDeleteDocument} />
+                setDeleteDocument={this.setDeleteDocument}
+                delete= {this.props.DeleteDocument} />
             </div>
             <div id="searchTab" className="tab-content col s12">
               <center className="pagination-key">

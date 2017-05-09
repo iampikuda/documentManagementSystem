@@ -33,7 +33,7 @@ const MyDocs = (props) => {
         </td>
         <td>
           <a className="red-text" href="#" 
-            onClick={()=>{ props.setDeleteDocument(document.id); }}>
+            onClick={()=>{ props.setDeleteDocument(props.delete, document.id); }}>
             <i className="material-icons">delete</i>
           </a>
         </td>

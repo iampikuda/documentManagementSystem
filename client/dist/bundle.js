@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "78ea96807dcb0b47fc10"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b2bfb45134e15327f237"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -7891,7 +7891,7 @@
 
 
 	// module
-	exports.push([module.id, ".my-container {\n  margin: 0 18px; }\n\n.main-container {\n  background-color: rgba(0, 0, 0, 0.5);\n  color: #FDFEFE;\n  position: absolute;\n  height: 100%;\n  width: 100%; }\n\n.bg {\n  background-image: url(\"https://cloud.githubusercontent.com/assets/25608675/25169939/aec83538-24e0-11e7-84d5-8a26affcbd4e.jpg\");\n  background-size: cover;\n  background-repeat: no-repeat;\n  position: absolute;\n  width: 100vw;\n  height: 100vh;\n  z-index: -1; }\n\n.body-innards {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  margin-right: -50%;\n  transform: translate(-50%, -50%);\n  text-align: center; }\n\n.body-innards i,\n#create-doc i,\n#create-role i,\n#create-user i {\n  font-size: 6rem;\n  color: #FFD04A;\n  margin: 0; }\n\n.create-doc {\n  padding: 2px 9px 2px 2px;\n  width: 100%;\n  letter-spacing: normal;\n  background-color: #F2F2F2;\n  border: 1px solid #000;\n  border-radius: 8px;\n  color: #000;\n  border-radius: 1px; }\n\n.search-form {\n  display: inline; }\n\n.search-box {\n  right: 0;\n  width: 40%;\n  display: -webkit-inline-box;\n  position: absolute;\n  height: inherit;\n  padding: 0 20px;\n  border-radius: 1px;\n  background-color: #F2F2F2;\n  border: 1px solid #000;\n  opacity: 0.9; }\n\n.search-box input,\n.search-box i,\n.search-box select {\n  color: #000; }\n\n.search-box input {\n  border: 0px solid;\n  width: 100%; }\n\n.search-box i {\n  padding-right: 10%; }\n\n.search-box select {\n  display: block;\n  width: 100%;\n  height: 61px;\n  float: right;\n  background-color: #F2F2F2; }\n\n.inline {\n  margin-right: 5px; }\n\n.dropdown {\n  border-left: 2px solid #000;\n  display: inline-block;\n  position: absolute;\n  right: 0;\n  padding-right: 3%; }\n\n.dropdown-content {\n  width: 50%;\n  color: #000; }\n\n.dropdown-content li {\n  text-align: left; }\n\nnav ul a,\nnav a {\n  color: #FDFEFE; }\n\nnav {\n  font-family: \"Sanchez\", serif;\n  background-color: rgba(255, 0, 0, 0.1); }\n\n.tabs {\n  -webkit-box-shadow: 0 8px 10px -6px black;\n  -moz-box-shadow: 0 8px 10px -6px black;\n  box-shadow: 0 8px 10px -6px black;\n  z-index: 9; }\n\n.tab-row {\n  background-color: #003366;\n  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4); }\n\n.tab-content {\n  max-height: 73vh;\n  width: 100%;\n  position: relative;\n  overflow: scroll;\n  background-color: #F2F2F2;\n  padding: 3rem 0.9rem !important;\n  color: #000;\n  opacity: 0.9; }\n\n.tabs .tab a {\n  color: #000; }\n\n.tabs .tab a:hover, .tabs .tab a.active {\n  color: #4386FC; }\n\n.tabs .indicator {\n  background-color: #4386FC; }\n\n.dropdown-content li > a, .dropdown-content li > span {\n  left: 0%; }\n\n.upperCase {\n  text-transform: uppercase; }\n\n.login-form {\n  margin: 2% 25%;\n  width: 50%;\n  height: 80%;\n  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);\n  padding: 2% 3%; }\n\n.signup-form {\n  margin: auto;\n  width: 80%;\n  height: 80%;\n  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);\n  padding: 2% 3%; }\n\n.center {\n  text-align: center;\n  color: #212121; }\n\n.auth-button {\n  margin: 2%;\n  width: 95%;\n  background-color: #003366;\n  color: #FDFEFE; }\n\n.auth-button:hover {\n  background-color: #FFD04A; }\n\n.auth-header a {\n  color: #212121;\n  font-family: \"Sanchez\", serif; }\n\n.modal {\n  color: #000;\n  width: 80%; }\n\n.inline {\n  display: inline-block; }\n\n.input-field label:not(.label-icon) {\n  -webkit-transform: translateY(-50%);\n  transform: translateY(-50%);\n  height: 50%; }\n\n.input-field label:not(.label-icon).active {\n  -webkit-transform: translateY(-90%);\n  transform: translateY(-90%); }\n\n.mce-tinymce * {\n  height: 100% !important;\n  line-height: 100% !important; }\n\n@media only screen and (min-width: 601px) {\n  .mce-tinymce * {\n    height: 100% !important;\n    line-height: 100% !important; } }\n\n.nav .input-field input {\n  border-bottom: 1px solid;\n  width: 97%; }\n\ntable {\n  width: 100%;\n  max-width: 100%;\n  min-width: 300px; }\n\nth, td {\n  max-width: 500px;\n  min-width: 20px;\n  min-height: 50px;\n  max-height: 100px; }\n\n.display-none {\n  display: none; }\n\n.pagination-key {\n  background: #FDFEFE;\n  margin-left: 45%;\n  margin-top: -3%;\n  position: fixed; }\n\n.nav-wrapper {\n  font-size: 20px; }\n", ""]);
+	exports.push([module.id, ".my-container {\n  margin: 0 18px; }\n\n.main-container {\n  background-color: rgba(0, 0, 0, 0.5);\n  color: #FDFEFE;\n  position: absolute;\n  height: 100%;\n  width: 100%; }\n\n.bg {\n  background-image: url(\"https://cloud.githubusercontent.com/assets/25608675/25169939/aec83538-24e0-11e7-84d5-8a26affcbd4e.jpg\");\n  background-size: cover;\n  background-repeat: no-repeat;\n  position: absolute;\n  width: 100vw;\n  height: 100vh;\n  z-index: -1; }\n\n.body-innards {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  margin-right: -50%;\n  transform: translate(-50%, -50%);\n  text-align: center; }\n\n.body-innards i,\n#create-doc i,\n#create-role i,\n#create-user i {\n  font-size: 6rem;\n  color: #FFD04A;\n  margin: 0; }\n\n.create-doc {\n  padding: 2px 9px 2px 2px;\n  width: 100%;\n  letter-spacing: normal;\n  background-color: #F2F2F2;\n  border: 1px solid #000;\n  border-radius: 8px;\n  color: #000;\n  border-radius: 1px; }\n\n.search-form {\n  display: inline; }\n\n.search-box {\n  right: 0;\n  width: 40%;\n  display: -webkit-inline-box;\n  position: absolute;\n  height: inherit;\n  padding: 0 20px;\n  border-radius: 1px;\n  background-color: #F2F2F2;\n  border: 1px solid #000;\n  opacity: 0.9; }\n\n.search-box input,\n.search-box i,\n.search-box select {\n  color: #000; }\n\n.search-box input {\n  border: 0px solid;\n  width: 100%; }\n\n.search-box i {\n  padding-right: 10%; }\n\n.search-box select {\n  display: block;\n  width: 100%;\n  height: 61px;\n  float: right;\n  background-color: #F2F2F2; }\n\n.inline {\n  margin-right: 5px; }\n\n.dropdown {\n  border-left: 2px solid #000;\n  display: inline-block;\n  position: absolute;\n  right: 0;\n  padding-right: 3%; }\n\n.dropdown-content {\n  width: 50%;\n  color: #000; }\n\n.dropdown-content li {\n  text-align: left; }\n\nnav ul a,\nnav a {\n  color: #FDFEFE; }\n\nnav {\n  font-family: \"Sanchez\", serif;\n  background-color: rgba(255, 0, 0, 0.1); }\n\n.tabs {\n  -webkit-box-shadow: 0 8px 10px -6px black;\n  -moz-box-shadow: 0 8px 10px -6px black;\n  box-shadow: 0 8px 10px -6px black;\n  z-index: 9; }\n\n.tab-row {\n  background-color: #003366;\n  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4); }\n\n.tab-content {\n  max-height: 73vh;\n  width: 100%;\n  position: relative;\n  overflow: scroll;\n  background-color: #F2F2F2;\n  padding: 3rem 0.9rem !important;\n  color: #000;\n  opacity: 0.9; }\n\n.tabs .tab a {\n  color: #000; }\n\n.tabs .tab a:hover, .tabs .tab a.active {\n  color: #4386FC; }\n\n.tabs .indicator {\n  background-color: #4386FC; }\n\n.dropdown-content li > a, .dropdown-content li > span {\n  left: 0%; }\n\n.upperCase {\n  text-transform: uppercase; }\n\n.login-form {\n  margin: 2% 25%;\n  width: 50%;\n  height: 80%;\n  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);\n  padding: 2% 3%; }\n\n.signup-form {\n  margin: auto;\n  width: 80%;\n  height: 80%;\n  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);\n  padding: 2% 3%; }\n\n.center {\n  text-align: center;\n  color: #212121; }\n\n.auth-button {\n  margin: 2%;\n  width: 95%;\n  background-color: #003366;\n  color: #FDFEFE; }\n\n.auth-button:hover {\n  background-color: #FFD04A; }\n\n.auth-header a {\n  color: #212121;\n  font-family: \"Sanchez\", serif; }\n\n.modal {\n  color: #000;\n  width: 80%; }\n\n.inline {\n  display: inline-block; }\n\n.input-field label:not(.label-icon) {\n  -webkit-transform: translateY(-50%);\n  transform: translateY(-50%);\n  height: 50%; }\n\n.input-field label:not(.label-icon).active {\n  -webkit-transform: translateY(-90%);\n  transform: translateY(-90%); }\n\n.mce-tinymce * {\n  height: 100% !important;\n  line-height: 100% !important; }\n\n@media only screen and (min-width: 601px) {\n  .mce-tinymce * {\n    height: 100% !important;\n    line-height: 100% !important; } }\n\n.nav .input-field input {\n  border-bottom: 1px solid;\n  width: 97%; }\n\ntable {\n  width: 100%;\n  max-width: 100%;\n  min-width: 300px; }\n\nth, td {\n  max-width: 500px;\n  min-width: 20px;\n  min-height: 50px;\n  max-height: 100px; }\n\n.display-none {\n  display: none; }\n\n.pagination-key {\n  background: #FDFEFE;\n  margin-left: 45%;\n  margin-top: -2%;\n  position: fixed; }\n\n.nav-wrapper {\n  font-size: 20px; }\n", ""]);
 
 	// exports
 
@@ -11379,7 +11379,6 @@
 	        type: actionTypes.DOCUMENT_DELETED,
 	        status: 'success'
 	      });
-	      Materialize.toast('Document deleted', 3000, 'green');
 	    }).catch(function (err) {
 	      Materialize.toast('Something went wrong', 3000, 'red');
 	      dispatch({
@@ -12299,7 +12298,7 @@
 	          'a',
 	          { className: 'red-text', href: '#',
 	            onClick: function onClick() {
-	              props.setDeleteDocument(document.id);
+	              props.setDeleteDocument(props.delete, document.id);
 	            } },
 	          _react2.default.createElement(
 	            'i',
@@ -22798,8 +22797,19 @@
 
 	  }, {
 	    key: 'setDeleteDocument',
-	    value: function setDeleteDocument(documentId) {
-	      this.props.DeleteDocument(documentId);
+	    value: function setDeleteDocument(callback, documentId) {
+	      swal({
+	        title: "Are you sure?",
+	        text: "You will not be able to recover this file!",
+	        type: "warning",
+	        showCancelButton: true,
+	        confirmButtonColor: "#DD6B55",
+	        confirmButtonText: "Yes, delete it!",
+	        closeOnConfirm: true
+	      }, function () {
+	        swal("Deleted!", "Your document file has been deleted.", "success");
+	        callback(documentId);
+	      });
 	    }
 	    /**
 	     * @memberof AdminDashboard
@@ -23023,7 +23033,8 @@
 	              _react2.default.createElement(_myDocsComponent2.default, { document: this.props.documents,
 	                setEditDocument: this.setEditDocument,
 	                setViewDocument: this.setViewDocument,
-	                setDeleteDocument: this.setDeleteDocument })
+	                setDeleteDocument: this.setDeleteDocument,
+	                'delete': this.props.DeleteDocument })
 	            ),
 	            _react2.default.createElement(
 	              'div',
@@ -23236,14 +23247,25 @@
 	      });
 	    }
 	    /**
-	     * @param {Object} documentId 
+	     * @param {Function} callback
+	     * @param {Object} documentId
 	     * @memberof UserDashboard
 	     */
 
 	  }, {
 	    key: 'setDeleteDocument',
-	    value: function setDeleteDocument(documentId) {
-	      this.props.DeleteDocument(documentId);
+	    value: function setDeleteDocument(callback, documentId) {
+	      swal({
+	        title: "Are you sure?",
+	        text: "You will not be able to recover this file!",
+	        type: "warning",
+	        showCancelButton: true,
+	        confirmButtonColor: "#DD6B55",
+	        confirmButtonText: "Yes, delete it!",
+	        closeOnConfirm: false
+	      }, function () {
+	        callback(documentId);
+	      });
 	    }
 	    /**
 	     * @memberof UserDashboard
@@ -23438,7 +23460,8 @@
 	                document: this.props.documents,
 	                setEditDocument: this.setEditDocument,
 	                setViewDocument: this.setViewDocument,
-	                setDeleteDocument: this.setDeleteDocument })
+	                setDeleteDocument: this.setDeleteDocument,
+	                'delete': this.props.DeleteDocument })
 	            ),
 	            _react2.default.createElement(
 	              'div',

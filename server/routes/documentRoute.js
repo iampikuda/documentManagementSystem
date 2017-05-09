@@ -92,27 +92,27 @@ document.route('/api/document')
 
 document.route('/api/document/:id')
   /** @swagger
-  *  /api/document/:id:
-  *   get:
-  *     description: Returns {limit} documents from the the {offset}
-  *     tags:
-  *       - Get single document
-  *     produces:
-  *        - application/json
-  *     parameters:
-  *        - name: Authorization
-  *          in: header
-  *          description: an authorization header
-  *          required: true
-  *          type: string
-  *     responses:
-  *        200:
-  *          description: get documents from the database
-  *          schema:
-  *            type: array
-  *            items:
-  *              $ref: '#/definitions/Document'
-  */
+    *  /api/document/:id:
+    *   get:
+    *     description: Returns {limit} documents from the the {offset}
+    *     tags:
+    *       - Get single document
+    *     produces:
+    *        - application/json
+    *     parameters:
+    *        - name: Authorization
+    *          in: header
+    *          description: an authorization header
+    *          required: true
+    *          type: string
+    *     responses:
+    *        200:
+    *          description: get documents from the database
+    *          schema:
+    *            type: array
+    *            items:
+    *              $ref: '#/definitions/Document'
+    */
   .get(auth.verifyToken, documentController.getDocument)
   /**
    * @swagger
@@ -171,7 +171,7 @@ document.route('/api/document/:id')
   .delete(auth.verifyToken, documentController.deleteDocument);
 
 document.route('/api/search/document')
-    /** @swagger
+  /** @swagger
     *  /api/search/documents/:
     *   get:
     *     description: Returns {limit} documents from the the {offset}

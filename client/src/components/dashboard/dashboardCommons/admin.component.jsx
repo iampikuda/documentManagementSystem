@@ -106,8 +106,20 @@ class AdminDashboard extends Component {
    * @param {Object} documentId 
    * @memberof AdminDashboard
    */
-  setDeleteDocument(documentId) {
-    this.props.DeleteDocument(documentId);
+  setDeleteDocument(callback, documentId) {
+    swal({
+      title: "Are you sure?",
+      text: "You will not be able to recover this file!",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Yes, delete it!",
+      closeOnConfirm: true
+    },
+    function(){
+      swal("Deleted!", "Your document file has been deleted.", "success");
+      callback(documentId);
+    });
   }
   /**
    * @memberof AdminDashboard
@@ -227,7 +239,8 @@ class AdminDashboard extends Component {
               <MyDocuments document={this.props.documents}
                 setEditDocument={this.setEditDocument}
                 setViewDocument={this.setViewDocument}
-                setDeleteDocument={this.setDeleteDocument} />
+                setDeleteDocument={this.setDeleteDocument}
+                delete= {this.props.DeleteDocument} />
             </div>
             <div id="searchTab" className="tab-content col s12">
               <center className="pagination-key">
