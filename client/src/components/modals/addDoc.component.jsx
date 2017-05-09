@@ -19,23 +19,23 @@ class AddDoc extends Component {
   /**
    * @memberof AddDoc
    */
-  // componentDidMount() {
-  //   $('.modal').modal({
-  //     dismissible: true, // Modal can be dismissed by clicking outside of the modal
-  //     opacity: .5, // Opacity of modal backgroundt
-  //     inDuration: 300, // Transition in duration
-  //     outDuration: 200, // Transition out duration
-  //     startingTop: '4%', // Starting top style attribute
-  //     endingTop: '10%', // Ending top style attribute
-  //     // ready: function (modal, trigger) {
-  //     //  // Callback for Modal open. Modal and trigger parameters available.
-  //     //   alert("Ready");
-  //     //   console.log(modal, trigger);
-  //     // },
-  //     complete: function () {
-  //     } // Callback for Modal close
-  //   });
-  // }
+  componentDidMount() {
+    $('.modal').modal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: .5, // Opacity of modal backgroundt
+      inDuration: 300, // Transition in duration
+      outDuration: 200, // Transition out duration
+      startingTop: '4%', // Starting top style attribute
+      endingTop: '10%', // Ending top style attribute
+      // ready: function (modal, trigger) {
+      //  // Callback for Modal open. Modal and trigger parameters available.
+      //   alert("Ready");
+      //   console.log(modal, trigger);
+      // },
+      complete: function () {
+      } // Callback for Modal close
+    });
+  }
   /**
    * @returns {void} returns create document modal
    * @memberof AddDoc
@@ -47,15 +47,14 @@ class AddDoc extends Component {
           className="waves-effect waves-light btn-large create-doc">
           <i className="material-icons left">add_circle_outline</i>
           Add Documents
-          </Link>
+        </Link>
         <div id="modalDoc" className="modal modal-fixed-footer">
           <div className="modal-content">
             <h4>Create a Document</h4>
             <CreateDocument />
           </div>
           <div className="modal-footer">
-            <a href="#!" className="modal-action modal-close
-            waves-effect waves-green btn-flat ">Close</a>
+            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
           </div>
         </div>
       </div>

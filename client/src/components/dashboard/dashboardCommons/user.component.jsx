@@ -79,7 +79,7 @@ class UserDashboard extends Component {
       showCancelButton: true,
       confirmButtonColor: "#DD6B55",
       confirmButtonText: "Yes, delete it!",
-      closeOnConfirm: false
+      closeOnConfirm: true
     },
     function(){
       callback(documentId);
@@ -108,8 +108,7 @@ class UserDashboard extends Component {
           </div>
           <div className="modal-footer">
             <a
-              className="modal-action modal-close
-              waves-effect waves-green btn-flat ">
+              className="modal-action modal-close waves-effect waves-green btn-flat ">
               Close
             </a>
           </div>
@@ -125,8 +124,7 @@ class UserDashboard extends Component {
           <div className="modal-footer">
             <a
               href="#!"
-              className="modal-action modal-close
-              waves-effect waves-green btn-flat ">
+              className="modal-action modal-close waves-effect waves-green btn-flat ">
               Close
             </a>
           </div>

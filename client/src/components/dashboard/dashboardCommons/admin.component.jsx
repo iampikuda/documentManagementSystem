@@ -54,6 +54,7 @@ class AdminDashboard extends Component {
    * @memberof AdminDashboard
    */
   componentWillReceiveProps(nextProps){
+    console.log(nextProps);
     const keys = ['users', 'documents', 'roles'];
     keys.forEach(key=>{
       if(nextProps[key]){
@@ -63,6 +64,20 @@ class AdminDashboard extends Component {
       }
     });
   }
+  // omponentWillReceiveProps(nextProps) {
+  //   if (nextProps.status === 'success') {
+  //     // browserHistory.push('/dashboard');
+  //   }
+  //   if (nextProps.document) {
+  //     this.setState({
+  //       title: nextProps.document.title,
+  //       content: nextProps.document.content,
+  //       access: nextProps.document.access,
+  //       status: nextProps.document.status
+  //     });
+  //     tinymce.activeEditor.setContent(nextProps.document.content);
+  //   }
+  // }
 
   /**
    * @param {Object} view 
@@ -117,7 +132,6 @@ class AdminDashboard extends Component {
       closeOnConfirm: true
     },
     function(){
-      swal("Deleted!", "Your document file has been deleted.", "success");
       callback(documentId);
     });
   }
@@ -146,7 +160,6 @@ class AdminDashboard extends Component {
       //   console.log(modal, trigger);
       // },
       complete: function () {
-        console.log("wait!!!!")
       } // Callback for Modal close
     });
     $('ul.tabs').tabs();
@@ -166,8 +179,7 @@ class AdminDashboard extends Component {
               onEdit={this.props.EditingDocument} />
           </div>
           <div className="modal-footer">
-            <a className="modal-action modal-close
-              waves-effect waves-green btn-flat ">
+            <a className="modal-action modal-close waves-effect waves-green btn-flat">
               Close
             </a>
           </div>
@@ -181,8 +193,7 @@ class AdminDashboard extends Component {
             <div dangerouslySetInnerHTML={{ __html: this.state.viewDocument}} />
           </div>
           <div className="modal-footer">
-            <a href="#!" className="modal-action modal-close
-              waves-effect waves-green btn-flat ">
+            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat ">
               Close
             </a>
           </div>
