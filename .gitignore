@@ -36,5 +36,6 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 client/dist/bundle.js
-
+nightWatchReports
+screenshots
 /testis/*

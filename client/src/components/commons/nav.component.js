@@ -69,7 +69,7 @@ class Navbar extends Component {
           </Link>
           <ul className="right">
             <li>
-              <Link to="/login">
+              <Link id="login-btn" to="/login">
                 <i className="material-icons left">lock_open</i>
                 LOGIN
               </Link>
