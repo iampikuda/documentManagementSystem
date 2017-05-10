@@ -12,7 +12,6 @@ module.exports = {
     */
     return queryInterface.bulkInsert('User', [
       {
-        id: 1,
         firstName: 'Oluwadamisi',
         lastName: 'Pikuda',
         email: 'oluwadamisi.pikuda@andela.com',
@@ -22,7 +21,6 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        id: 2,
         firstName: 'Kez',
         lastName: 'Crewda',
         email: 'kez@awesome.ness',

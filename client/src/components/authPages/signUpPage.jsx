@@ -55,7 +55,7 @@ class signUpPage extends Component {
       });
     }
     if (nextProps.user) {
-      // browserHistory.push('/dashboard');
+      browserHistory.push('/dashboard');
     }
   }
   /**
@@ -94,7 +94,7 @@ class signUpPage extends Component {
         <div className="row"></div>
         <div className="row signup-form">
           <form className="col s12" onSubmit={this.onSubmit}>
-            {this.state.error ?
+            {/*{this.state.error ?
               <div className="center">
                 {this.state.error}
               </div>
@@ -105,7 +105,7 @@ class signUpPage extends Component {
                 {this.state.success}
               </div>
               : <span />
-            }
+            }*/}
             <div className="row">
               <div className="input-field col s6">
                 <input
@@ -200,7 +200,7 @@ class signUpPage extends Component {
         <div className="row signup-form">
           <h4 className="center">Sign Up</h4>
           <form className="col s12" onSubmit={this.onSubmit}>
-            {this.state.error ?
+            {/*{this.state.error ?
               <div className="center">
                 {this.state.error}
               </div>
@@ -211,7 +211,7 @@ class signUpPage extends Component {
                 {this.state.success}
               </div>
               : <span />
-            }
+            }*/}
             <div className="row">
               <div className="input-field col s6">
                 <input

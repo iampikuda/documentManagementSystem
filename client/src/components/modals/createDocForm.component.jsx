@@ -126,7 +126,7 @@ export class CreateDocument extends Component {
                     value={this.state.title}
                     onChange={this.onChange}
                     name='title'
-                    id='title'
+                    id='doc-title'
                     type='text'
                     className='validate'
                     required />
@@ -164,7 +164,7 @@ export class CreateDocument extends Component {
               </div>
               <button
                 className='btn waves-effect waves-light center auth-button'
-                type='submit' name='action'>
+                type='submit' name='action' id="saveDoc">
                 Save
                 <i className='material-icons right'></i>
               </button>

@@ -16,7 +16,10 @@ class roleController {
   static createRole(request, response) {
     model.Role.sync();
     model.Role.create(request.body)
-      .then(newRole => response.status(201).send(newRole))
+      .then((newRole) => {
+        console.log('`````````````````````');
+        response.status(201).send(newRole)
+      })
       .catch(error => response.status(400).send(error.errors)
       );
   }

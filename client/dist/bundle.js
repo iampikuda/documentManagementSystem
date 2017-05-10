@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b2bfb45134e15327f237"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "282c632ec694558f2b51"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -3680,7 +3680,7 @@
 	              null,
 	              _react2.default.createElement(
 	                _reactRouter.Link,
-	                { to: '/login' },
+	                { id: 'login-btn', to: '/login' },
 	                _react2.default.createElement(
 	                  'i',
 	                  { className: 'material-icons left' },
@@ -11738,16 +11738,6 @@
 	          _react2.default.createElement(
 	            'form',
 	            { className: 'col s12', onSubmit: this.onSubmit },
-	            this.state.error ? _react2.default.createElement(
-	              'div',
-	              { className: 'center' },
-	              this.state.error
-	            ) : _react2.default.createElement('span', null),
-	            this.state.success ? _react2.default.createElement(
-	              'div',
-	              { className: 'center' },
-	              this.state.success
-	            ) : _react2.default.createElement('span', null),
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'row' },
@@ -11912,16 +11902,6 @@
 	          _react2.default.createElement(
 	            'form',
 	            { className: 'col s12', onSubmit: this.onSubmit },
-	            this.state.error ? _react2.default.createElement(
-	              'div',
-	              { className: 'center' },
-	              this.state.error
-	            ) : _react2.default.createElement('span', null),
-	            this.state.success ? _react2.default.createElement(
-	              'div',
-	              { className: 'center' },
-	              this.state.success
-	            ) : _react2.default.createElement('span', null),
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'row' },
@@ -22732,6 +22712,7 @@
 	    value: function componentWillReceiveProps(nextProps) {
 	      var _this2 = this;
 
+	      console.log(nextProps);
 	      var keys = ['users', 'documents', 'roles'];
 	      keys.forEach(function (key) {
 	        if (nextProps[key]) {
@@ -22739,6 +22720,20 @@
 	        }
 	      });
 	    }
+	    // omponentWillReceiveProps(nextProps) {
+	    //   if (nextProps.status === 'success') {
+	    //     // browserHistory.push('/dashboard');
+	    //   }
+	    //   if (nextProps.document) {
+	    //     this.setState({
+	    //       title: nextProps.document.title,
+	    //       content: nextProps.document.content,
+	    //       access: nextProps.document.access,
+	    //       status: nextProps.document.status
+	    //     });
+	    //     tinymce.activeEditor.setContent(nextProps.document.content);
+	    //   }
+	    // }
 
 	    /**
 	     * @param {Object} view 
@@ -22807,7 +22802,6 @@
 	        confirmButtonText: "Yes, delete it!",
 	        closeOnConfirm: true
 	      }, function () {
-	        swal("Deleted!", "Your document file has been deleted.", "success");
 	        callback(documentId);
 	      });
 	    }
@@ -22841,9 +22835,7 @@
 	        //   alert("Ready");
 	        //   console.log(modal, trigger);
 	        // },
-	        complete: function complete() {
-	          console.log("wait!!!!");
-	        } // Callback for Modal close
+	        complete: function complete() {} // Callback for Modal close
 	      });
 	      $('ul.tabs').tabs();
 	    }
@@ -22880,7 +22872,7 @@
 	            { className: 'modal-footer' },
 	            _react2.default.createElement(
 	              'a',
-	              { className: 'modal-action modal-close waves-effect waves-green btn-flat ' },
+	              { className: 'modal-action modal-close waves-effect waves-green btn-flat' },
 	              'Close'
 	            )
 	          )
@@ -23262,7 +23254,7 @@
 	        showCancelButton: true,
 	        confirmButtonColor: "#DD6B55",
 	        confirmButtonText: "Yes, delete it!",
-	        closeOnConfirm: false
+	        closeOnConfirm: true
 	      }, function () {
 	        callback(documentId);
 	      });
@@ -23892,30 +23884,32 @@
 	  /**
 	   * @memberof AddDoc
 	   */
-	  // componentDidMount() {
-	  //   $('.modal').modal({
-	  //     dismissible: true, // Modal can be dismissed by clicking outside of the modal
-	  //     opacity: .5, // Opacity of modal backgroundt
-	  //     inDuration: 300, // Transition in duration
-	  //     outDuration: 200, // Transition out duration
-	  //     startingTop: '4%', // Starting top style attribute
-	  //     endingTop: '10%', // Ending top style attribute
-	  //     // ready: function (modal, trigger) {
-	  //     //  // Callback for Modal open. Modal and trigger parameters available.
-	  //     //   alert("Ready");
-	  //     //   console.log(modal, trigger);
-	  //     // },
-	  //     complete: function () {
-	  //     } // Callback for Modal close
-	  //   });
-	  // }
-	  /**
-	   * @returns {void} returns create document modal
-	   * @memberof AddDoc
-	   */
 
 
 	  _createClass(AddDoc, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      $('.modal').modal({
+	        dismissible: true, // Modal can be dismissed by clicking outside of the modal
+	        opacity: .5, // Opacity of modal backgroundt
+	        inDuration: 300, // Transition in duration
+	        outDuration: 200, // Transition out duration
+	        startingTop: '4%', // Starting top style attribute
+	        endingTop: '10%', // Ending top style attribute
+	        // ready: function (modal, trigger) {
+	        //  // Callback for Modal open. Modal and trigger parameters available.
+	        //   alert("Ready");
+	        //   console.log(modal, trigger);
+	        // },
+	        complete: function complete() {} // Callback for Modal close
+	      });
+	    }
+	    /**
+	     * @returns {void} returns create document modal
+	     * @memberof AddDoc
+	     */
+
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(

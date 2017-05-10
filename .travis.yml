@@ -36,5 +36,5 @@ services:
 before_install:
   - psql -c 'create database dms_test;' -U postgres
 
-after_success:
+after_script:
   - npm run coveralls
