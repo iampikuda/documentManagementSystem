@@ -11,9 +11,10 @@ import * as actionTypes from '../actionTypes';
  * @returns {Object} return object
  */
 const roleGetSuccess = (roles) => {
+  const data = roles.data.roles;
   return {
     type: actionTypes.GET_ROLE_SUCCESS,
-    roles
+    data
   };
 };
 

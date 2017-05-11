@@ -39,11 +39,11 @@ class roleController {
       order: '"createdAt" ASC'
     })
       .then((roles) => {
-        const data = limit && offset ? { totalCount: roles.count,
+        const metadata = limit && offset ? { totalCount: roles.count,
           pages: Math.ceil(roles.count / limit),
           currentPage: Math.floor(offset / limit) + 1,
           pageSize: roles.rows.length } : null;
-        return response.status(200).send({ roles: roles.rows, data });
+        return response.status(200).send({ roles: roles.rows, metadata });
       });
   }
 }

@@ -27,10 +27,10 @@ const PublicDocs = (props) => {
     );
   }
   let documentList = [];
-  if (props.document.document !== undefined) {
-    let docs = props.document.document.data.document;
+  if (props.document !== undefined) {
+    let docs = props.document;
     if (docs === undefined){
-      docs = props.document.document.data.documents;
+      docs = props.document.documents;
     }
     documentList = docs
     .filter((document) => {

@@ -25,7 +25,7 @@ export default (details) => {
         Materialize.toast('Document created', 2000, 'green');
       }).catch((err) => {
         Materialize.toast(
-          'Something went wrong creating a new document',
+          'err',
           3000,
           'red'
           );

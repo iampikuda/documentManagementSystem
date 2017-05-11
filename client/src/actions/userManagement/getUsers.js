@@ -11,9 +11,10 @@ import setAuthorizationToken from '../../utils/setAuth';
  * @returns {Object} object
  */
 const userGetSuccess = (users) => {
+  const data = users.data.users;
   return {
     type: actionTypes.GET_USER_SUCCESS,
-    users,
+    data,
     pageCount: users.data.metadata.pages
 
   };

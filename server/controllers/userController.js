@@ -110,12 +110,21 @@ class UserController {
             .status(404)
             .send({ message: `There is no user with id: ${Id}` });
         }
-        if (request.body.roleId === '1') {
+        console.log(foundUser.roleId);
+        console.log(foundUser.id);
+        // console.log(foundUser);
+        if (foundUser.roleId === 1) {
           if (request.decoded.roleId !== 1) {
             return response.status(403)
               .send({
                 message: 'You are not authorized to delete an Admin.' +
                 ' Contact Admin!'
+              });
+          }
+          if (foundUser.id === 1) {
+            return response.status(403)
+              .send({
+                message: 'Super Admin! Back OFF!'
               });
           }
         }

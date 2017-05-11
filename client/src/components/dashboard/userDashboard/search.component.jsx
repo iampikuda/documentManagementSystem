@@ -7,6 +7,7 @@ import jwtDecode from 'jwt-decode';
  * @returns {void} returns search table
  */
 const Search = (props) => {
+
   /**
    * @param {Object} document 
    * @param {Integer} index 
@@ -70,20 +71,12 @@ const Search = (props) => {
   const token = window.localStorage.getItem('token');
   let searchList = [];
   if (props.view === true) {
-    if (props.document.search !== undefined) {
-      let docs = props.document.search.data.document;
-      if (docs === undefined) {
-        docs = props.document.search.data.documents;
-      }
-      searchList = docs;
+    if (props.documentsSearch !== undefined) {
+      searchList = props.documentsSearch;
     }
   } else if (props.view === false){
-    if (props.users.search !== undefined) {
-      let user = props.users.search.data.user;
-      if (user === undefined) {
-        user = props.users.search.data.users;
-      }
-      searchList = user;
+    if (props.usersSearch !== undefined) {
+      searchList = props.usersSearch;
     }
   }
   return (props.view === true) ?

@@ -33,11 +33,12 @@ const MyDocs = (props) => {
         </td>
         <td>
           <a className="red-text" href="#" 
-            onClick={()=>{ props.setDeleteDocument(props.delete, document.id); }}>
+            onClick={()=>{
+              props.setDeleteDocument(props.delete, document.id);
+              }}>
             <i className="material-icons">delete</i>
           </a>
         </td>
-
       </tr>
     );
   }
@@ -45,10 +46,10 @@ const MyDocs = (props) => {
   const myId = jwtDecode(token).userId;
   let documentList = [];
 
-  if (props.document.document !== undefined) {
-    let docs = props.document.document.data.document;
+  if (props.document !== undefined) {
+    let docs = props.document;
     if (docs === undefined){
-      docs = props.document.document.data.documents;
+      docs = props.document.documents;
     }
     documentList = docs
       .filter((document) => {

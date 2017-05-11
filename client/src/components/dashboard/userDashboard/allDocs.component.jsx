@@ -32,13 +32,14 @@ const AllDocs = (props) => {
   }
   let documentList = [];
   const token = window.localStorage.getItem('token');
-  if (props.document.document !== undefined) {
-    let docs = props.document.document.data.document;
+  if (props.document !== undefined) {
+    let docs = props.document;
     if (docs === undefined) {
-      docs = props.document.document.data.documents;
+      docs = props.document.documents;
     }
     documentList = docs;
   }
+  console.log(documentList,'documentlist');
   return (
     <div>
       <table className="bordered  responsive">

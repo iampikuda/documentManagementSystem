@@ -6,9 +6,15 @@ import * as actionTypes from '../actionTypes';
 import setAuthorizationToken from '../../utils/setAuth';
 
 const documentReadSuccess = (documents) => {
+  let data = [];
+  if(documents.data.documents === undefined) {
+    data = documents.data.document
+  } else {
+    data = documents.data.documents;
+  }
   return {
-    type: actionTypes.VIEW_USER_DOCUMENTS_SUCCESS,
-    documents,
+    type: actionTypes.GET_ALL_DOCUMENTS,
+    data,
     pageCount: documents.data.metadata.pages
   };
 };

@@ -3,6 +3,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import reduxImmutableStateVariant from 'redux-immutable-state-invariant';
 import App from './components/app.component';
 import combineReducers from './reducers/index.js';
@@ -16,8 +17,9 @@ const middleware = process.env.NODE_ENV !== 'production' ?
   [reduxImmutableStateVariant(), thunk] :
   [thunk];
 const store = createStore(
-  combineReducers,
+  combineReducers, composeWithDevTools(
   applyMiddleware(...middleware)
+  )
 );
 if (token) {
   setAuthorizationToken(token);

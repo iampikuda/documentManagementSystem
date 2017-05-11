@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-undef */
 import axios from 'axios';
+import { browserHistory, Link } from 'react-router';
 import * as actionTypes from '../actionTypes';
 import setAuthorizationToken from '../../utils/setAuth';
 
@@ -24,10 +25,11 @@ export default (userData, userId) => {
           })
         });
         Materialize.toast(
-          'User editted',
+          'User edited',
           3000,
-          'red'
+          'green'
           );
+          browserHistory.push('/dashboard');
       }).catch((err) => {
         Materialize.toast(
           'Something went wrong editing user',

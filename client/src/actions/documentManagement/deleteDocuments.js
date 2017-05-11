@@ -15,16 +15,18 @@ export default (documentId) => {
   const token = window.localStorage.getItem('token');
   return (dispatch) => {
     setAuthorizationToken(token);
-    console.log('we be steady deleting shit');
     return axios.delete(`/api/document/${documentId}`)
-    .then(() => {
+    .then((document) => {
+      const data = document.data.Document
+      console.log(data);
       dispatch({
         type: actionTypes.DOCUMENT_DELETED,
-        status: 'success'
+        status: 'success',
+        data
       });
 
     }).catch((err) => {
-      Materialize.toast('Something went wrong', 3000, 'red');
+      Materialize.toast(err, 3000, 'red');
       dispatch({
         type: actionTypes.DOCUMENT_DELETION_FAILED,
         status: 'failed',

@@ -25,11 +25,8 @@ let rolesList = [];
  * @returns {void} return table
  */
 const RoleView = (props) => {
-  if (props.roles.roles !== undefined) {
-    rolesList = props.roles.roles.data.roles;
-    if (rolesList === undefined) {
-      rolesList = props.roles.roles.data.roles;
-    }
+  if (props.roles !== undefined) {
+    rolesList = props.roles;
   }
   return (
     <div>

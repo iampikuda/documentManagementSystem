@@ -15,10 +15,10 @@ export default (token, userId) => {
   return (dispatch) => {
     setAuthorizationToken(token);
     axios.get(`/api/user/${userId}`)
-      .then((response) => {
+      .then((user) => {
         dispatch({
           type: actionTypes.VIEW_USER,
-          user: response.data
+          data: user.data
         });
       }).catch((err) => {
         dispatch({

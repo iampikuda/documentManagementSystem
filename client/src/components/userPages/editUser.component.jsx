@@ -20,28 +20,30 @@ class EditUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: '',
       firstName: '',
       lastName: '',
-      role: '',
-      token: localStorage.getItem('token')
+      password: '',
+      confirmPassword: '',
+      email: props.user ? props.user.email : '' || '',
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.updateUser = this.updateUser.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   /**
    * @memberof EditUser
    */
   componentWillMount() {
-    if (!window.localStorage.getItem('token')) {
-      browserHistory.push('/');
-    }
     const token = window.localStorage.getItem('token');
-    if (token) {
-      this.setState({ userId: jwtDecode(token).userId });
-      this.props.viewUser(token, jwtDecode(token).userId);
-    }
+    if (!token) {
+      browserHistory.push('/');
+    } else {
+    const user = jwtDecode(token);
+    this.setState({
+      userId: user.userId
+    });
+    this.props.viewUser(token, user.userId);
+  }
   }
 
   /**
@@ -49,14 +51,18 @@ class EditUser extends Component {
    * @memberof EditUser
    */
   componentWillReceiveProps(nextProps) {
-    this.setState(nextProps.user);
+    this.setState ({
+      firstName: nextProps.user.firstName ? nextProps.user.firstName : '',
+      lastName: nextProps.user.firstName ? nextProps.user.lastName : '',
+      email: nextProps.user.email ? nextProps.user.email : '',
+    });
   }
 
   /**
    * @param {Object} event
    * @memberof EditUser
    */
-  handleChange(event) {
+  onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
 
@@ -64,9 +70,20 @@ class EditUser extends Component {
    * @param {Object} event
    * @memberof EditUser
    */
-  updateUser(event) {
-    const userId = jwtDecode(this.state.token).userId;
-    this.props.updateUser(this.state.token, this.state, userId);
+  onSubmit(event) {
+    event.preventDefault();
+    const details = {
+      email: this.state.email,
+      password: this.state.password      
+    }
+    const token = window.localStorage.getItem('token');
+    const userId = jwtDecode(token).userId;
+    if(this.state.password === this.state.confirmPassword){
+        this.props.updateUser(token, details, userId);
+        // browserHistory.push('/');
+      }else {
+        Materialize.toast('Passwords don\'t match!', 3000)
+      }
   }
 
   /**
@@ -75,52 +92,71 @@ class EditUser extends Component {
    */
   render() {
     return (
-      <div className="row dashboardContainer col s12">
-        <Navbar />
-        <div className="col s12 workspace ">
-          <div className="row workspace-header"><h4>Profile</h4></div>
-          <div className="doc_list z-depth-4 panel doc_content">
-            <form className="userProfile">
-              <label htmlFor="userName">Username: </label>
-              <input
-                type="text"
-                name="userName"
-                id="username"
-                value={this.state.userName}
-                onChange={this.handleChange}
-              />
-              <label htmlFor="firstName">First Name: </label>
-              <input
-                type="text"
-                name="firstName"
-                id="first_name"
-                value={this.state.firstName}
-                onChange={this.handleChange}
-              />
-              <label htmlFor="lastName">Last Name: </label>
-              <input
-                type="text"
-                name="lastName"
-                id="last_name"
+      <div className="main-container">
+        <div className="row dashboardContainer col s12 ">
+          <div className="bg"></div>
+          <Navbar />
+          <div className="user body-innards">
+            <div className="row workspace-header"><h4>Profile</h4></div>
+            <div className="formuser">
+              <form className="userProfile" onSubmit={this.onSubmit}>
+                <label htmlFor="firstName">First Name</label>
+                <input
+                  value={this.state.firstName}
+                  onChange={this.onChange}
+                  name="firstName"
+                  id="firstName"
+                  type="text"
+                  className="validate"
+                  required disabled/>
+                <label htmlFor="lastName">Last Name</label>
+                <input
                 value={this.state.lastName}
-                onChange={this.handleChange}
-              />
-              <label htmlFor="password">Password: </label>
-              <span>********</span>
-              <Link
-                to="/change-password"
-                id="changePassword"
-                className="btn"
-              >Change</Link>
-              <div className="row">
-                <button
-                  type="submit"
-                  className="updateUser btn"
-                  onClick={() => this.updateUser()}
-                >Save</button>
-              </div>
-            </form>
-            <div />
+                onChange={this.onChange}
+                name="lastName"
+                id="lastName"
+                type="text"
+                className="validate"
+                required disabled/>
+
+                <label htmlFor="email">Email</label>
+                <input
+                  value={this.state.email}
+                  onChange={this.onChange}
+                  name="email"
+                  id="email"
+                  type="email"
+                  className="validate"
+                  required />
+
+                <label htmlFor="password">Password</label>
+                <input
+                  value={this.state.password}
+                  onChange={this.onChange}
+                  name="password"
+                  id="password"
+                  type="password"
+                  className="validate"
+                  required />
+                <label  htmlFor="confirmPassword">Confirm Password</label>                
+                <input
+                  value={this.state.confirmPassword}
+                  onChange={this.onChange}
+                  name="confirmPassword"
+                  id="confirmPassword"
+                  type="password"
+                  className="validate"
+                  required />                
+                <button 
+                  className="btn waves-effect waves-light center auth-button"
+                  type="submit" name="action">
+                  Update
+                  <i className="material-icons right">vpn_key</i>
+                </button>
+
+              </form>
+              <div />
+            </div>
           </div>
         </div>
       </div>
@@ -136,7 +172,7 @@ EditUser.propTypes = {
 
 const mapStoreToProps = (state, ownProps) => {
   return {
-    user: state.userReducer.user
+    user: state.userReducer.viewUser
   };
 };
 

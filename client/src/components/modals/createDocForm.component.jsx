@@ -9,23 +9,6 @@ import TinyMCE from 'react-tinymce';
  * @param {Object} props 
  * @returns {Object} returns message
  */
-const ResponseMessage = (props) => {
-  if (props.status === 'success') {
-    return (
-      <div>
-        Document Created
-      </div>
-    );
-  } else if (props.status === 'failed') {
-    return (
-      <div>
-        Document not Created
-      </div>
-    );
-  } else {
-    return (<span />);
-  }
-};
 
 /**
  * Create document modal
@@ -91,7 +74,7 @@ export class CreateDocument extends Component {
     this.setState({
       content: event.target.getContent()
     });
-    console.log(this.state, 'f');
+    // console.log(this.state, 'f');
   }
   /**
    * @param {Object} event 
@@ -111,7 +94,7 @@ export class CreateDocument extends Component {
    * @memberof CreateDocument
    */
   render() {
-    console.log(this.state.content);
+    // console.log(this.state.content);
     return  (
       <div>
         <div>
@@ -168,7 +151,6 @@ export class CreateDocument extends Component {
                 Save
                 <i className='material-icons right'></i>
               </button>
-              <ResponseMessage status={this.props.status} />
             </form>
           </div>
         </div>

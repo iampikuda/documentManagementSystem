@@ -42,12 +42,16 @@ class IndexDashboard extends Component {
         <AdminDashboard
           pagination={this.props.actionsDoc.viewUserDocuments}
           documents={this.props.documents}
+          documentsSearch={this.props.documentsSearch}
+          usersSearch={this.props.usersSearch}
           users={this.props.users}
           roles={this.props.roles} />
       </div> :
       <div>
         <UserDashboard
           pagination={this.props.actionsDoc.viewUserDocuments}
+          documentsSearch={this.props.documentsSearch}
+          usersSearch={this.props.usersSearch}
           documents={this.props.documents}
           users={this.props.users} />
       </div>
@@ -60,9 +64,11 @@ class IndexDashboard extends Component {
  */
 const mapStoreToProps = (state) => {
   return {
-    documents: state.documentReducer,
-    users: state.userReducer,
-    roles: state.roleReducer
+    documents: state.documentReducer.document,
+    users: state.userReducer.users,
+    documentsSearch: state.documentReducer.search,
+    usersSearch: state.userReducer.search,
+    roles: state.roleReducer.roles
   };
 };
 

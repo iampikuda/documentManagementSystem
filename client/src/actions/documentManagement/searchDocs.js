@@ -23,9 +23,10 @@ export default (query, offset) => {
       }
     })
     .then((documents) => {
+      const data = documents.data.documents
       dispatch({
         type: actionTypes.SEARCH_DOCS_COMPLETE,
-        documents,
+        data,
         query,
         status: 'success',
         pageCount: documents.data.metadata.pages

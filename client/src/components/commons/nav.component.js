@@ -48,7 +48,12 @@ class Navbar extends Component {
               PK-DOCMAN
             </Link>
             <ul className="right">
-              <li className="upperCase">Welcome, {this.state.firstName}</li>
+              <li className="upperCase">
+                <Link to="/user" className="waves-effect waves-light btn">
+                  <i className="material-icons left">person_pin</i>
+                  Welcome, {this.state.firstName}
+                </Link>
+              </li>
               <li>
                 <Link onClick={this.logout}>
                   <i className="material-icons left">lock_outline</i>

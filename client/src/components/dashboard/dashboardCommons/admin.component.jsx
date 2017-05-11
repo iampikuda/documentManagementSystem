@@ -44,6 +44,7 @@ class AdminDashboard extends Component {
     this.updateUser = this.updateUser.bind(this);
     const token = window.localStorage.getItem('token');
     this.state = {
+      documents: props.documents || [],
       AdminRoleId: 1,
       searchBarView: 'noShow',
       authUser: jwtDecode(token) || {},
@@ -54,30 +55,17 @@ class AdminDashboard extends Component {
    * @memberof AdminDashboard
    */
   componentWillReceiveProps(nextProps){
-    console.log(nextProps);
     const keys = ['users', 'documents', 'roles'];
     keys.forEach(key=>{
       if(nextProps[key]){
+        console.log(key);
         this.setState({
           [key]: nextProps[key]
         });
       }
     });
   }
-  // omponentWillReceiveProps(nextProps) {
-  //   if (nextProps.status === 'success') {
-  //     // browserHistory.push('/dashboard');
-  //   }
-  //   if (nextProps.document) {
-  //     this.setState({
-  //       title: nextProps.document.title,
-  //       content: nextProps.document.content,
-  //       access: nextProps.document.access,
-  //       status: nextProps.document.status
-  //     });
-  //     tinymce.activeEditor.setContent(nextProps.document.content);
-  //   }
-  // }
+
 
   /**
    * @param {Object} view 
@@ -99,6 +87,7 @@ class AdminDashboard extends Component {
       documentId: document.id
     });
   }
+
   /**
    * @param {Object} document 
    * @memberof AdminDashboard
@@ -133,6 +122,25 @@ class AdminDashboard extends Component {
     },
     function(){
       callback(documentId);
+    });
+  }
+
+  /**
+   * @param {Object} documentId 
+   * @memberof AdminDashboard
+   */
+  setDeleteUser(callback, userId) {
+    swal({
+      title: "Are you sure?",
+      text: "You will not be able to recover this user!",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Yes, delete the user!",
+      closeOnConfirm: true
+    },
+    function(){
+      callback(userId);
     });
   }
   /**
@@ -174,7 +182,8 @@ class AdminDashboard extends Component {
         <div id="modalEdit" className="modal modal-fixed-footer">
           <div className="modal-content">
             <h4>Edit Document</h4>
-            <EditDocumentModal document={this.state.editDocument || null}
+            <EditDocumentModal
+              document={this.state.editDocument || null}
               documentId={this.state.documentId || null}
               onEdit={this.props.EditingDocument} />
           </div>
@@ -226,12 +235,12 @@ class AdminDashboard extends Component {
                   />
               </center>
               <AllDocuments
-                document={this.props.documents}
+                document={this.state.documents}
                 setViewDocument={this.setViewDocument} />
             </div>
             <div id="test2" className="tab-content col s12">
               <center className="pagination-key">
-                <Pagination id="allPagination" className="pag"
+                <Pagination id="userPagination" className="pag"
                   items={this.props.userPages}
                   maxButtons={8}
                   onSelect={(page) => {
@@ -241,13 +250,14 @@ class AdminDashboard extends Component {
                   />
               </center>
               <Users updateUser={this.updateUser} users={this.props.users}
-                roles={this.props.roles} deleteUser={this.props.deleteUser}/>
+                roles={this.props.roles} deleteUser={this.props.deleteUser}
+                setDeleteUser={this.setDeleteUser}/>
             </div>
             <div id="test3" className="tab-content col s12">
               <Roles roles={this.props.roles} />
             </div>
             <div id="test4" className="tab-content col s12">
-              <MyDocuments document={this.props.documents}
+              <MyDocuments document={this.state.documents}
                 setEditDocument={this.setEditDocument}
                 setViewDocument={this.setViewDocument}
                 setDeleteDocument={this.setDeleteDocument}
@@ -268,9 +278,11 @@ class AdminDashboard extends Component {
                   }}
                   />
               </center>
-              <Search document={this.props.documents}
+              <Search
+                documentsSearch={this.props.documentsSearch}
                 setViewDocument={this.setViewDocument}
-                users={this.props.users} view= {this.state.searchBarView} />
+                usersSearch={this.props.usersSearch}
+                view= {this.state.searchBarView} />
             </div>
           </div>
         </div>

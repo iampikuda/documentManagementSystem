@@ -200,18 +200,6 @@ class signUpPage extends Component {
         <div className="row signup-form">
           <h4 className="center">Sign Up</h4>
           <form className="col s12" onSubmit={this.onSubmit}>
-            {/*{this.state.error ?
-              <div className="center">
-                {this.state.error}
-              </div>
-              : <span />
-            }
-            {this.state.success ?
-              <div className="center">
-                {this.state.success}
-              </div>
-              : <span />
-            }*/}
             <div className="row">
               <div className="input-field col s6">
                 <input
@@ -282,7 +270,7 @@ class signUpPage extends Component {
               className="btn waves-effect waves-light center auth-button"
               type="submit" name="action">
               Sign Up
-              <i className="material-icons right"></i>
+              <i className="material-icons right">vpn_key</i>
             </button>
             <div className="row">
               <div className="col s12">

@@ -21,13 +21,14 @@ class ViewUser extends Component {
    */
   constructor(props) {
     super(props);
+    const token = window.localStorage.getItem('token');
     this.state = {
       firstName: '',
       lastName: '',
       email: '',
       password: '',
-      role: jwtDecode(window.localStorage.getItem('token')).roleId,
-      userId: jwtDecode(window.localStorage.getItem('token')).userId
+      role: jwtDecode(token).roleId,
+      userId: jwtDecode(token).userId
     };
   }
 
@@ -37,11 +38,6 @@ class ViewUser extends Component {
   componentWillMount() {
     if (!window.localStorage.getItem('token')) {
       browserHistory.push('/');
-    }
-    const token = window.localStorage.getItem('token');
-    if (token) {
-      this.setState({ userId: jwtDecode(token).userId });
-      this.props.viewUser(token, jwtDecode(token).userId);
     }
   }
 
@@ -119,7 +115,7 @@ class ViewUser extends Component {
  * @param {Object} ownProps 
  * @returns {void} returns object
  */
-const mapStoreToProps = (state, ownProps) => {
+const mapStoreToProps = (state) => {
   return {
     user: state.userReducer.user
   };
@@ -131,7 +127,7 @@ const mapStoreToProps = (state, ownProps) => {
  */
 const mapDispatchToProps = (dispatch) => {
   return {
-    viewUser: bindActionCreators(viewUserAction, dispatch)
+    viewUserAction: (userId) => dispatch(viewUserAction(userId))
   };
 };
 

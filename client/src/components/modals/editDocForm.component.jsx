@@ -9,23 +9,6 @@ import TinyMCE from 'react-tinymce';
  * @param {Object} props 
  * @returns {Object} returns message
  */
-const ResponseMessage = (props) => {
-  if (props.status === 'success') {
-    return (
-      <div>
-        Document Created
-      </div>
-    );
-  } else if (props.status === 'failed') {
-    return (
-      <div>
-        Document not Created
-      </div>
-    );
-  } else {
-    return (<span />);
-  }
-};
 
 /**
  * @export
@@ -67,7 +50,6 @@ export class EditDocument extends Component {
       // browserHistory.push('/dashboard');
     }
     if (nextProps.document) {
-      console.log(nextProps.document.content);
       this.setState({
         title: nextProps.document.title,
         content: nextProps.document.content,
@@ -167,7 +149,6 @@ export class EditDocument extends Component {
                 Save
                 <i className='material-icons right'></i>
               </button>
-              <ResponseMessage status={this.props.status} />
             </form>
           </div>
         </div>

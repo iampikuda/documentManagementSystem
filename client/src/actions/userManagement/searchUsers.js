@@ -23,9 +23,10 @@ export default (query, offset) => {
       }
     })
     .then((users) => {
+      const data = users.data.users;
       dispatch({
         type: actionTypes.SEARCH_USER_COMPLETE,
-        users,
+        data,
         query,
         status: 'success',
         pageCount: users.data.metadata.pages

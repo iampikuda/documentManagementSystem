@@ -16,11 +16,14 @@ export default (userId) => {
   return (dispatch) => {
     setAuthorizationToken(token);
     return axios.delete(`/api/user/${userId}`)
-    .then(() => {
+    .then((user) => {
+      console.log(user);
+      const data = user.data.User
       dispatch({
         type: actionTypes.USER_DELETED,
         status: 'success',
-        deletedUserId: userId
+        deletedUserId: userId,
+        deletedUser: data
       });
       Materialize.toast(
         'User deleted',

@@ -11,7 +11,9 @@ import PublicDocuments from
 import RoleDocuments from
 '../../dashboard/userDashboard/roleDocs.component.jsx';
 import MyDocuments from '../../dashboard/userDashboard/myDocs.component.jsx';
-import EditDocument from '../../modals/editDocForm.component.jsx';
+import EditDocumentModal from '../../modals/editDocForm.component.jsx';
+import EditDocumentAction from
+'../../../actions/documentManagement/editDocument.js';
 import DeleteDocumentAction from
 '../../../actions/documentManagement/deleteDocuments';
 import Search from '../userDashboard/search.component.jsx';
@@ -34,6 +36,7 @@ class UserDashboard extends Component {
     this.setViewDocument = this.setViewDocument.bind(this);
     this.handleSearchBarView = this.handleSearchBarView.bind(this);
     this.state = {
+      documents: props.documents || [],
       searchBarView: 'noShow',
     };
   }
@@ -54,6 +57,15 @@ class UserDashboard extends Component {
       viewTitle: document.title,
       viewDocument: document.content,
       documentId: document.id
+    });
+  }
+  /**
+   * @param {Object} nextProps 
+   * @memberof AdminDashboard
+   */
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      documents: nextProps.documents,
     });
   }
   /**
@@ -101,10 +113,10 @@ class UserDashboard extends Component {
         <div id="modalEdit" className="modal modal-fixed-footer">
           <div className="modal-content">
             <h4>Edit Document</h4>
-            <EditDocument
+            <EditDocumentModal
               document={this.state.editDocument || null}
               documentId={this.state.documentId || null}
-              onEdit={this.props.EditDocument} />
+              onEdit={this.props.EditingDocument} />
           </div>
           <div className="modal-footer">
             <a
@@ -170,22 +182,22 @@ class UserDashboard extends Component {
                   />
               </center>
               <AllDocuments
-                document={this.props.documents}
+                document={this.state.documents}
                 setViewDocument={this.setViewDocument}/>
             </div>
             <div id="publicDocuments" className="tab-content col s12">
               <PublicDocuments
-                document={this.props.documents}
+                document={this.state.documents}
                 setViewDocument={this.setViewDocument} />
             </div>
             <div id="roleDocuments" className="tab-content col s12">
               <RoleDocuments
-                document={this.props.documents}
+                document={this.state.documents}
                 setViewDocument={this.setViewDocument} />
             </div>
             <div id="ownerDocuments" className="tab-content col s12">
               <MyDocuments
-                document={this.props.documents}
+                document={this.state.documents}
                 setEditDocument={this.setEditDocument}
                 setViewDocument={this.setViewDocument}
                 setDeleteDocument={this.setDeleteDocument}
@@ -207,9 +219,9 @@ class UserDashboard extends Component {
                   />
               </center>
               <Search 
-                document={this.props.documents}
+                documentsSearch={this.props.documentsSearch}
                 setViewDocument={this.setViewDocument}
-                users={this.props.users}
+                usersSearch={this.props.usersSearch}
                 view= {this.state.searchBarView} />
             </div>
           </div>
@@ -241,8 +253,8 @@ const mapStoreToProps = (state) => {
  */
 const mapDispatchToProps = (dispatch) => {
   return {
-    EditDocument: (documentDetails, documentId) =>
-    dispatch(EditDocument(documentDetails, documentId)),
+    EditingDocument: (documentDetails, documentId) =>
+    dispatch(EditDocumentAction(documentDetails, documentId)),
     DeleteDocument: (documentId) => dispatch(DeleteDocumentAction(documentId))
   };
 };

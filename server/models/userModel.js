@@ -79,8 +79,10 @@ export default (sequelize, DataTypes) => {
           }
         });
         User.hasMany(models.Document, {
-          // onDelete: 'CASCADE',
-          foreignKey: 'ownerId'
+          foreignKey:{
+            onDelete: 'CASCADE',
+            name: 'id'         
+          }
         });
       }
     },
