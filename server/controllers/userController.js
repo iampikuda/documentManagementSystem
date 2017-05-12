@@ -73,10 +73,8 @@ class UserController {
         if (request.body.roleId === 99) {
           request.body.roleId = 2;
         }
-        // console.log('---=-=-=->>>', request.body);        
         model.User.create(request.body)
           .then((newUser) => {
-            console.log('---=-=-=->>>', newUser);
             const token = jwt.sign({
               userId: newUser.id,
               roleId: newUser.roleId,
@@ -327,7 +325,7 @@ class UserController {
       model.User.findOne({ where: { email: request.body.email } })
         .then((foundUser) => {
           if (!foundUser) {
-            return response.status(400)
+            return response.status(401)
             .send({
               message: 'Please check the email and/or password'
             });

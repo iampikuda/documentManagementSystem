@@ -6,7 +6,7 @@ import * as dbConfig from '../config/config.json';
 const basename = path.basename(module.filename);
 const env = process.env.NODE_ENV || 'development';
 const config = dbConfig[env];
-console.log(config,'-=-dkajdkjahsdkjhasd=-=-');
+
 const db = {};
 let sequelize;
 
@@ -38,5 +38,5 @@ Object.keys(db).forEach((modelName) => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-console.log(db, 'a-=asd=-as=-d0asd');
+
 export default db;
