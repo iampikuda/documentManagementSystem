@@ -13,6 +13,7 @@ import * as actionTypes from '../actionTypes';
  */
 export default (userData) => {
   const token = window.localStorage.getItem('token');
+  // console.log(userData)
   userData.roleId = parseInt((userData.roleId), 10);
   return (dispatch) => {
     return axios.post('/api/user', userData)
@@ -34,8 +35,15 @@ export default (userData) => {
           Materialize.toast('Welcome!', 2000, 'green');
         }
       }).catch((error) => {
+        console.log(error.response.data);
+        let errorData;
+        if(error.response.data.errors !== undefined) {
+          errorData = error.response.data.errors[0].message
+        } else {
+          errorData = error.response.data.message
+        }
         Materialize.toast(
-          'Something went wrong creating a new user', 3000, 'red');
+          errorData, 3000, 'red');
         dispatch({
           type: actionTypes.SIGNUP_FAILED,
           message: error

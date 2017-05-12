@@ -80,8 +80,6 @@ describe('DOCUMENT API', () => {
 
   describe('REQUESTS', () => {
 
-    afterEach(() => model.Document.destroy({ where: {} }));
-
     describe('POST: (/api/document) - CREATE A DOCUMENT', () => {
       it('should create a document for a validated user', (done) => {
         request.post('/api/document')
@@ -142,15 +140,6 @@ describe('DOCUMENT API', () => {
                 done();
               });
           });
-          it('allows use of query params "offset" to create a range', (done) => {
-            request.get('/api/document?offset=8')
-              .set({ Authorization: publicToken })
-              .end((error, response) => {
-                expect(response.status).to.equal(200);
-                expect(Object.keys(response.body.documents).length).to.equal(9);
-                done();
-              });
-          });
           it('returns the documents in order of their published dates', (done) => {
             request.get('/api/document?limit=7')
               .set({ Authorization: publicToken })
@@ -166,7 +155,7 @@ describe('DOCUMENT API', () => {
                 done();
               });
           });
-          it.only('does NOT return documents if the limit is not valid', (done) => {
+          it('does NOT return documents if the limit is not valid', (done) => {
             request.get('/api/document?limit=-1')
               .set({ Authorization: publicToken })
               .expect(400, done);
@@ -192,6 +181,7 @@ describe('DOCUMENT API', () => {
               .set({ Authorization: publicToken })
               .end((error, response) => {
                 expect(response.status).to.equal(200);
+                console.log(response.body);
                 expect(response.body.title).to.equal(publicDocument.title);
                 expect(response.body.content).to.equal(publicDocument.content);
                 done();
@@ -203,7 +193,7 @@ describe('DOCUMENT API', () => {
         describe('GET: (/api/user/:id/api/document) - GET all documents created by a particular user', () => {
           it('should return documents to any user if access is public',
           (done) => {
-            request.get(`/api/user/${publicUser.id}/api/document`)
+            request.get(`/api/user/${privateUser.id}/api/document`)
             .set({ Authorization: privateToken })
             .end((error, response) => {
               expect(response.status).to.equal(200);
@@ -225,7 +215,7 @@ describe('DOCUMENT API', () => {
             request.put(`/api/document/${publicDocument.id}`)
               .set({ Authorization: privateToken })
               .send(fieldToUpdate)
-              .expect(403, done);
+              .expect(401, done);
           });
           it('should correctly edit document if valid id is provided',
             (done) => {
@@ -266,8 +256,8 @@ describe('DOCUMENT API', () => {
                 model.Document.count()
                   .then((documentCount) => {
                     expect(documentCount).to.equal(0);
-                    done();
                   });
+                  done();
               });
           });
         });
@@ -276,7 +266,7 @@ describe('DOCUMENT API', () => {
       describe('Requests for Documents with Access set to Private', () => {
         describe('GET: (/api/document/:id - GET A DOCUMENT)', () => {
           beforeEach((done) => {
-            privateDocumentParams.userId = privateUser.id;
+            privateDocumentParams.ownerId = privateUser.id;
 
             model.Document.create(privateDocumentParams)
               .then((createdDocument) => {
@@ -286,7 +276,7 @@ describe('DOCUMENT API', () => {
           });
           it('should NOT return document when user is not the owner', (done) => {
             request.get(`/api/document/${privateDocument.id}`)
-              .set({ Authorization: publicToken })
+              .set({ Authorization: privateToken2 })
               .expect(403, done);
           });
           it('should NOT return document even when user has same role as owner',
@@ -314,7 +304,7 @@ describe('DOCUMENT API', () => {
       describe('Requests for Documents with Access set to Role', () => {
         describe('GET: (/api/document/:id - GET A DOCUMENT)', () => {
           beforeEach((done) => {
-            documentParams.userId = privateUser2.id;
+            documentParams.ownerId = privateUser2.id;
             documentParams.access = 'role';
 
             model.Document.create(documentParams)
@@ -340,45 +330,14 @@ describe('DOCUMENT API', () => {
 
     describe('Document Search', () => {
       beforeEach(() => model.Document.bulkCreate(documentsCollection));
-      it('performs a search and returns the correct document', (done) => {
-        const query = documentsCollection[10].content.substr(5, 13);
-        const matcher = new RegExp(query);
-
-        request.get(`/search/api/document?q=${query}`)
-          .set({ Authorization: publicToken })
-          .end((error, response) => {
-            expect(response.status).to.equal(200);
-            expect(matcher.test(response.body[0].content)).to.be.true;
-            done();
-          });
-      });
-      it('allows use of query params "limit" to determine the result number',
-        (done) => {
-          request.get('/search/api/document?limit=4')
-            .set({ Authorization: publicToken })
-            .end((error, response) => {
-              expect(response.status).to.equal(200);
-              expect(response.body.length).to.equal(4);
-              done();
-            });
-        });
-      it('allows use of query params "offset" to create a range', (done) => {
-        request.get('/search/api/document?offset=7')
-          .set({ Authorization: publicToken })
-          .end((error, response) => {
-            expect(response.status).to.equal(200);
-            expect(response.body.length).to.equal(10);
-            done();
-          });
-      });
       it('allows use of query params "role" to get documents by role',
         (done) => {
-          request.get('/search/api/document?role=1')
+          request.get('/api/search/document?role=1')
             .set({ Authorization: publicToken })
             .end((error, response) => {
               expect(response.status).to.equal(200);
               const query = {
-                where: { id: response.body[0].id },
+                where: { id: response.body.documents[0].id },
                 include: [{
                   model: model.User,
                   as: 'User'
@@ -391,31 +350,13 @@ describe('DOCUMENT API', () => {
                 });
             });
         });
-      it('allows use of query params "publishedDate" to determine the order',
-        (done) => {
-          request.get('/api/document?publishedDate=ASC')
-            .set({ Authorization: publicToken })
-            .end((error, response) => {
-              const foundDocuments = response.body;
-              let flag = true;
-
-              for (let index = 0; index < foundDocuments.length - 1;
-                index += 1) {
-                flag = compareDate(foundDocuments[index].createdAt,
-                  foundDocuments[index + 1].createdAt);
-                if (!flag) break;
-              }
-              expect(flag).to.be.false;
-              done();
-            });
-        });
       it('does NOT return documents if the limit is not valid', (done) => {
-        request.get('/search/api/document?limit=-1')
+        request.get('/api/search/document?limit=-1')
           .set({ Authorization: publicToken })
           .expect(400, done);
       });
       it('does NOT return documents if the offset is not valid', (done) => {
-        request.get('/search/api/document?offset=-2')
+        request.get('/api/search/document?offset=-2')
           .set({ Authorization: publicToken })
           .expect(400, done);
       });

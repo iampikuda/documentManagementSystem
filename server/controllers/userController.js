@@ -86,7 +86,6 @@ class UserController {
               .send({ newUser, token, expiresIn: '2 days' });
           })
           .catch((error) => {
-            console.log(error, '12312312312312');            
             return response.status(400)
               .send(error);
           });
@@ -325,7 +324,7 @@ class UserController {
       model.User.findOne({ where: { email: request.body.email } })
         .then((foundUser) => {
           if (!foundUser) {
-            return response.status(401)
+            return response.status(400)
             .send({
               message: 'Please check the email and/or password'
             });

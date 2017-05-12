@@ -27,9 +27,14 @@ export default (loginCredentials) => {
         });
         Materialize.toast('Login Successful', 2000, 'green');
       }).catch((error) => {
+        let errorData;
+        if(error.response.data.errors !== undefined) {
+          errorData = error.response.data.errors[0].message
+        } else {
+          errorData = error.response.data.message
+        }
         Materialize.toast(
-          'Please check the email and/or password',
-          3000, 'red');
+          errorData, 3000, 'red');
         dispatch({
           type: actionTypes.LOGIN_ERROR,
           message: error.response.data.error

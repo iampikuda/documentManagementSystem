@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8a9de6561933f833065d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "55e72bb5b1f8f806dc60"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -11282,12 +11282,18 @@
 	        status: 'success',
 	        data: data
 	      });
-	    }).catch(function (err) {
-	      Materialize.toast(err, 3000, 'red');
+	    }).catch(function (error) {
+	      var errorData = void 0;
+	      if (error.response.data.errors !== undefined) {
+	        errorData = error.response.data.errors[0].message;
+	      } else {
+	        errorData = error.response.data.message;
+	      }
+	      Materialize.toast(errorData, 3000, 'red');
 	      dispatch({
 	        type: actionTypes.DOCUMENT_DELETION_FAILED,
 	        status: 'failed',
-	        error: err.message
+	        error: error.message
 	      });
 	    });
 	  };
@@ -11343,12 +11349,18 @@
 	        document: document
 	      });
 	      Materialize.toast('Document updated', 3000, 'green');
-	    }).catch(function (err) {
-	      Materialize.toast('Title already exists! Please choose another', 3000, 'red');
+	    }).catch(function (error) {
+	      var errorData = void 0;
+	      if (error.response.data.errors !== undefined) {
+	        errorData = error.response.data.errors[0].message;
+	      } else {
+	        errorData = error.response.data.message;
+	      }
+	      Materialize.toast(errorData, 3000, 'red');
 	      dispatch({
 	        type: actionTypes.DOCUMENT_UPDATE_FAILED,
 	        status: 'failed',
-	        error: err.message
+	        error: error.message
 	      });
 	    });
 	  };
@@ -11401,12 +11413,18 @@
 	        status: 'success'
 	      });
 	      Materialize.toast('Document created', 2000, 'green');
-	    }).catch(function (err) {
-	      Materialize.toast('err', 3000, 'red');
+	    }).catch(function (err0r) {
+	      var errorData = void 0;
+	      if (error.response.data.errors !== undefined) {
+	        errorData = error.response.data.errors[0].message;
+	      } else {
+	        errorData = error.response.data.message;
+	      }
+	      Materialize.toast(errorData, 3000, 'red');
 	      dispatch({
 	        type: actionTypes.DOCUMENT_CREATE_FAILED,
 	        status: 'failed',
-	        error: err.message
+	        error: error.message
 	      });
 	    });
 	  };
@@ -11468,12 +11486,18 @@
 	        pageCount: documents.data.metadata.pages
 	      });
 	      Materialize.toast("Here's what we found", 2000, 'green');
-	    }).catch(function (err) {
-	      Materialize.toast('Something went wrong searching for documents', 3000, 'red');
+	    }).catch(function (error) {
+	      var errorData = void 0;
+	      if (error.response.data.errors !== undefined) {
+	        errorData = error.response.data.errors[0].message;
+	      } else {
+	        errorData = error.response.data.message;
+	      }
+	      Materialize.toast(errorData, 3000, 'red');
 	      dispatch({
 	        type: actionTypes.SEARCH_DOCS_FAILED,
 	        status: 'failed',
-	        error: err.message
+	        error: error.message
 	      });
 	    });
 	  };
@@ -11530,12 +11554,18 @@
 	      });
 	      Materialize.toast('User edited', 3000, 'green');
 	      _reactRouter.browserHistory.push('/dashboard');
-	    }).catch(function (err) {
-	      Materialize.toast('Something went wrong editing user', 3000, 'red');
+	    }).catch(function (error) {
+	      var errorData = void 0;
+	      if (error.response.data.errors !== undefined) {
+	        errorData = error.response.data.errors[0].message;
+	      } else {
+	        errorData = error.response.data.message;
+	      }
+	      Materialize.toast(errorData, 3000, 'red');
 	      dispatch({
 	        type: actionTypes.USER_UPDATE_FAILED,
 	        status: 'failed',
-	        error: err.message
+	        error: error.message
 	      });
 	    });
 	  };
@@ -11596,12 +11626,19 @@
 	        status: 'success',
 	        pageCount: users.data.metadata.pages
 	      });
-	    }).catch(function (err) {
-	      Materialize.toast('Something went wrong searching for users', 3000, 'red');
+	      Materialize.toast("Here's who we found", 2000, 'green');
+	    }).catch(function (error) {
+	      var errorData = void 0;
+	      if (error.response.data.errors !== undefined) {
+	        errorData = error.response.data.errors[0].message;
+	      } else {
+	        errorData = error.response.data.message;
+	      }
+	      Materialize.toast(errorData, 3000, 'red');
 	      dispatch({
 	        type: actionTypes.SEARCH_USER_FAILED,
 	        status: 'failed',
-	        error: err.message
+	        error: error.message
 	      });
 	    });
 	  };
@@ -12455,39 +12492,43 @@
 	        null,
 	        document.updatedAt.slice(0, 10)
 	      ),
-	      _react2.default.createElement(
-	        'td',
+	      props.user === 'admin' ? _react2.default.createElement(
+	        'div',
 	        null,
 	        _react2.default.createElement(
-	          'a',
-	          { className: 'modal-trigger green-text',
-	            href: '#modalEdit',
-	            onClick: function onClick() {
-	              props.setEditDocument(document);
-	            } },
+	          'td',
+	          null,
 	          _react2.default.createElement(
-	            'i',
-	            { className: 'material-icons' },
-	            'edit'
+	            'a',
+	            { className: 'modal-trigger green-text',
+	              href: '#modalEdit',
+	              onClick: function onClick() {
+	                props.setEditDocument(document);
+	              } },
+	            _react2.default.createElement(
+	              'i',
+	              { className: 'material-icons' },
+	              'edit'
+	            )
 	          )
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'td',
-	        null,
+	        ),
 	        _react2.default.createElement(
-	          'a',
-	          { className: 'red-text', href: '#',
-	            onClick: function onClick() {
-	              props.setDeleteDocument(document.id);
-	            } },
+	          'td',
+	          null,
 	          _react2.default.createElement(
-	            'i',
-	            { className: 'material-icons' },
-	            'delete'
+	            'a',
+	            { className: 'red-text', href: '#',
+	              onClick: function onClick() {
+	                props.setDeleteDocument(document.id);
+	              } },
+	            _react2.default.createElement(
+	              'i',
+	              { className: 'material-icons' },
+	              'delete'
+	            )
 	          )
 	        )
-	      )
+	      ) : ''
 	    );
 	  };
 	  /**
@@ -12519,38 +12560,42 @@
 	        null,
 	        users.roleId
 	      ),
-	      _react2.default.createElement(
-	        'td',
+	      props.user === 'admin' ? _react2.default.createElement(
+	        'div',
 	        null,
 	        _react2.default.createElement(
-	          'a',
-	          { className: 'modal-trigger green-text', href: '#modalEdit',
-	            onClick: function onClick() {
-	              props.setEditusers(users);
-	            } },
+	          'td',
+	          null,
 	          _react2.default.createElement(
-	            'i',
-	            { className: 'material-icons' },
-	            'edit'
+	            'a',
+	            { className: 'modal-trigger green-text', href: '#modalEdit',
+	              onClick: function onClick() {
+	                props.setEditusers(users);
+	              } },
+	            _react2.default.createElement(
+	              'i',
+	              { className: 'material-icons' },
+	              'edit'
+	            )
 	          )
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'td',
-	        null,
+	        ),
 	        _react2.default.createElement(
-	          'a',
-	          { className: 'red-text', href: '#',
-	            onClick: function onClick() {
-	              props.setDeleteusers(users.id);
-	            } },
+	          'td',
+	          null,
 	          _react2.default.createElement(
-	            'i',
-	            { className: 'material-icons' },
-	            'delete'
+	            'a',
+	            { className: 'red-text', href: '#',
+	              onClick: function onClick() {
+	                props.setDeleteusers(users.id);
+	              } },
+	            _react2.default.createElement(
+	              'i',
+	              { className: 'material-icons' },
+	              'delete'
+	            )
 	          )
 	        )
-	      )
+	      ) : ''
 	    );
 	  };
 	  var token = window.localStorage.getItem('token');
@@ -21215,7 +21260,13 @@
 	      });
 	      Materialize.toast('Login Successful', 2000, 'green');
 	    }).catch(function (error) {
-	      Materialize.toast('Please check the email and/or password', 3000, 'red');
+	      var errorData = void 0;
+	      if (error.response.data.errors !== undefined) {
+	        errorData = error.response.data.errors[0].message;
+	      } else {
+	        errorData = error.response.data.message;
+	      }
+	      Materialize.toast(errorData, 3000, 'red');
 	      dispatch({
 	        type: actionTypes.LOGIN_ERROR,
 	        message: error.response.data.error
@@ -21309,6 +21360,7 @@
 	/* eslint-disable no-undef */
 	exports.default = function (userData) {
 	  var token = window.localStorage.getItem('token');
+	  // console.log(userData)
 	  userData.roleId = parseInt(userData.roleId, 10);
 	  return function (dispatch) {
 	    return _axios2.default.post('/api/user', userData).then(function (response) {
@@ -21329,7 +21381,14 @@
 	        Materialize.toast('Welcome!', 2000, 'green');
 	      }
 	    }).catch(function (error) {
-	      Materialize.toast('Something went wrong creating a new user', 3000, 'red');
+	      console.log(error.response.data);
+	      var errorData = void 0;
+	      if (error.response.data.errors !== undefined) {
+	        errorData = error.response.data.errors[0].message;
+	      } else {
+	        errorData = error.response.data.message;
+	      }
+	      Materialize.toast(errorData, 3000, 'red');
 	      dispatch({
 	        type: actionTypes.SIGNUP_FAILED,
 	        message: error
@@ -21459,12 +21518,18 @@
 	      }
 	    }).then(function (roles) {
 	      dispatch(roleGetSuccess(roles));
-	    }).catch(function (err) {
-	      Materialize.toast('Something went wrong getting roles', 3000, 'red');
+	    }).catch(function (error) {
+	      var errorData = void 0;
+	      if (error.response.data.errors !== undefined) {
+	        errorData = error.response.data.errors[0].message;
+	      } else {
+	        errorData = error.response.data.message;
+	      }
+	      Materialize.toast(errorData, 3000, 'red');
 	      dispatch({
 	        type: actionTypes.GET_ROLE_FAILED,
 	        status: 'failed',
-	        error: err.message
+	        error: error.message
 	      });
 	    });
 	  };
@@ -21520,12 +21585,18 @@
 	        data: data
 	      });
 	      Materialize.toast('User deleted', 3000, 'green');
-	    }).catch(function (err) {
-	      Materialize.toast('Something went wrong deleting a new user', 3000, 'red');
+	    }).catch(function (error) {
+	      var errorData = void 0;
+	      if (error.response.data.errors !== undefined) {
+	        errorData = error.response.data.errors[0].message;
+	      } else {
+	        errorData = error.response.data.message;
+	      }
+	      Materialize.toast(errorData, 3000, 'red');
 	      dispatch({
 	        type: actionTypes.USER_DELETION_FAILED,
 	        status: 'failed',
-	        error: err.message
+	        error: error.message
 	      });
 	    });
 	  };
@@ -21639,11 +21710,18 @@
 	        type: actionTypes.VIEW_USER,
 	        data: user.data
 	      });
-	    }).catch(function (err) {
+	    }).catch(function (error) {
+	      var errorData = void 0;
+	      if (error.response.data.errors !== undefined) {
+	        errorData = error.response.data.errors[0].message;
+	      } else {
+	        errorData = error.response.data.message;
+	      }
+	      Materialize.toast(errorData, 3000, 'red');
 	      dispatch({
 	        type: actionTypes.USER_RETRIEVAL_FAILED,
 	        status: 'failed',
-	        error: err.message
+	        error: error.message
 	      });
 	    });
 	  };
@@ -23097,7 +23175,8 @@
 	                documentsSearch: this.props.documentsSearch,
 	                setViewDocument: this.setViewDocument,
 	                usersSearch: this.props.usersSearch,
-	                view: this.state.searchBarView })
+	                view: this.state.searchBarView,
+	                user: 'admin' })
 	            )
 	          )
 	        )
@@ -23545,7 +23624,8 @@
 	                documentsSearch: this.props.documentsSearch,
 	                setViewDocument: this.setViewDocument,
 	                usersSearch: this.props.usersSearch,
-	                view: this.state.searchBarView })
+	                view: this.state.searchBarView,
+	                user: 'regular' })
 	            )
 	          )
 	        )
@@ -24266,7 +24346,7 @@
 	    key: 'onChange',
 	    value: function onChange(event) {
 	      this.setState(_defineProperty({}, event.target.name, event.target.value));
-	      this.setState({ content: event.target.getContent() });
+	      // this.setState({ content: event.target.getContent() });
 	      console.log('-=-=-=-=-=-=-');
 	    }
 	    /**

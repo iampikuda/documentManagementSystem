@@ -222,7 +222,8 @@ class UserDashboard extends Component {
                 documentsSearch={this.props.documentsSearch}
                 setViewDocument={this.setViewDocument}
                 usersSearch={this.props.usersSearch}
-                view= {this.state.searchBarView} />
+                view= {this.state.searchBarView}
+                user='regular' />
             </div>
           </div>
         </div>

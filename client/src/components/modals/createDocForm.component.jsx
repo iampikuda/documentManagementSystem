@@ -65,7 +65,7 @@ export class CreateDocument extends Component {
    */
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
-    this.setState({ content: event.target.getContent() });
+    // this.setState({ content: event.target.getContent() });
     console.log('-=-=-=-=-=-=-');
   }
   /**

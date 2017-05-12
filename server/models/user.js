@@ -80,7 +80,7 @@ export default (sequelize, DataTypes) => {
         User.hasMany(models.Document, {
           foreignKey:{
             onDelete: 'CASCADE',
-            name: 'id'         
+            name: 'ownerId'         
           }
         });
       }

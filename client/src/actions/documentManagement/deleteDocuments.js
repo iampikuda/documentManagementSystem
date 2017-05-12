@@ -25,12 +25,19 @@ export default (documentId) => {
         data
       });
 
-    }).catch((err) => {
-      Materialize.toast(err, 3000, 'red');
+    }).catch((error) => {
+      let errorData;
+        if(error.response.data.errors !== undefined) {
+          errorData = error.response.data.errors[0].message
+        } else {
+          errorData = error.response.data.message
+        }
+        Materialize.toast(
+          errorData, 3000, 'red');
       dispatch({
         type: actionTypes.DOCUMENT_DELETION_FAILED,
         status: 'failed',
-        error: err.message
+        error: error.message
       });
     });
   };

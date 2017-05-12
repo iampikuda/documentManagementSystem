@@ -31,16 +31,19 @@ export default (userData, userId) => {
           'green'
           );
           browserHistory.push('/dashboard');
-      }).catch((err) => {
+      }).catch((error) => {
+        let errorData;
+        if(error.response.data.errors !== undefined) {
+          errorData = error.response.data.errors[0].message
+        } else {
+          errorData = error.response.data.message
+        }
         Materialize.toast(
-          'Something went wrong editing user',
-          3000,
-          'red'
-          );
+          errorData, 3000, 'red');
         dispatch({
           type: actionTypes.USER_UPDATE_FAILED,
           status: 'failed',
-          error: err.message
+          error: error.message
         });
       });
   };
