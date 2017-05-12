@@ -75,7 +75,6 @@ export default (sequelize, DataTypes) => {
         User.belongsTo(models.Role, {
           foreignKey: {
             name: 'roleId',
-            allowNull: false
           }
         });
         User.hasMany(models.Document, {
