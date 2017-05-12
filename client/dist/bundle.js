@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "55e72bb5b1f8f806dc60"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c20eaa2e00b054407aae"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -24347,7 +24347,7 @@
 	    value: function onChange(event) {
 	      this.setState(_defineProperty({}, event.target.name, event.target.value));
 	      // this.setState({ content: event.target.getContent() });
-	      console.log('-=-=-=-=-=-=-');
+	      console.log(this.state, '-=-=-=-=-=-=-');
 	    }
 	    /**
 	     * @param {Object} event 
@@ -24360,7 +24360,7 @@
 	      this.setState({
 	        content: event.target.getContent()
 	      });
-	      // console.log(this.state, 'f');
+	      console.log(this.state.content, 'f');
 	    }
 	    /**
 	     * @param {Object} event 
@@ -24371,6 +24371,7 @@
 	    key: 'onSubmit',
 	    value: function onSubmit(event) {
 	      event.preventDefault();
+	      console.log(this.state.content, 'onsubmimimimi');
 	      if (this.state.content.length < 1) {
 	        Materialize.toast('Please add a content', 3000);
 	      } else {
@@ -24432,7 +24433,7 @@
 	                  'div',
 	                  { className: 'input-field col s12' },
 	                  _react2.default.createElement(_reactTinymce2.default, {
-	                    content: 'Content',
+	                    content: this.state.content,
 	                    name: 'content',
 	                    config: {
 	                      plugins: 'autolink link image lists print preview',

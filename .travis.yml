@@ -1,5 +1,9 @@
-language: node_js
-node_js: "stable"
+
+sudo: required
+dist: trusty
+
+language:
+  - node_js
 
 node_js:
   - node
@@ -7,8 +11,11 @@ node_js:
 services:
   - postgresql
 
-before_install:
+before_script:
   - psql -c 'create database PK_dms_test;' -U postgres
 
+script:
+  - npm test
+
 after_success:
-  - cat coverage/*lcov.info | ./node_modules/.bin/coveralls
+- npm run coveralls
