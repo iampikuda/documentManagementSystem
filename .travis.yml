@@ -12,7 +12,7 @@ branches:
   only:
     - development
 before_script:
-  - psql -c 'create database pk_docman_testt;' -U postgres
+  - psql -c 'create database pk_docman_test;' -U postgres
 
 script:
   - npm test
@@ -32,9 +32,6 @@ node_js:
 
 services:
   - postgresql
-
-before_install:
-  - psql -c 'create database dms_test;' -U postgres
 
 after_script:
   - npm run coveralls

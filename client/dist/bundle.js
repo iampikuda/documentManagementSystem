@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ebc159dc1dc1170ce24a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8a9de6561933f833065d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -5041,7 +5041,7 @@
 	                { className: 'upperCase' },
 	                _react2.default.createElement(
 	                  _reactRouter.Link,
-	                  { to: '/user', className: 'waves-effect waves-light btn' },
+	                  { id: 'user-profile', to: '/user', className: 'waves-effect waves-light btn' },
 	                  _react2.default.createElement(
 	                    'i',
 	                    { className: 'material-icons left' },
@@ -11763,7 +11763,7 @@
 	          { className: 'row signup-form' },
 	          _react2.default.createElement(
 	            'form',
-	            { className: 'col s12', onSubmit: this.onSubmit },
+	            { id: 'signupform', className: 'col s12', onSubmit: this.onSubmit },
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'row' },
@@ -12124,7 +12124,7 @@
 	      { className: 'hoverable', key: index },
 	      _react2.default.createElement(
 	        'td',
-	        null,
+	        { className: 'doc-title' },
 	        document.title
 	      ),
 	      _react2.default.createElement(
@@ -12173,7 +12173,7 @@
 	    null,
 	    _react2.default.createElement(
 	      'table',
-	      { className: 'bordered  responsive' },
+	      { id: 'alldocs', className: 'bordered  responsive' },
 	      _react2.default.createElement(
 	        'thead',
 	        null,
@@ -12292,7 +12292,7 @@
 	        null,
 	        _react2.default.createElement(
 	          'a',
-	          { className: 'modal-trigger green-text',
+	          { className: 'modal-trigger green-text edit-btn',
 	            href: '#modalEdit',
 	            onClick: function onClick() {
 	              props.setEditDocument(document);
@@ -12340,7 +12340,7 @@
 	    null,
 	    _react2.default.createElement(
 	      'table',
-	      { className: 'bordered responsive' },
+	      { id: 'userdocs', className: 'bordered responsive' },
 	      _react2.default.createElement(
 	        'thead',
 	        null,
@@ -12569,7 +12569,7 @@
 	    null,
 	    _react2.default.createElement(
 	      'table',
-	      { className: 'bordered responsive' },
+	      { id: 'docSearch', className: 'bordered responsive' },
 	      _react2.default.createElement(
 	        'thead',
 	        null,
@@ -12619,7 +12619,7 @@
 	    null,
 	    _react2.default.createElement(
 	      'table',
-	      { className: 'bordered responsive' },
+	      { id: 'userSearch', className: 'bordered responsive' },
 	      _react2.default.createElement(
 	        'thead',
 	        null,
@@ -12823,7 +12823,7 @@
 	            { className: 'row' },
 	            _react2.default.createElement(
 	              'form',
-	              { className: 'col s12',
+	              { id: 'createDocModal', className: 'col s12',
 	                onSubmit: this.onSubmit },
 	              _react2.default.createElement(
 	                'div',
@@ -22256,7 +22256,7 @@
 	    null,
 	    _react2.default.createElement(
 	      'table',
-	      { className: 'bordered  responsive' },
+	      { id: 'roletable', className: 'bordered  responsive' },
 	      _react2.default.createElement(
 	        'thead',
 	        null,
@@ -22354,7 +22354,7 @@
 	        null,
 	        users.id !== 1 ? _react2.default.createElement(
 	          'select',
-	          { style: { display: 'block' }, defaultValue: users.roleId, onChange: function onChange(e) {
+	          { id: 'roleSelector', style: { display: 'block' }, defaultValue: users.roleId, onChange: function onChange(e) {
 	              return props.setUserRole(e, users.id);
 	            } },
 	          props.roles.map(function (role) {
@@ -22402,7 +22402,7 @@
 	    null,
 	    _react2.default.createElement(
 	      'table',
-	      { className: 'bordered responsive' },
+	      { id: 'allUsersTable', className: 'bordered responsive' },
 	      _react2.default.createElement(
 	        'thead',
 	        null,
@@ -22991,7 +22991,7 @@
 	                  { className: 'tab' },
 	                  _react2.default.createElement(
 	                    _reactRouter.Link,
-	                    { to: '#test2' },
+	                    { to: '#test2', id: 'userlist' },
 	                    'User List'
 	                  )
 	                ),
@@ -23000,7 +23000,7 @@
 	                  { className: 'tab' },
 	                  _react2.default.createElement(
 	                    _reactRouter.Link,
-	                    { to: '#test3' },
+	                    { to: '#test3', id: 'rolelist' },
 	                    'Role List'
 	                  )
 	                ),
@@ -23009,7 +23009,7 @@
 	                  { className: 'tab' },
 	                  _react2.default.createElement(
 	                    _reactRouter.Link,
-	                    { to: '#test4' },
+	                    { to: '#test4', id: 't' },
 	                    'My Documents'
 	                  )
 	                ),
@@ -23466,7 +23466,7 @@
 	                  { className: 'tab' },
 	                  _react2.default.createElement(
 	                    _reactRouter.Link,
-	                    { to: '#ownerDocuments' },
+	                    { to: '#ownerDocuments', id: 'userdoclist' },
 	                    'My Documents'
 	                  )
 	                ),
@@ -24266,6 +24266,8 @@
 	    key: 'onChange',
 	    value: function onChange(event) {
 	      this.setState(_defineProperty({}, event.target.name, event.target.value));
+	      this.setState({ content: event.target.getContent() });
+	      console.log('-=-=-=-=-=-=-');
 	    }
 	    /**
 	     * @param {Object} event 
@@ -24368,7 +24370,7 @@
 	                  'select',
 	                  {
 	                    name: 'access',
-	                    id: 'access',
+	                    id: 'docAccess',
 	                    onChange: this.onChange,
 	                    value: this.state.access,
 	                    className: 'browser-default',
@@ -24667,6 +24669,7 @@
 	                  value: this.state.password,
 	                  onChange: this.onChange,
 	                  name: 'password',
+	                  placeholder: '***********',
 	                  id: 'password',
 	                  type: 'password',
 	                  className: 'validate',
@@ -24680,6 +24683,7 @@
 	                  value: this.state.confirmPassword,
 	                  onChange: this.onChange,
 	                  name: 'confirmPassword',
+	                  placeholder: '***********',
 	                  id: 'confirmPassword',
 	                  type: 'password',
 	                  className: 'validate',
@@ -24717,10 +24721,6 @@
 
 	  return EditUser;
 	}(_react.Component);
-
-	EditUser.propTypes = {
-	  viewUser: _react.PropTypes.func.isRequired
-	};
 
 	var mapStoreToProps = function mapStoreToProps(state, ownProps) {
 	  return {
