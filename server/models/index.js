@@ -6,7 +6,6 @@ import * as dbConfig from '../config/config.json';
 const basename = path.basename(module.filename);
 const env = process.env.NODE_ENV || 'development';
 const config = dbConfig[env];
-// const config = require(`${__dirname}/../config/config.json`)[env];
 
 const db = {};
 let sequelize;
