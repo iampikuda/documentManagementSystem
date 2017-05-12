@@ -19,14 +19,21 @@ engines:
     enabled: true
 ratings:
   paths:
-  - "**.js"
-  - "**.css"
+  - "test/server/**/*.js"
+
 exclude_paths:
 - "api-docs/"
 - "coverage/"
 - "jasmine/"
 - "node_modules/"
-- "test/"
-- "testis/"
 - "bundle.js"
-- "**.spec.js"
+- "client/src/components/"
+- "client/src/reducers/"
+- "client/src/actions/"
+- "server/seeders/"
+- "server/migrations/"
+- "server/controllers/"
+- "server/models/"
+- "server/routes/"
+- "node_modules/"
+- "tests/client"
