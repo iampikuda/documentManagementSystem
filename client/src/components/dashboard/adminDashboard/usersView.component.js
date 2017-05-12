@@ -23,7 +23,7 @@ const UserDocs = (props) => {
         <td>
           {
             (users.id !== 1) ?
-              <select style={{ display: 'block' }} defaultValue={users.roleId} onChange={(e) => props.setUserRole(e, users.id)}>
+              <select id="roleSelector" style={{ display: 'block' }} defaultValue={users.roleId} onChange={(e) => props.setUserRole(e, users.id)}>
                 {
                   props.roles.map(role => <option value={role.id} key={role.id}>{role.title}</option>)
                 }
@@ -51,7 +51,7 @@ const UserDocs = (props) => {
   }
   return (
     <div>
-      <table className="bordered responsive">
+      <table id="allUsersTable" className="bordered responsive">
         <thead>
           <tr>
             <th>First Name</th>

@@ -25,7 +25,7 @@ const MyDocs = (props) => {
         <td>{(document.createdAt).slice(0, 10)}</td>
         <td>{(document.updatedAt).slice(0, 10)}</td>
         <td>
-          <a className="modal-trigger green-text"
+          <a className="modal-trigger green-text edit-btn"
             href="#modalEdit"
             onClick={() => { props.setEditDocument(document); }}>
             <i className="material-icons">edit</i>
@@ -58,7 +58,7 @@ const MyDocs = (props) => {
   }
   return (
     <div>
-      <table className="bordered responsive">
+      <table id="userdocs" className="bordered responsive">
         <thead>
           <tr>
             <th>Title</th>

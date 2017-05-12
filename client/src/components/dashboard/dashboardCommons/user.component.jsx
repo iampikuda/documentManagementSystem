@@ -163,7 +163,7 @@ class UserDashboard extends Component {
                   <Link to="#roleDocuments">Role Documents</Link>
                 </li>
                 <li className="tab">
-                  <Link to="#ownerDocuments">My Documents</Link>
+                  <Link to="#ownerDocuments" id="userdoclist">My Documents</Link>
                 </li>
                 <li className="tab">
                   <Link to="#searchTab">Search</Link>

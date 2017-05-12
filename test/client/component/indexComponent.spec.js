@@ -1,29 +1,28 @@
 /*import expect from 'expect';
 import React from 'react';
 import { shallow } from 'enzyme';
-import indexComponent from '../../js/components/index.component';
-import renderer from 'react-test-renderer'
-import Navbar from '../../js/components/common/nav.component'
-import Body from '../../js/components/body.component'
+import IndexComponent from '../../../client/src/components/index.component';
+import NavBar from '../../../client/src/components/commons/nav.component'
+import Home from '../../../client/src/components/commons/home.component'
 
-describe('<indexComponent />', () => {
-  const wrapper = shallow(<indexComponent />);
+describe('<IndexComponent />', () => {
+  const wrapper = shallow(<IndexComponent />);
   let div = wrapper.find('mainContainer');
 
-  it('renders <Navbar />', () => {
-    expect(div.find(Navbar)).toExist();
+  it('renders <NavBar />', () => {
+    expect(div.find(NavBar)).toExist();
   });
 
-  it('renders <Body />', () => {
-    expect(wrapper.find(Body)).toExist();
+  it('renders <Home />', () => {
+    expect(wrapper.find(Home)).toExist();
   });
 
   it('renders children when passed in', () => {
     const wrapper = shallow(
-      <indexComponent>
-        <div className="mainContainer" />
-      </indexComponent>
+      <IndexComponent>
+        <div className="bg" />
+      </IndexComponent>
     );
-    expect(wrapper.contains(<div className="mainContainer" />)).toBe(true);
+    expect(wrapper.contains(<div className="bg" />)).toBe(true);
   });
 });*/

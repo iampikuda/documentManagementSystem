@@ -1,20 +1,9 @@
 // /* eslint func-names: "off"*/
 // /* eslint no-unused-vars: "off"*/
-// const config = require('../../../nightwatch.conf');
+// const config = require('../../../nightwatch.conf.js');
 
 // module.exports = {
-//   'PK-DMS': function (browser) {
-//     browser
-//       .url('http://localhost:8000')
-//       .waitForElementVisible('body')
-//       .click('#login-btn')
-//       .assert.urlEquals('http://localhost:8000/login')
-//       .assert.title('Document Management System')
-//       .saveScreenshot('screenshots/pk-dms-login.png')
-//       .end();
-//   },
-
-//   'Login Users': function (browser) {
+//   'View User profile': function (browser) {
 //     browser
 //       .url('http://localhost:8000')
 //       .waitForElementVisible('body')
@@ -25,6 +14,9 @@
 //       .click('button[type="submit"]')
 //       .waitForElementVisible('.search-box')
 //       .assert.urlEquals('http://localhost:8000/dashboard')
+//       .click('a#user-profile')
+//       .waitForElementVisible('form.userProfile')
+//       .pause(1000)
 //       .end();
 //   }
 // };

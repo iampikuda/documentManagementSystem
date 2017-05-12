@@ -91,7 +91,7 @@ class signUpPage extends Component {
       <div>
         <div className="row"></div>
         <div className="row signup-form">
-          <form className="col s12" onSubmit={this.onSubmit}>
+          <form id="signupform" className="col s12" onSubmit={this.onSubmit}>
             <div className="row">
               <div className="input-field col s6">
                 <input

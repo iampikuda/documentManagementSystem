@@ -65,6 +65,8 @@ export class CreateDocument extends Component {
    */
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
+    this.setState({ content: event.target.getContent() });
+    console.log('-=-=-=-=-=-=-');
   }
   /**
    * @param {Object} event 
@@ -133,7 +135,7 @@ export class CreateDocument extends Component {
               <div className='col m3 s12'>
                 <select
                   name='access'
-                  id='access'
+                  id='docAccess'
                   onChange={this.onChange}
                   value={this.state.access}
                   className='browser-default'

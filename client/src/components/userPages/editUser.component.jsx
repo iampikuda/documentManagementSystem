@@ -134,6 +134,7 @@ class EditUser extends Component {
                   value={this.state.password}
                   onChange={this.onChange}
                   name="password"
+                  placeholder="***********"
                   id="password"
                   type="password"
                   className="validate"
@@ -143,6 +144,7 @@ class EditUser extends Component {
                   value={this.state.confirmPassword}
                   onChange={this.onChange}
                   name="confirmPassword"
+                  placeholder="***********"
                   id="confirmPassword"
                   type="password"
                   className="validate"
@@ -169,11 +171,6 @@ class EditUser extends Component {
     );
   }
 }
-
-
-EditUser.propTypes = {
-  viewUser: PropTypes.func.isRequired
-};
 
 const mapStoreToProps = (state, ownProps) => {
   return {

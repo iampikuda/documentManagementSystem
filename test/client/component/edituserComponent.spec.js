@@ -1,15 +1,19 @@
 /*import expect from 'expect';
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
-import edituserComponent from '../../js/components/users/editUser.component';
-import Navbar from '../../js/components/common/nav.component';
+import EditUserComponent from '../../../client/src/components/userPages/editUser.component.jsx';
+import NavBar from '../../../client/src/components/commons/nav.component';
+import * as initial from '../../../client/src/reducers/index';
+import initialDefault from '../../../client/src/reducers/index';
 
-describe('<edituserComponent />', () => {
-    const wrapper = shallow(<edituserComponent />);
-    let div = wrapper.find('mainContainer').find('dashboardContainer');
-  it('renders <Navbar />', () => {
-    expect(div.find(Navbar)).toExist();
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
+describe('<EditUserComponent />', () => {
+  const wrapper = mount(<EditUserComponent store={mockStore()}/>);
+  let div = wrapper.find('mainContainer').find('dashboardContainer');
+  it('renders <NavBar />', () => {
+    expect(div.find(NavBar)).toExist();
   });
   it('renders all elements', () => {
     expect(wrapper.find('mainContainer').find('dashboardContainer')).toExist();
@@ -19,16 +23,16 @@ describe('<edituserComponent />', () => {
   });
   it('renders children when passed in', () => {
     const wrapper = shallow(
-      <edituserComponent>
+      <EditUserComponent>
         <div className="mainContainer" />
-      </edituserComponent>
+      </EditUserComponent>
     );
     expect(wrapper.contains(<div className="mainContainer" />)).toBe(true);
   });
   it('calls componentWillReceiveProps', () => {
-    sinon.spy(edituserComponent.prototype, 'componentWillReceiveProps');
-    const wrapper = mount(<edituserComponent/>);
-    expect(edituserComponent.prototype.componentWillReceiveProps).toExist();
-    edituserComponent.prototype.componentWillReceiveProps.restore();
+    sinon.spy(EditUserComponent.prototype, 'componentWillReceiveProps');
+    const wrapper = mount(<EditUserComponent/>);
+    expect(EditUserComponent.prototype.componentWillReceiveProps).toExist();
+    EditUserComponent.prototype.componentWillReceiveProps.restore();
   });
 });*/

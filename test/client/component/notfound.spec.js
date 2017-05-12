@@ -1,8 +1,7 @@
 // import expect from 'expect';
 // import React from 'react';
 // import { shallow } from 'enzyme';
-// import notfoundComponent from '../../js/components/notfound.component';
-// import renderer from 'react-test-renderer'
+// import notfoundComponent from '../../../client/src/components/commons/notFound.component';
 
 // describe('<notfoundComponent />', () => {
 //   it('renders the correct elements', () => {

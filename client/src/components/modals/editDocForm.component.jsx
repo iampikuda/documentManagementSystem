@@ -97,7 +97,7 @@ export class EditDocument extends Component {
       <div>
         <div>
           <div className='row'>
-            <form className='col s12'
+            <form id="createDocModal" className='col s12'
               onSubmit= {this.onSubmit }>
               <div className='row'>
                 <div className='input-field col s12'>

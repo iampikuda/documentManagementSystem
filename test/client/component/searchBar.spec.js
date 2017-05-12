@@ -2,12 +2,12 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
 // import sinon from 'sinon';
-// import searchBar from '../../js/components/common/searchbar.component';
-// import AddDoc from '../../js/components/docs/adddoc.component';
+// import subNavBar from '../../../client/src/components/commons/subNavBar.jsx';
+// import AddDoc from '../../../client/src/components/modals/addDoc.component.jsx';
 
 
-// describe('<searchBar />', () => {
-//     const wrapper = shallow(<searchBar />);
+// describe('<subNavBar />', () => {
+//     const wrapper = shallow(<subNavBar />);
 //     let div = wrapper.find('nav').find('nav-wrapper');
 //   it('renders <AddDoc />', () => {
 //     expect(div.find(AddDoc)).toExist();
@@ -18,9 +18,9 @@
 //     expect(wrapper.find('select')).toExist();
 //   });
 //   it('calls componentDidMount', () => {
-//     sinon.spy(searchBar.prototype, 'componentDidMount');
-//     const wrapper = mount(<searchBar/>);
-//     expect(searchBar.prototype.componentDidMount).toExist();
-//     searchBar.prototype.componentDidMount.restore();
+//     sinon.spy(subNavBar.prototype, 'componentDidMount');
+//     const wrapper = mount(<subNavBar/>);
+//     expect(subNavBar.prototype.componentDidMount).toExist();
+//     subNavBar.prototype.componentDidMount.restore();
 //   });
 // });

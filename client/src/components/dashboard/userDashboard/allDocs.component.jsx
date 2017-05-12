@@ -17,7 +17,7 @@ const AllDocs = (props) => {
   const SingleDocument = (document, index) => {
     return (
       <tr className="hoverable" key={index} >
-        <td>{document.title}</td>
+        <td className="doc-title">{document.title}</td>
         <td>{document.access}</td>
         <td className="truncate">
           <a href="#modalView"
@@ -42,7 +42,7 @@ const AllDocs = (props) => {
   console.log(documentList,'documentlist');
   return (
     <div>
-      <table className="bordered  responsive">
+      <table id="alldocs" className="bordered  responsive">
         <thead>
           <tr>
             <th>Title</th>
