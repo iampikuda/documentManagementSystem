@@ -76,8 +76,6 @@ class signUpPage extends Component {
     } else {
       if(this.state.password === this.state.confirmPassword){
         this.props.Signup(this.state);
-        Materialize.toast('New user created', 2000)
-        // browserHistory.push('/');
       }else {
         Materialize.toast('Passwords don\'t match!', 3000)
       }
@@ -94,18 +92,6 @@ class signUpPage extends Component {
         <div className="row"></div>
         <div className="row signup-form">
           <form className="col s12" onSubmit={this.onSubmit}>
-            {/*{this.state.error ?
-              <div className="center">
-                {this.state.error}
-              </div>
-              : <span />
-            }
-            {this.state.success ?
-              <div className="center">
-                {this.state.success}
-              </div>
-              : <span />
-            }*/}
             <div className="row">
               <div className="input-field col s6">
                 <input

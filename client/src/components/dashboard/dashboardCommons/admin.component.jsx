@@ -40,14 +40,16 @@ class AdminDashboard extends Component {
     this.setEditDocument = this.setEditDocument.bind(this);
     this.setDeleteDocument = this.setDeleteDocument.bind(this);
     this.setViewDocument = this.setViewDocument.bind(this);
+    this.setUserRole = this.setUserRole.bind(this);
     this.handleSearchBarView = this.handleSearchBarView.bind(this);
-    this.updateUser = this.updateUser.bind(this);
     const token = window.localStorage.getItem('token');
     this.state = {
       documents: props.documents || [],
       AdminRoleId: 1,
       searchBarView: 'noShow',
       authUser: jwtDecode(token) || {},
+      roleId: 1
+
     };
   }
   /**
@@ -58,7 +60,6 @@ class AdminDashboard extends Component {
     const keys = ['users', 'documents', 'roles'];
     keys.forEach(key=>{
       if(nextProps[key]){
-        console.log(key);
         this.setState({
           [key]: nextProps[key]
         });
@@ -99,12 +100,13 @@ class AdminDashboard extends Component {
     });
   }
   /**
-   * @param {Object} values 
+   * @param {Object} event 
    * @param {Object} id 
    * @memberof AdminDashboard
    */
-  updateUser(values, id) {
-    this.props.actionEditUser(values, id);
+  setUserRole(event, id) {
+    this.setState({ roleId: event.target.value });
+    this.props.updateUser({ roleId: event.target.value }, id);
   }
   /**
    * @param {Object} documentId 
@@ -249,7 +251,7 @@ class AdminDashboard extends Component {
                   }}
                   />
               </center>
-              <Users updateUser={this.updateUser} users={this.props.users}
+              <Users setUserRole={this.setUserRole} users={this.props.users}
                 roles={this.props.roles} deleteUser={this.props.deleteUser}
                 setDeleteUser={this.setDeleteUser}/>
             </div>
@@ -318,10 +320,12 @@ const mapDispatchToProps = (dispatch) => {
     DeleteDocument: (documentId) => dispatch(DeleteDocumentAction(documentId)),
     actionsUser: bindActionCreators(userActions, dispatch),
     actionsRole: bindActionCreators(roleActions, dispatch),
-    viewUser: (usertoken, userId) =>
-    dispatch(viewUserAction(usertoken, userId)),
+    // viewUser: (usertoken, userId) =>
+    // dispatch(viewUserAction(usertoken, userId)),
     deleteUser: (userId) => dispatch(deleteUserAction(userId)),
-    actionEditUser: bindActionCreators(editUserActions, dispatch),
+    // actionEditUser: bindActionCreators(editUserActions, dispatch),
+    updateUser: (userData, userId) =>
+    dispatch(editUserActions(userData, userId)),
     UserSearch: (query, offset) => dispatch(searchUsers(query, offset)),
     DocSearch: (query, offset) => dispatch(searchDocuments(query, offset))
   };

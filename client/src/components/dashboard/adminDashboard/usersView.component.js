@@ -8,6 +8,7 @@ let usersList = [];
  * @returns {void} return table
  */
 const UserDocs = (props) => {
+  // console.log(props, 'porpospospopd');
   /**
    * @param {Object} roles 
    * @param {Object} index 
@@ -19,7 +20,19 @@ const UserDocs = (props) => {
         <td>{users.firstName}</td>
         <td>{users.lastName}</td>
         <td>{users.email}</td>
-        <td>{users.roleId}</td>
+        <td>
+          {
+            (users.id !== 1) ?
+              <select style={{ display: 'block' }} defaultValue={users.roleId} onChange={(e) => props.setUserRole(e, users.id)}>
+                {
+                  props.roles.map(role => <option value={role.id} key={role.id}>{role.title}</option>)
+                }
+              </select>
+              :
+              'Super Admin'
+          }
+
+        </td>
         <td>{(users.createdAt).slice(0, 10)}</td>
         <td>{(users.updatedAt).slice(0, 10)}</td>
         <td>

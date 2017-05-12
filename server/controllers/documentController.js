@@ -313,24 +313,42 @@ class documentController {
             ]
           }
         };
-        if (foundDocument.title === request.body.title) {
-          return foundDocument
-              .update(request.body)
-              .then(() => response.status(200).send(foundDocument));
-        }
-        model.Document.findAll(query)
-          .then((usedDocument) => {
-            if (usedDocument.length > 0) {
-              return response.status(409)
-                .send({
-                  message: 'Note: Document with same title exists.' +
-                  'Please modify'
-                });
+        let Userdata = {};
+        let docInfo = {};
+        model.User.findById(foundDocument.ownerId)
+          .then((founduser) => {
+            Userdata.lastName = founduser.lastName;
+            Userdata.firstName = founduser.firstName;
+            Userdata.roleId = founduser.roleId;
+            // console.log(newDocument, '098-09-=09-08-09-9-09');
+            // response.status(201).send(docInfo)
+            if (foundDocument.title === request.body.title) {
+              return foundDocument
+                  .update(request.body)
+                  .then(() => {
+                    docInfo = foundDocument.dataValues;
+                    docInfo.User = Userdata;
+                    response.status(200).send(docInfo)
+                  });
             }
-            return foundDocument
-              .update(request.body)
-              .then(() => response.status(200).send(foundDocument));
-          });
+            model.Document.findAll(query)
+              .then((usedDocument) => {
+                if (usedDocument.length > 0) {
+                  return response.status(409)
+                    .send({
+                      message: 'Note: Document with same title exists.' +
+                      'Please modify'
+                    });
+                }
+                return foundDocument
+                  .update(request.body)
+                  .then(() => {
+                    docInfo = foundDocument.dataValues;
+                    docInfo.User = Userdata;
+                    response.status(200).send(docInfo)
+                  });
+              });
+          })
       })
       .catch(error => response.status(400).send({
         message: error.message

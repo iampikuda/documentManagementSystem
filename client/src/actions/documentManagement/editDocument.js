@@ -22,9 +22,8 @@ export default (details, documentId) => {
     return axios.put(`/api/document/${documentId}`, details)
     .then((document) => {
       dispatch({
-        type: actionTypes.DOCUMENT_CREATED,
+        type: actionTypes.DOCUMENT_UPDATED,
         document,
-        status: 'success'
       });
       Materialize.toast('Document updated', 3000, 'green');
     }).catch((err) => {

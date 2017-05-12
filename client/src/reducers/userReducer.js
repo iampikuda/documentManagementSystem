@@ -15,11 +15,13 @@ export default (state = {}, action) => {
         pageCount: action.pageCount
       };
     case actionTypes.USER_DELETED:
-      return {
+      console.log(action.data);
+      let deletedUser = action.data;
+      let data = state.users.filter(user => (parseInt(user.id, 10) !== parseInt(deletedUser.id,10)));
+      return Object.assign({}, state, {
         ...state,
-        users: action.data,
-        pageCount: action.pageCount
-      };
+        users: data
+      });
     case actionTypes.VIEW_USER:
       return {
         ...state,

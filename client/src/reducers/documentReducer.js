@@ -20,15 +20,25 @@ export default (state = {}, action) => {
       }
       );
     }
-    case actionTypes.DOCUMENT_DELETED: {
-      let deletedData = action.data;
-      console.log(state.document, 'state.document');
+    case actionTypes.DOCUMENT_UPDATED: {
+      let updatedData = action.document.data;
+      // console.log(updatedData, '0909090909');
+      // console.log(state.document, '-=-=-=-');
       return Object.assign({}, state, {
         ...state,
-        createStatus: action.status,
-        document: [
-          [...state.document].filter(document => (parseInt(document.id, 10) !== parseInt(deletedData.id,10)))
-        ]
+        document: [...state.document].map(document => 
+        (document.id === updatedData.id) ?
+        updatedData : document )
+      }
+      );
+    }
+    case actionTypes.DOCUMENT_DELETED: {
+      let deletedData = action.data;
+      let data = state.document.filter(document => (parseInt(document.id, 10) !== parseInt(deletedData.id, 10)));
+      console.log(data, 'state.document');
+      return Object.assign({}, state, {
+        ...state,
+        document: data
       });
       // results: [...state.documents.results].filter(document =>
       //       (parseInt(document.id, 10) !== parseInt(action.payload.id, 10))) } });

@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "cf56ad6c39089dcfc26c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fa0e8a582fad29b333d0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -11386,13 +11386,16 @@
 	  var token = window.localStorage.getItem('token');
 	  return function (dispatch) {
 	    (0, _setAuth2.default)(token);
-	    return _axios2.default.delete('/api/document/' + documentId).then(function () {
+	    return _axios2.default.delete('/api/document/' + documentId).then(function (document) {
+	      var data = document.data.Document;
+	      console.log(data);
 	      dispatch({
 	        type: actionTypes.DOCUMENT_DELETED,
-	        status: 'success'
+	        status: 'success',
+	        data: data
 	      });
 	    }).catch(function (err) {
-	      Materialize.toast('Something went wrong', 3000, 'red');
+	      Materialize.toast(err, 3000, 'red');
 	      dispatch({
 	        type: actionTypes.DOCUMENT_DELETION_FAILED,
 	        status: 'failed',
@@ -11512,7 +11515,7 @@
 	      });
 	      Materialize.toast('Document created', 2000, 'green');
 	    }).catch(function (err) {
-	      Materialize.toast('Something went wrong creating a new document', 3000, 'red');
+	      Materialize.toast('err', 3000, 'red');
 	      dispatch({
 	        type: actionTypes.DOCUMENT_CREATE_FAILED,
 	        status: 'failed',
@@ -12215,6 +12218,7 @@
 	    }
 	    documentList = docs;
 	  }
+	  console.log(documentList, 'documentlist');
 	  return _react2.default.createElement(
 	    'div',
 	    null,
@@ -21547,11 +21551,14 @@
 	  var token = window.localStorage.getItem('token');
 	  return function (dispatch) {
 	    (0, _setAuth2.default)(token);
-	    return _axios2.default.delete('/api/user/' + userId).then(function () {
+	    return _axios2.default.delete('/api/user/' + userId).then(function (user) {
+	      console.log(user);
+	      var data = user.data.User;
 	      dispatch({
 	        type: actionTypes.USER_DELETED,
 	        status: 'success',
-	        deletedUserId: userId
+	        deletedUserId: userId,
+	        deletedUser: data
 	      });
 	      Materialize.toast('User deleted', 3000, 'green');
 	    }).catch(function (err) {
@@ -22363,7 +22370,7 @@
 	          'a',
 	          { className: 'red-text', href: '#',
 	            onClick: function onClick() {
-	              props.setDeleteuser(props.deleteUser, users.id);
+	              props.setDeleteUser(props.deleteUser, users.id);
 	            } },
 	          _react2.default.createElement(
 	            'i',
@@ -22710,6 +22717,7 @@
 	    _this.updateUser = _this.updateUser.bind(_this);
 	    var token = window.localStorage.getItem('token');
 	    _this.state = {
+	      documents: props.documents || [],
 	      AdminRoleId: 1,
 	      searchBarView: 'noShow',
 	      authUser: (0, _jwtDecode2.default)(token) || {}
@@ -22730,24 +22738,11 @@
 	      var keys = ['users', 'documents', 'roles'];
 	      keys.forEach(function (key) {
 	        if (nextProps[key]) {
+	          console.log(key);
 	          _this2.setState(_defineProperty({}, key, nextProps[key]));
 	        }
 	      });
 	    }
-	    // omponentWillReceiveProps(nextProps) {
-	    //   if (nextProps.status === 'success') {
-	    //     // browserHistory.push('/dashboard');
-	    //   }
-	    //   if (nextProps.document) {
-	    //     this.setState({
-	    //       title: nextProps.document.title,
-	    //       content: nextProps.document.content,
-	    //       access: nextProps.document.access,
-	    //       status: nextProps.document.status
-	    //     });
-	    //     tinymce.activeEditor.setContent(nextProps.document.content);
-	    //   }
-	    // }
 
 	    /**
 	     * @param {Object} view 
@@ -22775,6 +22770,7 @@
 	        documentId: document.id
 	      });
 	    }
+
 	    /**
 	     * @param {Object} document 
 	     * @memberof AdminDashboard
@@ -23029,7 +23025,7 @@
 	                })
 	              ),
 	              _react2.default.createElement(_allDocsComponent2.default, {
-	                document: this.props.documents,
+	                document: this.state.documents,
 	                setViewDocument: this.setViewDocument })
 	            ),
 	            _react2.default.createElement(
@@ -23059,7 +23055,7 @@
 	            _react2.default.createElement(
 	              'div',
 	              { id: 'test4', className: 'tab-content col s12' },
-	              _react2.default.createElement(_myDocsComponent2.default, { document: this.props.documents,
+	              _react2.default.createElement(_myDocsComponent2.default, { document: this.state.documents,
 	                setEditDocument: this.setEditDocument,
 	                setViewDocument: this.setViewDocument,
 	                setDeleteDocument: this.setDeleteDocument,
@@ -23238,6 +23234,7 @@
 	    _this.setViewDocument = _this.setViewDocument.bind(_this);
 	    _this.handleSearchBarView = _this.handleSearchBarView.bind(_this);
 	    _this.state = {
+	      documents: props.documents || [],
 	      searchBarView: 'noShow'
 	    };
 	    return _this;
@@ -23266,6 +23263,18 @@
 	        viewTitle: document.title,
 	        viewDocument: document.content,
 	        documentId: document.id
+	      });
+	    }
+	    /**
+	     * @param {Object} nextProps 
+	     * @memberof AdminDashboard
+	     */
+
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      this.setState({
+	        documents: nextProps.documents
 	      });
 	    }
 	    /**
@@ -23471,28 +23480,28 @@
 	                })
 	              ),
 	              _react2.default.createElement(_allDocsComponent2.default, {
-	                document: this.props.documents,
+	                document: this.state.documents,
 	                setViewDocument: this.setViewDocument })
 	            ),
 	            _react2.default.createElement(
 	              'div',
 	              { id: 'publicDocuments', className: 'tab-content col s12' },
 	              _react2.default.createElement(_publicDocsComponent2.default, {
-	                document: this.props.documents,
+	                document: this.state.documents,
 	                setViewDocument: this.setViewDocument })
 	            ),
 	            _react2.default.createElement(
 	              'div',
 	              { id: 'roleDocuments', className: 'tab-content col s12' },
 	              _react2.default.createElement(_roleDocsComponent2.default, {
-	                document: this.props.documents,
+	                document: this.state.documents,
 	                setViewDocument: this.setViewDocument })
 	            ),
 	            _react2.default.createElement(
 	              'div',
 	              { id: 'ownerDocuments', className: 'tab-content col s12' },
 	              _react2.default.createElement(_myDocsComponent2.default, {
-	                document: this.props.documents,
+	                document: this.state.documents,
 	                setEditDocument: this.setEditDocument,
 	                setViewDocument: this.setViewDocument,
 	                setDeleteDocument: this.setDeleteDocument,
@@ -25298,6 +25307,18 @@
 	          document: [].concat(_toConsumableArray(state.document), [data])
 	        }));
 	      }
+	    case actionTypes.DOCUMENT_DELETED:
+	      {
+	        var deletedData = action.data;
+	        console.log(state.document, 'state.document');
+	        return Object.assign({}, state, _extends({}, state, {
+	          document: [[].concat(_toConsumableArray(state.document)).filter(function (document) {
+	            return parseInt(document.id, 10) !== parseInt(deletedData.id, 10);
+	          })].concat(_toConsumableArray(state.document))
+	        }));
+	        // results: [...state.documents.results].filter(document =>
+	        //       (parseInt(document.id, 10) !== parseInt(action.payload.id, 10))) } });
+	      }
 	    case actionTypes.DOCUMENT_CREATE_FAILED:
 	      return _extends({}, state, { status: action.status });
 	    // case 'ALL_DOCUMENTS':
@@ -25536,6 +25557,11 @@
 
 	  switch (action.type) {
 	    case actionTypes.GET_USER_SUCCESS:
+	      return _extends({}, state, {
+	        users: action.data,
+	        pageCount: action.pageCount
+	      });
+	    case actionTypes.USER_DELETED:
 	      return _extends({}, state, {
 	        users: action.data,
 	        pageCount: action.pageCount

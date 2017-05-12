@@ -34,8 +34,8 @@ const AllDocs = (props) => {
   const token = window.localStorage.getItem('token');
   if (props.document !== undefined) {
     let docs = props.document;
-    if (docs === undefined) {
-      docs = props.document.documents;
+    if (typeof(docs[0]) === Object) {
+      docs = props.document[0];
     }
     documentList = docs;
   }

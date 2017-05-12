@@ -12,17 +12,27 @@ import * as actionTypes from '../actionTypes';
  * @returns {Object} returns object
  */
 export default (userData) => {
+  const token = window.localStorage.getItem('token');
   userData.roleId = parseInt((userData.roleId), 10);
   return (dispatch) => {
     return axios.post('/api/user', userData)
       .then((response) => {
-        window.localStorage.setItem('token', response.data.token);
-        const user = jwtDecode(response.data.token);
-        dispatch({
-          type: actionTypes.LOGIN_SUCCESSFUL,
-          user
-        });
-        Materialize.toast('Welcome!', 2000, 'green');
+        if(token){
+          const user = jwtDecode(response.data.token);
+          dispatch({
+            type: 'User added',
+            user
+          });
+          Materialize.toast('User added', 2000, 'green');
+        } else {
+          window.localStorage.setItem('token', response.data.token);
+          const user = jwtDecode(response.data.token);
+          dispatch({
+            type: actionTypes.LOGIN_SUCCESSFUL,
+            user
+          });
+          Materialize.toast('Welcome!', 2000, 'green');
+        }
       }).catch((error) => {
         Materialize.toast(
           'Something went wrong creating a new user', 3000, 'red');

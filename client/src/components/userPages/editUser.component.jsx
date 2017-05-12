@@ -79,7 +79,7 @@ class EditUser extends Component {
     const token = window.localStorage.getItem('token');
     const userId = jwtDecode(token).userId;
     if(this.state.password === this.state.confirmPassword){
-        this.props.updateUser(token, details, userId);
+        this.props.updateUser(details, userId);
         // browserHistory.push('/');
       }else {
         Materialize.toast('Passwords don\'t match!', 3000)
@@ -153,7 +153,12 @@ class EditUser extends Component {
                   Update
                   <i className="material-icons right">vpn_key</i>
                 </button>
-
+                <p className="center">
+                <Link
+                  to='/dashboard'>
+                  Go to dashboard
+                </Link>
+                </p>
               </form>
               <div />
             </div>
@@ -180,7 +185,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     viewUser: (usertoken, userId) =>
     dispatch(viewUserAction(usertoken, userId)),
-    updateUser: (usertoken, userDetails, userId) =>
+    updateUser: (userDetails, userId) =>
     dispatch(editUserAction(userDetails, userId)),
     deleteUser: (userId) => dispatch(deleteUserAction(userId))
   };

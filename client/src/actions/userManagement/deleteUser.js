@@ -22,8 +22,8 @@ export default (userId) => {
       dispatch({
         type: actionTypes.USER_DELETED,
         status: 'success',
-        deletedUserId: userId,
-        deletedUser: data
+        userId,
+        data
       });
       Materialize.toast(
         'User deleted',

@@ -4,12 +4,8 @@ import Index from './index.component';
 import loginPage from './authPages/loginPage.jsx';
 import signUpPage from './authPages/signUpPage.jsx';
 import dashboard from './dashboard/dashboardCommons/Index.component.jsx';
-import NotFound from './commons/notFound.component.js';
-// import userPage from './userPages/viewUser.component.jsx';
-import ViewUser from './userPages/viewUser.component.jsx';
 import EditUser from './userPages/editUser.component.jsx';
-import EditUsersRole from './userPages/editUsersRole.component';
-
+import NotFound from './commons/notFound.component.js';
 
 /**
  * Router component
@@ -24,10 +20,7 @@ class App extends Component {
                 <Route path='/login' component={loginPage} />
                 <Route path='/signup' component={signUpPage} />
                 <Route exact path='/dashboard' component={dashboard} />
-                
                 <Route path='/user' component={EditUser} />
-                <Route path='/user/role-edit' component={EditUsersRole} />
-
                 <Route path="/*" component={NotFound} />
             </Router>
         );

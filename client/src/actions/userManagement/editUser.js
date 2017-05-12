@@ -16,6 +16,7 @@ export default (userData, userId) => {
   const token = window.localStorage.getItem('token');
   return (dispatch) => {
     setAuthorizationToken(token);
+    console.log(userData, userId, 'eidiininasd');
     return axios.put(`/api/user/${userId}`, userData)
       .then((res) => {
         dispatch({
