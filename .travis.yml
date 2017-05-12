@@ -6,10 +6,6 @@ services:
   - postgresql
 addons:
   - postgresql: "9.6"
-
-branches:
-  only:
-    - development
 before_script:
   - psql -c 'create database pk_docman_test;' -U postgres
 
