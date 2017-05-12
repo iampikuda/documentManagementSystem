@@ -6,8 +6,7 @@ services:
   - postgresql
 addons:
   - postgresql: "9.6"
-env:
- - TEST_DBURL=postgres://postgres@localhost:8000/pk_docman_test
+
 branches:
   only:
     - development
