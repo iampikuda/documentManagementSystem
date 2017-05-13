@@ -1,9 +1,4 @@
 engines:
-  csslint:
-    enabled: true
-    checks:
-      gradients:
-        enabled: false
   duplication:
     enabled: true
     checks:
@@ -19,18 +14,10 @@ engines:
     enabled: true
 ratings:
   paths:
-  - "test/server/**/*.js"
+  - "server/*.js"
+  - "server/**/*.js"
 
 exclude_paths:
-- "api-docs/"
-- "coverage/"
-- "jasmine/"
-
-- "bundle.js"
-- "client/*"
-
-- "server/*"
-
-- "node_modules/"
-- "tests/client"
-- "screenshot"
+- "server/seeders/"
+- "server/migrations"
+- "server/config""

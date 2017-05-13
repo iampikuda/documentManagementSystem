@@ -23,7 +23,7 @@ export default (details) => {
           status: 'success'
         });
         Materialize.toast('Document created', 2000, 'green');
-      }).catch((err0r) => {
+      }).catch((error) => {
         let errorData;
         if(error.response.data.errors !== undefined) {
           errorData = error.response.data.errors[0].message
