@@ -23,14 +23,11 @@ module.exports = {
       .useCss()
       .click('select[id="docAccess"] option[value="public"]')
       .execute('tinyMCE.activeEditor.setContent("This is my new content!")')
-      // .pause(9000)
       .click('#saveDoc')
       .assert.urlEquals('http://localhost:8000/dashboard')
       .assert.elementPresent('table')
-
       .waitForElementVisible('#allDocuments')
-      // .pause(3000) 
-      // .assert.containsText('#allDocuments tr:first-of-type>td.doc-title', 'The Life of Pablo')
+      .assert.containsText('#allDocuments tr:first-of-type>td.doc-title', 'The Life of Pablo')
       .end();
   },
   'Edit Document': function (browser) {

@@ -31,7 +31,6 @@ describe('User Model', () => {
         })
         .then((createdUser) => {
           user = createdUser;
-          console.log('------>', user.lastName, user.firstName);
           done();
         });
     });

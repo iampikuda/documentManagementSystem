@@ -15,7 +15,6 @@ describe('Document Model', () => {
     let owner;
     describe('Create Role', () => {
       before((done) => {
-        // model.sequelize.sync({ force: true })
         model.Role.create({ title: 'badolee' })
         .then((createdRole) => {
           userParams.roleId = createdRole.id;  // user's roleId
@@ -31,8 +30,6 @@ describe('Document Model', () => {
       beforeEach(() => {
         document = model.Document.build(documentParams);
       });
-
-      // afterEach(() => model.Document.destroy({ where: {} }));
 
       after(() => model.sequelize.sync({ force: true }));
 

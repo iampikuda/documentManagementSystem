@@ -65,8 +65,6 @@ export class CreateDocument extends Component {
    */
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
-    // this.setState({ content: event.target.getContent() });
-    console.log(this.state, '-=-=-=-=-=-=-');
   }
   /**
    * @param {Object} event 
@@ -76,7 +74,6 @@ export class CreateDocument extends Component {
     this.setState({
       content: event.target.getContent()
     });
-    console.log(this.state.content, 'f');
   }
   /**
    * @param {Object} event 
@@ -84,7 +81,6 @@ export class CreateDocument extends Component {
    */
   onSubmit(event) {
     event.preventDefault();
-    console.log(this.state.content, 'onsubmimimimi');
     if(this.state.content.length < 1) {
       Materialize.toast('Please add a content', 3000);
     } else {
@@ -97,7 +93,6 @@ export class CreateDocument extends Component {
    * @memberof CreateDocument
    */
   render() {
-    // console.log(this.state.content);
     return  (
       <div>
         <div>

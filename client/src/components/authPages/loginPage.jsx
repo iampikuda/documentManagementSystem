@@ -107,10 +107,8 @@ class Login extends Component {
 }
 const mapStoreToProps = (state) => {
   return {
-    // user: state.loginReducer.user,
     loginSuccess: state.loginReducer.success,
     loginError: state.loginReducer.error,
-    // token: state.loginReducer.token
   };
 };
 const mapDispatchToProps = (dispatch) => {

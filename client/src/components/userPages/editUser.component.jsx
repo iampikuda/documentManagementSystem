@@ -80,7 +80,6 @@ class EditUser extends Component {
     const userId = jwtDecode(token).userId;
     if(this.state.password === this.state.confirmPassword){
         this.props.updateUser(details, userId);
-        // browserHistory.push('/');
       }else {
         Materialize.toast('Passwords don\'t match!', 3000)
       }

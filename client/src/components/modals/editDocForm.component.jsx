@@ -47,7 +47,6 @@ export class EditDocument extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.status === 'success') {
-      // browserHistory.push('/dashboard');
     }
     if (nextProps.document) {
       this.setState({

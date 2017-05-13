@@ -31,7 +31,6 @@ class Navbar extends Component {
     this.setState({
       id: null
     });
-    // browserHistory.push('/');
   }
   /**
    * renders the Nav component

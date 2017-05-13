@@ -30,7 +30,6 @@ describe('Role API', () => {
                 role = regularRole;
                 done();
               });
-                // done();
           });
       });
   });

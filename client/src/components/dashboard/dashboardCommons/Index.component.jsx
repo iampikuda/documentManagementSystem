@@ -21,8 +21,6 @@ class IndexDashboard extends Component {
 
   componentWillMount() {
     this.props.actionsDoc.viewUserDocuments();
-    // this.props.actionsUser.viewUsers(userId);
-    // this.props.actionsRole.viewRoles(userId);
   }
 
   componentWillReceiveProps(nextProps){

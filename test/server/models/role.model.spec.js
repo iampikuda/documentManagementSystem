@@ -14,7 +14,6 @@ describe('Role Model', () => {
       model.Role.create(roleParams)
       .then((createdRole) => {
         role = createdRole;
-        // console.log(role,"9=================9")
         done();
       });
     });
@@ -32,37 +31,4 @@ describe('Role Model', () => {
       done();
     });
   });
-
-  // describe('Role Model Validations', () => {
-  //   after(() => model.Role.sequelize.sync({ force: true }));
-
-  //   describe('Title Field Validation', () => {
-  //     it('requires title to create role', (done) => {
-  //       model.Role.create()
-  //         .then((roleppp) => {
-  //           console.log("9=================9", roleppp);
-  //         })
-  //         .catch((error) => {
-  //           console.log('------>', error.message);
-  //           console.log('------>', error.name);
-  //           expect(/notNull Violation/.test(error.message)).to.be.true;
-  //           done();
-  //         });
-  //     });
-
-  //     it('ensures a role is unique', (done) => {
-  //       model.Role.create(roleParams)
-  //         .then(() => {
-  //           // creating a second parameter with the same role title
-  //           model.Role.create(roleParams)
-  //             .catch((error) => {
-  //               console.log('------>', error.message);
-  //           console.log('------>', error.name);
-  //               expect(/UniqueConstraintError/.test(error.name)).to.be.true;
-  //               done();
-  //             });
-  //         });
-  //     });
-  //   });
-  // });
 });

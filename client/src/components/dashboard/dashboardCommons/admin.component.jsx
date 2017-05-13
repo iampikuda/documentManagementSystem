@@ -320,10 +320,7 @@ const mapDispatchToProps = (dispatch) => {
     DeleteDocument: (documentId) => dispatch(DeleteDocumentAction(documentId)),
     actionsUser: bindActionCreators(userActions, dispatch),
     actionsRole: bindActionCreators(roleActions, dispatch),
-    // viewUser: (usertoken, userId) =>
-    // dispatch(viewUserAction(usertoken, userId)),
     deleteUser: (userId) => dispatch(deleteUserAction(userId)),
-    // actionEditUser: bindActionCreators(editUserActions, dispatch),
     updateUser: (userData, userId) =>
     dispatch(editUserActions(userData, userId)),
     UserSearch: (query, offset) => dispatch(searchUsers(query, offset)),

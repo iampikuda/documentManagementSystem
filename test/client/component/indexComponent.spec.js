@@ -1,4 +1,4 @@
-/*import expect from 'expect';
+import expect from 'expect';
 import React from 'react';
 import { shallow } from 'enzyme';
 import IndexComponent from '../../../client/src/components/index.component';
@@ -25,4 +25,4 @@ describe('<IndexComponent />', () => {
     );
     expect(wrapper.contains(<div className="bg" />)).toBe(true);
   });
-});*/
+});
