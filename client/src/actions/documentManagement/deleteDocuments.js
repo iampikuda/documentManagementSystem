@@ -18,7 +18,6 @@ export default (documentId) => {
     return axios.delete(`/api/document/${documentId}`)
     .then((document) => {
       const data = document.data.Document
-      console.log(data);
       dispatch({
         type: actionTypes.DOCUMENT_DELETED,
         status: 'success',

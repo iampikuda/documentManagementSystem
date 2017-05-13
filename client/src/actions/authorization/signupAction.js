@@ -13,7 +13,6 @@ import * as actionTypes from '../actionTypes';
  */
 export default (userData) => {
   const token = window.localStorage.getItem('token');
-  // console.log(userData)
   userData.roleId = parseInt((userData.roleId), 10);
   return (dispatch) => {
     return axios.post('/api/user', userData)
@@ -35,7 +34,6 @@ export default (userData) => {
           Materialize.toast('Welcome!', 2000, 'green');
         }
       }).catch((error) => {
-        console.log(error.response.data);
         let errorData;
         if(error.response.data.errors !== undefined) {
           errorData = error.response.data.errors[0].message

@@ -1,6 +1,6 @@
-import app from '../../../app';
 import supertest from 'supertest';
 import chai from 'chai';
+import app from '../../../app';
 import model from '../../../server/models';
 import helper from '../test-helper';
 
@@ -9,7 +9,6 @@ const request = supertest(app);
 const expect = chai.expect;
 
 const adminRoleParam = helper.testAdminRole;
-console.log(adminRoleParam, 'adminRoleParam');
 const regularRoleParam = helper.testRegularRole;
 const userParam = helper.testUser;
 
@@ -43,7 +42,6 @@ describe('Role API', () => {
     describe('POST: (/api/role) - CREATE ROLE', () => {
       it('should create a role when required field is valid', (done) => {
         const newRole1 = { title: 'super admin' };
-        console.log(token);
         request.post('/api/role')
           .set({ Authorization: token })
           .send(newRole1)
@@ -78,7 +76,9 @@ describe('Role API', () => {
           .send(newRole4)
           .end((error, response) => {
             expect(response.status).to.equal(400);
-            expect(response.text).to.equal('notNull Violation: title cannot be null');
+            expect(response.text).to.equal(
+              'notNull Violation: title cannot be null'
+              );
             done();
           });
       });

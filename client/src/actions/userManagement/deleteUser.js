@@ -17,7 +17,6 @@ export default (userId) => {
     setAuthorizationToken(token);
     return axios.delete(`/api/user/${userId}`)
     .then((user) => {
-      console.log(user);
       const data = user.data.User
       dispatch({
         type: actionTypes.USER_DELETED,

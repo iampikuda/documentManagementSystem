@@ -38,7 +38,6 @@ class roleController {
       order: '"createdAt" ASC'
     })
       .then((roles) => {
-        console.log(roles);
         if (!roles) {
           return response.status(404).send({ msg: 'role does not exist' });
         }

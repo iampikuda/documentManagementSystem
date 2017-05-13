@@ -23,7 +23,8 @@ const compareDate = (dateA, dateB) =>
 
 describe('DOCUMENT API', () => {
   let adminRole, regularRole, adminUser, privateUser, privateUser2, publicToken,
-    privateToken, publicRole, publicUser, privateToken2, publicDocument, privateDocument, roleDocument;
+    privateToken, publicRole, publicUser, privateToken2, publicDocument,
+    privateDocument, roleDocument;
 
   before((done) => {
     model.Role.bulkCreate([adminRoleParams, regularRoleParams], {
@@ -131,7 +132,8 @@ describe('DOCUMENT API', () => {
 
         describe('Document Pagination', () => {
           beforeEach(() => model.Document.bulkCreate(documentsCollection));
-          it('allows use of query params "limit" to limit the result', (done) => {
+          it('allows use of query params "limit" to limit the result',
+          (done) => {
             request.get('/api/document?limit=7')
               .set({ Authorization: publicToken })
               .end((error, response) => {
@@ -140,7 +142,8 @@ describe('DOCUMENT API', () => {
                 done();
               });
           });
-          it('returns the documents in order of their published dates', (done) => {
+          it('returns the documents in order of their published dates',
+          (done) => {
             request.get('/api/document?limit=7')
               .set({ Authorization: publicToken })
               .end((error, response) => {
@@ -181,7 +184,6 @@ describe('DOCUMENT API', () => {
               .set({ Authorization: publicToken })
               .end((error, response) => {
                 expect(response.status).to.equal(200);
-                console.log(response.body);
                 expect(response.body.title).to.equal(publicDocument.title);
                 expect(response.body.content).to.equal(publicDocument.content);
                 done();
@@ -190,17 +192,6 @@ describe('DOCUMENT API', () => {
       });
 
       describe('get all documents created by a particular user', () => {
-        describe('GET: (/api/user/:id/api/document) - GET all documents created by a particular user', () => {
-          it('should return documents to any user if access is public',
-          (done) => {
-            request.get(`/api/user/${privateUser.id}/api/document`)
-            .set({ Authorization: privateToken })
-            .end((error, response) => {
-              expect(response.status).to.equal(200);
-              done();
-            });
-          });
-        });
 
         describe('PUT: (/api/document/:id) - EDIT A DOCUMENT', () => {
           it('should not perform edit if invalid id is provided', (done) => {
@@ -210,7 +201,8 @@ describe('DOCUMENT API', () => {
               .send(fieldToUpdate)
               .expect(404, done);
           });
-          it('should not perform edit if User is not document Owner', (done) => {
+          it('should not perform edit if User is not document Owner',
+          (done) => {
             const fieldToUpdate = { content: 'replace previous document' };
             request.put(`/api/document/${publicDocument.id}`)
               .set({ Authorization: privateToken })
@@ -274,7 +266,8 @@ describe('DOCUMENT API', () => {
                 done();
               });
           });
-          it('should NOT return document when user is not the owner', (done) => {
+          it('should NOT return document when user is not the owner',
+          (done) => {
             request.get(`/api/document/${privateDocument.id}`)
               .set({ Authorization: privateToken2 })
               .expect(403, done);

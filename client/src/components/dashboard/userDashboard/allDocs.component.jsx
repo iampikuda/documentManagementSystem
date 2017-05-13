@@ -39,7 +39,6 @@ const AllDocs = (props) => {
     }
     documentList = docs;
   }
-  console.log(documentList,'documentlist');
   return (
     <div>
       <table id="alldocs" className="bordered  responsive">

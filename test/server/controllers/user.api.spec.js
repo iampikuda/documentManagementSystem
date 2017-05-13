@@ -1,6 +1,6 @@
-import app from '../../../app';
 import supertest from 'supertest';
 import chai from 'chai';
+import app from '../../../app';
 import model from '../../../server/models';
 import helper from '../test-helper';
 
@@ -13,7 +13,6 @@ const userParams2 = helper.testUser2;
 const userParams3 = helper.testUser3;
 const roleParams = helper.testAdminRole;
 const roleParams2 = helper.testRegularRole;
-const roleParams3 = helper.testRegularRole;
 
 describe('User API', () => {
   let user1;
@@ -39,7 +38,6 @@ describe('User API', () => {
       request.post('/api/user')
         .send(userParams)
         .end((error, response) => {
-          console.log(response.body, 'response.body');
           user1 = response.body.newUser;
           token1 = response.body.token;
 
@@ -101,8 +99,8 @@ describe('User API', () => {
       });
       it('should update a user if supplied id is valid', (done) => {
         const fieldsToUpdate = {
-          firstName: 'Delores',
-          lastName: 'Diei'
+          firstName: 'Kondo',
+          lastName: 'Olopa'
         };
         request.put(`/api/user/${user1.id}`)
           .set({ Authorization: token1 })
@@ -145,7 +143,8 @@ describe('User API', () => {
     });
 
     describe('POST: (/api/user/login) - LOGIN', () => {
-      it('should not login when supplied invalid username or password', (done) => {
+      it('should not login when supplied invalid username or password',
+      (done) => {
         request.post('/api/user/login')
           .send({
             email: 'userName@mail.com',

@@ -8,7 +8,6 @@ let usersList = [];
  * @returns {void} return table
  */
 const UserDocs = (props) => {
-  // console.log(props, 'porpospospopd');
   /**
    * @param {Object} roles 
    * @param {Object} index 

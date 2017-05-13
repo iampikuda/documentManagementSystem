@@ -44,10 +44,8 @@ class documentController {
               Userdata.roleId = founduser.roleId;
               docInfo = newDocument.dataValues;
               docInfo.User = Userdata;
-              // console.log(newDocument, '098-09-=09-08-09-9-09');
               response.status(201).send(docInfo)
             })
-            // response.status(201).send(docInfo)
           })
           .catch(error => response.status(400).send({
             message: error.message
@@ -320,8 +318,6 @@ class documentController {
             Userdata.lastName = founduser.lastName;
             Userdata.firstName = founduser.firstName;
             Userdata.roleId = founduser.roleId;
-            // console.log(newDocument, '098-09-=09-08-09-9-09');
-            // response.status(201).send(docInfo)
             if (foundDocument.title === request.body.title) {
               return foundDocument
                   .update(request.body)

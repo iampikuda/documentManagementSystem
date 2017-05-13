@@ -30,7 +30,7 @@ class AddDoc extends Component {
       // ready: function (modal, trigger) {
       //  // Callback for Modal open. Modal and trigger parameters available.
       //   alert("Ready");
-      //   console.log(modal, trigger);
+
       // },
       complete: function () {
       } // Callback for Modal close

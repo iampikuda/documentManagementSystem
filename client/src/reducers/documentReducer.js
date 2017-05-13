@@ -22,8 +22,6 @@ export default (state = {}, action) => {
     }
     case actionTypes.DOCUMENT_UPDATED: {
       let updatedData = action.document.data;
-      // console.log(updatedData, '0909090909');
-      // console.log(state.document, '-=-=-=-');
       return Object.assign({}, state, {
         ...state,
         document: [...state.document].map(document => 
@@ -34,19 +32,15 @@ export default (state = {}, action) => {
     }
     case actionTypes.DOCUMENT_DELETED: {
       let deletedData = action.data;
-      let data = state.document.filter(document => (parseInt(document.id, 10) !== parseInt(deletedData.id, 10)));
-      console.log(data, 'state.document');
+      let data = state.document.filter(document =>
+      (parseInt(document.id, 10) !== parseInt(deletedData.id, 10)));
       return Object.assign({}, state, {
         ...state,
         document: data
       });
-      // results: [...state.documents.results].filter(document =>
-      //       (parseInt(document.id, 10) !== parseInt(action.payload.id, 10))) } });
     }
     case actionTypes.DOCUMENT_CREATE_FAILED:
       return { ...state, status: action.status };
-    // case 'ALL_DOCUMENTS':
-    //   return { ...state, documents: action.documents };
     case actionTypes.GET_ALL_DOCUMENTS:
       return {
         ...state,
