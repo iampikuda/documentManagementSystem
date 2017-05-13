@@ -22,8 +22,7 @@
     "mocha": "mocha --compilers js:babel-core/register",
     "test:client": "mocha ./test/client/**/*.spec.js --compilers js:babel-register --require ./test/client/helpers.js --require ./test/client/dom.js --recursive",
     "cover": "rm -rf coverage/ && NODE_ENV=test babel-node ./node_modules/babel-istanbul/lib/cli.js cover _mocha -- -R spec test/**/**/*.spec.js",
-    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
-    "postinstall": "./node_modules/.bin/webpack && sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all"
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
