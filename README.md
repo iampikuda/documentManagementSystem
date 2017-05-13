@@ -1,5 +1,5 @@
 # Document Mangement System
-[![Build Status](https://travis-ci.org/andela-opikuda/documentManagementSystem.svg?branch=master)](https://travis-ci.org/andela-opikuda/documentManagementSystem) [![Code Climate](https://codeclimate.com/github/andela-opikuda/documentManagementSystem/badges/gpa.svg)](https://codeclimate.com/github/andela-opikuda/documentManagementSystem) [![Coverage Status](https://coveralls.io/repos/github/andela-opikuda/documentManagementSystem/badge.svg?branch=refactor)](https://coveralls.io/github/andela-opikuda/documentManagementSystem?branch=refactor)
+[![Build Status](https://travis-ci.org/andela-opikuda/documentManagementSystem.svg?branch=develop)](https://travis-ci.org/andela-opikuda/documentManagementSystem) [![Code Climate](https://codeclimate.com/github/andela-opikuda/documentManagementSystem/badges/gpa.svg)](https://codeclimate.com/github/andela-opikuda/documentManagementSystem) [![Coverage Status](https://coveralls.io/repos/github/andela-opikuda/documentManagementSystem/badge.svg?branch=refactor)](https://coveralls.io/github/andela-opikuda/documentManagementSystem?branch=refactor)
 ## Background Information
 Document management system is an application used to track, manage and store documents.
 ## Features
