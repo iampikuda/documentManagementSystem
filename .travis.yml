@@ -17,8 +17,8 @@ before_install:
 env:
   - CXX=g++-4.8
 before_script:
-  - psql -c 'create database PK_dms_test;' -U postgres
-  - sequelize db:migrate
+  - psql -c 'create database travis;' -U postgres
+  - npm run mig:test
 
 script:
   - npm test
