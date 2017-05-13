@@ -25,15 +25,12 @@ exclude_paths:
 - "api-docs/"
 - "coverage/"
 - "jasmine/"
-- "node_modules/"
+
 - "bundle.js"
-- "client/src/components/"
-- "client/src/reducers/"
-- "client/src/actions/"
-- "server/seeders/"
-- "server/migrations/"
-- "server/controllers/"
-- "server/models/"
-- "server/routes/"
+- "client/*"
+
+- "server/*"
+
 - "node_modules/"
 - "tests/client"
+- "screenshot"
