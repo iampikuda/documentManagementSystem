@@ -1,9 +1,6 @@
 engines:
-  csslint:
+  scss-lint:
     enabled: true
-    checks:
-      gradients:
-        enabled: false
   duplication:
     enabled: true
     checks:
@@ -24,6 +21,7 @@ ratings:
   - "server/controllers/*.js"
   - "test/**"
   - "server/migrations/*.js"
+  - "**.scss"
 exclude_paths:
 - "server/seeders/**"
 - "server/config/**"
