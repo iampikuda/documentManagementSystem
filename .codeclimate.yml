@@ -24,3 +24,6 @@ ratings:
 exclude_paths:
 - "server/seeders/**"
 - "server/config/**"
+- "api-doc/**"
+- "jasmine/**"
+- "test/**"
