@@ -94,6 +94,7 @@ Requests to protected routes are validated using the generated token.
 ## Endpoints
 Here's the collection of routes. They can be checked out on Postman
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/89b63da4a2a0c98485e7)
+- [Open API Documentation](https://pk-dms.herokuapp.com/docs)
 
 #### Users
 EndPoint                      |   Functionality

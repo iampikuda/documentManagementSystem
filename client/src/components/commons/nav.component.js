@@ -55,7 +55,7 @@ class Navbar extends Component {
                 </Link>
               </li>
               <li>
-                <Link onClick={this.logout}>
+                <Link id="signout-btn" onClick={this.logout}>
                   <i className="material-icons left">lock_outline</i>
                   Sign Out
                 </Link>
@@ -80,7 +80,7 @@ class Navbar extends Component {
               </Link>
             </li>
             <li>
-              <Link to="/signup">
+              <Link id="signup-btn" to="/signup">
                 <i className="material-icons left">vpn_key</i>
                 SIGNUP
               </Link>
