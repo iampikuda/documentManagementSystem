@@ -22,6 +22,7 @@ engines:
 ratings:
   paths:
   - "server/controllers/*.js"
+  - "test/**"
   - "server/migrations/*.js"
 exclude_paths:
 - "server/seeders/**"
