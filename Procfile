@@ -1,1 +1,1 @@
-web: ./node_modules/.bin/webpack && sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all && node_modules/.bin/babel-node app.js
+web: node_modules/.bin/babel-node app.js
