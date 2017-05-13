@@ -29,7 +29,7 @@ export default (sequelize, DataTypes) => {
     },
     access: {
       type: DataTypes.STRING,
-      // allowNull: false,
+      allowNull: false,
       defaultValue: 'public',
       validate: {
         isIn: {

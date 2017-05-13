@@ -26,7 +26,9 @@ const Search = (props) => {
         <td>{`${document.User.lastName} ${document.User.firstName}`}</td>
         <td>{(document.createdAt).slice(0, 10)}</td>
         <td>{(document.updatedAt).slice(0, 10)}</td>
-        <td>
+        { (props.user ==='admin') ?
+        <div>
+          <td>
           <a className="modal-trigger green-text" 
             href="#modalEdit"
             onClick={() => { props.setEditDocument(document);}}>
@@ -39,6 +41,9 @@ const Search = (props) => {
             <i className="material-icons">delete</i>
           </a>
         </td>
+        </div>
+        : ''
+        }
       </tr >
     );
   }
@@ -54,17 +59,23 @@ const Search = (props) => {
         <td>{users.lastName}</td>
         <td>{users.email}</td>
         <td>{users.roleId}</td>
-        <td>
-          <a className="modal-trigger green-text" href="#modalEdit"
-            onClick={() => { props.setEditusers(users);}}>
-            <i className="material-icons">edit</i>
-          </a>
-        </td>
-        <td>
-          <a className="red-text" href="#"
-          onClick={() => { props.setDeleteusers(users.id);}}>
-          <i className="material-icons">delete</i>
-        </a></td>
+        { (props.user ==='admin') ?
+        <div>
+          <td>
+            <a className="modal-trigger green-text" href="#modalEdit"
+              onClick={() => { props.setEditusers(users);}}>
+              <i className="material-icons">edit</i>
+            </a>
+          </td>
+          <td>
+            <a className="red-text" href="#"
+            onClick={() => { props.setDeleteusers(users.id);}}>
+            <i className="material-icons">delete</i>
+            </a>
+          </td>
+        </div>
+          : ''
+        }
       </tr >
     );
   }

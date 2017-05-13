@@ -15,7 +15,6 @@ export default (state = {}, action) => {
         pageCount: action.pageCount
       };
     case actionTypes.USER_DELETED:
-      console.log(action.data);
       let deletedUser = action.data;
       let data = state.users.filter(user => (parseInt(user.id, 10) !== parseInt(deletedUser.id,10)));
       return Object.assign({}, state, {

@@ -9,7 +9,7 @@
     "mig:dev": "NODE_ENV=development sequelize db:migrate",
     "mig:test:undo": "NODE_ENV=test sequelize db:migrate:undo:all",
     "mig:dev:undo": "NODE_ENV=development sequelize db:migrate:undo:all",
-    "test": "NODE_ENV=test sequelize db:migrate && istanbul cover _mocha -- -R spec test/**/**/*.spec.js --compilers js:babel-core/register",
+    "test": "NODE_ENV=test sequelize db:migrate:undo:all && NODE_ENV=test sequelize db:migrate && NODE_ENV=test istanbul cover _mocha -- -R spec test/server/**/*.spec.js --compilers js:babel-core/register",
     "seed:test": "NODE_ENV=test sequelize db:seed:all",
     "seed:dev": "NODE_ENV=development sequelize db:seed:all",
     "seed:create:test": "NODE_ENV=test sequelize seed:create",
@@ -22,8 +22,7 @@
     "mocha": "mocha --compilers js:babel-core/register",
     "test:client": "mocha ./test/client/**/*.spec.js --compilers js:babel-register --require ./test/client/helpers.js --require ./test/client/dom.js --recursive",
     "cover": "rm -rf coverage/ && NODE_ENV=test babel-node ./node_modules/babel-istanbul/lib/cli.js cover _mocha -- -R spec test/**/**/*.spec.js",
-    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
-    "postinstall": "./node_modules/.bin/webpack && sequelize db:migrate && sequelize db:seed:undo:all && sequelize db:seed:all"
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",

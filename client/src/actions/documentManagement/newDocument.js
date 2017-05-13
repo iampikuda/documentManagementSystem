@@ -23,16 +23,19 @@ export default (details) => {
           status: 'success'
         });
         Materialize.toast('Document created', 2000, 'green');
-      }).catch((err) => {
+      }).catch((error) => {
+        let errorData;
+        if(error.response.data.errors !== undefined) {
+          errorData = error.response.data.errors[0].message
+        } else {
+          errorData = error.response.data.message
+        }
         Materialize.toast(
-          'err',
-          3000,
-          'red'
-          );
+          errorData, 3000, 'red');
         dispatch({
           type: actionTypes.DOCUMENT_CREATE_FAILED,
           status: 'failed',
-          error: err.message
+          error: error.message
         });
       });
   };

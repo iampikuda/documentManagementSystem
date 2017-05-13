@@ -31,17 +31,21 @@ export default (query, offset) => {
         status: 'success',
         pageCount: users.data.metadata.pages
       });
+     Materialize.toast("Here's who we found", 2000, 'green');
     })
-    .catch((err) => {
-      Materialize.toast(
-        'Something went wrong searching for users',
-        3000,
-        'red'
-        );
+    .catch((error) => {
+      let errorData;
+        if(error.response.data.errors !== undefined) {
+          errorData = error.response.data.errors[0].message
+        } else {
+          errorData = error.response.data.message
+        }
+        Materialize.toast(
+          errorData, 3000, 'red');
       dispatch({
         type: actionTypes.SEARCH_USER_FAILED,
         status: 'failed',
-        error: err.message
+        error: error.message
       });
     });
   };

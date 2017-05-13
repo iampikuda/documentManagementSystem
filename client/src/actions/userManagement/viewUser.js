@@ -20,11 +20,19 @@ export default (token, userId) => {
           type: actionTypes.VIEW_USER,
           data: user.data
         });
-      }).catch((err) => {
+      }).catch((error) => {
+        let errorData;
+        if(error.response.data.errors !== undefined) {
+          errorData = error.response.data.errors[0].message
+        } else {
+          errorData = error.response.data.message
+        }
+        Materialize.toast(
+          errorData, 3000, 'red');
         dispatch({
           type: actionTypes.USER_RETRIEVAL_FAILED,
           status: 'failed',
-          error: err.message
+          error: error.message
         });
       });
   };

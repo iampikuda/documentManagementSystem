@@ -130,8 +130,6 @@ describe('User Model', () => {
       it('should be valid if compared', () => {
         return user.save()
           .then((createdUser) => {
-            console.log("@@@@@@@@@", createdUser);
-            console.log("pkasdjahsdjasgdjasd", userParams);
             expect(createdUser.verifyPassword(userParams.password)).to.be.true;
           });
       });

@@ -15,7 +15,8 @@ describe('Document Model', () => {
     let owner;
     describe('Create Role', () => {
       before((done) => {
-        model.Role.create(params.adminRole)
+        // model.sequelize.sync({ force: true })
+        model.Role.create({ title: 'badolee' })
         .then((createdRole) => {
           userParams.roleId = createdRole.id;  // user's roleId
           return model.User.create(userParams);
@@ -31,7 +32,7 @@ describe('Document Model', () => {
         document = model.Document.build(documentParams);
       });
 
-      afterEach(() => model.Document.destroy({ where: {} }));
+      // afterEach(() => model.Document.destroy({ where: {} }));
 
       after(() => model.sequelize.sync({ force: true }));
 
@@ -91,6 +92,7 @@ describe('Document Model', () => {
           });
         });
       });
+
     });
   });
 });

@@ -58,7 +58,6 @@ class UserController {
                   .send({ newUser, token, expiresIn: '2 days' });
               })
               .catch((error) => {
-                console.log(error, '-=-=-=-=-=-=-');
                 return response.status(400)
                   .send(error);
               });
@@ -73,10 +72,8 @@ class UserController {
         if (request.body.roleId === 99) {
           request.body.roleId = 2;
         }
-        // console.log('---=-=-=->>>', request.body);        
         model.User.create(request.body)
           .then((newUser) => {
-            console.log('---=-=-=->>>', newUser);
             const token = jwt.sign({
               userId: newUser.id,
               roleId: newUser.roleId,
@@ -88,7 +85,6 @@ class UserController {
               .send({ newUser, token, expiresIn: '2 days' });
           })
           .catch((error) => {
-            console.log(error, '12312312312312');            
             return response.status(400)
               .send(error);
           });
@@ -110,9 +106,6 @@ class UserController {
             .status(404)
             .send({ message: `There is no user with id: ${Id}` });
         }
-        console.log(foundUser.roleId);
-        console.log(foundUser.id);
-        // console.log(foundUser);
         if (foundUser.roleId === 1) {
           if (request.decoded.roleId !== 1) {
             return response.status(403)

@@ -17,10 +17,9 @@ class roleController {
     model.Role.sync();
     model.Role.create(request.body)
       .then((newRole) => {
-        console.log('`````````````````````');
         response.status(201).send(newRole)
       })
-      .catch(error => response.status(400).send(error.errors)
+      .catch(error => response.status(400).send(error.message)
       );
   }
 
@@ -39,12 +38,16 @@ class roleController {
       order: '"createdAt" ASC'
     })
       .then((roles) => {
+        if (!roles) {
+          return response.status(404).send({ msg: 'role does not exist' });
+        }
         const metadata = limit && offset ? { totalCount: roles.count,
           pages: Math.ceil(roles.count / limit),
           currentPage: Math.floor(offset / limit) + 1,
           pageSize: roles.rows.length } : null;
         return response.status(200).send({ roles: roles.rows, metadata });
-      });
+      })
+      .catch(error => response.status(400).send(error.message));
   }
 }
 

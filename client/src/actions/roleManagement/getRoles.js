@@ -35,16 +35,19 @@ export const viewRoles = (userId) => {// eslint-disable-line
     .then((roles) => {
       dispatch(roleGetSuccess(roles));
     })
-    .catch((err) => {
-      Materialize.toast(
-        'Something went wrong getting roles',
-        3000,
-        'red'
-        );
+    .catch((error) => {
+      let errorData;
+        if(error.response.data.errors !== undefined) {
+          errorData = error.response.data.errors[0].message
+        } else {
+          errorData = error.response.data.message
+        }
+        Materialize.toast(
+          errorData, 3000, 'red');
       dispatch({
         type: actionTypes.GET_ROLE_FAILED,
         status: 'failed',
-        error: err.message
+        error: error.message
       });
     });
   };

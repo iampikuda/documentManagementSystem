@@ -65,8 +65,8 @@ export class CreateDocument extends Component {
    */
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
-    this.setState({ content: event.target.getContent() });
-    console.log('-=-=-=-=-=-=-');
+    // this.setState({ content: event.target.getContent() });
+    console.log(this.state, '-=-=-=-=-=-=-');
   }
   /**
    * @param {Object} event 
@@ -76,7 +76,7 @@ export class CreateDocument extends Component {
     this.setState({
       content: event.target.getContent()
     });
-    // console.log(this.state, 'f');
+    console.log(this.state.content, 'f');
   }
   /**
    * @param {Object} event 
@@ -84,6 +84,7 @@ export class CreateDocument extends Component {
    */
   onSubmit(event) {
     event.preventDefault();
+    console.log(this.state.content, 'onsubmimimimi');
     if(this.state.content.length < 1) {
       Materialize.toast('Please add a content', 3000);
     } else {
@@ -121,7 +122,7 @@ export class CreateDocument extends Component {
               <div className='row'>
                 <div className='input-field col s12'>
                   <TinyMCE
-                    content='Content'
+                    content={this.state.content}
                     name='content'
                     config={{
                       plugins: 'autolink link image lists print preview',

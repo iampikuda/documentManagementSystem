@@ -7,14 +7,7 @@
     "dialect": "postgres"
   },
   "test": {
-    "username": "postgres",
-    "password": null,
-    "database": "pkdms_test",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
-  },
-  "travis": {
-    "url": "postgres://postgres@localhost:8000/pk_docman_test",
+    "use_env_variable": "DATABASE_URL_TRAVIS",
     "dialect": "postgres"
   },
   "production": {
